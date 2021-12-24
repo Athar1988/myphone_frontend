@@ -10,6 +10,8 @@ import { FooterComponent } from './structure/footer/footer.component';
 import { GeneraleComponent } from './allproduct/generale/generale.component';
 import { AccueilComponent } from './structure/accueil/accueil.component';
 import { ProduitComponent } from './allproduct/produit/produit.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ProduitComponent } from './allproduct/produit/produit.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

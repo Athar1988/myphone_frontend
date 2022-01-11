@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CategoriesService} from '../../services/categories.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
-  constructor() { }
+  motarechercher='';
+  products;
+  constructor(public service: CategoriesService) { }
 
   ngOnInit(): void {
   }
 
+
+
+  chercherUnProduit(credentials) {
+    console.log(credentials.motarechercher);
+    this.service.chercherProduit(credentials.motarechercher).subscribe(
+      data=>{
+        console.log(data);
+        this.products=data;
+        console.log(this.products);
+      }
+    );
+
+  }
 }

@@ -17,6 +17,27 @@
           </ul>
         </li>
       </ul>
+
+
+      <form class="navbar-form navbar-right" #rechercheForm="ngForm" >
+        <div class="input-group">
+          <input
+            type="text"
+            placeholder="search..."
+            class="form-control"
+            [(ngModel)]="motarechercher"
+            #motarechercherInput="ngModel"
+            id="motarechercher"
+            name="motarechercher">
+          <span class="input-group-btn">
+            <button class="btn btn-default" (click)="chercherUnProduit(rechercheForm.value)">Go</button>
+          </span>
+        </div>
+      </form>
+
+
+
+
       <form class="d-flex">
       <button class="btn btn-outline-dark" type="submit">
         <i class="bi-basket-fil1"></i>
@@ -31,3 +52,53 @@
   </div>
 </nav>
 
+
+
+
+<!--
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a class="clickable" (click)="onSelectedProducts()">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a class="clickable" (click)="onProductsPromo()">Promotion</a></li>
+          <li><a class="clickable" (click)="onProductsDispo()">Disponibles</a></li>
+        </ul>
+      </li>
+      <li><a routerLink="/caddy">Caddy</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+    <ul *ngIf="!this.authService.isAuthenticated()" class=" nav navbar-nav pull-right">
+      <li>
+        <a (click)="onLogin()"class="btn">
+          <span class="glyphicon glyphicon-log-in"></span>
+        </a>
+      </li>
+    </ul>
+    <ul *ngIf="this.authService.isAuthenticated()" class=" nav navbar-nav pull-right">
+      <li>
+        <a (click)="onLogout()"class="btn">
+          <span class="glyphicon glyphicon-log-out"></span>
+        </a>
+      </li>
+    </ul>
+    <ul class=" nav navbar-nav pull-right">
+      <li>
+        <a routerLink="/caddy">
+          <span class="badge">{{caddyService.currentCaddyName}} :
+            {{caddyService.getSize()}}</span>
+          <img class="img-circle img-thumbnail img-rounded" src="assets/images/caddy.png">
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+-->

@@ -9,72 +9,21 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
   styleUrls: ['./generale.component.css']
 })
 export class GeneraleComponent implements OnInit {
-  title:string;
-  currentRequest:string;
-  products;
   categories;
   currentCategorie;
 
-
-  constructor(public catService: CategoriesService,
+  constructor(public catService:CategoriesService,
               private  router:Router,
-              private route:ActivatedRoute) { }
+              ){}
+              //public caddyService:CaddyService,
+  //               public authService:AuthenticationService
 
   ngOnInit(): void {
     this.getCategories();
-    this.router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd ) {
-        let url = val.url;
-        let p1=this.route.snapshot.params.p1;
-        if(p1==1){
-          this.title="Sélection";
-          this.currentRequest='/products/search/selectedProducts';
-          this.getProducts(this.currentRequest);
-        }
-        else if (p1==2){
-          let idCat=this.route.snapshot.params.p2;
-          this.title="Produits de la catégorie "+idCat;
-          this.currentRequest='/categories/'+idCat+'/products';
-          console.log(idCat);
-          this.getProducts(this.currentRequest);
-        }
-        else if (p1==3){
-          this.title="Produits en promotion";
-          this.currentRequest='/products/search/promoProducts';
-          this.getProducts(this.currentRequest);
-        }
-        else if (p1==4){
-          this.title="Produits Disponibles";
-          this.currentRequest='/products/search/dispoProducts';
-          this.getProducts(this.currentRequest);
-        }
-        else if (p1==5){
-          this.title="Recherche..";
-          this.title="Produits Disponibles";
-          this.currentRequest='/products/search/dispoProducts';
-          this.getProducts(this.currentRequest);
-        }
-
-      }
-    });
-    let p1=this.route.snapshot.params.p1;
-    if(p1==1){
-      this.currentRequest='/products/search/selectedProducts';
-      this.getProducts(this.currentRequest);
-    }
-
+  /*  this.authService.loadUser();
+    if(this.authService.isAuthenticated())
+      this.caddyService.loadCaddyFromLocalStorage();*/
   }
-
-  private getProducts(url) {
-    this.catService.getResource(this.catService.host+url)
-      .subscribe(data=>{
-        this.products=data;
-        console.log(this.products);
-      },err=>{
-        console.log(err);
-      })
-  }
-
 
   private getCategories() {
     this.catService.getResource(this.catService.host+"/categories")
@@ -91,5 +40,28 @@ export class GeneraleComponent implements OnInit {
     this.router.navigateByUrl('/products/2/'+c.id);
   }
 
+  onSelectedProducts() {
+    this.currentCategorie=undefined;
+    this.router.navigateByUrl("/products/1/0");
+  }
 
+  onProductsPromo() {
+    this.currentCategorie=undefined;
+    this.router.navigateByUrl("/products/3/0");
+  }
+
+  onProductsDispo() {
+    this.currentCategorie=undefined;
+    this.router.navigateByUrl("/products/4/0");
+  }
+
+  onLogin() {
+    this.router.navigateByUrl('/login');
+  }
+
+  onLogout() {
+  /*  this.caddyService.emptyCaddy();
+    this.authService.logout();*/
+    this.router.navigateByUrl('/login');
+  }
 }

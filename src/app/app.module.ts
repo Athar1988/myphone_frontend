@@ -11,7 +11,8 @@ import { GeneraleComponent } from './allproduct/generale/generale.component';
 import { AccueilComponent } from './structure/accueil/accueil.component';
 import { ProduitComponent } from './allproduct/produit/produit.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { DetailproduitComponent } from './allproduct/detailproduit/detailproduit.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,15 @@ import {FormsModule} from '@angular/forms';
     FooterComponent,
     GeneraleComponent,
     AccueilComponent,
-    ProduitComponent
+    ProduitComponent,
+    DetailproduitComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

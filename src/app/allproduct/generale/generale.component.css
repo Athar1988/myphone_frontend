@@ -6,10 +6,17 @@
 *
 */
 
+
+nav .navbar-nav li{
+  color: white !important;
+  font-size: 25px;
+}
+
+
 .vertical-nav {
-  min-width: 17rem;
-  width: 17rem;
-  height: 300vh;
+ /*min-width: 10rem;
+  width: 10rem;
+  height: 300vh;*/
 
   top: 55px;
   left: 0;

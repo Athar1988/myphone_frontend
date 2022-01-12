@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Product} from '../model/product.model';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +15,18 @@ export class CategoriesService {
     return this.http.get(url);
   }
 
-  chercherProduit(motdepasse: string) {
-   // console.log("http://localhost:8080/products/search/productsName?mc="+motdepasse);
-    //console.log("http://localhost:8080/products/search/productsMarque?mc="+motdepasse);
-   // console.log("http://localhost:8080/products/search/productsDescription?mc="+motdepasse);
-    //console.log("http://localhost:8080/products/search/productsCategory?mc="+motdepasse);
-    //console.log(this.http.get("http://localhost:8080/products/search/productsCategory?mc="+motdepasse));
-    return this.http.get("http://localhost:8080/products/search/productsMarque?mc="+motdepasse);
-    return this.http.get("http://localhost:8080/products/search/productsName?mc="+motdepasse);
+
+  chercherMarqueProduit(motdepasse: string):Observable<Product> {
+    return this.http.get<Product>(this.host+"/products/search/productsMarque?mc="+motdepasse);
+  }
+  chercherNameProduit(motdepasse: string) :Observable<Product>{
+    return this.http.get<Product>(this.host+"/products/search/productsName?mc="+motdepasse);
+  }
+  chercherCategoryProduit(motdepasse: string):Observable<Product> {
+    return this.http.get<Product>(this.host+"/products/search/productsCategory?mc="+motdepasse);
+  }
+  chercherDescriptionProduit(motdepasse: string):Observable<Product> {
+    return this.http.get<Product>(this.host+"/products/search/productsDescription?mc="+motdepasse);
   }
 
 

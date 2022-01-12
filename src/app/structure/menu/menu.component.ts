@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoriesService} from '../../services/categories.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,8 @@ import {CategoriesService} from '../../services/categories.service';
 export class MenuComponent implements OnInit {
   motarechercher='';
   products;
-  constructor(public service: CategoriesService) { }
+  constructor(public service: CategoriesService,
+              public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -17,14 +19,42 @@ export class MenuComponent implements OnInit {
 
 
   chercherUnProduit(credentials) {
-    console.log(credentials.motarechercher);
-    this.service.chercherProduit(credentials.motarechercher).subscribe(
-      data=>{
-        console.log(data);
-        this.products=data;
-        console.log(this.products);
-      }
-    );
-
+    console.log("/chercher/"+credentials.motarechercher);
+    this.router.navigateByUrl("/chercher/"+credentials.motarechercher);
   }
+
+  accueil(){
+    this.router.navigateByUrl('');
+  }
+
+
+
+
+  onProductsPromo() {
+    this.router.navigateByUrl("/products/1/1");
+  }
+  onProductsDispo() {
+    this.router.navigateByUrl("/products/1/2");
+  }
+  topoffre(){
+    this.router.navigateByUrl("/products/1/3");
+  }
+  dernierajoute(){
+    this.router.navigateByUrl("/products/1/4");
+  }
+
+
+
+  nosmagasins(){
+    this.router.navigateByUrl("/nosMagasin");
+  }
+
+  contact(){
+    this.router.navigateByUrl("/contact");
+  }
+
+  Uncompte(){
+    this.router.navigateByUrl("/compte");
+  }
+
 }

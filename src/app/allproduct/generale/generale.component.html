@@ -14,16 +14,16 @@
 <div class="container">
 <div class="container-fluid">
   <div class="row flex-nowrap">
-    <div class="col-auto col-md-4 col-xl-3 px-sm-3 px-0 bg-dark">
-      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-        <a routerLink="/generale" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <div class="col-auto col-md-4 col-xl-3 px-sm-3 px-0 " style="background-color: #35b0ab;">
+      <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-100">
+        <a routerLink="/generale" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
           <span class="fs-5 d-none d-sm-inline">Famille</span>
         </a>
 
 
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li class="nav-item " [ngClass]="currentCategorie==c?'active':''"   *ngFor="let c of categories._embedded.categories">
-            <a (click)="getProductsByCat(c)" class="nav-link text-white font-italic align-middle px-0">
+            <a (click)="getProductsByCat(c)" class="nav-link text-dark font-italic align-middle px-0">
               <i class="{{c.icon}}"></i> <span class="ms-1 d-none d-sm-inline">{{c.name}}</span>
             </a>
           </li>
@@ -49,7 +49,8 @@
       </div>
     </div>
     <div class="col py-3">
-      <app-produit></app-produit>
+      <div><h3>{{title}}</h3></div>
+      <app-produit  [products]="products"></app-produit>
     </div>
   </div>
 </div>

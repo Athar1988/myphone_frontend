@@ -20,6 +20,7 @@ import { CompteComponent } from './client/compte/compte.component';
 import { PanierComponent } from './client/panier/panier.component';
 import { ConnexionComponent } from './client/connexion/connexion.component';
 import { CommandesComponent } from './client/commandes/commandes.component';
+import { ProfilComponent } from './client/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CommandesComponent } from './client/commandes/commandes.component';
     CompteComponent,
     PanierComponent,
     ConnexionComponent,
-    CommandesComponent
+    CommandesComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

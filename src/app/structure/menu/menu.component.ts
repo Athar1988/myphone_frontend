@@ -10,10 +10,14 @@ import {Router} from '@angular/router';
 export class MenuComponent implements OnInit {
   motarechercher='';
   products;
+  nameClient;
   constructor(public service: CategoriesService,
               public router:Router) { }
 
   ngOnInit(): void {
+   /* if(token){
+      this.nameClient=client.nom;
+    }*/
   }
 
 

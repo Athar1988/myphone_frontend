@@ -1,7 +1,10 @@
 export interface Client{
-   name:string;
+   id:number;
    email:string;
-   phoneNumber:string;
+   telephone:string;
+   nom:string;
+   prenom:string;
+   ville:string;
    address:string;
-   username:string;
+   motdepasse:string;
 }

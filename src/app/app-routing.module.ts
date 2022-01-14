@@ -9,6 +9,7 @@ import {NosmagasinComponent} from './structure/nosmagasin/nosmagasin.component';
 import {ContactComponent} from './structure/contact/contact.component';
 import {CommandesComponent} from './client/commandes/commandes.component';
 import {CompteComponent} from './client/compte/compte.component';
+import {ProfilComponent} from './client/profil/profil.component';
 
 const routes: Routes = [
   {path:'products/:p1/:p2',component:GeneraleComponent},
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path:'commande', component:CommandesComponent},
   {path:'compte', component:CompteComponent},
 
-
+  {path:'profil/:id', component:ProfilComponent},
   {path:'products/:p1', component:ProduitComponent},
   {path:'detail/:id', component:DetailproduitComponent},
   {path:'chercher/:mc', component:RechercheComponent},

@@ -10,58 +10,56 @@ import {Router} from '@angular/router';
 export class ClientService {
   public host:string="http://localhost:8080";
   tousClient:any;
-  mailexiste;
+  clientactuel: Client;
   public authenticated :boolean;
-  public clientconnecter;
+  connected;
   constructor(private http:HttpClient,
               private router:Router) { }
 
 
 
-  addClient(client: Client): Observable<Client>{
+  ajouteClient(client: Client): Observable<Client>{
     console.log(client);
-    return this.http.post<Client>(this.host+"/clients/AjouteClient", client);
+    return this.http.post<Client>(this.host+"/clients", client);
+  }
+
+  recupererClient(){
+    return this.http.get("http://localhost:8080/clients");
   }
 
 
+  clientConnecter(){
+    if(localStorage.getItem("token")){
+      this.clientactuel=this.clientActuel(localStorage.getItem("token"));
+      this.connected=true;
+    }
+  }
 
-  login(credentials){
-    this.http.get(this.host+"/clients").subscribe(
+
+  isAuthenticated(){
+    return this.connected;
+  }
+
+
+  clientActuel(token){
+    this.http.get("http://localhost:8080/clients").subscribe(
       (data)=>{
         this.tousClient=data;
-        let clientactuel;
-        for(let i=0 ; i< this.tousClient._embedded.logins.length; i++){
-          if(this.tousClient._embedded.clients[i].email==credentials.email && this.tousClient._embedded.clients[i].motdepasse==credentials.motdepasse){
-            clientactuel=this.tousClient._embedded.clients[i];
-          }
-          else{
-
-            this.mailexiste=false;
-            console.log("utilisateur n'existe pas");
+        for(let i=0 ; i< this.tousClient._embedded.clients.length; i++){
+          if(this.tousClient._embedded.clients[i].email==token){
+            this.clientactuel=this.tousClient._embedded.clients[i];
           }
         }
-
-        if(clientactuel){
-          //toster
-          this.authenticated=true;
-          this.clientconnecter=clientactuel;
-          localStorage.setItem("token",JSON.stringify(this.clientconnecter));
-          this.router.navigateByUrl('profil');
-         // this.toaster.success('Bienvenu');
-        }
-        else {
-          // this.msgerruer="erreur d'authentification, repeter une autre fois";
-          this.authenticated=false;
-          this.router.navigateByUrl('/compte');
-        }
-
-
-
       }
     )
+    return this.clientactuel;
   }
 
 
-
+  logout(){
+    this.connected=false;
+    this.clientactuel=undefined;
+    localStorage.removeItem('token');
+  }
 }
 

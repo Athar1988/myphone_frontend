@@ -55,8 +55,13 @@
       </button>
     </form>
       <div>
-      <button class="btn btn-outline-dark" type="submit" (click)="Uncompte()">Mon Compte</button>
+      <button *ngIf="!this.serviceClient.isAuthenticated()" class="btn btn-outline-dark" type="submit" (click)="Uncompte()">Mon Compte</button>
       </div>
+
+      <div>
+        <button *ngIf="this.serviceClient.isAuthenticated()" class="btn btn-outline-dark" type="submit" (click)="Deconnecter()">Déconnecter</button>
+      </div>
+
 
     </div>
   </div>
@@ -65,8 +70,15 @@
 
 
 
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #c9d42d;" *ngIf="this.serviceClient.isAuthenticated()">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand"   routerLink="">Bienvenue chez best phone </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+      <div class="image  btn_valid"> <img src="https://i.imgur.com/0LKZQYM.jpg" (click)="profil()" class="rounded-circle" width="60" />{{this.serviceClient.clientactuel.nom}} </div>
 
-
+    </div>
+  </div>
+</nav>
 
 
 <!--

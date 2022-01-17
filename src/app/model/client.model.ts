@@ -7,4 +7,15 @@ export interface Client{
    ville:string;
    address:string;
    motdepasse:string;
+  _links:{
+    self:{
+      href:string;
+    },
+    panier:{
+      href:string;
+    },
+    order:{
+      href:string
+    }
+  }
 }

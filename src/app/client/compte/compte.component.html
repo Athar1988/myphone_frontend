@@ -9,18 +9,18 @@
           <input
             class="form-control"
             value=""
-            [(ngModel)]="email"
+            [(ngModel)]="loginemail"
             type="email"
-            #emailInput="ngModel"
+            #loginemailInput="ngModel"
             required
-            email
+            loginemail
             ngModel
-            name="email"
-            id="email"
+            name="loginemail"
+            id="loginemail"
             placeholder="name@example.com *"
           />
           <div
-            *ngIf="emailInput.invalid && emailInput.dirty"
+            *ngIf="loginemailInput.invalid && loginemailInput.dirty"
             class="alert alert-danger"
           >
             L'email est obliogatoire et doit être correct
@@ -33,18 +33,24 @@
                  class="form-control"
                  placeholder="Mot de passe *"
                  value=""
-                 value=""
-                 [(ngModel)]="motdepasse"
+                 [(ngModel)]="loginmotdepasse"
                  required
                  minlength="4"
                  ngModel
-                 #motdepasseInput="ngModel"
-                 name="motdepasse"
+                 #loginmotdepasseInput="ngModel"
+                 name="loginmotdepasse"
           />
-          <div *ngIf="motdepasseInput.invalid && motdepasseInput.dirty" class="alert alert-danger">
-            Le password est obligatoire et doit impérativementa voir au moins 4
+          <div *ngIf="loginmotdepasseInput.invalid && loginmotdepasseInput.dirty" class="alert alert-danger">
+            Le password est obligatoire et doit impérativement a voir au moins 4
             caractères
           </div>
+        </div>
+
+        <div
+          *ngIf="loginemailexiste==false && loginemailInput.dirty"
+          class="alert alert-danger"
+        >
+          L'email n'exist pas ou mot de passe incorrect
         </div>
 
 
@@ -57,12 +63,6 @@
             [disabled]="LoginForm.invalid"
             name="submit"
           />
-          <div
-            *ngIf="emailInput.invalid && emailInput.dirty"
-            class="alert alert-danger"
-          >
-            L'email est obliogatoire et doit être correct
-          </div>
         </div>
 
 
@@ -258,6 +258,12 @@
                           </div>
                         </div>
 
+        <div
+          *ngIf="emailexiste==true"
+          class="alert alert-danger"
+        >
+          L'email existe déjà
+        </div>
         <div class="form-group p-2">
           <input
             type="submit"

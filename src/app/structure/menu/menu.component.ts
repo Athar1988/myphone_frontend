@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoriesService} from '../../services/categories.service';
 import {Router} from '@angular/router';
+import {ClientService} from '../../services/client.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,14 +11,22 @@ import {Router} from '@angular/router';
 export class MenuComponent implements OnInit {
   motarechercher='';
   products;
-  nameClient;
+  token=false;
+  nomClient;
+
+
   constructor(public service: CategoriesService,
+              public serviceClient: ClientService,
               public router:Router) { }
 
   ngOnInit(): void {
-   /* if(token){
-      this.nameClient=client.nom;
-    }*/
+    this.serviceClient.clientConnecter();
+    if(this.serviceClient.connected==true){
+      console.log("token existe");
+      this.token==true;
+      this.nomClient=this.serviceClient.clientactuel.nom;
+   // this.clientConnecter=this.serviceClient.recupererToken(localStorage.getItem("token"));
+    }
   }
 
 
@@ -61,4 +70,8 @@ export class MenuComponent implements OnInit {
     this.router.navigateByUrl("/compte");
   }
 
+  Deconnecter() {
+    this.serviceClient.logout();
+    this.router.navigateByUrl('/compte');
+  }
 }

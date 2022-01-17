@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CategoriesService} from '../../services/categories.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {Product} from '../../model/product.model';
+import {ClientService} from '../../services/client.service';
+import {PanierService} from '../../services/panier.service';
 
 @Component({
   selector: 'app-produit',
@@ -21,8 +24,11 @@ export class ProduitComponent implements OnInit {
 
   constructor(
     public catService:CategoriesService,
-    private route:ActivatedRoute,private router:Router,
-) { }
+    private route:ActivatedRoute,
+    private router:Router,
+    public clientservice:ClientService,
+    private panierService:PanierService
+    ) { }
  // private caddyService:CaddyService,
  // private authService:AuthenticationServic
   ngOnInit() {
@@ -31,7 +37,7 @@ console.log(this.products+" les produits");
 
   }
 
-
+/*
   private getProducts(id) {
     this.catService.getResource("http://localhost:8080/categories/"+id+"/products")
       .subscribe(data=>{
@@ -41,12 +47,12 @@ console.log(this.products+" les produits");
       },err=>{
         console.log(err);
       })
-  }
+  }*/
 
 
 
 
-  private refreshUpdatedProduct() {
+  /*private refreshUpdatedProduct() {
     this.catService.getResource(this.currentProduct._links.self.href)
       .subscribe(data=>{
         console.log(data);
@@ -55,15 +61,27 @@ console.log(this.products+" les produits");
         console.log(err);
       })
   }
+*/
 
-  onEditPhoto(p) {
+  onAddProductToCaddy(p:Product) {
+    if(!this.clientservice.isAuthenticated()){
+      this.router.navigateByUrl("/profil");
+    }
+    else{
+     // this.panierService.addProduct(p);
+    }
+  }
+
+
+ /* onEditPhoto(p) {
     this.currentProduct=p;
     this.editPhoto=true;
-  }
+  }*/
 
-  onSelectedFile(event) {
+
+ /* onSelectedFile(event) {
     this.selectedFiles=event.target.files;
-  }
+  }*/
 
 
   /*uploadPhoto() {
@@ -97,9 +115,9 @@ console.log(this.products+" les produits");
 
 
 
-  getTS() {
+  /*getTS() {
     return this.currentTime;
-  }
+  }*/
 
   onProductDetails(p) {
     this.router.navigateByUrl("/detail/"+p.id);

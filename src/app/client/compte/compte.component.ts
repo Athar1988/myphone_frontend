@@ -17,7 +17,12 @@ export class CompteComponent implements OnInit {
   prenom;
   ville;
   adresse;
-  client:Client;
+  emailexiste;
+  loginemailexiste;
+  client:any;
+  loginmotdepasse;
+  loginemail;
+  //client:Client;
 
 
   constructor(private serviceClient: ClientService  ,
@@ -32,29 +37,62 @@ export class CompteComponent implements OnInit {
 
 
 
-  Connexion(value: any) {
+  Connexion(credentials: any) {
     // verifier le login
-    this.router.navigate(['profil']);
+    this.serviceClient.recupererClient().subscribe(
+      data=>{
+        this.client=data;
+        for(let i=0 ; i< this.client._embedded.clients.length; i++) {
+          if (this.client._embedded.clients[i].email == credentials.loginemail && this.client._embedded.clients[i].motdepasse == credentials.loginmotdepasse) {
+            this.loginemailexiste=true;
+            localStorage.setItem('token', credentials.loginemail);
+            this.router.navigate(['/profil']);
+          }
+          else{
+            this.loginemailexiste=false;
+            console.log("mail n'existe pas");
+          }
+        }
+        console.log(this.client)},
+      err=>{console.log("probleme reseau")}
+    )
   }
 
-  ajoutClient(client: Client) {
-    //ssauvgarde Login
-    /*this.login=new Login(client.email,client.motdepasse,false,true);
-    this.serviceLogin.addLogin(this.login).subscribe(
-      (newLogin)=> {console.log(this.login)},
-      (error)=>{        console.log(error);}
-    )*/
-    // sauvgarde utilisateur
-    this.serviceClient.addClient(client).subscribe(
-      (data) => {
-       // this.toaster.success(`Le cv de {utilisateur.nom} {utilisateur.prenom} a été ajuoté avec succès`);
-        this.client=client;
-        this.router.navigate(['profil', this.client.id]);
-      },
-      (erreur) => {
-        console.log(erreur);
-       // this.toaster.error(`Problème avec le serveur veuillez contacter l'admin`);
-      }
-    );
+
+
+  ajoutClient(credentials: Client) {
+    this.serviceClient.recupererClient().subscribe(
+      data=>{
+        this.client=data;
+        for(let i=0 ; i< this.client._embedded.clients.length; i++) {
+          if (this.client._embedded.clients[i].email == credentials.email) {
+              this.emailexiste=true;
+              break;
+          }
+          else{
+            this.emailexiste=false;
+          }
+        }
+        },
+      err=>{console.log("probleme reseau")}
+    )
+    if(this.emailexiste==false){
+      this.serviceClient.ajouteClient(credentials).subscribe(
+        data=>{
+          console.log("contact ajouter avec succés");
+          localStorage.setItem('token', credentials.email);
+          this.router.navigate(['profil']);
+        },
+        err=>{
+          console.log("Probleme de saisir! essayez une autre fois.");
+        }
+      )
+    }
   }
+
+
+
+
+
+
 }

@@ -4,6 +4,8 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Product} from '../../model/product.model';
 import {ClientService} from '../../services/client.service';
 import {PanierService} from '../../services/panier.service';
+import {ProductItem} from '../../model/ProductItem.model';
+import {Item} from '../../model/Item';
 
 @Component({
   selector: 'app-produit',
@@ -12,65 +14,54 @@ import {PanierService} from '../../services/panier.service';
 })
 export class ProduitComponent implements OnInit {
   @Input() products:any;
-  editPhoto: boolean;
-  currentProduct: any;
-  selectedFiles;
-  progress: number;
-  currentFileUpload: any;
   title:string;
-  currentRequest:string;
-  private currentTime: number=0;
-
+  productItem: any;
+  listeItem: any;
 
   constructor(
-    public catService:CategoriesService,
     private route:ActivatedRoute,
     private router:Router,
-    public clientservice:ClientService,
-    private panierService:PanierService
+    public  clientservice:ClientService,
+    public  panierservice:PanierService
     ) { }
- // private caddyService:CaddyService,
- // private authService:AuthenticationServic
-  ngOnInit() {
 
-console.log(this.products+" les produits");
 
+  ngOnInit() {}
+
+
+  ajouterItem(produit: Product){
+    //ajouter le item au recervoire de client
+    console.log(produit.name+" gggg "+produit.currentPrice)
+    this.productItem= new Item(null, produit.name ,produit.photoName,produit.currentPrice,produit.pourcentage,1,1254 );
+    /*this.productItem.name=produit.name;
+    this.productItem.prixUn=produit.currentPrice;
+    this.productItem.quantiteCommander=1;
+    this.productItem.image=produit.photoName;;
+    this.productItem.pourcentage=produit.pourcentage
+    this.productItem.prixtotalproduit=this.productItem.quantiteCommander* this.productItem.prixUn;*/
+    // recupere le nombre des item +1 --> ajouter item au token
+    this.panierservice.recupereTousItem().subscribe(
+      (data)=>{
+        this.listeItem=data;
+        //localStorage.removeItem('nbItem');
+        //console.log(this.listeItem._embedded.productItems.length+1);
+        localStorage.setItem('nbItem',this.listeItem._embedded.productItems.length+1);
+      }
+    )
+
+    this.clientservice.sauvgarderItem(this.productItem).subscribe(
+      data=>{
+        console.log("produit ajouter avec succés");
+      },
+      err=>{
+        console.log("Probleme de saisir! essayez une autre fois.");
+      }
+    );
   }
 
-/*
-  private getProducts(id) {
-    this.catService.getResource("http://localhost:8080/categories/"+id+"/products")
-      .subscribe(data=>{
-        this.products=data;
-        console.log(this.products);
-
-      },err=>{
-        console.log(err);
-      })
-  }*/
 
 
 
-
-  /*private refreshUpdatedProduct() {
-    this.catService.getResource(this.currentProduct._links.self.href)
-      .subscribe(data=>{
-        console.log(data);
-        this.currentProduct.photoName=data['photoName'];
-      },err=>{
-        console.log(err);
-      })
-  }
-*/
-
-  onAddProductToCaddy(p:Product) {
-    if(!this.clientservice.isAuthenticated()){
-      this.router.navigateByUrl("/profil");
-    }
-    else{
-     // this.panierService.addProduct(p);
-    }
-  }
 
 
  /* onEditPhoto(p) {

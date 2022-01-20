@@ -12,8 +12,7 @@ export class MenuComponent implements OnInit {
   motarechercher='';
   products;
   token=false;
-  nomClient;
-
+  nbItem;
 
   constructor(public service: CategoriesService,
               public serviceClient: ClientService,
@@ -22,10 +21,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.serviceClient.clientConnecter();
     if(this.serviceClient.connected==true){
-      console.log("token existe");
       this.token==true;
-      this.nomClient=this.serviceClient.clientactuel.nom;
-   // this.clientConnecter=this.serviceClient.recupererToken(localStorage.getItem("token"));
+      //this.nomClient=this.serviceClient.clientactuel.nom;
     }
   }
 
@@ -73,5 +70,9 @@ export class MenuComponent implements OnInit {
   Deconnecter() {
     this.serviceClient.logout();
     this.router.navigateByUrl('/compte');
+  }
+
+  affichePanier() {
+    this.router.navigateByUrl('/panier');
   }
 }

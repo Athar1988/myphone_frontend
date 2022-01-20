@@ -1,35 +1,33 @@
 import { Injectable } from '@angular/core';
 import {Product} from '../model/product.model';
+import {ClientService} from './client.service';
+import {Observable} from 'rxjs';
+import {Client} from '../model/client.model';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PanierService {
-
-  constructor() { }
-
- /* public addProduct(product:Product){
-    this.addProductToCaddy(product.id,product.name,product.currentPrice,product.quantity)
-    this.saveCaddy();
-  }*/
-
- /* public addProductToCaddy(id:number,name:string,price:number,quantity:number):void{
-    let caddy=this.caddies[this.currentCaddyName];
-    let item=caddy.items[id];
-    if(item===undefined) {
-      item=new ItemProduct();item.id=id;item.name=name;
-      item.price=price;item.quantity=quantity;
-      caddy.items[id]=item;
-    }
-    else{
-      item.quantity+=quantity;
-    }
-  }*/
+  public host:string="http://localhost:8080";
+  idClient;
 
 
-  /*saveCaddy() {
-    let caddy=this.caddies[this.currentCaddyName];
-    localStorage.setItem("myCaddy_"+this.authService.authenticatedUser.username+"_"+this.currentCaddyName,JSON.stringify(caddy));
-  }*/
+  constructor(public ClientService: ClientService,
+              private http:HttpClient) { }
+
+
+recupereTousItem(){
+  this.idClient=localStorage.getItem('id');
+  return this.http.get("http://localhost:8080/clients/"+this.idClient+"/productItems");
+}
+
+
+
+
+
+
+
+
 
 }

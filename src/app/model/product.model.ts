@@ -2,9 +2,10 @@ export interface Product{
   id:number;
   name:string;
   description:string;
+  marque:string;
+  pourcentage:number;
   currentPrice:number;
   promotion:boolean;
-  selected:boolean;
   available:boolean;
   photoName:string;
   quantity:number;
@@ -12,7 +13,7 @@ export interface Product{
     self:{
       href:string;
     },
-    product:{
+    panier:{
       href:string;
     },
     category:{
@@ -21,3 +22,4 @@ export interface Product{
   }
 
 }
+

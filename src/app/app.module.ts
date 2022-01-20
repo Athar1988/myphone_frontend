@@ -17,7 +17,6 @@ import { RechercheComponent } from './allproduct/recherche/recherche.component';
 import { NosmagasinComponent } from './structure/nosmagasin/nosmagasin.component';
 import { ContactComponent } from './structure/contact/contact.component';
 import { CompteComponent } from './client/compte/compte.component';
-import { PanierComponent } from './client/panier/panier.component';
 import { ConnexionComponent } from './client/connexion/connexion.component';
 import { CommandesComponent } from './client/commandes/commandes.component';
 import { ProfilComponent } from './client/profil/profil.component';
@@ -37,7 +36,6 @@ import { ProfilComponent } from './client/profil/profil.component';
     NosmagasinComponent,
     ContactComponent,
     CompteComponent,
-    PanierComponent,
     ConnexionComponent,
     CommandesComponent,
     ProfilComponent
@@ -49,7 +47,8 @@ import { ProfilComponent } from './client/profil/profil.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,6 +10,7 @@ import {ContactComponent} from './structure/contact/contact.component';
 import {CommandesComponent} from './client/commandes/commandes.component';
 import {CompteComponent} from './client/compte/compte.component';
 import {ProfilComponent} from './client/profil/profil.component';
+import {PanierComponent} from './commandes/panier/panier.component';
 
 const routes: Routes = [
   {path:'products/:p1/:p2',component:GeneraleComponent},
@@ -19,6 +20,9 @@ const routes: Routes = [
   {path:'contact', component:ContactComponent},
   {path:'commande', component:CommandesComponent},
   {path:'compte', component:CompteComponent},
+  {path:'panier', component:PanierComponent},
+
+
 
   {path:'profil', component:ProfilComponent},
   {path:'products/:p1', component:ProduitComponent},

@@ -79,7 +79,7 @@
 
 
       <h3>Inscription</h3>
-      <form   #InscriptionForm="ngForm" >
+      <form   #InscriptionForm="ngForm">
 
         <div class="form-group p-2">
           <input
@@ -269,7 +269,7 @@
             type="submit"
             class="btnSubmit"
             value="Inscription"
-            (click)=" ajoutClient(InscriptionForm.value)"
+            (click)=" ajoutClient(InscriptionForm.value, InscriptionForm)"
             [disabled]="InscriptionForm.invalid"/>
         </div>
       </form>

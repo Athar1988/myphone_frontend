@@ -8,7 +8,7 @@
 -->
 
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #35b0ab;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(0,75,27,0.85);">
   <div class="container px-4 px-lg-5">
     <a class="navbar-brand"   routerLink="">BEST PHONE</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -48,10 +48,10 @@
         </div>
       </form>
       <form class="d-flex p-2" >
-      <button class="btn btn-outline-dark " type="submit">
+      <button class="btn btn-outline-dark " type="submit" (click)="affichePanier()">
         <i class="bi-basket-fil1"></i>
         Panier
-        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+        <span class="badge bg-dark text-white ms-1 rounded-pill">{{this.serviceClient.nombreItem}}</span>
       </button>
     </form>
       <div>
@@ -70,7 +70,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #c9d42d;" *ngIf="this.serviceClient.isAuthenticated()">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d4ab2e;" *ngIf="this.serviceClient.isAuthenticated()">
   <div class="container px-4 px-lg-5">
     <a class="navbar-brand"   routerLink="">Bienvenue chez best phone </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent2">

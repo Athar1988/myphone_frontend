@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Client} from '../../model/client.model';
 import {Router} from '@angular/router';
 import {ClientService} from '../../services/client.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-compte',
@@ -22,7 +23,6 @@ export class CompteComponent implements OnInit {
   client:any;
   loginmotdepasse;
   loginemail;
-  //client:Client;
 
 
   constructor(private serviceClient: ClientService  ,
@@ -45,7 +45,8 @@ export class CompteComponent implements OnInit {
         for(let i=0 ; i< this.client._embedded.clients.length; i++) {
           if (this.client._embedded.clients[i].email == credentials.loginemail && this.client._embedded.clients[i].motdepasse == credentials.loginmotdepasse) {
             this.loginemailexiste=true;
-            localStorage.setItem('token', credentials.loginemail);
+            localStorage.setItem('mail', credentials.loginemail);
+            localStorage.setItem('id', this.client._embedded.clients[i].id);
             this.router.navigate(['/profil']);
           }
           else{
@@ -60,28 +61,28 @@ export class CompteComponent implements OnInit {
 
 
 
-  ajoutClient(credentials: Client) {
+  ajoutClient(credentials: Client, InscriptionForm:NgForm) {
     this.serviceClient.recupererClient().subscribe(
       data=>{
         this.client=data;
         for(let i=0 ; i< this.client._embedded.clients.length; i++) {
           if (this.client._embedded.clients[i].email == credentials.email) {
-              this.emailexiste=true;
-              break;
+            this.emailexiste=true;
+            break;
           }
           else{
             this.emailexiste=false;
           }
         }
-        },
+      },
       err=>{console.log("probleme reseau")}
     )
     if(this.emailexiste==false){
-      this.serviceClient.ajouteClient(credentials).subscribe(
+      this.serviceClient.sauvgarderClient(credentials).subscribe(
         data=>{
           console.log("contact ajouter avec succés");
-          localStorage.setItem('token', credentials.email);
-          this.router.navigate(['profil']);
+          InscriptionForm.resetForm();
+          this.router.navigate(['compte']);
         },
         err=>{
           console.log("Probleme de saisir! essayez une autre fois.");
@@ -89,7 +90,6 @@ export class CompteComponent implements OnInit {
       )
     }
   }
-
 
 
 

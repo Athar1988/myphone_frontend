@@ -21,7 +21,8 @@
           <div>
             <label>Price : {{p.currentPrice}}</label>
           </div>
-         <i class="fa fa-cart-arrow-down" (ngSubmit)="onAddProductToCaddy(p)"></i>
+
+
         </div>
 
         <div>
@@ -35,13 +36,9 @@
                 <img src="assets/image/available.png" class="img-thumbnail img-circle"  height="30">
               </span>
         </div>
-        <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(p)">
-          <label class="control-label">Quantité :</label>
-          <input type="number" name="quantity" [(ngModel)]="p.quantity" ngModel style="width: 40px">
-          <button>
-            <img src="assets/image/caddy.png">
-          </button>
-        </form>
+
+            <i class="fa fa-shopping-basket fa-3x" style="color: #d4ab2e; font-size:40px" (click)="ajouterItem(p)"></i>
+            <!-- <i class="fa fa-shopping-cart fa-3x" style="color: #d4ab2e; font-size:40px"></i>-->
       </div>
     </div>
   </div>

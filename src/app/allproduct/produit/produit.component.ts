@@ -4,7 +4,6 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Product} from '../../model/product.model';
 import {ClientService} from '../../services/client.service';
 import {PanierService} from '../../services/panier.service';
-import {ProductItem} from '../../model/ProductItem.model';
 import {Item} from '../../model/Item';
 
 @Component({

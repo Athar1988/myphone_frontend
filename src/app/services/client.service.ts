@@ -3,7 +3,6 @@ import {Client} from '../model/client.model';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
-import {ProductItem} from '../model/ProductItem.model';
 import {Item} from '../model/Item';
 
 @Injectable({
@@ -71,6 +70,12 @@ export class ClientService {
     this.idclient= localStorage.getItem('id');
     this.nombreItem=localStorage.getItem('nbItem');
     return this.http.post<Item>("http://localhost:8080/client/"+this.idclient+"/itemproduct", produitItem);
+  }
+
+  recupereItemProduct(id){
+    console.log(" recupereProductItem");
+    console.log("http://localhost:8080/clients/"+id+"/productItems");
+    return this.http.get("http://localhost:8080/clients/"+id+"/productItems");
   }
 
 }

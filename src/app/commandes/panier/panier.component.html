@@ -1,142 +1,201 @@
 
-<body>
-<section class="ftco-section">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6 text-center mb-5">
-        <h2 class="heading-section">Table #05</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="table-wrap">
-          <table class="table table-responsive-xl">
-            <thead>
-            <tr>
-              <th>&nbsp;</th>
-              <th>Email</th>
-              <th>Username</th>
-              <th>Status</th>
-              <th>&nbsp;</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="alert" role="alert">
-              <td>
-                <label class="checkbox-wrap checkbox-primary">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="d-flex align-items-center">
-                <div class="img" style="background-image: url(image/avatar.png);"></div>
-                <div class="pl-3 email">
-                  <span>markotto@email.com</span>
-                  <span>Added: 01/03/2020</span>
-                </div>
-              </td>
-              <td>Markotto89</td>
-              <td class="status"><span class="active">Active</span></td>
-              <td>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                </button>
-              </td>
-            </tr>
-            <tr class="alert" role="alert">
-              <td>
-                <label class="checkbox-wrap checkbox-primary">
-                  <input type="checkbox">
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="d-flex align-items-center">
-                <div class="img" style="background-image: url(images/person_2.jpg);"></div>
-                <div class="pl-3 email">
-                  <span>jacobthornton@email.com</span>
-                  <span>Added: 01/03/2020</span>
-                </div>
-              </td>
-              <td>Jacobthornton</td>
-              <td class="status"><span class="waiting">Waiting for Resassignment</span></td>
-              <td>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                </button>
-              </td>
-            </tr>
-            <tr class="alert" role="alert">
-              <td>
-                <label class="checkbox-wrap checkbox-primary">
-                  <input type="checkbox">
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="d-flex align-items-center">
-                <div class="img" style="background-image: url(images/person_3.jpg);"></div>
-                <div class="pl-3 email">
-                  <span>larrybird@email.com</span>
-                  <span>Added: 01/03/2020</span>
-                </div>
-              </td>
-              <td>Larry_bird</td>
-              <td class="status"><span class="active">Active</span></td>
-              <td>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                </button>
-              </td>
-            </tr>
-            <tr class="alert" role="alert">
-              <td>
-                <label class="checkbox-wrap checkbox-primary">
-                  <input type="checkbox">
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="d-flex align-items-center">
-                <div class="img" style="background-image: url(images/person_4.jpg);"></div>
-                <div class="pl-3 email">
-                  <span>johndoe@email.com</span>
-                  <span>Added: 01/03/2020</span>
-                </div>
-              </td>
-              <td>Johndoe1990</td>
-              <td class="status"><span class="active">Active</span></td>
-              <td>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                </button>
-              </td>
-            </tr>
-            <tr class="alert" role="alert">
-              <td class="border-bottom-0">
-                <label class="checkbox-wrap checkbox-primary">
-                  <input type="checkbox">
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="d-flex align-items-center border-bottom-0">
-                <div class="img" style="background-image: url(images/person_1.jpg);"></div>
-                <div class="pl-3 email">
-                  <span>garybird@email.com</span>
-                  <span>Added: 01/03/2020</span>
-                </div>
-              </td>
-              <td class="border-bottom-0">Garybird_2020</td>
-              <td class="status border-bottom-0"><span class="waiting">Waiting for Resassignment</span></td>
-              <td class="border-bottom-0">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="container">
+<table>
+  <th *ngFor = "let column of headers">
+    {{column}}
+  </th>
+  <tr *ngFor = "let row of rows">
+    <td *ngFor = "let column of headers">
+      {{row[column]}}
+    </td>
+  </tr>
+</table>
+  <!--
+  <div>
+<table class="table table-striped  position">
+  <thead>
+  <tr>
+    <th scope="col">supprimer</th>
+    <th scope="col">photo</th>
+    <th scope="col">nom/ reference</th>
+    <th scope="col">prix</th>
+    <th scope="col">prix promo</th>
+    <th scope="col">quantité</th>
+    <th scope="col">prix total</th>
+  </tr>
+  </thead>
 
-</body>
+  <tbody>
+
+  <tr>
+    <td ><i class="bi-x-circle-fill" style="color:red"></i></td>
+    <td>
+      <img src="assets/image/unknown.png" alt="" width="150" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+    </td>
+    <td><div>{{this.Items[0].name}}</div></td>
+    <td><p class="line">{{this.Items[0].prixUn}}</p><small class="d-block">{{this.Items[0].pourcentage}}</small></td>
+    <td>{{this.Items[0].prixtotalproduit}} TND</td>
+    <td>{{this.Items[0].quantiteCommander}}</td>
+    <td>{{this.Items[0].prixtotalproduit}}</td>
+  </tr>
+
+
+
+  <tr>
+    <td ><i class="bi-x-circle-fill" style="color:red"></i></td>
+    <td>
+      <img src="assets/image/unknown.png" alt="" width="150" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+    </td>
+    <td><div>{{this.Items[1].name}}</div></td>
+    <td><p class="line">{{this.Items[1].prixUn}}</p><small class="d-block">{{this.Items[1].pourcentage}}</small></td>
+    <td>{{this.Items[1].prixtotalproduit}} TND</td>
+    <td>{{this.Items[1].quantiteCommander}}</td>
+    <td>{{this.Items[1].prixtotalproduit}}</td>
+  </tr>
+
+  </tbody>
+</table>
+  </div>
+
+
+
+
+  <div class="d-grid gap-2">
+    <button class="btn bg-success" type="button" (click)="terminerCommande()">Terminer la commande</button>
+  </div>
+
+
+
+  <div  class=" position2">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">First</th>
+      <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Mark</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td>Jacob</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <td >3</td>
+      <td>@twitter</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+/****
+****/
+
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+    <tr>
+      <th style="width:50%">Product</th>
+      <th style="width:10%">Price</th>
+      <th style="width:8%">Quantity</th>
+      <th style="width:22%" class="text-center">Subtotal</th>
+      <th style="width:10%"></th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr>
+      <td data-th="Product">
+        <div class="row">
+          <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+          <div class="col-sm-10">
+            <h4 class="nomargin">this.Items[0].name</h4>
+            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+      </td>
+      <td data-th="Price">$1.99</td>
+      <td data-th="Quantity">
+        <input type="number" class="form-control text-center" value="1">
+      </td>
+      <td data-th="Subtotal" class="text-center">1.99</td>
+      <td class="actions" data-th="">
+        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+      </td>
+    </tr>
+
+
+
+
+
+
+    <tr *ngFor="let item of this.Items">
+      <td data-th="Product">
+        <div class="row">
+          <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+          <div class="col-sm-10">
+            <h4 class="nomargin">item.name</h4>
+            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+      </td>
+      <td data-th="Price">$1.99</td>
+      <td data-th="Quantity">
+        <input type="number" class="form-control text-center" value="1">
+      </td>
+      <td data-th="Subtotal" class="text-center">1.99</td>
+      <td class="actions" data-th="">
+        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td data-th="Product">
+        <div class="row">
+          <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+          <div class="col-sm-10">
+            <h4 class="nomargin">this.Items[1].name</h4>
+            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+      </td>
+      <td data-th="Price">$1.99</td>
+      <td data-th="Quantity">
+        <input type="number" class="form-control text-center" value="1">
+      </td>
+      <td data-th="Subtotal" class="text-center">1.99</td>
+      <td class="actions" data-th="">
+        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+      </td>
+    </tr>
+
+
+
+    </tbody>
+    <tfoot>
+    <tr class="visible-xs">
+      <td class="text-center"><strong>Total 1.99</strong></td>
+    </tr>
+    <tr>
+      <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+      <td colspan="2" class="hidden-xs"></td>
+      <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+      <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+    </tr>
+    </tfoot>
+  </table>
+
+-->
+</div>

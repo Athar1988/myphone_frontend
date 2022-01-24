@@ -18,7 +18,7 @@ export class CompteComponent implements OnInit {
   prenom;
   ville;
   adresse;
-  emailexiste;
+  emailexiste=false;
   loginemailexiste;
   client:any;
   loginmotdepasse;
@@ -65,19 +65,23 @@ export class CompteComponent implements OnInit {
     this.serviceClient.recupererClient().subscribe(
       data=>{
         this.client=data;
+
         for(let i=0 ; i< this.client._embedded.clients.length; i++) {
           if (this.client._embedded.clients[i].email == credentials.email) {
             this.emailexiste=true;
+            console.log(this.emailexiste+" eeeee");
             break;
           }
           else{
             this.emailexiste=false;
+            console.log(this.emailexiste+" eeeee");
           }
         }
       },
       err=>{console.log("probleme reseau")}
     )
     if(this.emailexiste==false){
+      console.log(this.emailexiste+" eeeee");
       this.serviceClient.sauvgarderClient(credentials).subscribe(
         data=>{
           console.log("contact ajouter avec succés");

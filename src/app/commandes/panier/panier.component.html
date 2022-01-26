@@ -1,72 +1,54 @@
 
 <div class="container">
-<table>
-  <th *ngFor = "let column of headers">
-    {{column}}
-  </th>
-  <tr *ngFor = "let row of rows">
-    <td *ngFor = "let column of headers">
-      {{row[column]}}
-    </td>
-  </tr>
-</table>
-  <!--
-  <div>
-<table class="table table-striped  position">
+<table class="table table-striped  position  table-hover table-condensed" >
   <thead>
   <tr>
-    <th scope="col">supprimer</th>
-    <th scope="col">photo</th>
-    <th scope="col">nom/ reference</th>
-    <th scope="col">prix</th>
-    <th scope="col">prix promo</th>
-    <th scope="col">quantité</th>
-    <th scope="col">prix total</th>
+    <th scope="col">Annuler</th>
+    <th scope="col">Image</th>
+    <th scope="col">Reference</th>
+    <th scope="col">Prix Origine/ Prix Promo</th>
+    <th scope="col">Quantité</th>
+    <th scope="col">Total</th>
   </tr>
   </thead>
 
   <tbody>
 
-  <tr>
-    <td ><i class="bi-x-circle-fill" style="color:red"></i></td>
+    <tr  *ngFor="let item of Items._embedded.productItems">
+    <td ><i (click)="supprimerItem(item.id)" class="bi-x-circle-fill" style="color:red"></i></td>
     <td>
-      <img src="assets/image/unknown.png" alt="" width="150" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+    <img src="assets/image/unknown.png" alt="" width="150" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
     </td>
-    <td><div>{{this.Items[0].name}}</div></td>
-    <td><p class="line">{{this.Items[0].prixUn}}</p><small class="d-block">{{this.Items[0].pourcentage}}</small></td>
-    <td>{{this.Items[0].prixtotalproduit}} TND</td>
-    <td>{{this.Items[0].quantiteCommander}}</td>
-    <td>{{this.Items[0].prixtotalproduit}}</td>
-  </tr>
-
-
-
-  <tr>
-    <td ><i class="bi-x-circle-fill" style="color:red"></i></td>
+    <td><div>{{item.name}}</div></td>
     <td>
-      <img src="assets/image/unknown.png" alt="" width="150" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+      <p class="line">{{item.prixUn}}</p>
+      <small class="d-block">{{item.pourcentage}} %</small>
+      {{(item.prixUn*item.pourcentage)/100}} TND
     </td>
-    <td><div>{{this.Items[1].name}}</div></td>
-    <td><p class="line">{{this.Items[1].prixUn}}</p><small class="d-block">{{this.Items[1].pourcentage}}</small></td>
-    <td>{{this.Items[1].prixtotalproduit}} TND</td>
-    <td>{{this.Items[1].quantiteCommander}}</td>
-    <td>{{this.Items[1].prixtotalproduit}}</td>
-  </tr>
+    <td data-th="Quantity"> <input (click)=modifierQuantit(item.id,item,inputQuntite.value) type="number" #inputQuntite class="form-control text-center" value="1"></td>
+    <td>{{((item.prixUn*item.pourcentage)/100)*inputQuntite.value}}</td>
+    </tr>
 
   </tbody>
+
+  <tfoot>
+  <tr class="visible-xs">
+    <td class="text-center"><strong>Total 1.99</strong></td>
+  </tr>
+  <tr>
+    <td><a (click)="ContinuerShopping()" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+    <td colspan="2" class="hidden-xs"></td>
+    <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+    <td><a (click)="terminerCommande()" class="btn btn-success btn-block">Commander <i class="fa fa-angle-right"></i></a></td>
+  </tr>
+  </tfoot>
 </table>
-  </div>
 
 
 
 
-  <div class="d-grid gap-2">
-    <button class="btn bg-success" type="button" (click)="terminerCommande()">Terminer la commande</button>
-  </div>
 
-
-
-  <div  class=" position2">
+<div  class=" position2">
   <table class="table">
     <thead>
     <tr>
@@ -91,7 +73,7 @@
   </table>
 </div>
 
-
+</div>
 
 
 
@@ -99,6 +81,8 @@
 /****
 ****/
 
+<!--
+<div  >
   <table id="cart" class="table table-hover table-condensed">
     <thead>
     <tr>
@@ -109,15 +93,15 @@
       <th style="width:10%"></th>
     </tr>
     </thead>
-    <tbody>
 
 
-    <tr>
+
+    <tr  *ngFor="let item of Items._embedded.productItems">
       <td data-th="Product">
         <div class="row">
           <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
           <div class="col-sm-10">
-            <h4 class="nomargin">this.Items[0].name</h4>
+            <h4 class="nomargin">{{item.name}}</h4>
             <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
           </div>
         </div>
@@ -135,55 +119,6 @@
 
 
 
-
-
-
-    <tr *ngFor="let item of this.Items">
-      <td data-th="Product">
-        <div class="row">
-          <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-          <div class="col-sm-10">
-            <h4 class="nomargin">item.name</h4>
-            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
-          </div>
-        </div>
-      </td>
-      <td data-th="Price">$1.99</td>
-      <td data-th="Quantity">
-        <input type="number" class="form-control text-center" value="1">
-      </td>
-      <td data-th="Subtotal" class="text-center">1.99</td>
-      <td class="actions" data-th="">
-        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-      </td>
-    </tr>
-
-
-    <tr>
-      <td data-th="Product">
-        <div class="row">
-          <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-          <div class="col-sm-10">
-            <h4 class="nomargin">this.Items[1].name</h4>
-            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
-          </div>
-        </div>
-      </td>
-      <td data-th="Price">$1.99</td>
-      <td data-th="Quantity">
-        <input type="number" class="form-control text-center" value="1">
-      </td>
-      <td data-th="Subtotal" class="text-center">1.99</td>
-      <td class="actions" data-th="">
-        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-      </td>
-    </tr>
-
-
-
-    </tbody>
     <tfoot>
     <tr class="visible-xs">
       <td class="text-center"><strong>Total 1.99</strong></td>
@@ -196,6 +131,5 @@
     </tr>
     </tfoot>
   </table>
-
--->
 </div>
+-->

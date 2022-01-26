@@ -4,6 +4,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {Item} from '../model/Item';
+import {PanierService} from './panier.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,7 @@ export class ClientService {
   connected;
   nombreItem;
   idclient;
-  constructor(private http:HttpClient,
-              private router:Router) { }
+  constructor(private http:HttpClient) { }
 
 
 
@@ -61,20 +61,26 @@ export class ClientService {
   logout(){
     this.connected=false;
     this.clientactuel=undefined;
+    this.idclient= localStorage.getItem('id');
+    this.supprimerTousItem(this.idclient).subscribe(
+      (data)=>{console.log("items supprimés")},
+      (err)=>{console.log("probleme reseau ")}
+    )
     localStorage.removeItem('id');
     localStorage.removeItem('mail');
+    localStorage.removeItem('panier');
+  }
+
+  supprimerTousItem(id): Observable<Item>{
+    return this.http.delete<Item>("http://localhost:8080/supprimerTousItems/"+id );
   }
 
   sauvgarderItem(produitItem): Observable<Item>{
-    console.log(produitItem+" rrrr");
     this.idclient= localStorage.getItem('id');
-    this.nombreItem=localStorage.getItem('nbItem');
     return this.http.post<Item>("http://localhost:8080/client/"+this.idclient+"/itemproduct", produitItem);
   }
 
   recupereItemProduct(id){
-    console.log(" recupereProductItem");
-    console.log("http://localhost:8080/clients/"+id+"/productItems");
     return this.http.get("http://localhost:8080/clients/"+id+"/productItems");
   }
 

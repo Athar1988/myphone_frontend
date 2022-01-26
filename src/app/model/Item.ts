@@ -7,7 +7,7 @@ export class Item {
     public prixUn=0,
     public pourcentage=0,
     public quantiteCommander=0,
-    public prixtotalproduit=0,
+    //public prixtotalproduit=0,
 
   ){}
 

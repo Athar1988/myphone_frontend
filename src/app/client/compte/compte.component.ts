@@ -23,7 +23,8 @@ export class CompteComponent implements OnInit {
   client:any;
   loginmotdepasse;
   loginemail;
-
+  panier=[];
+ //panier = new panier([]);
 
   constructor(private serviceClient: ClientService  ,
               private router:Router) { }
@@ -47,6 +48,8 @@ export class CompteComponent implements OnInit {
             this.loginemailexiste=true;
             localStorage.setItem('mail', credentials.loginemail);
             localStorage.setItem('id', this.client._embedded.clients[i].id);
+            //this.panier.push(null);
+            localStorage.setItem('panier', JSON.stringify(this.panier));
             this.router.navigate(['/profil']);
           }
           else{

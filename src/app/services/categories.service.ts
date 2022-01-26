@@ -14,7 +14,9 @@ export class CategoriesService {
   public getResource(url){
     return this.http.get(url);
   }
-
+  public getTousProduits(){
+    return this.http.get(this.host+"/products");
+  }
 
   chercherMarqueProduit(motdepasse: string):Observable<Product> {
     return this.http.get<Product>(this.host+"/products/search/productsMarque?mc="+motdepasse);

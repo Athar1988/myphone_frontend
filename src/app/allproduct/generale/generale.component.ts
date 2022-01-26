@@ -11,6 +11,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 export class GeneraleComponent implements OnInit {
   categories;
   products;
+  tousproducts;
   currentCategorie;
   title;
   currentRequest;
@@ -23,6 +24,7 @@ export class GeneraleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
+    this.getProducts("/products");
 
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd ) {

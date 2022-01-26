@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoriesService} from '../../services/categories.service';
 import {Router} from '@angular/router';
 import {ClientService} from '../../services/client.service';
+import {PanierService} from '../../services/panier.service';
 
 @Component({
   selector: 'app-menu',
@@ -13,10 +14,11 @@ export class MenuComponent implements OnInit {
   products;
   token=false;
   nbItem;
-
+  panier=[];
   constructor(public service: CategoriesService,
               public serviceClient: ClientService,
-              public router:Router) { }
+              public router:Router,
+              public panierService:PanierService) { }
 
   ngOnInit(): void {
     this.serviceClient.clientConnecter();
@@ -24,6 +26,8 @@ export class MenuComponent implements OnInit {
       this.token==true;
       //this.nomClient=this.serviceClient.clientactuel.nom;
     }
+    this.panier = JSON.parse(localStorage.getItem('panier'));
+    this.nbItem=this.panier.length;
   }
 
 

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+//import { NgModule } from '@angular/core';
+//import { Routes, RouterModule } from '@angular/router';
 import {AccueilComponent} from './structure/accueil/accueil.component';
 import {GeneraleComponent} from './allproduct/generale/generale.component';
 import {ProduitComponent} from './allproduct/produit/produit.component';
@@ -11,6 +11,8 @@ import {CommandesComponent} from './client/commandes/commandes.component';
 import {CompteComponent} from './client/compte/compte.component';
 import {ProfilComponent} from './client/profil/profil.component';
 import {PanierComponent} from './commandes/panier/panier.component';
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
 
 const routes: Routes = [
   {path:'products/:p1/:p2',component:GeneraleComponent},

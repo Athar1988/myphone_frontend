@@ -5,6 +5,7 @@ import {Product} from '../../model/product.model';
 import {ClientService} from '../../services/client.service';
 import {PanierService} from '../../services/panier.service';
 import {Item} from '../../model/Item';
+import {MenuComponent} from '../../structure/menu/menu.component';
 
 @Component({
   selector: 'app-produit',
@@ -16,12 +17,12 @@ export class ProduitComponent implements OnInit {
   title:string;
   productItem: any;
   listeItem: any;
-
+  panier=[];
   constructor(
     private route:ActivatedRoute,
     private router:Router,
     public  clientservice:ClientService,
-    public  panierservice:PanierService
+    public  panierservice:PanierService,
     ) { }
 
 
@@ -29,24 +30,13 @@ export class ProduitComponent implements OnInit {
 
 
   ajouterItem(produit: Product){
-    //ajouter le item au recervoire de client
-    console.log(produit.name+" gggg "+produit.currentPrice)
-    this.productItem= new Item(null, produit.name ,produit.photoName,produit.currentPrice,produit.pourcentage,1,1254 );
-    /*this.productItem.name=produit.name;
-    this.productItem.prixUn=produit.currentPrice;
-    this.productItem.quantiteCommander=1;
-    this.productItem.image=produit.photoName;;
-    this.productItem.pourcentage=produit.pourcentage
-    this.productItem.prixtotalproduit=this.productItem.quantiteCommander* this.productItem.prixUn;*/
-    // recupere le nombre des item +1 --> ajouter item au token
-    this.panierservice.recupereTousItem().subscribe(
-      (data)=>{
-        this.listeItem=data;
-        //localStorage.removeItem('nbItem');
-        //console.log(this.listeItem._embedded.productItems.length+1);
-        localStorage.setItem('nbItem',this.listeItem._embedded.productItems.length+1);
-      }
-    )
+    this.productItem= new Item(null, produit.name ,produit.photoName,produit.currentPrice,produit.pourcentage,1 );
+    if(localStorage && localStorage.getItem('panier')){
+    this.panier = JSON.parse(localStorage.getItem('panier'));
+    this.panier.push(this.productItem);
+    localStorage.setItem('panier', JSON.stringify(this.panier));
+    location.reload();
+    }
 
     this.clientservice.sauvgarderItem(this.productItem).subscribe(
       data=>{

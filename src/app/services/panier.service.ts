@@ -14,32 +14,31 @@ import {Commande} from '../model/Commande';
 export class PanierService {
   public host:string="http://localhost:8080";
   idClient;
+  panier;
+
+  constructor(private http:HttpClient) { }
 
 
-  constructor(public ClientService: ClientService,
-              private http:HttpClient) { }
+      recupereTousItem(){
+        this.idClient=localStorage.getItem('id');
+        return this.http.get("http://localhost:8080/clients/"+this.idClient+"/productItems");
+        }
 
 
-   recupereTousItem(){
-  this.idClient=localStorage.getItem('id');
-  return this.http.get("http://localhost:8080/clients/"+this.idClient+"/productItems");
-}
-
-
-  updateQuantite(id,item): Observable<Item>{
-    this.idClient=localStorage.getItem('id');
-   return this.http.post<Item>("http://localhost:8080/productItems/"+this.idClient,item );
-  }
+      updateQuantite(id,item): Observable<Item>{
+      this.idClient=localStorage.getItem('id');
+      return this.http.post<Item>("http://localhost:8080/productItems/"+this.idClient,item );
+      }
 
   supprimerItem(id): Observable<Item>{
   return this.http.delete<Item>("http://localhost:8080/productItems/"+id );
   }
 
 
-  enregisterCommande(commande: Commande){
-    console.log(commande.products+" nom premier item");
-    return this.http.post("http://localhost:8080/commandes/AjouteCommande", commande );
-
+  sauvgarderItem(produitItem): Observable<Item>{
+    this.idClient= localStorage.getItem('id');
+    console.log(produitItem.prixtotalproduit+" rrr");
+    return this.http.post<Item>("http://localhost:8080/client/"+this.idClient+"/itemproduct", produitItem);
   }
 
 

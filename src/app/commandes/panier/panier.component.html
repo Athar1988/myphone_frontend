@@ -23,10 +23,10 @@
     <td>
       <p class="line">{{item.prixUn}}</p>
       <small class="d-block">{{item.pourcentage}} %</small>
-      {{(item.prixUn*item.pourcentage)/100}} TND
+      {{item.prixUn-(item.prixUn*item.pourcentage)/100}} TND
     </td>
     <td data-th="Quantity"> <input (click)=modifierQuantit(item.id,item,inputQuntite.value) type="number" #inputQuntite class="form-control text-center" value="1"></td>
-    <td>{{((item.prixUn*item.pourcentage)/100)*inputQuntite.value}}</td>
+    <td>{{item.prixtotalproduit}}</td>
     </tr>
 
   </tbody>
@@ -39,7 +39,7 @@
     <td><a (click)="ContinuerShopping()" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
     <td colspan="2" class="hidden-xs"></td>
     <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-    <td><a (click)="terminerCommande()" class="btn btn-success btn-block">Commander <i class="fa fa-angle-right"></i></a></td>
+    <td><a (click)="CreationCommande()" class="btn btn-success btn-block">Commander <i class="fa fa-angle-right"></i></a></td>
   </tr>
   </tfoot>
 </table>

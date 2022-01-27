@@ -50,6 +50,8 @@ export class CompteComponent implements OnInit {
             localStorage.setItem('id', this.client._embedded.clients[i].id);
             //this.panier.push(null);
             localStorage.setItem('panier', JSON.stringify(this.panier));
+            this.panier = JSON.parse(localStorage.getItem('panier'));
+            localStorage.setItem('item', JSON.stringify(this.panier.length));
             this.router.navigate(['/profil']);
           }
           else{

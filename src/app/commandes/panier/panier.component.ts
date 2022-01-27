@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {PanierService} from '../../services/panier.service';
 import {Commande} from '../../model/Commande';
 import { DatePipe } from '@angular/common';
+import {CommandeService} from '../../services/commande.service';
 
 @Component({
   selector: 'app-panier',
@@ -13,56 +14,98 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class PanierComponent implements OnInit {
-  idClient;
   Items;
-  Commande= new Commande();
+  productItem: any;
+  public commande: Commande = new Commande();
   total=0;
-
+  panier;
   constructor(public clinetService:ClientService,
               public panierService: PanierService,
-              private router: Router
-              ) {
-  }
-
+              private router: Router,
+              private commandeService:CommandeService
+              ) {}
 
   ngOnInit(): void {
-    this.idClient= localStorage.getItem('id');
-    console.log(this.idClient+ "page panier");
-    this.recupereProductItem(this.idClient);
+    this.recupereProductItem();
   }
 
-  terminerCommande(){
-    let currentDate = new Date();
-    this.Commande.date=currentDate;
-    this.Commande.statut="Envoyer";
-    for (let item of this.Items._embedded.productItems){
-    console.log(item.name+"  les items commander");
-    this.Commande.products.push(item);
-    if(item.pourcentage!=0){
-      this.total+=((item.quantiteCommander*item.prixUn)*(item.pourcentage/100));
+
+
+  CreationCommande(){
+    //let currentDate = new Date();
+    //this.commande.date=currentDate;
+    //this.commande.statut="Envoyer";
+    let i=0;
+    this.commande.client=this.clinetService.clientactuel;
+   /* for (let item of this.Items._embedded.productItems) {
+      if (item.pourcentage != 0) {
+        this.total += ((item.quantiteCommander * item.prixUn) * (item.pourcentage / 100));
+      }
+      else {
+        this.total += item.quantiteCommander * item.prixUn;
+      }
     }
-    else{
-      this.total+=item.quantiteCommander*item.prixUn;
+*/
+
+    this.commandeService.submitOrder(this.commande).subscribe(
+      (data)=>{console.log("commande ajouté avec succé");},
+      (err)=>{console.log("erreur reseau");},
+    )
+
+/*
+    for (let item of this.Items._embedded.productItems) {
+      if (item.pourcentage != 0) {
+        this.total += ((item.quantiteCommander * item.prixUn) * (item.pourcentage / 100));
+      }
+      else {
+        this.total += item.quantiteCommander * item.prixUn;
+      }
     }
-  }
-    this.Commande.client=this.clinetService.clientactuel;
     this.Commande.totalAmount=this.total;
+    // enregistrer data - somme total - client -
     this.panierService.enregisterCommande(this.Commande).subscribe(
       (data)=>{console.log("commande enregister")},
       (err)=>{console.log(err);}
     )
+    //ajouter les items
+    /*for (let item of this.Items._embedded.productItems) {
+      this.panierService.ajouterItemCommande(item, this.Commande).subscribe(
+        (data) => {
+          console.log("commande ajouter au item")
+        },
+        (err) => {
+          console.log(err);
+        }
+      )
+    }*/
+
+      /*this.Commande.products.push(item);
+      if(item.pourcentage!=0){
+        this.total+=((item.quantiteCommander*item.prixUn)*(item.pourcentage/100));
+      }
+      else{
+        this.total+=item.quantiteCommander*item.prixUn;
+      }
+    }*/
+
+
+
+    //redirection
     this.router.navigateByUrl('/commande');
   }
 
 
-  private recupereProductItem(idClient) {
-    this.clinetService.recupereItemProduct(idClient).subscribe(
-      (data)=>{
-        this.Items=data;
+  private recupereProductItem() {
+    this.panierService.recupereTousItem().subscribe(
+      (data)=>{this.Items=data;
+        for (let item of this.Items._embedded.productItems) {
+  this.productItem= new Item(item.id, item.name,item.photoName,item.currentPrice,item.pourcentage,item.quantiteCommander );
+          console.log(this.productItem);
+          this.commande.products.push(this.productItem);
+          console.log(this.commande.products[0]+" eeee");
+        }
       },
-      (err)=>{
-        console.log("probleme reseau");
-      }
+      (err)=>{console.log("probleme reseau");}
     )
   }
 
@@ -74,7 +117,6 @@ export class PanierComponent implements OnInit {
 
   modifierQuantit(id, item: Item, Q){
     item.quantiteCommander=Q;
-    console.log(item);
     this.panierService.updateQuantite(id,item).subscribe(
       (data)=>{ console.log("item modifier avec succee avec succee");},
       (err)=>{ console.log("probleme de reseau");}
@@ -83,7 +125,11 @@ export class PanierComponent implements OnInit {
 
   supprimerItem(id){
   this.panierService.supprimerItem(id).subscribe(
-    (data)=>{ console.log("item supprimer avec succee");},
+    (data)=>{
+      this.panier = JSON.parse(localStorage.getItem('panier'));
+      localStorage.setItem('item', JSON.stringify(this.panier.length-1));
+      console.log("item supprimer avec succee");
+      },
     (err)=>{ console.log("probleme de reseau");}
   );
 }

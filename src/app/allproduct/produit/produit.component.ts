@@ -18,6 +18,7 @@ export class ProduitComponent implements OnInit {
   productItem: any;
   listeItem: any;
   panier=[];
+  sommeTotal=0;
   constructor(
     private route:ActivatedRoute,
     private router:Router,
@@ -30,15 +31,23 @@ export class ProduitComponent implements OnInit {
 
 
   ajouterItem(produit: Product){
-    this.productItem= new Item(null, produit.name ,produit.photoName,produit.currentPrice,produit.pourcentage,1 );
+    if(produit.pourcentage!=0){
+      this.sommeTotal=produit.currentPrice-(produit.currentPrice*(produit.pourcentage/100));
+    }
+    else{
+      this.sommeTotal=produit.currentPrice;
+
+    }
+    this.productItem= new Item(null, produit.name ,produit.photoName,produit.currentPrice,produit.pourcentage,1, this.sommeTotal );
     if(localStorage && localStorage.getItem('panier')){
     this.panier = JSON.parse(localStorage.getItem('panier'));
     this.panier.push(this.productItem);
     localStorage.setItem('panier', JSON.stringify(this.panier));
+    localStorage.setItem('item', JSON.stringify(this.panier.length));
     location.reload();
     }
 
-    this.clientservice.sauvgarderItem(this.productItem).subscribe(
+    this.panierservice.sauvgarderItem(this.productItem).subscribe(
       data=>{
         console.log("produit ajouter avec succés");
       },

@@ -69,20 +69,15 @@ export class ClientService {
     localStorage.removeItem('id');
     localStorage.removeItem('mail');
     localStorage.removeItem('panier');
+    localStorage.removeItem('item');
   }
 
   supprimerTousItem(id): Observable<Item>{
     return this.http.delete<Item>("http://localhost:8080/supprimerTousItems/"+id );
   }
 
-  sauvgarderItem(produitItem): Observable<Item>{
-    this.idclient= localStorage.getItem('id');
-    return this.http.post<Item>("http://localhost:8080/client/"+this.idclient+"/itemproduct", produitItem);
-  }
 
-  recupereItemProduct(id){
-    return this.http.get("http://localhost:8080/clients/"+id+"/productItems");
-  }
+
 
 }
 

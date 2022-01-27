@@ -24,10 +24,8 @@ export class MenuComponent implements OnInit {
     this.serviceClient.clientConnecter();
     if(this.serviceClient.connected==true){
       this.token==true;
-      //this.nomClient=this.serviceClient.clientactuel.nom;
     }
-    this.panier = JSON.parse(localStorage.getItem('panier'));
-    this.nbItem=this.panier.length;
+    this.nbItem = JSON.parse(localStorage.getItem('item'));
   }
 
 
@@ -42,8 +40,6 @@ export class MenuComponent implements OnInit {
   }
 
 
-
-
   onProductsPromo() {
     this.router.navigateByUrl("/products/1/1");
   }
@@ -56,7 +52,6 @@ export class MenuComponent implements OnInit {
   dernierajoute(){
     this.router.navigateByUrl("/products/1/4");
   }
-
 
 
   nosmagasins(){

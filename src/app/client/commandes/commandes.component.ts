@@ -10,6 +10,11 @@ export class CommandesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    //vider panier localStorage.removeItem('panier');
+    //recupere commande + enregister items
+    // recupere info perso
+    //
   }
+
 
 }

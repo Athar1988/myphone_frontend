@@ -14,105 +14,53 @@ import {CommandeService} from '../../services/commande.service';
   providers: [DatePipe]
 })
 export class PanierComponent implements OnInit {
-  Items;
+  Items=undefined;
   productItem: any;
-  public commande: Commande = new Commande();
-  total=0;
   panier;
+  total=0;
+  prixsansremise=0;
+  existe;
   constructor(public clinetService:ClientService,
               public panierService: PanierService,
               private router: Router,
               private commandeService:CommandeService
               ) {}
 
+
   ngOnInit(): void {
     this.recupereProductItem();
+    this.existe=localStorage.getItem('item');
+    console.log(this.existe);
   }
 
 
 
   CreationCommande(){
-    //let currentDate = new Date();
-    //this.commande.date=currentDate;
-    //this.commande.statut="Envoyer";
-    let i=0;
-    this.commande.client=this.clinetService.clientactuel;
-   /* for (let item of this.Items._embedded.productItems) {
-      if (item.pourcentage != 0) {
-        this.total += ((item.quantiteCommander * item.prixUn) * (item.pourcentage / 100));
-      }
-      else {
-        this.total += item.quantiteCommander * item.prixUn;
-      }
-    }
-*/
-
-    this.commandeService.submitOrder(this.commande).subscribe(
-      (data)=>{console.log("commande ajouté avec succé");},
-      (err)=>{console.log("erreur reseau");},
-    )
-
-/*
-    for (let item of this.Items._embedded.productItems) {
-      if (item.pourcentage != 0) {
-        this.total += ((item.quantiteCommander * item.prixUn) * (item.pourcentage / 100));
-      }
-      else {
-        this.total += item.quantiteCommander * item.prixUn;
-      }
-    }
-    this.Commande.totalAmount=this.total;
-    // enregistrer data - somme total - client -
-    this.panierService.enregisterCommande(this.Commande).subscribe(
-      (data)=>{console.log("commande enregister")},
-      (err)=>{console.log(err);}
-    )
-    //ajouter les items
-    /*for (let item of this.Items._embedded.productItems) {
-      this.panierService.ajouterItemCommande(item, this.Commande).subscribe(
-        (data) => {
-          console.log("commande ajouter au item")
-        },
-        (err) => {
-          console.log(err);
-        }
-      )
-    }*/
-
-      /*this.Commande.products.push(item);
-      if(item.pourcentage!=0){
-        this.total+=((item.quantiteCommander*item.prixUn)*(item.pourcentage/100));
-      }
-      else{
-        this.total+=item.quantiteCommander*item.prixUn;
-      }
-    }*/
-
-
-
-    //redirection
-    this.router.navigateByUrl('/commande');
-  }
-
-
-  private recupereProductItem() {
-    this.panierService.recupereTousItem().subscribe(
-      (data)=>{this.Items=data;
-        for (let item of this.Items._embedded.productItems) {
-  this.productItem= new Item(item.id, item.name,item.photoName,item.currentPrice,item.pourcentage,item.quantiteCommander );
-          console.log(this.productItem);
-          this.commande.products.push(this.productItem);
-          console.log(this.commande.products[0]+" eeee");
-        }
-      },
-      (err)=>{console.log("probleme reseau");}
-    )
+    this.commandeService.commande.client=this.clinetService.clientactuel;
+    localStorage.setItem('commande',  JSON.stringify(this.commandeService.commande) );
+    this.router.navigateByUrl('/commande/'+this.total);
   }
 
   ContinuerShopping() {
     this.router.navigateByUrl('/generale');
   }
 
+
+
+  recupereProductItem() {
+    this.panierService.recupereTousItem().subscribe(
+      (data)=>{
+        this.Items=data;
+        for (let item of this.Items._embedded.productItems) {
+        this.productItem= new Item(item.id, item.name,item.photoName,item.prixUn,item.pourcentage,item.quantiteCommander, item.prixtotalproduit );
+        this.commandeService.commande.products.push(this.productItem);
+        this.prixsansremise+=item.currentPrice;
+        this.total+=item.prixtotalproduit;
+        }
+      },
+      (err)=>{console.log("probleme reseau");}
+    )
+  }
 
 
   modifierQuantit(id, item: Item, Q){

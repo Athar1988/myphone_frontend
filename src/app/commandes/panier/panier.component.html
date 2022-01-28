@@ -1,12 +1,23 @@
 
-<div class="container">
+<div  *ngIf="existe=='0'" >
+
+  <div class="mt-4 p-1 text-white rounded"  style="background-color: #d3a19f;">
+    <h1   style="text-align: center" >Panier vide</h1>
+    <p  style="text-align: center">Il n’y a plus d’articles dans votre panier Commencez vos achats !</p>
+  </div>
+</div>
+
+
+
+
+<div class="container" *ngIf="existe!='0'">
 <table class="table table-striped  position  table-hover table-condensed" >
   <thead>
   <tr>
     <th scope="col">Annuler</th>
     <th scope="col">Image</th>
     <th scope="col">Reference</th>
-    <th scope="col">Prix Origine/ Prix Promo</th>
+    <th scope="col">Prix</th>
     <th scope="col">Quantité</th>
     <th scope="col">Total</th>
   </tr>
@@ -23,23 +34,21 @@
     <td>
       <p class="line">{{item.prixUn}}</p>
       <small class="d-block">{{item.pourcentage}} %</small>
-      {{item.prixUn-(item.prixUn*item.pourcentage)/100}} TND
+      {{item.prixUn-(item.prixUn*item.pourcentage)/100 | number}} TND
     </td>
     <td data-th="Quantity"> <input (click)=modifierQuantit(item.id,item,inputQuntite.value) type="number" #inputQuntite class="form-control text-center" value="1"></td>
-    <td>{{item.prixtotalproduit}}</td>
+    <td>{{item.prixtotalproduit | number}}</td>
     </tr>
 
   </tbody>
 
   <tfoot>
-  <tr class="visible-xs">
-    <td class="text-center"><strong>Total 1.99</strong></td>
-  </tr>
+
   <tr>
-    <td><a (click)="ContinuerShopping()" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+    <td><a (click)="ContinuerShopping()" class="btn " style="background-color: #DD7CB1;"><i class="fa fa-angle-left"></i> Shopping</a></td>
     <td colspan="2" class="hidden-xs"></td>
-    <td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-    <td><a (click)="CreationCommande()" class="btn btn-success btn-block">Commander <i class="fa fa-angle-right"></i></a></td>
+    <td colspan="2" class="hidden-xs"></td>
+    <td><a (click)="CreationCommande()" class="btn  btn-block" style="background-color: #7CDDA8;">Commander <i class="fa fa-angle-right"></i></a></td>
   </tr>
   </tfoot>
 </table>
@@ -48,26 +57,24 @@
 
 
 
-<div  class=" position2">
+<div  class=" position2 col-md-5" *ngIf="Items!=undefined">
   <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">First</th>
-      <th scope="col">Handle</th>
-    </tr>
-    </thead>
     <tbody>
     <tr>
-      <td>Mark</td>
-      <td>@mdo</td>
+      <td><strong>Total sans remise :</strong></td>
+      <td>{{prixsansremise | number}} TND</td>
     </tr>
     <tr>
-      <td>Jacob</td>
-      <td>@fat</td>
+      <td><strong>Total avec remise:</strong></td>
+      <td>{{total | number }} TND</td>
     </tr>
     <tr>
-      <td >3</td>
-      <td>@twitter</td>
+      <td ><strong>Frais de livraison:</strong></td>
+      <td>7000 TND</td>
+    </tr>
+    <tr>
+      <td ><strong>Total à payer</strong></td>
+      <td>{{total+7000 | number }} TND</td>
     </tr>
     </tbody>
   </table>
@@ -78,8 +85,7 @@
 
 
 
-/****
-****/
+
 
 <!--
 <div  >

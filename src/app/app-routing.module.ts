@@ -16,11 +16,12 @@ import {NgModule} from '@angular/core';
 
 const routes: Routes = [
   {path:'products/:p1/:p2',component:GeneraleComponent},
+  {path:'commande/:somme', component:CommandesComponent},
   {path:'', component:AccueilComponent},
   {path:'generale', component:GeneraleComponent},
   {path:'nosMagasin', component:NosmagasinComponent},
   {path:'contact', component:ContactComponent},
-  {path:'commande', component:CommandesComponent},
+
   {path:'compte', component:CompteComponent},
   {path:'panier', component:PanierComponent},
 

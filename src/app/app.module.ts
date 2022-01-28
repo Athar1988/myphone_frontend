@@ -39,15 +39,14 @@ import {PanierComponent} from './commandes/panier/panier.component';
     ConnexionComponent,
     CommandesComponent,
     ProfilComponent,
-    PanierComponent
+    PanierComponent,
   ],
   imports: [
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule,
-
+    BrowserModule
 
   ],
 

@@ -21,13 +21,12 @@ export class RechercheComponent implements OnInit {
 
 
   produitsrechercher() {
-    this.router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd ) {
+
     let mc = this.route.snapshot.params.mc;
     console.log(mc + " mot de passe");
     this.service.chercherMarqueProduit(mc).subscribe(
       data => {
-        this.products = data;
+        this.products += data;
         console.log(this.products);
       }
     );
@@ -57,14 +56,12 @@ export class RechercheComponent implements OnInit {
     console.log(this.products + " tous");
 
       }
-    });
-      }
 
 
 
 
 
-onProductDetails(p) {
-    this.router.navigateByUrl("/detail/"+p.id);
+onProductDetails(id) {
+    this.router.navigateByUrl("/detail/"+id);
   }
 }

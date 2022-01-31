@@ -12,14 +12,16 @@ import { RechercheComponent } from './allproduct/recherche/recherche.component';
 import { NosmagasinComponent } from './structure/nosmagasin/nosmagasin.component';
 import { ContactComponent } from './structure/contact/contact.component';
 import { CompteComponent } from './client/compte/compte.component';
-import { ConnexionComponent } from './client/connexion/connexion.component';
-import { CommandesComponent } from './client/commandes/commandes.component';
+import { CommandesComponent } from './commandes/commandes/commandes.component';
 import { ProfilComponent } from './client/profil/profil.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {PanierComponent} from './commandes/panier/panier.component';
+import { ListeCommandeComponent } from './commandes/liste-commande/liste-commande.component';
+import { DetailCommandeComponent } from './commandes/detail-commande/detail-commande.component';
+import { ModifierProfilComponent } from './client/modifier-profil/modifier-profil.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +38,12 @@ import {PanierComponent} from './commandes/panier/panier.component';
     NosmagasinComponent,
     ContactComponent,
     CompteComponent,
-    ConnexionComponent,
     CommandesComponent,
     ProfilComponent,
     PanierComponent,
+    ListeCommandeComponent,
+    DetailCommandeComponent,
+    ModifierProfilComponent,
   ],
   imports: [
     AppRoutingModule,

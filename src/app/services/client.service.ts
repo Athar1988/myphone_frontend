@@ -70,6 +70,7 @@ export class ClientService {
     localStorage.removeItem('mail');
     localStorage.removeItem('panier');
     localStorage.removeItem('item');
+    localStorage.removeItem('commande');
   }
 
   supprimerTousItem(id): Observable<Item>{

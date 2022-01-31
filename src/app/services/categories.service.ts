@@ -18,16 +18,17 @@ export class CategoriesService {
     return this.http.get(this.host+"/products");
   }
 
-  chercherMarqueProduit(motdepasse: string):Observable<Product> {
+  chercherMarqueProduit(motdepasse):Observable<Product> {
     return this.http.get<Product>(this.host+"/products/search/productsMarque?mc="+motdepasse);
   }
-  chercherNameProduit(motdepasse: string) :Observable<Product>{
+
+  chercherNameProduit(motdepasse) :Observable<Product>{
     return this.http.get<Product>(this.host+"/products/search/productsName?mc="+motdepasse);
   }
-  chercherCategoryProduit(motdepasse: string):Observable<Product> {
+  chercherCategoryProduit(motdepasse):Observable<Product> {
     return this.http.get<Product>(this.host+"/products/search/productsCategory?mc="+motdepasse);
   }
-  chercherDescriptionProduit(motdepasse: string):Observable<Product> {
+  chercherDescriptionProduit(motdepasse):Observable<Product> {
     return this.http.get<Product>(this.host+"/products/search/productsDescription?mc="+motdepasse);
   }
 

@@ -1,0 +1,31 @@
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-12 login-form-1">
+      <h3>Mes Commandes</h3>
+
+
+      <table class="table ">
+        <thead><!---->
+        <tr    >
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Montant Toatl</th>
+          <th scope="col">Statut</th>
+          <th scope="col">Détail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let commande of commandes._embedded.commandes">
+          <th scope="row">{{commande.id}}</th>
+          <td>{{commande.date}}</td>
+          <td>{{commande.totalAmount}}</td>
+          <td>{{commande.statut}}</td>
+          <td><i class="fa fa-angle-double-right" (click)="detailCommande(commande.id)"></i></td>
+        </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</div>

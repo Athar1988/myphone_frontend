@@ -8,25 +8,33 @@
 -->
 
 
+
+
+
+
+
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(53,176,171,0.85);">
   <div class="container px-4 px-lg-5">
     <a class="navbar-brand"   routerLink="">BEST PHONE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item"><a class="nav-link active" aria-current="page" (click)="accueil()">Accueil</a></li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Magasiner</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLink="/generale">Par catégorie</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" (click)="topoffre()">Top offres</a></li>
-            <li><a class="dropdown-item" (click)="onProductsDispo()">Produits disponibles</a></li>
-            <li><a class="dropdown-item" (click)="onProductsPromo()">Produits en promotions</a></li>
-            <li><a class="dropdown-item" (click)="dernierajoute()">Dernier ajoute</a></li>
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Magasiner </a>
+          <ul class="dropdown-menu fade-up" style="background-color: rgba(53,176,171,0.85);">
+            <li><a class="dropdown-item" routerLink="/generale"> Par catégorie</a></li>
+            <li><a class="dropdown-item" (click)="topoffre()">Top offres </a></li>
+            <li><a class="dropdown-item"(click)="onProductsDispo()">Produits disponibles </a></li>
+            <li><a class="dropdown-item" (click)="onProductsPromo()">Produits en promotions </a></li>
+            <li><a class="dropdown-item" (click)="dernierajoute()">Dernier ajoute </a></li>
           </ul>
         </li>
+
         <li class="nav-item"><a class="nav-link" (click)="nosmagasins()">Nos magasins</a></li>
         <li class="nav-item"><a class="nav-link" (click)="contact()">Contact</a></li>
       </ul>
@@ -49,20 +57,16 @@
       </form>
       <form class="d-flex p-2" >
       <button class="btn btn-outline-dark " type="submit" (click)="affichePanier()">
-        <i class="bi-basket-fil1"></i>
-        Panier
+        <i class="fa fa-shopping-cart"></i>
         <span class="badge bg-dark text-white ms-1 rounded-pill">{{nbItem}}</span>
       </button>
     </form>
       <div>
       <button *ngIf="!this.serviceClient.isAuthenticated()" class="btn btn-outline-dark" type="submit" (click)="Uncompte()">Mon Compte</button>
       </div>
-
       <div>
         <button *ngIf="this.serviceClient.isAuthenticated()" class="btn btn-outline-dark" type="submit" (click)="Deconnecter()">Déconnecter</button>
       </div>
-
-
     </div>
   </div>
 </nav>
@@ -72,10 +76,16 @@
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #93d3ab;" *ngIf="this.serviceClient.isAuthenticated()">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand"   routerLink="">Bienvenue chez best phone </a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-      <div class="image  btn_valid"> <img src="https://i.imgur.com/0LKZQYM.jpg" (click)="profil()" class="rounded-circle" width="60" />{{this.serviceClient.clientactuel.nom}} </div>
+    <a class="navbar-brand"   routerLink="">Bienvenue chez  BEST PHONE  {{this.serviceClient.clientactuel.prenom}} {{this.serviceClient.clientactuel.nom}} </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+    <li class="nav-item"><a class="nav-link" (click)="monProfil()">Mon Profil</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="modifierProfil()">Modifier mon Profil</a></li>
+    <li class="nav-item"><a class="nav-link" (click)="mesCommandes()">Mes Commandes</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="MesFavoris()">Mes Favoris</a></li>
+    </ul>
     </div>
   </div>
 </nav>

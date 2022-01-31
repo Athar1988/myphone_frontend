@@ -108,7 +108,7 @@ export class ProduitComponent implements OnInit {
     return this.currentTime;
   }*/
 
-  onProductDetails(p) {
-    this.router.navigateByUrl("/detail/"+p.id);
+  onProductDetails(id) {
+    this.router.navigateByUrl("/detail/"+id);
   }
 }

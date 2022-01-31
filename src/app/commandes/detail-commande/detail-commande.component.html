@@ -1,0 +1,21 @@
+<div class="container">
+  <table class="table">
+    <thead><!---->
+    <tr    >
+      <th scope="col">Image</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">prix payé</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let detailItem of detailCommande._embedded.itemsCommandes">
+      <th scope="row"><img src="assets/image/unknown.png" alt="" width="50" (click)="onProductDetails(detailItem.id)" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"></th>
+      <td>{{detailItem.name}}</td>
+      <td>{{detailItem.quantiteCommander}}</td>
+      <td>{{detailItem.prixtotalproduit}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

@@ -15,10 +15,10 @@ export class MenuComponent implements OnInit {
   token=false;
   nbItem;
   panier=[];
+  clientConnecter;
   constructor(public service: CategoriesService,
               public serviceClient: ClientService,
-              public router:Router,
-              public panierService:PanierService) { }
+              public router:Router) { }
 
   ngOnInit(): void {
     this.serviceClient.clientConnecter();
@@ -73,5 +73,21 @@ export class MenuComponent implements OnInit {
 
   affichePanier() {
     this.router.navigateByUrl('/panier');
+  }
+
+  monProfil() {
+    this.router.navigateByUrl('/profil');
+  }
+
+  mesCommandes() {
+    this.router.navigateByUrl('/listeCommandes');
+  }
+
+  MesFavoris() {
+
+  }
+
+  modifierProfil() {
+    this.router.navigateByUrl('/Modifierprofil');
   }
 }

@@ -10,16 +10,19 @@ import {ClientService} from '../../services/client.service';
 })
 export class ProfilComponent implements OnInit {
   email;
-
+  idClient;
+  Client;
 
   constructor(private route: ActivatedRoute,
               private serviceClient: ClientService) { }
 
 
   ngOnInit(): void {
+    this.idClient=localStorage.getItem('id');
     // recupere le client token
     this.serviceClient.clientConnecter();
-    console.log(this.serviceClient.clientactuel.nom+ " le nom de client connecter profil");
+   this.Client=this.serviceClient.clientActuel( this.idClient)
+    console.log(this.serviceClient.clientActuel( this.idClient).nom+ " le nom de client connecter profil");
 
 
   }

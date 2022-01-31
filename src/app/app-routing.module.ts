@@ -7,16 +7,19 @@ import {DetailproduitComponent} from './allproduct/detailproduit/detailproduit.c
 import {RechercheComponent} from './allproduct/recherche/recherche.component';
 import {NosmagasinComponent} from './structure/nosmagasin/nosmagasin.component';
 import {ContactComponent} from './structure/contact/contact.component';
-import {CommandesComponent} from './client/commandes/commandes.component';
+import {CommandesComponent} from './commandes/commandes/commandes.component';
 import {CompteComponent} from './client/compte/compte.component';
 import {ProfilComponent} from './client/profil/profil.component';
 import {PanierComponent} from './commandes/panier/panier.component';
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
+import {ListeCommandeComponent} from './commandes/liste-commande/liste-commande.component';
+import {DetailCommandeComponent} from './commandes/detail-commande/detail-commande.component';
+import {ModifierProfilComponent} from './client/modifier-profil/modifier-profil.component';
 
 const routes: Routes = [
   {path:'products/:p1/:p2',component:GeneraleComponent},
-  {path:'commande/:somme', component:CommandesComponent},
+
   {path:'', component:AccueilComponent},
   {path:'generale', component:GeneraleComponent},
   {path:'nosMagasin', component:NosmagasinComponent},
@@ -24,14 +27,15 @@ const routes: Routes = [
 
   {path:'compte', component:CompteComponent},
   {path:'panier', component:PanierComponent},
-
-
-
+  {path:'listeCommandes', component:ListeCommandeComponent},
   {path:'profil', component:ProfilComponent},
+  {path:'Modifierprofil', component:ModifierProfilComponent},
+
   {path:'products/:p1', component:ProduitComponent},
   {path:'detail/:id', component:DetailproduitComponent},
   {path:'chercher/:mc', component:RechercheComponent},
-
+  {path:'commande/:somme', component:CommandesComponent},
+  {path:'detailCommande/:idCommande', component:DetailCommandeComponent},
 ];
 
 @NgModule({

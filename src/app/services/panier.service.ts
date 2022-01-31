@@ -37,7 +37,6 @@ export class PanierService {
 
   sauvgarderItem(produitItem): Observable<Item>{
     this.idClient= localStorage.getItem('id');
-    console.log(produitItem.prixtotalproduit+" rrr");
     return this.http.post<Item>("http://localhost:8080/client/"+this.idClient+"/itemproduct", produitItem);
   }
 

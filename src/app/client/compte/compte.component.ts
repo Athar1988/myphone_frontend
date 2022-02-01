@@ -17,7 +17,7 @@ export class CompteComponent implements OnInit {
   nom;
   prenom;
   ville;
-  adresse;
+  address;
   emailexiste=false;
   loginemailexiste;
   client:any;
@@ -40,7 +40,7 @@ export class CompteComponent implements OnInit {
 
   Connexion(credentials: any) {
     // verifier le login
-    this.serviceClient.recupererClient().subscribe(
+    this.serviceClient.recupererTousClient().subscribe(
       data=>{
         this.client=data;
         for(let i=0 ; i< this.client._embedded.clients.length; i++) {
@@ -67,7 +67,7 @@ export class CompteComponent implements OnInit {
 
 
   ajoutClient(credentials: Client, InscriptionForm:NgForm) {
-    this.serviceClient.recupererClient().subscribe(
+    this.serviceClient.recupererTousClient().subscribe(
       data=>{
         this.client=data;
 

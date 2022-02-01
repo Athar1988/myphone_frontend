@@ -4,6 +4,184 @@
       <h3>Modifier Profil</h3>
 
 
+      <form   #ModifierProfilForm="ngForm">
+
+        <div class="form-group p-2">
+          <input
+            class="form-control"
+            [(ngModel)]="Client.email"
+            type="email"
+            #emailInput="ngModel"
+            required
+            email
+            ngModel
+            name="email"
+            disabled
+          />
+
+
+        </div>
+
+
+
+        <div class="form-group p-2">
+          <input
+            class="form-control"
+            [(ngModel)]="Client.telephone"
+            #telephoneInput="ngModel"
+            required
+            ngModel
+            pattern="[0-9]{8}"
+            id="telephone"
+            name="telephone"
+            length="12"
+            type="text"
+            required=""
+            aria-required="true"
+          />
+          <div
+            *ngIf="telephoneInput.invalid && telephoneInput.dirty"
+            class="alert alert-danger"
+          >
+            Le téléphone est obliogatoire et doit être correct
+          </div>
+        </div>
+
+
+        <div class="form-group p-2">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="Client.nom"
+            type="text"
+            #nomInput="ngModel"
+            required
+            ngModel
+            name="nom"
+            minlength="3"
+            required=""
+            aria-required="true"
+          />
+          <div
+            *ngIf="nomInput.invalid && nomInput.dirty"
+            class="alert alert-danger"
+          >
+            champs obligatoire et au moins 3 caractéres
+          </div>
+        </div>
+
+        <div class="form-group p-2">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]=" Client.prenom"
+            #prenomInput="ngModel"
+            required
+            ngModel
+            id="prenom"
+            name="prenom"
+            minlength="3"
+            required=""
+            aria-required="true"
+          />
+          <div
+            *ngIf="prenomInput.invalid && prenomInput.dirty"
+            class="alert alert-danger"
+          >
+            champs obligatoire et au moins 3 caractéres
+          </div>
+        </div>
+
+        <div class="form-group p-2">
+          <select
+            [(ngModel)]="Client.ville"
+            class="form-control"
+            id="exampleFormControlSelect1"
+            #villeInput
+            name="ville"
+            required
+            ngModel>
+            <option value="" selected="selected">Ville *</option>
+            <option value="Ariana">Ariana</option>
+            <option>Ben arous</option>
+            <option>Bizerte</option>
+            <option>Béja</option>
+            <option>Gabès</option>
+            <option>Gafsa</option>
+            <option>Jendouba</option>
+            <option>Kairouan</option>
+            <option>Kasserine</option>
+            <option>Kébili</option>
+            <option>La manouba</option>
+            <option>Le kef</option>
+            <option>Mahdia</option>
+            <option>Monastir</option>
+            <option>Médenine</option>
+            <option>Nabeul</option>
+            <option>Sfax</option>
+            <option>Sidi bouzid</option>
+            <option>Siliana</option>
+            <option>Sousse</option>
+            <option>Tataouine</option>
+            <option>Tozeur</option>
+            <option>Tunis</option>
+            <option>Zaghouan</option>
+          </select>
+          <div
+            *ngIf="villeInput.invalid && villeInput.dirty"
+            class="alert alert-danger"
+          >
+            Ville obligatoire
+          </div>
+        </div>
+
+
+        <div class="form-group p-2">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="Client.address"
+            required
+            ngModel
+            id="address"
+            name="address"
+            #addressInput="ngModel"
+          />
+          <div
+            *ngIf="addressInput.invalid && addressInput.dirty"
+            class="alert alert-danger"
+          >
+            Il faut saisie votre adresse
+          </div>
+        </div>
+
+        <div class="form-group p-2">
+          <input
+            type="password"
+            class="form-control"
+            [(ngModel)]="Client.motdepasse"
+            required
+            minlength="4"
+            ngModel
+            #motdepasseInput="ngModel"
+            name="motdepasse"
+          />
+          <div *ngIf="motdepasseInput.invalid && motdepasseInput.dirty" class="alert alert-danger">
+            Le password est obligatoire et doit impérativementa voir au moins 4
+            caractères
+          </div>
+        </div>
+
+        <div class="form-group p-2">
+          <input
+            type="submit"
+            class="btnSubmit"
+            value="Modifier"
+            (click)=" ModifierClient(ModifierProfilForm.value)"
+            [disabled]="ModifierProfilForm.invalid"/>
+        </div>
+      </form>
+
 
     </div>
   </div>

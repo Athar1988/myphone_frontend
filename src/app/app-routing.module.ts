@@ -16,6 +16,13 @@ import {NgModule} from '@angular/core';
 import {ListeCommandeComponent} from './commandes/liste-commande/liste-commande.component';
 import {DetailCommandeComponent} from './commandes/detail-commande/detail-commande.component';
 import {ModifierProfilComponent} from './client/modifier-profil/modifier-profil.component';
+import {LoginComponent} from './admin/login/login.component';
+import {AjouterProduitComponent} from './admin/ajouter-produit/ajouter-produit.component';
+import {TousProduitComponent} from './admin/tous-produit/tous-produit.component';
+import {TousCommandesComponent} from './admin/tous-commandes/tous-commandes.component';
+import {ModifierConatctComponent} from './admin/modifier-conatct/modifier-conatct.component';
+
+
 
 const routes: Routes = [
   {path:'products/:p1/:p2',component:GeneraleComponent},
@@ -24,12 +31,23 @@ const routes: Routes = [
   {path:'generale', component:GeneraleComponent},
   {path:'nosMagasin', component:NosmagasinComponent},
   {path:'contact', component:ContactComponent},
-
+  {path:'admin', component:LoginComponent},
   {path:'compte', component:CompteComponent},
   {path:'panier', component:PanierComponent},
   {path:'listeCommandes', component:ListeCommandeComponent},
   {path:'profil', component:ProfilComponent},
   {path:'Modifierprofil', component:ModifierProfilComponent},
+  {path:'modifierConatct', component:ModifierConatctComponent},
+
+
+
+  { path: 'ajouteProduit', component: AjouterProduitComponent },
+  {path:'ajouteProduit', component:AjouterProduitComponent},
+  {path:'listeProduit', component:TousProduitComponent},
+  {path:'listeCommande', component:TousCommandesComponent},
+  {path:'listeProduit', component:TousProduitComponent},
+
+
 
   {path:'products/:p1', component:ProduitComponent},
   {path:'detail/:id', component:DetailproduitComponent},

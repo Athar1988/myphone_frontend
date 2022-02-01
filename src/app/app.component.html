@@ -1,7 +1,8 @@
 
 <body>
-<app-menu></app-menu>
-<router-outlet></router-outlet>
+<app-menu *ngIf="admin==undefined"></app-menu>
+<app-menu-admin  *ngIf="admin=='true'"></app-menu-admin>
+<router-outlet  *ngIf="admin==undefined"></router-outlet>
 </body>
 
 

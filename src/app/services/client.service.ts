@@ -25,8 +25,16 @@ export class ClientService {
     return this.http.post<Client>("http://localhost:8080/clients/AjouteClient", client);
   }
 
-  recupererClient(){
+  ModifierClient(client: Client): Observable<Client>{
+    return this.http.post<Client>("http://localhost:8080/clients/misejour/"+client.id, client);
+  }
+
+  recupererTousClient(){
     return this.http.get(this.host+"/clients");
+  }
+
+  recupererClient(id){
+    return this.http.get(this.host+"/clients/"+id);
   }
 
 

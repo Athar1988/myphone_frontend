@@ -1,0 +1,44 @@
+<h3>Liste produits</h3>
+<div class="input-group">
+  <div class="form-outline">
+    <input type="search" id="form1" class="form-control" />
+    <label class="form-label" for="form1">Search</label>
+  </div>
+  <button type="button" class="btn btn-primary">
+    <i class="fa fa-search"></i>
+  </button>
+</div>
+<table class="table ">
+  <thead><!---->
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Image</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Marque</th>
+    <th scope="col">Quantité</th>
+    <th scope="col">Prix unitaire</th>
+    <th scope="col">Promo</th>
+    <th scope="col">Modifier</th>
+    <th scope="col">Supprimer</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let produit of tousProduits._embedded.products">
+    <td>{{produit.id}}</td>
+    <th scope="row"><img src="assets/image/unknown.png" alt="" width="50" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"></th>
+    <td>{{produit.name}}</td>
+    <td>{{produit.marque}}</td>
+    <td>{{produit.quantity}}</td>
+    <td>{{produit.currentPrice}} TND</td>
+    <td>{{produit.pourcentage}} %</td>
+    <td><i class="fa fa-wrench" aria-hidden="true"></i></td>
+    <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+  </tr>
+  </tbody>
+</table>
+
+<ul class="nav nav-pills">
+  <li [ngClass]="((i+1)==currentPage)?'active':''" *ngFor="let produit of tousProduits._embedded.products; let i=index">
+    <a class="clickable" (click)="onProduits(i)">{{i}}</a>
+  </li>
+</ul>

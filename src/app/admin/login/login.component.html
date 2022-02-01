@@ -1,0 +1,60 @@
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-12 login-form-1">
+      <h3>Administration</h3>
+
+
+      <form   #LoginForm="ngForm">
+
+        <div class="form-group p-2">
+          <input
+            class="form-control"
+            [(ngModel)]="login"
+            #loginInput="ngModel"
+            required
+            ngModel
+            id="login"
+            name="login"
+            type="text"
+            required=""
+            aria-required="true"
+          />
+          <div
+            *ngIf="loginInput.invalid && loginInput.dirty"
+            class="alert alert-danger"
+          >
+            Le login est obliogatoire
+          </div>
+        </div>
+
+
+        <div class="form-group p-2">
+          <input
+            type="password"
+            class="form-control"
+            [(ngModel)]="motdepasse"
+            required
+            ngModel
+            #motdepasseInput="ngModel"
+            name="motdepasse"
+          />
+          <div *ngIf="motdepasseInput.invalid && motdepasseInput.dirty" class="alert alert-danger">
+            Le password est obligatoire
+          </div>
+        </div>
+
+        <div class="form-group p-2">
+          <input
+            type="submit"
+            class="btnSubmit"
+            value="Connecter"
+            (click)=" ConnexionLogin(LoginForm.value)"
+            [disabled]="LoginForm.invalid"/>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+</div>
+

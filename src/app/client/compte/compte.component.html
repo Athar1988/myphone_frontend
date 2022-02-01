@@ -224,15 +224,15 @@
                             class="form-control"
                             placeholder="Adresse *"
                             value=""
-                            [(ngModel)]="adresse"
+                            [(ngModel)]="address"
                             required
                             ngModel
-                            id="adresse"
-                            name="adresse"
-                            #adresseInput="ngModel"
+                            id="address"
+                            name="address"
+                            #addressInput="ngModel"
                           />
                           <div
-                            *ngIf="adresseInput.invalid && adresseInput.dirty"
+                            *ngIf="addressInput.invalid && addressInput.dirty"
                             class="alert alert-danger"
                           >
                             Il faut saisie votre adresse
@@ -257,13 +257,6 @@
                             caractères
                           </div>
                         </div>
-
-        <div
-          *ngIf="emailexiste==true"
-          class="alert alert-danger"
-        >
-          L'email existe déjà
-        </div>
         <div class="form-group p-2">
           <input
             type="submit"

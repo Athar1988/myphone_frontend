@@ -19,12 +19,14 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.idClient=localStorage.getItem('id');
-    // recupere le client token
-    this.serviceClient.clientConnecter();
-   this.Client=this.serviceClient.clientActuel( this.idClient)
-    console.log(this.serviceClient.clientActuel( this.idClient).nom+ " le nom de client connecter profil");
+    this.serviceClient.recupererClient(this.idClient).subscribe(
+      data=> {
+        this.Client=data;
+        console.log(this.Client.nom+ " le nom de client connecter profil");
+      },
+      err=>{ console.log("probleme de recupere un client");}
 
-
+    )
   }
 
 }

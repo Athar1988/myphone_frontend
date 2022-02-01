@@ -22,6 +22,13 @@ import {PanierComponent} from './commandes/panier/panier.component';
 import { ListeCommandeComponent } from './commandes/liste-commande/liste-commande.component';
 import { DetailCommandeComponent } from './commandes/detail-commande/detail-commande.component';
 import { ModifierProfilComponent } from './client/modifier-profil/modifier-profil.component';
+import { LoginComponent } from './admin/login/login.component';
+import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
+import { AjouterProduitComponent } from './admin/ajouter-produit/ajouter-produit.component';
+import { TousProduitComponent } from './admin/tous-produit/tous-produit.component';
+import { TousCommandesComponent } from './admin/tous-commandes/tous-commandes.component';
+import { ModifierConatctComponent } from './admin/modifier-conatct/modifier-conatct.component';
+//import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -44,13 +51,20 @@ import { ModifierProfilComponent } from './client/modifier-profil/modifier-profi
     ListeCommandeComponent,
     DetailCommandeComponent,
     ModifierProfilComponent,
+    LoginComponent,
+    MenuAdminComponent,
+    AjouterProduitComponent,
+    TousProduitComponent,
+    TousCommandesComponent,
+    ModifierConatctComponent,
   ],
   imports: [
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule
+    BrowserModule,
+    //NgxPaginationModule
 
   ],
 

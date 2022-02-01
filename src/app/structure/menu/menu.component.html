@@ -62,7 +62,7 @@
       </button>
     </form>
       <div>
-      <button *ngIf="!this.serviceClient.isAuthenticated()" class="btn btn-outline-dark" type="submit" (click)="Uncompte()">Mon Compte</button>
+      <button *ngIf="!this.serviceClient.isAuthenticated()" class="btn btn-outline-dark" type="submit" (click)="Uncompte()">Se connecter</button>
       </div>
       <div>
         <button *ngIf="this.serviceClient.isAuthenticated()" class="btn btn-outline-dark" type="submit" (click)="Deconnecter()">Déconnecter</button>

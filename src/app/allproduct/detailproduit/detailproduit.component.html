@@ -108,12 +108,89 @@
 -->
 
 
-<div *ngIf="currentProduct">
-<div class="container py-3">
-  <div class="title h1 text-center">{{currentProduct.name}}</div>
+<div  *ngIf="admin=='true'">
+  <div class="row">
+        <div class="col-sm-5">
+          <img class="d-block w-50" src="assets/image/unknown.png" alt="">
+        </div>
+
+    <!-- formulaire de modification -->
+        <div class="col-sm-7  login-form-2">
+          <div class="card-block">
+            <!--           <h4 class="card-title">Small card</h4> -->
+            <p>{{currentProduct.marque}}</p>
+            <b *ngIf="this.currentProduct.available" class="text-success">Availablity: Disponible</b>
+            <b *ngIf="!this.currentProduct.available" class="text-danger">Availablity: InDisponible</b>
+            <p>{{currentProduct.description}}</p>
+            <h5>Prix: {{currentProduct.currentPrice}} TND</h5>
+            <br>
+            <div>
+              <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(currentProduct)">
+                <label class="control-label">Quantité :</label>
+                <input type="number" name="quantity" [(ngModel)]="currentProduct.quantity" ngModel style="width: 40px">
+                <button>
+                  <img src="assets/image/caddy.png">
+                </button>
+              </form>
+            </div>
+            <a href="#" class="btn btn-primary btn-sm float-right">Read More</a>
+          </div>
+        </div>
+
+
+
+    <div class="container row">
+      <div class="col-md-6">
+        <input type="file" (change)="onFileChanged($event)">
+      </div>
+      <div class="col-md-6">
+        <input type="button" (click)="onUpload(idproduit)" value="upload">
+      </div>
+    </div>
+    <hr />
+    <div class="container row">
+      <div class="col-md-12">
+        <div *ngIf=message>{{message}}</div>
+      </div>
+    </div>
+
+
+    <div class="container row">
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+               name="name" />
+      </div>
+      <div class="col-md-6">
+        <input type="button" (click)="getImage1(idproduit)" value="Get Image">
+      </div>
+    </div>
+
+
+    <div class="container row">
+      <div class="col-md-12">
+        <div *ngIf=retrievedImage>
+          <img [src]="retrievedImage" >
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
 </div>
 
 
+
+
+
+
+
+
+<div *ngIf="currentProduct && admin==undefined">
+<div class="container py-3">
+  <div class="title h1 text-center">{{currentProduct.name}}</div>
+</div>
 
 <div class="container">
   <div class="card float-right">

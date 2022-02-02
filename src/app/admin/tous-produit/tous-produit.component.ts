@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../../services/admin.service';
+import {Router} from '@angular/router';
+import {Product} from '../../model/product.model';
 
 @Component({
   selector: 'app-tous-produit',
@@ -15,7 +17,8 @@ export class TousProduitComponent implements OnInit {
   private pageSize:number=20;
   private pages:Array<number>;
 
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.recupereTousProduits();
@@ -39,4 +42,21 @@ export class TousProduitComponent implements OnInit {
     this.recupereTousProduits();
   }
 
+  supprimerproduit(produit) {
+    this.adminService.supprimerProduit(produit).subscribe(
+      data=>{
+        console.log("produit supprimer avec succé");
+        // message de succe
+        },
+      err=>{console.log("probleme de connexion");}
+    )
+  }
+
+  modifierproduit(produit:Product) {
+    this.router.navigateByUrl('detail/'+produit.id);
+    /*this.adminService.modiiferProduit(produit).subscribe(
+      data=>{console.log("produit supprimer avec succé");},
+      err=>{console.log("probleme de connexion");}
+    )*/
+  }
 }

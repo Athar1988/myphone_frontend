@@ -19,6 +19,7 @@ export class ProduitComponent implements OnInit {
   listeItem: any;
   panier=[];
   sommeTotal=0;
+  Image;
   constructor(
     private route:ActivatedRoute,
     private router:Router,
@@ -38,7 +39,12 @@ export class ProduitComponent implements OnInit {
       this.sommeTotal=produit.currentPrice;
 
     }
-    this.productItem= new Item(null, produit.name ,produit.photoName,produit.currentPrice,produit.pourcentage,1, this.sommeTotal );
+
+    //recupere pic image
+
+    this.Image=this.panierservice.recupereImage(produit.id);
+
+    this.productItem= new Item(null, produit.name , this.Image,produit.pourcentage,1, this.sommeTotal );
     if(localStorage && localStorage.getItem('panier')){
     this.panier = JSON.parse(localStorage.getItem('panier'));
     this.panier.push(this.productItem);

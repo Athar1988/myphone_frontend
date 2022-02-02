@@ -1,25 +1,15 @@
-export interface Product{
-  id:number;
-  name:string;
-  description:string;
-  marque:string;
-  pourcentage:number;
-  currentPrice:number;
-  promotion:boolean;
-  available:boolean;
-  photoName:string;
-  quantity:number;
-  _links:{
-    self:{
-      href:string;
-    },
-    panier:{
-      href:string;
-    },
-    category:{
-      href:string
-    }
-  }
+export class Product{
+  constructor(
+    public id='',
+    public name='',
+    public description='',
+    public marque='',
+    public currentPrice=0,
+    public pourcentage=0,
+    public promotion=true,
+    public available=true,
+    public quantity=0,
+  ){}
 
 }
 

@@ -52,8 +52,10 @@ export class PanierComponent implements OnInit {
       (data)=>{
         this.Items=data;
         for (let item of this.Items._embedded.productItems) {
-        this.productItem= new Item(item.id, item.name,item.photoName,item.prixUn,item.pourcentage,item.quantiteCommander, item.prixtotalproduit );
-        this.commandeService.commande.products.push(this.productItem);
+        //this.productItem= new Item(item.id, item.name,item.photoName,item.prixUn,item.pourcentage,item.quantiteCommander, item.prixtotalproduit );
+        this.productItem= new Item(item.id, item.name,item.prixUn,item.pourcentage,item.quantiteCommander, item.prixtotalproduit );
+
+          this.commandeService.commande.products.push(this.productItem);
         this.prixsansremise+=item.currentPrice;
         this.total+=item.prixtotalproduit;
         }

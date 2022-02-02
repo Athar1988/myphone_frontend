@@ -36,7 +36,7 @@
       <small class="d-block">{{item.pourcentage}} %</small>
       {{item.prixUn-(item.prixUn*item.pourcentage)/100 | number}} TND
     </td>
-    <td data-th="Quantity"> <input (click)=modifierQuantit(item.id,item,inputQuntite.value) type="number" #inputQuntite class="form-control text-center" value="1"></td>
+    <td data-th="Quantity"> <input (click)=modifierQuantit(item.id,item,inputQuntite.value) type="number" #inputQuntite class="form-control text-center" value="1" min="0"></td>
     <td>{{item.prixtotalproduit | number}}</td>
     </tr>
 

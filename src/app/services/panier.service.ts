@@ -15,6 +15,9 @@ export class PanierService {
   public host:string="http://localhost:8080";
   idClient;
   panier;
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
 
   constructor(private http:HttpClient) { }
 
@@ -40,5 +43,39 @@ export class PanierService {
     return this.http.post<Item>("http://localhost:8080/client/"+this.idClient+"/itemproduct", produitItem);
   }
 
+
+
+  //Gets called when the user clicks on retieve image button to get the image from back end
+  returnerImage(imageName) {
+    //Make a call to Sprinf Boot to get the Image Bytes.
+    this.http.get('http://localhost:8080/image/get/' + imageName)
+      .subscribe(
+        res => {
+          this.retrieveResonse = res;
+          this.base64Data = this.retrieveResonse.picByte;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+          console.log(this.retrievedImage+" eeeeee");
+          return this.retrievedImage;
+        }
+      );
+  }
+
+
+  //Gets called when the user clicks on retieve image button to get the image from back end
+  recupereImage(id) {
+    //Make a call to Sprinf Boot to get the Image Bytes.
+    this.http.get('http://localhost:8080/products/'+id+'/photo')
+      .subscribe(
+        (data)=>{
+          this.retrieveResonse = data;
+          console.log(this.retrieveResonse.name);
+        let  codeImage=this.returnerImage(this.retrieveResonse.name);
+        return codeImage;
+          /* this.base64Data = this.retrieveResonse.picByte;
+           this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+           console.log(this.retrievedImage);*/
+        },
+      );
+  }
 
 }

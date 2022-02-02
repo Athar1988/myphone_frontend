@@ -1,1 +1,315 @@
-<p>ajouter-produit works!</p>
+<h3>Inscription</h3>
+<form   #AjouteProduitForm="ngForm">
+
+
+
+
+
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      id="nom"
+      class="form-control"
+      placeholder="Nom *"
+      [(ngModel)]="nom"
+      type="text"
+      #nomInput="ngModel"
+      required
+      ngModel
+      name="nom"
+      aria-required="true"
+    />
+    <label for="nom">Nom de produit</label>
+    <div
+      *ngIf="nomInput.invalid && nomInput.dirty"
+      class="alert alert-danger"
+    >
+      Le nom est obliogatoire et doit être correct
+    </div>
+  </div>
+
+
+
+  <div class="form-floating mb-3">
+    <textarea
+      placeholder="Description *"
+      class="form-control"
+      rows="5"
+      value=""
+      [(ngModel)]="description"
+      #descriptionInput="ngModel"
+      required
+      ngModel
+      id="description"
+      name="description"
+      type="text"
+      required=""
+      aria-required="true"
+    ></textarea>
+    <label for="description">Description de produit</label>
+    <div
+      *ngIf="descriptionInput.invalid && descriptionInput.dirty"
+      class="alert alert-danger"
+    >
+      Le description est obliogatoire et doit être correct
+    </div>
+  </div>
+
+
+
+
+  <div class="form-floating mb-3">
+    <select
+      [(ngModel)]="marque"
+      class="form-control"
+      #marqueInput
+      name="marque"
+      required
+      id="marque"
+      ngModel>
+      <option value="" selected="selected">Toutes les marques</option>
+      <option value="https://www.gsm55.com/liste-acer" >Acer</option>
+      <option value="https://www.gsm55.com/liste-alcatel">Alcatel</option>
+      <option value="https://www.gsm55.com/liste-altice">Altice</option>
+      <option value="https://www.gsm55.com/liste-amazon">Amazon</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-apple">Apple</option>
+      <option value="https://www.gsm55.com/liste-archos">Archos</option>
+      <option value="https://www.gsm55.com/liste-asus">Asus</option>
+      <option value="https://www.gsm55.com/liste-blackberry">Blackberry</option>
+      <option value="https://www.gsm55.com/liste-blackphone">Blackphone</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-blackview">Blackview</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-carrefour">Carrefour</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-crosscall">Crosscall</option>
+      <option value="https://www.gsm55.com/liste-cubot">Cubot</option>
+      <option value="https://www.gsm55.com/liste-danew">Danew</option>
+      <option value="https://www.gsm55.com/liste-doogee">Doogee</option>
+      <option value="https://www.gsm55.com/liste-doro">Doro</option>
+      <option value="https://www.gsm55.com/liste-echo">Echo</option>
+      <option value="https://www.gsm55.com/liste-elephone">Elephone</option>
+      <option value="https://www.gsm55.com/liste-essentielb">EssentielB</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-fairphone">Fairphone</option>
+      <option value="https://www.gsm55.com/liste-gigaset">Gigaset</option>
+      <option value="https://www.gsm55.com/liste-google">Google</option>
+      <option value="https://www.gsm55.com/liste-haier">Haier</option>
+      <option value="https://www.gsm55.com/liste-hisense">Hisense</option>
+      <option value="https://www.gsm55.com/liste-honor">Honor</option>
+      <option value="https://www.gsm55.com/liste-hp">Hp</option>
+      <option value="https://www.gsm55.com/liste-htc">HTC</option>
+      <option value="https://www.gsm55.com/liste-huawei">Huawei</option>
+      <option value="https://www.gsm55.com/liste-ice-phone">IcePhone</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-infinix">Infinix</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-kazam">Kazam</option>
+      <option value="https://www.gsm55.com/liste-konrow">Konrow</option>
+      <option value="https://www.gsm55.com/liste-letv">Lenovo</option>
+      <option value="https://www.gsm55.com/liste-lg">LG</option>
+      <option value="https://www.gsm55.com/liste-logicom">Logicom</option>
+      <option value="https://www.gsm55.com/liste-medion">Medion</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-meizu">Meizu</option>
+      <option value="https://www.gsm55.com/liste-microsoft">Microsoft</option>
+      <option value="https://www.gsm55.com/liste-motorola">Motorola</option>
+      <option value="https://www.gsm55.com/liste-neffos">Neffos</option>
+      <option value="https://www.gsm55.com/liste-nokia">Nokia</option>
+      <option value="https://www.gsm55.com/liste-nvidia">Nvidia</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-obi">Obi</option>
+      <option value="https://www.gsm55.com/liste-oneplus">OnePlus</option>
+      <option value="https://www.gsm55.com/liste-oppo">Oppo</option>
+      <option value="https://www.gsm55.com/liste-orange">Orange</option>
+      <option value="https://www.gsm55.com/liste-ordissimo">Ordissimo</option>
+      <option value="https://www.gsm55.com/liste-oukitel">Oukitel</option>
+      <option value="https://www.gsm55.com/liste-panasonic">Panasonic</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-polaroid">Polaroid</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-qilive">Qilive</option>
+      <option value="https://www.gsm55.com/liste-realme">Realme</option>
+      <option value="https://www.gsm55.com/liste-samsung">Samsung</option>
+      <option value="https://www.gsm55.com/liste-selecline">Selectine</option>
+      <option value="https://www.gsm55.com/liste-sony">Sony</option>
+      <option value="https://www.gsm55.com/liste-sosh">Sosh</option>
+      <option value="https://www.gsm55.com/liste-sfr">SFR</option>
+      <option value="https://www.gsm55.com/liste-tcl">TCL</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-thomson">Thomson</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-ulefone">Ulefone</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-vivo">Vivo</option>
+      <option value="https://www.gsm55.com/liste-wiko">Wiko</option>
+      <option value="https://www.gsm55.com/liste-wileyfox">WileyFox</option>
+      <option value="https://www.gsm55.com/liste-xiaomi">Xiaomi</option>
+      <option value="https://www.gsm55.com/liste-yess">Yezz</option> <!-- ~ -->
+      <option value="https://www.gsm55.com/liste-zte">Zte</option>
+    </select>
+    <label for="marque">Toutes les marques</label>
+    <div
+      *ngIf="marqueInput.invalid && marqueInput.dirty"
+      class="alert alert-danger"
+    >
+      La marque obligatoire
+    </div>
+  </div>
+
+
+
+  <div class="form-floating mb-3">
+    <input
+      type="number"
+      class="form-control"
+      value=""
+      [(ngModel)]="pourcentage"
+      #pourcentageInput="ngModel"
+      required
+      ngModel
+      name="pourcentage"
+      required=""
+      aria-required="true"
+      id="pourcentage"
+      min="0" max="100"
+    />
+    <label for="pourcentage">Pourcentage de promotion</label>
+    <div
+      *ngIf="pourcentageInput.invalid && pourcentageInput.dirty"
+      class="alert alert-danger"
+    >
+      Le pourcentage est obligatoire
+    </div>
+  </div>
+
+
+
+  <div class="form-floating mb-3">
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="currentPrice"
+      #currentPriceInput="ngModel"
+      required
+      ngModel
+      name="currentPrice"
+      aria-required="true"
+      id="currentPrice"
+      min="0"
+    />
+    <label for="currentPrice">Prix initial de produit</label>
+    <div
+      *ngIf="currentPriceInput.invalid && currentPriceInput.dirty"
+      class="alert alert-danger"
+    >
+      Le prix est obligatoire
+    </div>
+  </div>
+
+
+
+  <div class="form-floating mb-3">
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="promotion"
+        name="promotion"
+        #promotion
+        (change)="onPromo(promotion.checked)"
+        checked>
+      <label class="form-check-label" for="promotion">En promotion</label>
+    </div>
+  </div>
+
+
+
+  <div class="form-floating mb-3">
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="available"
+        name="available"
+        #available
+        (change)="onDispo(available.checked)"
+        checked>
+      <label class="form-check-label" for="available">Disponible</label>
+    </div>
+  </div>
+
+
+  <div class="form-floating mb-3">
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="quantity"
+      #quantityInput="ngModel"
+      required
+      ngModel
+      name="quantity"
+      aria-required="true"
+      id="quantity"
+      min="0"
+    />
+    <label for="quantity">Quantity disponible de produit</label>
+    <div
+      *ngIf="quantityInput.invalid && quantityInput.dirty"
+      class="alert alert-danger"
+    >
+      La quantite est obligatoire
+    </div>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input
+      type="submit"
+      class="btnSubmit"
+      value="Inscription"
+      (click)=" ajoutProduit(AjouteProduitForm.value)"
+      [disabled]="AjouteProduitForm.invalid"/>
+  </div>
+</form>
+
+
+
+<!--
+
+<div class="container row">
+
+  <div class="col-md-12">
+
+    <h1>Upload Image</h1>
+  </div>
+
+</div>
+
+<div class="container row">
+  <div class="col-md-6">
+    <input type="file" (change)="onFileChanged($event)">
+  </div>
+  <div class="col-md-6">
+    <input type="button" (click)="onUpload()" value="upload">
+  </div>
+</div>
+<hr />
+
+<div class="container row">
+
+  <div class="col-md-12">
+
+    <div *ngIf=message>{{message}}</div>
+
+  </div>
+
+</div>
+
+
+<div class="container row">
+  <div class="col-md-6">
+    <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+           name="name" />
+  </div>
+  <div class="col-md-6">
+    <input type="button" (click)="getImage1()" value="Get Image">
+  </div>
+</div>
+
+
+<div class="container row">
+  <div class="col-md-12">
+    <div *ngIf=retrievedImage>
+      <img [src]="retrievedImage" >
+    </div>
+  </div>
+
+</div>
+-->

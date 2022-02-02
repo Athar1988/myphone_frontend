@@ -1,3 +1,12 @@
+
+.login-form-2{
+  padding: 5%;
+  background: #35b0ab;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/*
 body {
   background-color:  #eee;
 }
@@ -60,3 +69,4 @@ body {
   margin-top: auto;
 }
 
+*/

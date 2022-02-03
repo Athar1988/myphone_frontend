@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from '../../model/product.model';
 import {AdminService} from '../../services/admin.service';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ajouter-produit',
@@ -18,7 +19,7 @@ export class AjouterProduitComponent implements OnInit {
   promotion=true;
   available=true;
   quantity;
-
+  categorie;
   selectedFile: File;
   message;
   imageName: any;
@@ -31,17 +32,21 @@ export class AjouterProduitComponent implements OnInit {
 
 
   constructor(private  adminSrvice:AdminService,
-              private httpClient: HttpClient) { }
+              private httpClient: HttpClient,
+              private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  ajoutProduit(p){
+  ajoutProduit(p, categorieId){
     console.log(p.name);
     console.log(p.quantity);
-     this.produit=new Product(null, p.nom, p.description, p.marque,p.currentPrice,p.pourcentage, this.promotion,this.available,p.quantity);
-     this.adminSrvice.ajouteProduit(this.produit).subscribe(
-      data=>{console.log("produits ajouter avec succés");},
+     this.produit=new Product(null, p.nom, p.description, p.marque,p.currentPrice,p.pourcentage, this.promotion,this.available,p.quantity, null, null, null);
+     this.adminSrvice.ajouteProduit(this.produit,categorieId).subscribe(
+      data=>{
+        this.router.navigateByUrl('listeProduit');
+        console.log("produits ajouter avec succés");
+        },
       err=>{console.log("probleme de reseau");}
     )
   }
@@ -56,6 +61,9 @@ export class AjouterProduitComponent implements OnInit {
     this.available = isChecked;
     console.log(this.available);
   }
+
+
+
 
 /*
   //Gets called when the user selects an image

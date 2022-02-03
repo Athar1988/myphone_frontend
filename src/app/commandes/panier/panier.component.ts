@@ -20,6 +20,7 @@ export class PanierComponent implements OnInit {
   total=0;
   prixsansremise=0;
   existe;
+  nomImage;
   constructor(public clinetService:ClientService,
               public panierService: PanierService,
               private router: Router,
@@ -51,10 +52,9 @@ export class PanierComponent implements OnInit {
     this.panierService.recupereTousItem().subscribe(
       (data)=>{
         this.Items=data;
-        for (let item of this.Items._embedded.productItems) {
-        //this.productItem= new Item(item.id, item.name,item.photoName,item.prixUn,item.pourcentage,item.quantiteCommander, item.prixtotalproduit );
-        this.productItem= new Item(item.id, item.name,item.prixUn,item.pourcentage,item.quantiteCommander, item.prixtotalproduit );
 
+        for (let item of this.Items._embedded.productItems) {
+          this.productItem=item;
           this.commandeService.commande.products.push(this.productItem);
         this.prixsansremise+=item.currentPrice;
         this.total+=item.prixtotalproduit;
@@ -62,6 +62,13 @@ export class PanierComponent implements OnInit {
       },
       (err)=>{console.log("probleme reseau");}
     )
+  }
+
+
+  public recupereImage(id){
+    console.log("eeeeeeee "+ id);
+    this.nomImage=this.panierService.recupereImage(id);
+    console.log("eeeeeeee "+ this.nomImage);
   }
 
 

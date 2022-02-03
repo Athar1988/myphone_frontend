@@ -29,7 +29,7 @@ export class TousProduitComponent implements OnInit {
     this.adminService.tousProduits().subscribe(
       (data)=>{
         this.tousProduits=data;
-        console.log(this.tousProduits.page.totalPages);
+        console.log(this.tousProduits._embedded.products[0]._links.category.href);
         this.pages=new Array<number>(this.tousProduits.page.totalPages);
       },
       (err)=>{console.log("probleme reseau");}

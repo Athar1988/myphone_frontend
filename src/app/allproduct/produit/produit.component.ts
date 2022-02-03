@@ -31,6 +31,14 @@ export class ProduitComponent implements OnInit {
   ngOnInit() {}
 
 
+
+  public recupereImage(id){
+    console.log("eeeeeeee "+ id);
+   return  this.panierservice.recupereImage(id);
+  }
+
+
+
   ajouterItem(produit: Product){
     if(produit.pourcentage!=0){
       this.sommeTotal=produit.currentPrice-(produit.currentPrice*(produit.pourcentage/100));
@@ -40,11 +48,7 @@ export class ProduitComponent implements OnInit {
 
     }
 
-    //recupere pic image
-
-    this.Image=this.panierservice.recupereImage(produit.id);
-
-    this.productItem= new Item(null, produit.name , this.Image,produit.pourcentage,1, this.sommeTotal );
+    this.productItem= new Item(null, produit.name ,produit.currentPrice,produit.pourcentage,1, this.sommeTotal, produit.nameImage, produit.typeImage,produit.picByte);
     if(localStorage && localStorage.getItem('panier')){
     this.panier = JSON.parse(localStorage.getItem('panier'));
     this.panier.push(this.productItem);

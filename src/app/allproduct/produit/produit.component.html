@@ -2,45 +2,34 @@
   <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-1  row-cols-xs-1 row-cols-md-2 row-cols-xl-3 justify-content-center" >
     <div class="col col-sm col-md	col-lg	col-xl col-xs mb-5"  *ngFor="let p of products._embedded.products">
       <div class="card h-100">
-        <img class="card-img-top sizephone" (click)="onProductDetails(p.id)" src="assets/image/unknown.png"/> <!--[src]="this.catService.host+'/photoProduct/'+p.id+'?ts='+getTS()"/>
-        <!--
-        <div *ngIf="this.authService.isAdmin()">
-          <button (click)="onEditPhoto(p)">
-            <span class="glyphicon glyphicon-edit"></span>
-          </button>
-          <p *ngIf="editPhoto && currentProduct==p">
-            <input type="file" (change)="onSelectedFile($event)">
-            <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
-            {{progress}}
-          </p>
-        </div>
-        -->
+        <h5 class="card-title">{{p.marque}}</h5>
+        <img class="card-img-top sizephone" (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}" />
         <div class="card-body p-4">
           <h5 class="card-title">{{p.name}}</h5>
-          <p class="card-text">{{p.description}}</p>
           <div>
-            <label>Price : {{p.currentPrice}}</label>
+            <label>Prix : {{p.currentPrice}} TND</label>
           </div>
         </div>
 
         <div>
-          <label>Price : {{p.currentPrice}}</label>
+          <label>Promo : {{p.pourcentage }} %</label>
         </div>
-
-
         <div>
         <span *ngIf="p.promotion">
-                <img src="assets/image/promo.png" class="img-thumbnail img-circle" height="30">
+                <i class="fa fa-percent"></i>
               </span>
           <span *ngIf="p.selected">
-                <img src="assets/image/favorite.png" class="img-thumbnail img-circle" height="30">
+               <i class="fa fa-heart"></i>
               </span>
           <span *ngIf="p.available">
-                <img src="assets/image/available.png" class="img-thumbnail img-circle"  height="30">
-              </span>
+               <i class="fa fa-tag"></i>
+          </span>
+          <span>
+               <i class="fa fa-shopping-basket" (click)="ajouterItem(p)"></i>
+          </span>
         </div>
 
-            <i class="fa fa-shopping-basket fa-3x" style="color: #d4ab2e; font-size:40px" (click)="ajouterItem(p)"></i>
+
             <!-- <i class="fa fa-shopping-cart fa-3x" style="color: #d4ab2e; font-size:40px"></i>-->
       </div>
     </div>

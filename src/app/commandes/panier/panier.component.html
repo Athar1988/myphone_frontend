@@ -28,7 +28,8 @@
     <tr  *ngFor="let item of Items._embedded.productItems">
     <td ><i (click)="supprimerItem(item.id)" class="bi-x-circle-fill" style="color:red"></i></td>
     <td>
-    <img src="assets/image/unknown.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+      <img class="d-block w-50" src="data:image/jpeg;base64,{{item.picByte}}" alt="">
+
     </td>
     <td><div>{{item.name}}</div></td>
     <td>

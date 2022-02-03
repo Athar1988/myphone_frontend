@@ -35,7 +35,6 @@ const routes: Routes = [
   {path:'compte', component:CompteComponent},
   {path:'panier', component:PanierComponent},
   {path:'listeCommandes', component:ListeCommandeComponent},
-  {path:'profil', component:ProfilComponent},
   {path:'Modifierprofil', component:ModifierProfilComponent},
   {path:'modifierConatct', component:ModifierConatctComponent},
 
@@ -44,11 +43,11 @@ const routes: Routes = [
   { path: 'ajouteProduit', component: AjouterProduitComponent },
   {path:'ajouteProduit', component:AjouterProduitComponent},
   {path:'listeProduit', component:TousProduitComponent},
-  {path:'listeCommande', component:TousCommandesComponent},
   {path:'listeProduit', component:TousProduitComponent},
 
 
 
+  {path:'profil/:idClient', component:ProfilComponent},
   {path:'products/:p1', component:ProduitComponent},
   {path:'detail/:id', component:DetailproduitComponent},
   {path:'chercher/:mc', component:RechercheComponent},

@@ -15,7 +15,7 @@ export class MenuComponent implements OnInit {
   token=false;
   nbItem;
   panier=[];
-  clientConnecter;
+  idclient;
   constructor(public service: CategoriesService,
               public serviceClient: ClientService,
               public router:Router) { }
@@ -76,7 +76,8 @@ export class MenuComponent implements OnInit {
   }
 
   monProfil() {
-    this.router.navigateByUrl('/profil');
+    this.idclient=localStorage.getItem('id');
+    this.router.navigateByUrl('/profil/'+this.idclient);
   }
 
   mesCommandes() {

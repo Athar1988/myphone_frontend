@@ -1,8 +1,37 @@
-<h3>Inscription</h3>
+<h3>Ajouter un produit</h3>
 <form   #AjouteProduitForm="ngForm">
 
-
-
+  <div class="form-floating mb-3">
+    <select
+      [(ngModel)]="categorie"
+      class="form-control"
+      id="exampleFormControlSelect1"
+      #categorieInput
+      name="categorie"
+      required
+      ngModel>
+      <option value="" selected="selected">Categorie</option>
+      <option value="1">Telephone</option>
+      <option value="2">Tablette</option>
+      <option value="3">Produits apple</option>
+      <option value="4">Coque iphone</option>
+      <option value="5">Airpods</option>
+      <option value="6">Haut parleur</option>
+      <option value="7">Smart watch</option>
+      <option value="8">Accessoires</option>
+      <option value="9">Cache</option>
+      <option value="10">Pochette</option>
+      <option value="11">Camera</option>
+      <option value="12">Divers</option>
+    </select>
+    <label for="marque">Toutes les Categorie</label>
+    <div
+      *ngIf="categorieInput.invalid && categorieInput.dirty"
+      class="alert alert-danger"
+    >
+      Categorie obligatoire
+    </div>
+  </div>
 
 
   <div class="form-floating mb-3">
@@ -55,9 +84,6 @@
     </div>
   </div>
 
-
-
-
   <div class="form-floating mb-3">
     <select
       [(ngModel)]="marque"
@@ -68,72 +94,72 @@
       id="marque"
       ngModel>
       <option value="" selected="selected">Toutes les marques</option>
-      <option value="https://www.gsm55.com/liste-acer" >Acer</option>
-      <option value="https://www.gsm55.com/liste-alcatel">Alcatel</option>
-      <option value="https://www.gsm55.com/liste-altice">Altice</option>
-      <option value="https://www.gsm55.com/liste-amazon">Amazon</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-apple">Apple</option>
-      <option value="https://www.gsm55.com/liste-archos">Archos</option>
-      <option value="https://www.gsm55.com/liste-asus">Asus</option>
-      <option value="https://www.gsm55.com/liste-blackberry">Blackberry</option>
-      <option value="https://www.gsm55.com/liste-blackphone">Blackphone</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-blackview">Blackview</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-carrefour">Carrefour</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-crosscall">Crosscall</option>
-      <option value="https://www.gsm55.com/liste-cubot">Cubot</option>
-      <option value="https://www.gsm55.com/liste-danew">Danew</option>
-      <option value="https://www.gsm55.com/liste-doogee">Doogee</option>
-      <option value="https://www.gsm55.com/liste-doro">Doro</option>
-      <option value="https://www.gsm55.com/liste-echo">Echo</option>
-      <option value="https://www.gsm55.com/liste-elephone">Elephone</option>
-      <option value="https://www.gsm55.com/liste-essentielb">EssentielB</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-fairphone">Fairphone</option>
-      <option value="https://www.gsm55.com/liste-gigaset">Gigaset</option>
-      <option value="https://www.gsm55.com/liste-google">Google</option>
-      <option value="https://www.gsm55.com/liste-haier">Haier</option>
-      <option value="https://www.gsm55.com/liste-hisense">Hisense</option>
-      <option value="https://www.gsm55.com/liste-honor">Honor</option>
-      <option value="https://www.gsm55.com/liste-hp">Hp</option>
-      <option value="https://www.gsm55.com/liste-htc">HTC</option>
-      <option value="https://www.gsm55.com/liste-huawei">Huawei</option>
-      <option value="https://www.gsm55.com/liste-ice-phone">IcePhone</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-infinix">Infinix</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-kazam">Kazam</option>
-      <option value="https://www.gsm55.com/liste-konrow">Konrow</option>
-      <option value="https://www.gsm55.com/liste-letv">Lenovo</option>
-      <option value="https://www.gsm55.com/liste-lg">LG</option>
-      <option value="https://www.gsm55.com/liste-logicom">Logicom</option>
-      <option value="https://www.gsm55.com/liste-medion">Medion</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-meizu">Meizu</option>
-      <option value="https://www.gsm55.com/liste-microsoft">Microsoft</option>
-      <option value="https://www.gsm55.com/liste-motorola">Motorola</option>
-      <option value="https://www.gsm55.com/liste-neffos">Neffos</option>
-      <option value="https://www.gsm55.com/liste-nokia">Nokia</option>
-      <option value="https://www.gsm55.com/liste-nvidia">Nvidia</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-obi">Obi</option>
-      <option value="https://www.gsm55.com/liste-oneplus">OnePlus</option>
-      <option value="https://www.gsm55.com/liste-oppo">Oppo</option>
-      <option value="https://www.gsm55.com/liste-orange">Orange</option>
-      <option value="https://www.gsm55.com/liste-ordissimo">Ordissimo</option>
-      <option value="https://www.gsm55.com/liste-oukitel">Oukitel</option>
-      <option value="https://www.gsm55.com/liste-panasonic">Panasonic</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-polaroid">Polaroid</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-qilive">Qilive</option>
-      <option value="https://www.gsm55.com/liste-realme">Realme</option>
-      <option value="https://www.gsm55.com/liste-samsung">Samsung</option>
-      <option value="https://www.gsm55.com/liste-selecline">Selectine</option>
-      <option value="https://www.gsm55.com/liste-sony">Sony</option>
-      <option value="https://www.gsm55.com/liste-sosh">Sosh</option>
-      <option value="https://www.gsm55.com/liste-sfr">SFR</option>
-      <option value="https://www.gsm55.com/liste-tcl">TCL</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-thomson">Thomson</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-ulefone">Ulefone</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-vivo">Vivo</option>
-      <option value="https://www.gsm55.com/liste-wiko">Wiko</option>
-      <option value="https://www.gsm55.com/liste-wileyfox">WileyFox</option>
-      <option value="https://www.gsm55.com/liste-xiaomi">Xiaomi</option>
-      <option value="https://www.gsm55.com/liste-yess">Yezz</option> <!-- ~ -->
-      <option value="https://www.gsm55.com/liste-zte">Zte</option>
+      <option value="Acer" >Acer</option>
+      <option value="Alcatel">Alcatel</option>
+      <option value="Altice">Altice</option>
+      <option value="Amazon">Amazon</option> <!-- ~ -->
+      <option value="Apple">Apple</option>
+      <option value="Archos">Archos</option>
+      <option value="Asus">Asus</option>
+      <option value="Blackberry">Blackberry</option>
+      <option value="Blackphone">Blackphone</option> <!-- ~ -->
+      <option value="Blackview">Blackview</option> <!-- ~ -->
+      <option value="Carrefour">Carrefour</option> <!-- ~ -->
+      <option value="Crosscall">Crosscall</option>
+      <option value="Cubot">Cubot</option>
+      <option value="Danew">Danew</option>
+      <option value="Doogee">Doogee</option>
+      <option value="Doro">Doro</option>
+      <option value="Echo">Echo</option>
+      <option value="Elephone">Elephone</option>
+      <option value="Essentielb">EssentielB</option> <!-- ~ -->
+      <option value="Fairphone">Fairphone</option>
+      <option value="Gigaset">Gigaset</option>
+      <option value="Google">Google</option>
+      <option value="Haier">Haier</option>
+      <option value="Hisense">Hisense</option>
+      <option value="Honor">Honor</option>
+      <option value="Hp">Hp</option>
+      <option value="Htc">HTC</option>
+      <option value="Huawei">Huawei</option>
+      <option value="Phone">IcePhone</option> <!-- ~ -->
+      <option value="Infinix">Infinix</option> <!-- ~ -->
+      <option value="Kazam">Kazam</option>
+      <option value="Konrow">Konrow</option>
+      <option value="Letv">Lenovo</option>
+      <option value="LG">LG</option>
+      <option value="Logicom">Logicom</option>
+      <option value="Medion">Medion</option> <!-- ~ -->
+      <option value="Meizu">Meizu</option>
+      <option value="Microsoft">Microsoft</option>
+      <option value="Motorola">Motorola</option>
+      <option value="Neffos">Neffos</option>
+      <option value="Nokia">Nokia</option>
+      <option value="Nvidia">Nvidia</option> <!-- ~ -->
+      <option value="Obi">Obi</option>
+      <option value="OnePlus">OnePlus</option>
+      <option value="Oppo">Oppo</option>
+      <option value="Orange">Orange</option>
+      <option value="Ordissimo">Ordissimo</option>
+      <option value="Oukitel">Oukitel</option>
+      <option value="Panasonic">Panasonic</option> <!-- ~ -->
+      <option value="Polaroid">Polaroid</option> <!-- ~ -->
+      <option value="Qilive">Qilive</option>
+      <option value="Realme">Realme</option>
+      <option value="Samsung">Samsung</option>
+      <option value="Selecline">Selectine</option>
+      <option value="Sony">Sony</option>
+      <option value="Sosh">Sosh</option>
+      <option value="SFR">SFR</option>
+      <option value="TCL">TCL</option> <!-- ~ -->
+      <option value="Thomson">Thomson</option> <!-- ~ -->
+      <option value="Ulefone">Ulefone</option> <!-- ~ -->
+      <option value="Vivo">Vivo</option>
+      <option value="Wiko">Wiko</option>
+      <option value="Wileyfox">WileyFox</option>
+      <option value="Xiaomi">Xiaomi</option>
+      <option value="Yess">Yezz</option> <!-- ~ -->
+      <option value="Zte">Zte</option>
     </select>
     <label for="marque">Toutes les marques</label>
     <div
@@ -253,8 +279,8 @@
     <input
       type="submit"
       class="btnSubmit"
-      value="Inscription"
-      (click)=" ajoutProduit(AjouteProduitForm.value)"
+      value="Ajouter Produit"
+      (click)=" ajoutProduit(AjouteProduitForm.value, categorieInput.value)"
       [disabled]="AjouteProduitForm.invalid"/>
   </div>
 </form>

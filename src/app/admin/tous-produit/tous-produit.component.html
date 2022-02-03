@@ -16,7 +16,7 @@
   <tbody>
   <tr *ngFor="let produit of tousProduits._embedded.products">
     <td>{{produit.id}}</td>
-    <th scope="row"><img src="assets/image/unknown.png" alt="" width="50" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"></th>
+    <th scope="row"><img src="data:image/jpeg;base64,{{produit.picByte}}" alt="" width="50" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"></th>
     <td>{{produit.name}}</td>
     <td>{{produit.marque}}</td>
     <td>{{produit.quantity}}</td>

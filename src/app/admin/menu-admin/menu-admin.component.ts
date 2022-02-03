@@ -30,7 +30,7 @@ export class MenuAdminComponent implements OnInit {
   }
 
   suiviCommandes() {
-    this.router.navigateByUrl('listeCommande');
+    this.router.navigateByUrl('listeCommandes');
   }
 
   updatecontact() {

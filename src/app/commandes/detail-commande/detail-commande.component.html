@@ -3,6 +3,7 @@
     <thead><!---->
     <tr    >
       <th scope="col">Image</th>
+      <th scope="col">Reference</th>
       <th scope="col">Nom</th>
       <th scope="col">Quantité</th>
       <th scope="col">prix payé</th>
@@ -10,12 +11,18 @@
     </thead>
     <tbody>
     <tr *ngFor="let detailItem of detailCommande._embedded.itemsCommandes">
-      <th scope="row"><img src="assets/image/unknown.png" alt="" width="50" (click)="onProductDetails(detailItem.id)" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"></th>
+      <th scope="row">
+
+        <img class="d-block w-50" src="data:image/jpeg;base64,{{detailItem.picByte}}"alt="" width="50" (click)="onProductDetails(detailItem.id)" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+
+      </th>
+      <td>Ref_{{detailItem.id}}</td>
       <td>{{detailItem.name}}</td>
       <td>{{detailItem.quantiteCommander}}</td>
       <td>{{detailItem.prixtotalproduit}}</td>
     </tr>
     </tbody>
   </table>
+  <button type="button" class="btn btn-success" (click)="validerCommande(idCommande)">Valider La commande</button>
 </div>
 

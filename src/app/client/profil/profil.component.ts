@@ -18,8 +18,9 @@ export class ProfilComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.idClient=localStorage.getItem('id');
-    this.serviceClient.recupererClient(this.idClient).subscribe(
+    //this.idClient=localStorage.getItem('id');
+    let idClient=this.route.snapshot.params.idClient;
+    this.serviceClient.recupererClient(idClient).subscribe(
       data=> {
         this.Client=data;
         console.log(this.Client.nom+ " le nom de client connecter profil");

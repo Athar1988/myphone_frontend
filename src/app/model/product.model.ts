@@ -9,6 +9,9 @@ export class Product{
     public promotion=true,
     public available=true,
     public quantity=0,
+    public nameImage='',
+    public  typeImage='',
+    public  picByte='',
   ){}
 
 }

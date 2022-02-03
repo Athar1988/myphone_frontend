@@ -38,6 +38,7 @@ export class ClientService {
   }
 
 
+
   clientConnecter(){
     if(localStorage.getItem("id")){
       this.clientactuel=this.clientActuel(localStorage.getItem("id"));

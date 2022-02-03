@@ -109,73 +109,277 @@
 
 
 <div  *ngIf="admin=='true'">
+  <h3>Modifier un produit</h3>
   <div class="row">
         <div class="col-sm-5">
-          <img class="d-block w-50" src="assets/image/unknown.png" alt="">
+          <img class="d-block w-50" src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt="">
+          <div class="col-md-6">
+            <input type="file" (change)="onFileChanged($event)">
+          </div>
+          <div class="col-md-6">
+            <input type="button" (click)="onUpload(idproduit)" value="Modifier Image">
+          </div>
         </div>
 
     <!-- formulaire de modification -->
         <div class="col-sm-7  login-form-2">
-          <div class="card-block">
-            <!--           <h4 class="card-title">Small card</h4> -->
-            <p>{{currentProduct.marque}}</p>
-            <b *ngIf="this.currentProduct.available" class="text-success">Availablity: Disponible</b>
-            <b *ngIf="!this.currentProduct.available" class="text-danger">Availablity: InDisponible</b>
-            <p>{{currentProduct.description}}</p>
-            <h5>Prix: {{currentProduct.currentPrice}} TND</h5>
-            <br>
-            <div>
-              <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(currentProduct)">
-                <label class="control-label">Quantité :</label>
-                <input type="number" name="quantity" [(ngModel)]="currentProduct.quantity" ngModel style="width: 40px">
-                <button>
-                  <img src="assets/image/caddy.png">
-                </button>
-              </form>
+          <form   #UpdateProduitForm="ngForm">
+
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                [(ngModel)]="currentProduct.name"
+                type="text"
+                #nameInput="ngModel"
+                required
+                ngModel
+                name="name"
+                aria-required="true"
+              />
+              <label for="name">Nom de produit</label>
+              <div
+                *ngIf="nameInput.invalid && nameInput.dirty"
+                class="alert alert-danger"
+              >
+                Le nom est obliogatoire et doit être correct
+              </div>
             </div>
-            <a href="#" class="btn btn-primary btn-sm float-right">Read More</a>
-          </div>
+
+
+
+            <div class="form-floating mb-3">
+    <textarea
+      placeholder="Description *"
+      class="form-control"
+      rows="2"
+      value=""
+      [(ngModel)]="currentProduct.description"
+      #descriptionInput="ngModel"
+      required
+      ngModel
+      id="description"
+      name="description"
+      type="text"
+      required=""
+      aria-required="true"
+    ></textarea>
+              <label for="description">Description de produit</label>
+              <div
+                *ngIf="descriptionInput.invalid && descriptionInput.dirty"
+                class="alert alert-danger"
+              >
+                Le description est obliogatoire et doit être correct
+              </div>
+            </div>
+
+            <div class="form-floating mb-3">
+              <select
+                [(ngModel)]="currentProduct.marque"
+                class="form-control"
+                #marqueInput
+                name="marque"
+                required
+                id="marque"
+                ngModel>
+                <option value="" selected="selected">Toutes les marques</option>
+                <option value="Acer" >Acer</option>
+                <option value="Alcatel">Alcatel</option>
+                <option value="Altice">Altice</option>
+                <option value="Amazon">Amazon</option> <!-- ~ -->
+                <option value="Apple">Apple</option>
+                <option value="Archos">Archos</option>
+                <option value="Asus">Asus</option>
+                <option value="Blackberry">Blackberry</option>
+                <option value="Blackphone">Blackphone</option> <!-- ~ -->
+                <option value="Blackview">Blackview</option> <!-- ~ -->
+                <option value="Carrefour">Carrefour</option> <!-- ~ -->
+                <option value="Crosscall">Crosscall</option>
+                <option value="Cubot">Cubot</option>
+                <option value="Danew">Danew</option>
+                <option value="Doogee">Doogee</option>
+                <option value="Doro">Doro</option>
+                <option value="Echo">Echo</option>
+                <option value="Elephone">Elephone</option>
+                <option value="Essentielb">EssentielB</option> <!-- ~ -->
+                <option value="Fairphone">Fairphone</option>
+                <option value="Gigaset">Gigaset</option>
+                <option value="Google">Google</option>
+                <option value="Haier">Haier</option>
+                <option value="Hisense">Hisense</option>
+                <option value="Honor">Honor</option>
+                <option value="Hp">Hp</option>
+                <option value="Htc">HTC</option>
+                <option value="Huawei">Huawei</option>
+                <option value="Phone">IcePhone</option> <!-- ~ -->
+                <option value="Infinix">Infinix</option> <!-- ~ -->
+                <option value="Kazam">Kazam</option>
+                <option value="Konrow">Konrow</option>
+                <option value="Letv">Lenovo</option>
+                <option value="LG">LG</option>
+                <option value="Logicom">Logicom</option>
+                <option value="Medion">Medion</option> <!-- ~ -->
+                <option value="Meizu">Meizu</option>
+                <option value="Microsoft">Microsoft</option>
+                <option value="Motorola">Motorola</option>
+                <option value="Neffos">Neffos</option>
+                <option value="Nokia">Nokia</option>
+                <option value="Nvidia">Nvidia</option> <!-- ~ -->
+                <option value="Obi">Obi</option>
+                <option value="OnePlus">OnePlus</option>
+                <option value="Oppo">Oppo</option>
+                <option value="Orange">Orange</option>
+                <option value="Ordissimo">Ordissimo</option>
+                <option value="Oukitel">Oukitel</option>
+                <option value="Panasonic">Panasonic</option> <!-- ~ -->
+                <option value="Polaroid">Polaroid</option> <!-- ~ -->
+                <option value="Qilive">Qilive</option>
+                <option value="Realme">Realme</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Selecline">Selectine</option>
+                <option value="Sony">Sony</option>
+                <option value="Sosh">Sosh</option>
+                <option value="SFR">SFR</option>
+                <option value="TCL">TCL</option> <!-- ~ -->
+                <option value="Thomson">Thomson</option> <!-- ~ -->
+                <option value="Ulefone">Ulefone</option> <!-- ~ -->
+                <option value="Vivo">Vivo</option>
+                <option value="Wiko">Wiko</option>
+                <option value="Wileyfox">WileyFox</option>
+                <option value="Xiaomi">Xiaomi</option>
+                <option value="Yess">Yezz</option> <!-- ~ -->
+                <option value="Zte">Zte</option>
+              </select>
+              <label for="marque">Toutes les marques</label>
+              <div
+                *ngIf="marqueInput.invalid && marqueInput.dirty"
+                class="alert alert-danger"
+              >
+                La marque obligatoire
+              </div>
+            </div>
+
+
+
+            <div class="form-floating mb-3">
+              <input
+                type="number"
+                class="form-control"
+                value=""
+                [(ngModel)]="currentProduct.pourcentage"
+                #pourcentageInput="ngModel"
+                required
+                ngModel
+                name="pourcentage"
+                required=""
+                aria-required="true"
+                id="pourcentage"
+                min="0" max="100"
+              />
+              <label for="pourcentage">Pourcentage de promotion</label>
+              <div
+                *ngIf="pourcentageInput.invalid && pourcentageInput.dirty"
+                class="alert alert-danger"
+              >
+                Le pourcentage est obligatoire
+              </div>
+            </div>
+
+
+
+            <div class="form-floating mb-3">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="currentProduct.currentPrice"
+                #currentPriceInput="ngModel"
+                required
+                ngModel
+                name="currentPrice"
+                aria-required="true"
+                id="currentPrice"
+                min="0"
+              />
+              <label for="currentPrice">Prix initial de produit</label>
+              <div
+                *ngIf="currentPriceInput.invalid && currentPriceInput.dirty"
+                class="alert alert-danger"
+              >
+                Le prix est obligatoire
+              </div>
+            </div>
+
+
+
+            <div class="form-floating mb-3">
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="promotion"
+                  name="promotion"
+                  value="currentProduct.promotion"
+                  #promotion
+                  (change)="onPromo(promotion.checked)"
+                  checked
+                  >
+                <label class="form-check-label" for="promotion">En promotion</label>
+              </div>
+            </div>
+
+
+
+            <div class="form-floating mb-3">
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="available"
+                  name="available"
+                  value="currentProduct.available"
+                  #available
+                  (change)="onDispo(available.checked)"
+                  checked>
+                <label class="form-check-label" for="available">Disponible</label>
+              </div>
+            </div>
+
+
+            <div class="form-floating mb-3">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="currentProduct.quantity"
+                #quantityInput="ngModel"
+                required
+                ngModel
+                name="quantity"
+                aria-required="true"
+                id="quantity"
+                min="0"
+              />
+              <label for="quantity">Quantity disponible de produit</label>
+              <div
+                *ngIf="quantityInput.invalid && quantityInput.dirty"
+                class="alert alert-danger"
+              >
+                La quantite est obligatoire
+              </div>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="submit"
+                class="btnSubmit"
+                value="Modification"
+                (click)=" ModifierProduit(UpdateProduitForm.value, currentProduct)"
+                [disabled]="UpdateProduitForm.invalid"/>
+            </div>
+          </form>
+
+
         </div>
-
-
-
-    <div class="container row">
-      <div class="col-md-6">
-        <input type="file" (change)="onFileChanged($event)">
-      </div>
-      <div class="col-md-6">
-        <input type="button" (click)="onUpload(idproduit)" value="upload">
-      </div>
-    </div>
-    <hr />
-    <div class="container row">
-      <div class="col-md-12">
-        <div *ngIf=message>{{message}}</div>
-      </div>
-    </div>
-
-
-    <div class="container row">
-      <div class="col-md-6">
-        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
-               name="name" />
-      </div>
-      <div class="col-md-6">
-        <input type="button" (click)="getImage1(idproduit)" value="Get Image">
-      </div>
-    </div>
-
-
-    <div class="container row">
-      <div class="col-md-12">
-        <div *ngIf=retrievedImage>
-          <img [src]="retrievedImage" >
-        </div>
-      </div>
-    </div>
-
-
-
 
   </div>
 </div>
@@ -188,41 +392,66 @@
 
 
 <div *ngIf="currentProduct && admin==undefined">
+
+
 <div class="container py-3">
   <div class="title h1 text-center">{{currentProduct.name}}</div>
 </div>
 
-<div class="container">
-  <div class="card float-right">
+  <div class="container login-container">
     <div class="row">
-      <div class="col-sm-5">
-        <img class="d-block w-100" src="assets/image/unknown.png" alt="">
-      </div>
-      <div class="col-sm-7">
-        <div class="card-block">
-          <!--           <h4 class="card-title">Small card</h4> -->
-          <p>{{currentProduct.marque}}</p>
-          <b *ngIf="this.currentProduct.available" class="text-success">Availablity: Disponible</b>
-          <b *ngIf="!this.currentProduct.available" class="text-danger">Availablity: InDisponible</b>
-          <p>{{currentProduct.description}}</p>
-          <h5>Prix: {{currentProduct.currentPrice}} TND</h5>
-          <br>
-          <div>
-            <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(currentProduct)">
-              <label class="control-label">Quantité :</label>
-              <input type="number" name="quantity" [(ngModel)]="currentProduct.quantity" ngModel style="width: 40px">
-              <button>
-                <img src="assets/image/caddy.png">
-              </button>
-            </form>
-          </div>
-          <a href="#" class="btn btn-primary btn-sm float-right">Read More</a>
-        </div>
-      </div>
+      <div class="col-md-12 login-form-1">
+        <h3>Info Produit</h3>
 
+
+        <table class="table">
+          <thead><!---->
+          <tr    >
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td><img class="d-block w-50" src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt=""></td>
+          </tr>
+
+
+          <tr>
+            <th scope="row">Nom</th>
+            <td>{{currentProduct.name}}</td>
+          </tr>
+
+          <tr>
+            <th scope="row">Description</th>
+            <td>{{currentProduct.description}}</td>
+          </tr>
+
+
+          <tr>
+            <th scope="row">Marque</th>
+            <td>{{currentProduct.marque}}</td>
+          </tr>
+
+
+          <tr>
+            <th scope="row">Prix Unitaire</th>
+            <td>{{currentProduct.currentPrice}}</td>
+          </tr>
+
+
+
+
+          </tbody>
+        </table>
+
+
+
+      </div>
     </div>
   </div>
-</div>
+
 
 <br>
 <br>

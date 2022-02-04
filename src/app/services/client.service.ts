@@ -87,6 +87,11 @@ export class ClientService {
   }
 
 
+  ajouterContact(contact): Observable<Client>{
+    return this.http.post<Client>("http://localhost:8080/contacts", contact);
+
+  }
+
 
 
 }

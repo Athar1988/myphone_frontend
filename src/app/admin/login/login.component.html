@@ -52,7 +52,9 @@
             [disabled]="LoginForm.invalid"/>
         </div>
       </form>
-
+      <div *ngIf="existe==false" class="alert alert-danger">
+        Admin n'exitse pas verifer vos saisies
+      </div>
 
     </div>
   </div>

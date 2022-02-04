@@ -44,7 +44,7 @@ export class AjouterProduitComponent implements OnInit {
      this.produit=new Product(null, p.nom, p.description, p.marque,p.currentPrice,p.pourcentage, this.promotion,this.available,p.quantity, null, null, null);
      this.adminSrvice.ajouteProduit(this.produit,categorieId).subscribe(
       data=>{
-        this.router.navigateByUrl('listeProduit');
+        this.router.navigateByUrl('listeProduit/'+categorieId);
         console.log("produits ajouter avec succés");
         },
       err=>{console.log("probleme de reseau");}

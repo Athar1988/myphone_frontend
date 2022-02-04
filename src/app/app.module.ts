@@ -28,7 +28,9 @@ import { AjouterProduitComponent } from './admin/ajouter-produit/ajouter-produit
 import { TousProduitComponent } from './admin/tous-produit/tous-produit.component';
 import { TousCommandesComponent } from './admin/tous-commandes/tous-commandes.component';
 import { ModifierConatctComponent } from './admin/modifier-conatct/modifier-conatct.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //import {NgxPaginationModule} from 'ngx-pagination';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { ModifierConatctComponent } from './admin/modifier-conatct/modifier-cona
     ReactiveFormsModule,
     BrowserModule,
     //NgxPaginationModule
+    CarouselModule,
+    BrowserAnimationsModule
 
   ],
 

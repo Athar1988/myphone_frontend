@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../../services/admin.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../model/product.model';
+import {CategoriesService} from '../../services/categories.service';
 
 @Component({
   selector: 'app-tous-produit',
@@ -11,17 +12,48 @@ import {Product} from '../../model/product.model';
 export class TousProduitComponent implements OnInit {
   tousProduits:any;
   p: number = 1;
-
-
-  private currentPage:number=1;
-  private pageSize:number=20;
-  private pages:Array<number>;
-
+  currentRequest;
+  categories;
+  categorie;
+  idCat=0;
   constructor(private adminService:AdminService,
-              private router: Router) { }
+              private router: Router,
+              private route:ActivatedRoute,
+              private catService:CategoriesService) { }
 
   ngOnInit(): void {
-    this.recupereTousProduits();
+      this.idCat=this.route.snapshot.params.idCat;
+      this.recupereTousProduits();
+  }
+
+
+  Selectcategorie(){
+    this.idCat=this.idCat;
+    if(this.idCat==0){
+      this.recupereTousProduits();
+    }
+    else{
+      this.recupereTousProduitsSelonCategorie(this.idCat);
+    }
+  }
+
+
+  recupereTousProduitsSelonCategorie(idCat){
+     /* this.catService.getUneCategorie(idCat).subscribe(
+        data=>{this.categorie=data;},
+        err=>{console.log("probleme de reseau")}
+      )
+*/
+    this.currentRequest='/categories/'+idCat+'/products';
+    console.log('/categories/'+idCat+'/products');
+    this.catService.getProduitdeCategorie("http://localhost:8080"+this.currentRequest)
+      .subscribe(data=>{
+        this.tousProduits=data;
+        console.log(this.tousProduits);
+
+      },err=>{
+        console.log(err);
+      })
   }
 
 
@@ -29,18 +61,11 @@ export class TousProduitComponent implements OnInit {
     this.adminService.tousProduits().subscribe(
       (data)=>{
         this.tousProduits=data;
-        console.log(this.tousProduits._embedded.products[0]._links.category.href);
-        this.pages=new Array<number>(this.tousProduits.page.totalPages);
       },
       (err)=>{console.log("probleme reseau");}
     )
   }
 
-
-  onProduits(i:number) {
-    this.currentPage=i+1;
-    this.recupereTousProduits();
-  }
 
   supprimerproduit(produit) {
     this.adminService.supprimerProduit(produit).subscribe(
@@ -54,9 +79,5 @@ export class TousProduitComponent implements OnInit {
 
   modifierproduit(produit:Product) {
     this.router.navigateByUrl('detail/'+produit.id);
-    /*this.adminService.modiiferProduit(produit).subscribe(
-      data=>{console.log("produit supprimer avec succé");},
-      err=>{console.log("probleme de connexion");}
-    )*/
   }
 }

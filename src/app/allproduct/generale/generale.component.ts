@@ -61,7 +61,16 @@ export class GeneraleComponent implements OnInit {
           let idCat=this.route.snapshot.params.p2;
           this.title="Produits de la catégorie "+idCat;
           this.currentRequest='/categories/'+idCat+'/products';
-          this.getProducts(this.currentRequest);
+          this.catService.getProduitdeCategorie("http://localhost:8080"+this.currentRequest)
+            .subscribe(data=>{
+              this.products=data;
+              console.log(this.products);
+
+            },err=>{
+              console.log(err);
+            })
+
+
         }
 
       }
@@ -72,7 +81,7 @@ export class GeneraleComponent implements OnInit {
   }
 
   private getCategories() {
-    this.catService.getResource(this.catService.host+"/categories")
+    this.catService.getProduitdeCategorie(this.catService.host+"/categories")
       .subscribe(data=>{
         this.categories=data;
         console.log(this.categories);
@@ -88,7 +97,7 @@ export class GeneraleComponent implements OnInit {
 
 
   private getProducts(requete) {
-    this.catService.getResource("http://localhost:8080"+requete)
+    this.catService.getProduitdeCategorie("http://localhost:8080"+requete)
       .subscribe(data=>{
         this.products=data;
         console.log(this.products);

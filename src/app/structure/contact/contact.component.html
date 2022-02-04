@@ -1,1 +1,197 @@
-<p>contact works!</p>
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-6 login-form-1">
+      <h3>Laissez-nous un message</h3>
+      <form   #ContactForm="ngForm">
+
+        <div class="form-group p-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nom *"
+            value=""
+            [(ngModel)]="nom"
+            type="text"
+            #nomInput="ngModel"
+            required
+            ngModel
+            name="nom"
+            minlength="3"
+            required=""
+            aria-required="true"
+          />
+          <div
+            *ngIf="nomInput.invalid && nomInput.dirty"
+            class="alert alert-danger"
+          >
+            champs obligatoire et au moins 3 caractéres
+          </div>
+        </div>
+
+
+        <div class="form-group p-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Prénom *"
+            value=""
+            [(ngModel)]="prenom"
+            #prenomInput="ngModel"
+            required
+            ngModel
+            id="prenom"
+            name="prenom"
+            minlength="3"
+            required=""
+            aria-required="true"
+          />
+          <div
+            *ngIf="prenomInput.invalid && prenomInput.dirty"
+            class="alert alert-danger"
+          >
+            champs obligatoire et au moins 3 caractéres
+          </div>
+        </div>
+
+
+
+        <div class="form-group p-2">
+          <input
+            class="form-control"
+            placeholder="Téléphone *"
+            value=""
+            [(ngModel)]="telephone"
+            #telephoneInput="ngModel"
+            required
+            ngModel
+            pattern="[0-9]{8}"
+            id="telephone"
+            name="telephone"
+            length="12"
+            type="text"
+            required=""
+            aria-required="true"
+          />
+          <div
+            *ngIf="telephoneInput.invalid && telephoneInput.dirty"
+            class="alert alert-danger"
+          >
+            Le téléphone est obliogatoire et doit être correct
+          </div>
+        </div>
+
+
+
+        <div class="form-group p-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Sujet *"
+            value=""
+            [(ngModel)]="sujet"
+            required
+            ngModel
+            id="sujet"
+            name="sujet"
+            #sujetInput="ngModel"
+          />
+          <div
+            *ngIf="sujetInput.invalid && sujetInput.dirty"
+            class="alert alert-danger"
+          >
+            Il faut saisie votre sujet
+          </div>
+        </div>
+
+        <div class="form-group p-2">
+    <textarea
+      placeholder="Message *"
+      class="form-control"
+      rows="5"
+      value=""
+      [(ngModel)]="message"
+      #messageInput="ngModel"
+      required
+      ngModel
+      id="message"
+      name="message"
+      type="text"
+      required=""
+      aria-required="true"
+    ></textarea>
+          <div
+            *ngIf="messageInput.invalid && messageInput.dirty"
+            class="alert alert-danger"
+          >
+            Le message est obliogatoire
+          </div>
+        </div>
+
+        <div class="form-group p-2">
+          <input
+            type="submit"
+            class="btnSubmit"
+            value="Envoyer un message"
+            (click)=" ajoutContact(ContactForm.value)"
+            [disabled]="ContactForm.invalid"/>
+        </div>
+      </form>
+
+
+
+    </div>
+
+
+
+
+    <div class="col-md-6 login-form-2">
+      <h3>Nos magasins</h3>
+
+      <table class="table">
+        <thead><!---->
+        <tr    >
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Rte Teniour</th>
+          <td>km 4 imm fleur de lys mag.n 4</td>
+        </tr>
+
+        <tr>
+          <th scope="row">Rte Tunis</th>
+          <td>sur rte sakiet ezzit 3021 sfax-tunisie</td>
+        </tr>
+        <tr>
+          <th scope="row">Téléphone</th>
+          <td>+216 00 000 000</td>
+        </tr>
+
+
+        <tr>
+          <th scope="row">Email</th>
+          <td>bestphones@bestphones.tn</td>
+        </tr>
+
+
+        <tr>
+          <th scope="row">Heures d'ouverture</th>
+          <td>Toute la semaine  09-18</td>
+        </tr>
+
+
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-12 ">
+    carte maps
+    <img src="/assets/image/maps.jpg" >
+  </div>
+  </div>
+</div>

@@ -19,7 +19,6 @@ import {ModifierProfilComponent} from './client/modifier-profil/modifier-profil.
 import {LoginComponent} from './admin/login/login.component';
 import {AjouterProduitComponent} from './admin/ajouter-produit/ajouter-produit.component';
 import {TousProduitComponent} from './admin/tous-produit/tous-produit.component';
-import {TousCommandesComponent} from './admin/tous-commandes/tous-commandes.component';
 import {ModifierConatctComponent} from './admin/modifier-conatct/modifier-conatct.component';
 
 
@@ -39,14 +38,10 @@ const routes: Routes = [
   {path:'modifierConatct', component:ModifierConatctComponent},
 
 
-
   { path: 'ajouteProduit', component: AjouterProduitComponent },
-  {path:'ajouteProduit', component:AjouterProduitComponent},
-  {path:'listeProduit', component:TousProduitComponent},
-  {path:'listeProduit', component:TousProduitComponent},
 
 
-
+  {path:'listeProduit/:idCat', component:TousProduitComponent},
   {path:'profil/:idClient', component:ProfilComponent},
   {path:'products/:p1', component:ProduitComponent},
   {path:'detail/:id', component:DetailproduitComponent},

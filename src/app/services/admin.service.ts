@@ -30,7 +30,9 @@ export class AdminService {
 
   }
 
-
+ recupereAdmin(){
+    return this.http.get("http://localhost:8080/logins");
+ }
   /*public tousProduits(page:number, size:number):Observable<Product>{
     console.log("http://localhost:8080/products?page="+page+"&size="+size);
     return this.http.get<Product>("http://localhost:8080/products?page="+page+"&size="+size);

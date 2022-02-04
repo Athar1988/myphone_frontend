@@ -31,7 +31,7 @@ export class PanierComponent implements OnInit {
   ngOnInit(): void {
     this.recupereProductItem();
     this.existe=localStorage.getItem('item');
-    console.log(this.existe);
+    console.log(this.existe+" rrrrr");
   }
 
 
@@ -56,7 +56,7 @@ export class PanierComponent implements OnInit {
         for (let item of this.Items._embedded.productItems) {
           this.productItem=item;
           this.commandeService.commande.products.push(this.productItem);
-        this.prixsansremise+=item.currentPrice;
+        this.prixsansremise+=item.prixUn;
         this.total+=item.prixtotalproduit;
         }
       },

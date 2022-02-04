@@ -1,4 +1,34 @@
 <h3>Liste produits</h3>
+
+
+<select
+  [(ngModel)]="idCat"
+  class="form-control"
+  id="exampleFormControlSelect1"
+  #idCatInput
+  name="idCat"
+  required
+  ngModel
+ (click)="Selectcategorie()"
+>
+  <option value="0" selected="selected">Tous Les Produits</option>
+  <option value="1">Telephone</option>
+  <option value="2">Tablette</option>
+  <option value="3">Produits apple</option>
+  <option value="4">Coque iphone</option>
+  <option value="5">Airpods</option>
+  <option value="6">Haut parleur</option>
+  <option value="7">Smart watch</option>
+  <option value="8">Accessoires</option>
+  <option value="9">Cache</option>
+  <option value="10">Pochette</option>
+  <option value="11">Camera</option>
+  <option value="12">Divers</option>
+</select>
+
+
+
+
 <table class="table ">
   <thead><!---->
   <tr>
@@ -27,9 +57,3 @@
   </tr>
   </tbody>
 </table>
-
-<ul class="nav nav-pills">
-  <li [ngClass]="((i+1)==currentPage)?'active':''" *ngFor="let produit of tousProduits._embedded.products; let i=index">
-    <a class="clickable" (click)="onProduits(i)">{{i}}</a>
-  </li>
-</ul>

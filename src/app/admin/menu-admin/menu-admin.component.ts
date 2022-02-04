@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {CategoriesService} from '../../services/categories.service';
 
 @Component({
   selector: 'app-menu-admin',
@@ -7,21 +8,25 @@ import {Router} from '@angular/router';
   styleUrls: ['./menu-admin.component.css']
 })
 export class MenuAdminComponent implements OnInit {
-
-  constructor(private  router: Router) { }
+  categories;
+  constructor(private  router: Router,
+              private catService:CategoriesService) { }
 
   ngOnInit(): void {
-  }
-
-
-  accueil(){
-    this.router.navigateByUrl('');
+    //recupere tous les catégories
+    this.catService.getProduitdeCategorie(this.catService.host+"/categories")
+      .subscribe(data=>{
+        this.categories=data;
+        console.log(this.categories);
+      },err=>{
+        console.log(err);
+      })
   }
 
 
   deconnecter() {
     localStorage.removeItem('admin');
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl("admin");
 
   }
 
@@ -37,7 +42,8 @@ export class MenuAdminComponent implements OnInit {
     this.router.navigateByUrl('modifierConatct')
   }
 
-  listeProduit() {
-    this.router.navigateByUrl('listeProduit');
+  listeProduit(c) {
+    this.router.navigateByUrl('listeProduit/'+c);
   }
+
 }

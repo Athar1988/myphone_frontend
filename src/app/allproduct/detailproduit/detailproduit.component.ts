@@ -32,9 +32,10 @@ export class DetailproduitComponent implements OnInit {
               private adminService:AdminService) { }
 
   ngOnInit() {
+    //recupere le produits
     this.admin=localStorage.getItem('admin');
     this.idproduit=this.route.snapshot.params.id;
-    this.catalService.getResource(this.catalService.host+"/products/"+this.idproduit)
+    this.catalService.getProduitdeCategorie(this.catalService.host+"/products/"+this.idproduit)
       .subscribe(data=>{
         this.currentProduct=data;
       },err=>{
@@ -42,16 +43,6 @@ export class DetailproduitComponent implements OnInit {
       })
   }
 
-
-
-  onAddProductToCaddy(p:Product) {
-   /* if(!this.authService.isAuthenticated()){
-      this.router.navigateByUrl("/login");
-    }
-    else{
-      this.caddyService.addProduct(p);
-    }*/
-  }
 
 //Gets called when the user selects an image
   public onFileChanged(event) {
@@ -78,7 +69,7 @@ export class DetailproduitComponent implements OnInit {
 
 
   //Gets called when the user clicks on retieve image button to get the image from back end
-  getImage(id) {
+ /* getImage(id) {
     //Make a call to Sprinf Boot to get the Image Bytes.
     this.httpClient.get('http://localhost:8080/image/get/' + id)
       .subscribe(
@@ -89,11 +80,11 @@ export class DetailproduitComponent implements OnInit {
           console.log(this.retrievedImage+" eeeeee");
         }
       );
-  }
+  }*/
 
 
   //Gets called when the user clicks on retieve image button to get the image from back end
-  getImage1(id) {
+ /* getImage1(id) {
     //Make a call to Sprinf Boot to get the Image Bytes.
     this.httpClient.get("http://localhost:8080/products/"+id)
       .subscribe(
@@ -104,16 +95,17 @@ export class DetailproduitComponent implements OnInit {
           /* this.base64Data = this.retrieveResonse.picByte;
            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
            console.log(this.retrievedImage);*/
-       },
+     /*  },
       );
   }
-
+*/
 
   onPromo(isChecked) {
     this.promotion = isChecked;
     //this.promotion = false;
     console.log(this.promotion);
   }
+
 
   onDispo(isChecked){
     this.available = isChecked;
@@ -123,17 +115,13 @@ export class DetailproduitComponent implements OnInit {
 
 
   ModifierProduit(p: Product, currentProduct) {
-    console.log(currentProduct.id+" id");
-    console.log(currentProduct.picByte+" picByte");
-    console.log(p);
     this.currentProduct=new Product(currentProduct.id,p.name,p.description,p.marque,p.currentPrice, p.pourcentage,this.promotion, this.available ,p.quantity,currentProduct.nameImage,currentProduct.typeImage, currentProduct.picByte );
     this.adminService.updateProduit(this.currentProduct).subscribe(
       data=>{console.log("produits modifier avec succé")},
       err=>{console.log("probleme de modification")},
     )
     location.reload();
-
-
-
   }
+
+
 }

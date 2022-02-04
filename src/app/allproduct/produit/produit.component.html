@@ -1,3 +1,4 @@
+<!--
 <div *ngIf="products">
   <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-1  row-cols-xs-1 row-cols-md-2 row-cols-xl-3 justify-content-center" >
     <div class="col col-sm col-md	col-lg	col-xl col-xs mb-5"  *ngFor="let p of products._embedded.products">
@@ -28,12 +29,29 @@
                <i class="fa fa-shopping-basket" (click)="ajouterItem(p)"></i>
           </span>
         </div>
-
-
-            <!-- <i class="fa fa-shopping-cart fa-3x" style="color: #d4ab2e; font-size:40px"></i>-->
       </div>
     </div>
   </div>
 </div>
+-->
+<div *ngIf="products">
+<div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-1  row-cols-xs-1 row-cols-md-2 row-cols-xl-3 justify-content-center" >
+  <div class="col col-sm col-md	col-lg	col-xl col-xs mb-5"  *ngFor="let p of products._embedded.products">
+    <div class="product-grid card h-100">
+      <div class="product-image">
+        <h5 class="card-title">{{p.marque}}</h5>
+        <a class="image"><img (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}"></a>
+        <span *ngIf="p.promotion==true" class="product-sale-label">sale!</span>
+      </div>
+      <div class="product-content">
+        <h3 class="title">{{p.name}}</h3>
+        <div class="price"><span>{{p.currentPrice}} TND</span> {{p.pourcentage }} %</div>
+        <div >{{p.currentPrice-(p.currentPrice*(p.pourcentage/100))}} TND</div>
+        <a class="add-to-cart" (click)="ajouterItem(p)"><i class="fa fa-shopping-basket"></i> Ajouter au panier</a>
+      </div>
+    </div>
 
 
+  </div>
+</div>
+</div>

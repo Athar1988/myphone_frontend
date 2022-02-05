@@ -1,3 +1,4 @@
+<!--
 <div class="container login-container">
   <div class="row">
     <div class="col-md-12 login-form-1">
@@ -56,6 +57,74 @@
         Admin n'exitse pas verifer vos saisies
       </div>
 
+    </div>
+  </div>
+</div>
+
+-->
+
+
+<div class="form-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-offset-6 col-lg-3 col-md-offset-1 col-md-2"></div>
+      <div class="col-lg-offset-6 col-lg-6 col-md-offset-2 col-md-8">
+        <div class="form-container">
+          <div class="form-icon">
+            <i class="fa fa-user-circle"></i>
+            <span class="signup"><a href="">Don't have account? Signup</a></span>
+          </div>
+          <form class="form-horizontal"  #LoginForm="ngForm">
+            <h3 class="title">Login</h3>
+            <div class="form-group">
+              <span class="input-icon"><i class="fa fa-envelope"></i></span>
+              <input
+                class="form-control"
+                [(ngModel)]="login"
+                #loginInput="ngModel"
+                required
+                ngModel
+                id="login"
+                name="login"
+                type="text"
+                required=""
+                aria-required="true"
+                placeholder="Votre login"
+              >
+              <div
+                *ngIf="loginInput.invalid && loginInput.dirty"
+                class="alert alert-danger"
+              >
+                Le login est obliogatoire
+              </div>
+            </div>
+            <div class="form-group">
+              <span class="input-icon"><i class="fa fa-lock"></i></span>
+              <input
+                type="password"
+                class="form-control"
+                [(ngModel)]="motdepasse"
+                required
+                ngModel
+                #motdepasseInput="ngModel"
+                name="motdepasse"
+                placeholder="Password"
+              >
+              <div *ngIf="motdepasseInput.invalid && motdepasseInput.dirty" class="alert alert-danger">
+                Le password est obligatoire
+              </div>
+            </div>
+            <button
+              class="btn signin"
+              (click)=" ConnexionLogin(LoginForm.value)"
+              [disabled]="LoginForm.invalid">Login</button>
+            <span class="forgot-pass"><a href="#">Forgot Username/Password?</a></span>
+          </form>
+          <div *ngIf="existe==false" class="alert alert-danger">
+            Admin n'exitse pas verifer vos saisies
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

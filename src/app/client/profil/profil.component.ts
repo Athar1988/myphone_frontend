@@ -10,7 +10,6 @@ import {ClientService} from '../../services/client.service';
 })
 export class ProfilComponent implements OnInit {
   email;
-  idClient;
   Client;
 
   constructor(private route: ActivatedRoute,
@@ -18,7 +17,6 @@ export class ProfilComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //this.idClient=localStorage.getItem('id');
     let idClient=this.route.snapshot.params.idClient;
     this.serviceClient.recupererClient(idClient).subscribe(
       data=> {

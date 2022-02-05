@@ -282,70 +282,35 @@
 
 
 <div *ngIf="currentProduct && admin==undefined">
+  <div class="divider py-5 bg-light"></div>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
+  <div class="demo">
+    <div class="container">
+      <div class="row">
+        <div class=" col-lg-12 col-md-12 col-md-8 col-sm-12 col-sm-10 col-xs-12">
+          <div class="email-signature">
+            <div class="signature-img">
+              <img src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt="">
+            </div>
+            <div class="signature-details">
+              <h2 class="title">{{currentProduct.name}}</h2>
+              <span class="post">{{currentProduct.marque}}</span><br>
+              <span class="description">{{currentProduct.description}}</span>
 
-
-<div class="container py-3">
-  <div class="title h1 text-center">{{currentProduct.name}}</div>
-</div>
-
-  <div class="container login-container">
-    <div class="row">
-      <div class="col-md-12 login-form-1">
-        <h3>Info Produit</h3>
-
-
-        <table class="table">
-          <thead><!---->
-          <tr    >
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th scope="row"></th>
-            <td><img class="d-block w-50" src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt=""></td>
-          </tr>
-
-
-          <tr>
-            <th scope="row">Nom</th>
-            <td>{{currentProduct.name}}</td>
-          </tr>
-
-          <tr>
-            <th scope="row">Description</th>
-            <td>{{currentProduct.description}}</td>
-          </tr>
-
-
-          <tr>
-            <th scope="row">Marque</th>
-            <td>{{currentProduct.marque}}</td>
-          </tr>
-
-
-          <tr>
-            <th scope="row">Prix Unitaire</th>
-            <td>{{currentProduct.currentPrice}}</td>
-          </tr>
-
-          <tr>
-            <th scope="row"></th>
-            <td>
+            </div>
+            <ul class="signature-content">
+              <li><span class="fa fa-money"></span> {{currentProduct.currentPrice}} TND</li>
+              <li><span class="fa fa-minus"></span> {{currentProduct.pourcentage}} %</li>
+              <li><span class="fa fa-credit-card-alt"></span>{{currentProduct.currentPrice-(currentProduct.currentPrice*(currentProduct.pourcentage/100))}}TND</li>
+            </ul>
+            <ul class="icon">
               <a (click)="ajouterItem(p)" class="btn btn-lg blue"><i class="fa fa-shopping-basket"></i>Ajouter au panier</a>
-            </td>
-          </tr>
-
-          </tbody>
-        </table>
-
-
-
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
 
 

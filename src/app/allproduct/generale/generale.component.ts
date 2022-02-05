@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from '../../model/category.model';
 import {CategoriesService} from '../../services/categories.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-generale',
@@ -11,10 +11,38 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 export class GeneraleComponent implements OnInit {
   categories;
   products;
-  tousproducts;
   currentCategorie;
   title;
   currentRequest;
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    navSpeed: 700,
+    margin:10,
+    center:true,
+    dots:true,
+    // navText: ['Previous', 'Next'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
+
+
   constructor(public catService:CategoriesService,
               private  router:Router,
               private route:ActivatedRoute
@@ -25,7 +53,6 @@ export class GeneraleComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
     this.getProducts("/products");
-
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd ) {
         let url = val.url;
@@ -41,7 +68,7 @@ export class GeneraleComponent implements OnInit {
             this.getProducts(this.currentRequest);
           }
           else if (p2==2){
-            this.title="Produits Disponibles";;
+            this.title="Produits Disponibles";
             this.currentRequest='/products/search/dispoProducts';
             this.getProducts(this.currentRequest);
           }
@@ -59,7 +86,6 @@ export class GeneraleComponent implements OnInit {
         }
         else if (p1==2){
           let idCat=this.route.snapshot.params.p2;
-          this.title="Produits de la catégorie "+idCat;
           this.currentRequest='/categories/'+idCat+'/products';
           this.catService.getProduitdeCategorie("http://localhost:8080"+this.currentRequest)
             .subscribe(data=>{

@@ -2,7 +2,9 @@
 <body>
 <app-menu *ngIf="admin==undefined"></app-menu>
 <app-menu-admin  *ngIf="admin=='true'"></app-menu-admin>
+<div  class="body-container">
 <router-outlet  *ngIf="admin==undefined"></router-outlet>
+</div>
 </body>
 <app-footer></app-footer>
 

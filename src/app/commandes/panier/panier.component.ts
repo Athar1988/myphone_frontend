@@ -20,6 +20,7 @@ export class PanierComponent implements OnInit {
   total=0;
   prixsansremise=0;
   existe;
+  nbItem;
   nomImage;
   constructor(public clinetService:ClientService,
               public panierService: PanierService,
@@ -65,12 +66,6 @@ export class PanierComponent implements OnInit {
   }
 
 
-  public recupereImage(id){
-    console.log("eeeeeeee "+ id);
-    this.nomImage=this.panierService.recupereImage(id);
-    console.log("eeeeeeee "+ this.nomImage);
-  }
-
 
   modifierQuantit(id, item: Item, Q){
     item.quantiteCommander=Q;
@@ -84,8 +79,11 @@ export class PanierComponent implements OnInit {
   this.panierService.supprimerItem(id).subscribe(
     (data)=>{
       this.panier = JSON.parse(localStorage.getItem('panier'));
-      localStorage.setItem('item', JSON.stringify(this.panier.length-1));
+      this.nbItem = JSON.parse(localStorage.getItem('item'));
+      this.nbItem  = Number(this.nbItem)-1 ;
+      localStorage.setItem('item', this.nbItem );
       console.log("item supprimer avec succee");
+      location.reload();
       },
     (err)=>{ console.log("probleme de reseau");}
   );

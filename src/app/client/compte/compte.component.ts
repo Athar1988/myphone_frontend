@@ -46,13 +46,14 @@ export class CompteComponent implements OnInit {
         for(let i=0 ; i< this.client._embedded.clients.length; i++) {
           if (this.client._embedded.clients[i].email == credentials.loginemail && this.client._embedded.clients[i].motdepasse == credentials.loginmotdepasse) {
             this.loginemailexiste=true;
+            console.log(this.loginemailexiste);
             localStorage.setItem('mail', credentials.loginemail);
             localStorage.setItem('id', this.client._embedded.clients[i].id);
             //this.panier.push(null);
             localStorage.setItem('panier', JSON.stringify(this.panier));
             this.panier = JSON.parse(localStorage.getItem('panier'));
             localStorage.setItem('item', JSON.stringify(this.panier.length));
-            this.router.navigate(['/profil']);
+            this.router.navigate(['/profil/'+this.client._embedded.clients[i].id]);
           }
           else{
             this.loginemailexiste=false;

@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
   motarechercher='';
   products;
   token=false;
-  nbItem;
+  nbItem=0;
   panier=[];
   idclient;
   constructor(public service: CategoriesService,
@@ -68,6 +68,7 @@ export class MenuComponent implements OnInit {
 
   Deconnecter() {
     this.serviceClient.logout();
+    location.reload();
     this.router.navigateByUrl('/compte');
   }
 

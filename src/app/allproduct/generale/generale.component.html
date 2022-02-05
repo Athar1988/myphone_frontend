@@ -1,4 +1,4 @@
-
+<!--
 <header class="bg-dark py-5">
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center text-white">
@@ -9,7 +9,7 @@
   </div>
 </header>
 
-
+-->
 
 <div class="container">
 <div class="container-fluid">
@@ -17,9 +17,8 @@
     <div class="col-auto col-md-4 col-xl-3 px-sm-3 px-0 " style="background-color: #35b0ab;">
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-100">
         <a routerLink="/generale" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-          <span class="fs-5 d-none d-sm-inline">Famille</span>
+          <span class="fs-5 d-none d-sm-inline">Magasiner par catégorie</span>
         </a>
-
 
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li class="nav-item " [ngClass]="currentCategorie==c?'active':''"   *ngFor="let c of categories._embedded.categories">
@@ -29,23 +28,6 @@
           </li>
         </ul>
 
-
-        <hr>
-        <div class="dropdown pb-4">
-          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-            <span class="d-none d-sm-inline mx-1">loser</span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
       </div>
     </div>
     <div class="col py-3" >
@@ -56,3 +38,11 @@
   </div>
 </div>
 </div>
+
+
+<!-- tous les produits -->
+<owl-carousel-o [options]="customOptions">
+  <ng-template carouselSlide *ngFor="let p of products._embedded.products" >
+    <img (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}"  width="100%">
+  </ng-template>
+</owl-carousel-o>

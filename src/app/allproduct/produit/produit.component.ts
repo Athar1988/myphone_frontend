@@ -16,6 +16,7 @@ export class ProduitComponent implements OnInit {
   @Input() products:any;
   title:string;
   productItem: any;
+  nbItem;
   listeItem: any;
   panier=[];
   sommeTotal=0;
@@ -47,13 +48,14 @@ export class ProduitComponent implements OnInit {
       this.sommeTotal=produit.currentPrice;
     }
     this.productItem= new Item(null, produit.name ,produit.currentPrice,produit.pourcentage,1, this.sommeTotal, produit.nameImage, produit.typeImage,produit.picByte);
-    if(localStorage && localStorage.getItem('panier')){
-    this.panier = JSON.parse(localStorage.getItem('panier'));
-    this.panier.push(this.productItem);
-    localStorage.setItem('panier', JSON.stringify(this.panier));
-    localStorage.setItem('item', JSON.stringify(this.panier.length));
+   // if(localStorage && localStorage.getItem('panier')){
+   // this.panier = JSON.parse(localStorage.getItem('panier'));
+    //this.panier.push(this.productItem);
+   // localStorage.setItem('panier', JSON.stringify(this.panier));
+    this.nbItem = JSON.parse(localStorage.getItem('item'));
+    localStorage.setItem('item', this.nbItem+1);
     location.reload();
-    }
+   // }
     this.panierservice.sauvgarderItem(this.productItem).subscribe(
       data=>{
         console.log("produit ajouter avec succés");

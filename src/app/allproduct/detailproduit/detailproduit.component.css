@@ -175,3 +175,103 @@ body {
 }
 
 */
+
+
+.email-signature{
+  background: linear-gradient(45deg, #ededed,#fff,#fff,#ededed,#fff,#fff,#ededed,#fff,#fff,#ededed);
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  padding: 15px 20px 20px;
+  border-radius: 100px 70px 0;
+  box-shadow: 0 0 40px -25px #333;
+  position: relative;
+  z-index: 1;
+}
+.email-signature:before{
+  content: '';
+  background: linear-gradient(#2fefb2,#0B989B);
+  height: 150px;
+  width: 155px;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: -1;
+  -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+}
+.email-signature .signature-img{
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.email-signature .signature-img img{
+  width: 100%;
+  height: auto;
+}
+.email-signature .signature-details{
+  color: #333;
+  margin-bottom: 15px;
+}
+.email-signature .title{
+  font-size: 28px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.email-signature .post{
+  color: #2fefb2;
+  font-size: 16px;
+  font-style: italic;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.email-signature .description{
+  color: #0f172a;
+  font-size: 16px;
+  /*font-style: italic;
+  text-transform: capitalize;
+  letter-spacing: 1px;*/
+}
+.email-signature .signature-content{
+  padding: 0;
+  margin: 0 auto 10px;
+  list-style: none;
+  display: inline-block;
+}
+.email-signature .signature-content li{
+  color: #555;
+  font-size: 15px;
+  text-align: left;
+  padding: 0 0 0 20px;
+  margin: 0 7px 5px 0;
+  vertical-align: top;
+  display: inline-block;
+}
+.email-signature .signature-content li span{
+  color: #2fefb2;
+  margin-right: 5px;
+}
+.email-signature .icon{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.email-signature .icon li{ display: inline-block; }
+.email-signature .icon li a{
+  color: #fff;
+  background: linear-gradient(#2fefb2,#0B989B);
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
+  display: block;
+  transition: all 0.3s;
+}
+.email-signature .icon li a:hover{ box-shadow: 0 0 5px #2fefb2, 0 0 0 2px #fff inset; }
+@media screen and (max-width:576px){
+  .email-signature{ border-radius: 20px 10px 0;}
+}

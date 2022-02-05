@@ -83,6 +83,7 @@ export class ClientService {
   }
 
   supprimerTousItem(id): Observable<Item>{
+    localStorage.removeItem('item');
     return this.http.delete<Item>("http://localhost:8080/supprimerTousItems/"+id );
   }
 

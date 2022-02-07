@@ -1,272 +1,84 @@
-<div class="container login-container">
-  <div class="row">
-    <div class="col-md-6 login-form-1">
-      <h3>Connexion</h3>
-      <form  #LoginForm="ngForm">
 
-
-        <div class="form-group p-2">
-          <input
-            class="form-control"
-            value=""
-            [(ngModel)]="loginemail"
-            type="email"
-            #loginemailInput="ngModel"
-            required
-            loginemail
-            ngModel
-            name="loginemail"
-            id="loginemail"
-            placeholder="name@example.com *"
-          />
-          <div
-            *ngIf="loginemailInput.invalid && loginemailInput.dirty"
-            class="alert alert-danger"
-          >
-            L'email est obliogatoire et doit être correct
-          </div>
-        </div>
-
-
-        <div class="form-group p-2">
-          <input type="password"
-                 class="form-control"
-                 placeholder="Mot de passe *"
-                 value=""
-                 [(ngModel)]="loginmotdepasse"
-                 required
-                 minlength="4"
-                 ngModel
-                 #loginmotdepasseInput="ngModel"
-                 name="loginmotdepasse"
-          />
-          <div *ngIf="loginmotdepasseInput.invalid && loginmotdepasseInput.dirty" class="alert alert-danger">
-            Le password est obligatoire et doit impérativement a voir au moins 4
-            caractères
-          </div>
-        </div>
-
-        <div
-          *ngIf="loginemailexiste==false && loginemailInput.dirty"
-          class="alert alert-danger"
-        >
-          L'email n'exist pas ou mot de passe incorrect
-        </div>
-
-
-        <div class="form-group p-2 ">
-          <input
-            type="submit"
-            class="btnSubmit"
-            value="Login"
-            (click)=" Connexion(LoginForm.value)"
-            [disabled]="LoginForm.invalid"
-            name="submit"
-          />
-        </div>
-
-
-        <div class="form-group p-2">
-          <a href="#" class="ForgetPwd">Mot de passe oublié</a>
-        </div>
-      </form>
-    </div>
-
-
-
-
-    <div class="col-md-6 login-form-2">
-
-
-      <h3>Inscription</h3>
-      <form   #InscriptionForm="ngForm">
-
-        <div class="form-group p-2">
-          <input
-            class="form-control"
-            value=""
-            [(ngModel)]="email"
-            type="email"
-            #emailInput="ngModel"
-            required
-            email
-            ngModel
-            name="email"
-            placeholder="name@example.com *"
-          />
-
-
-        </div>
-
-
-
-        <div class="form-group p-2">
-          <input
-            class="form-control"
-            placeholder="Téléphone *"
-            value=""
-            [(ngModel)]="telephone"
-            #telephoneInput="ngModel"
-            required
-            ngModel
-            pattern="[0-9]{8}"
-            id="telephone"
-            name="telephone"
-            length="12"
-            type="text"
-            required=""
-            aria-required="true"
-          />
-          <div
-            *ngIf="telephoneInput.invalid && telephoneInput.dirty"
-            class="alert alert-danger"
-          >
-            Le téléphone est obliogatoire et doit être correct
-          </div>
-        </div>
-
-
-                <div class="form-group p-2">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Nom *"
-                    value=""
-                    [(ngModel)]="nom"
-                    type="text"
-                    #nomInput="ngModel"
-                    required
-                    ngModel
-                    name="nom"
-                    minlength="3"
-                    required=""
-                    aria-required="true"
-                  />
-                  <div
-                    *ngIf="nomInput.invalid && nomInput.dirty"
-                    class="alert alert-danger"
-                  >
-                    champs obligatoire et au moins 3 caractéres
+        <div class="form-bg">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-offset-6 col-lg-3 col-md-offset-1 col-md-2"></div>
+              <div class="col-lg-offset-6 col-lg-6 col-md-offset-2 col-md-8">
+                <div class="form-container">
+                  <div class="form-icon">
+                    <i class="fa fa-user-circle"></i>
+                    <span class="signup"><a (click)="inscription()">Creation d'un nouveau compte</a></span>
                   </div>
+                  <form class="form-horizontal"  #LoginForm="ngForm">
+                    <h3 class="title">Connexion</h3>
+                    <div class="form-group">
+                      <span class="input-icon"><i class="fa fa-envelope"></i></span>
+                      <input
+                        class="form-control"
+                        value=""
+                        [(ngModel)]="loginemail"
+                        type="email"
+                        #loginemailInput="ngModel"
+                        required
+                        loginemail
+                        ngModel
+                        name="loginemail"
+                        id="loginemail"
+                        placeholder="name@example.com *"
+                      >
+                    </div>
+
+                    <div class="form-group">
+                      <span class="input-icon"><i class="fa fa-lock"></i></span>
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Mot de passe *"
+                        value=""
+                        [(ngModel)]="loginmotdepasse"
+                        required
+                        minlength="4"
+                        ngModel
+                        #loginmotdepasseInput="ngModel"
+                        name="loginmotdepasse"
+                      >
+
+                    </div>
+                    <button
+                      class="btn signin"
+                      (click)=" Connexion(LoginForm.value)"
+                      [disabled]="LoginForm.invalid"
+                    >Login</button>
+                    <span class="forgot-pass"><a href="#">Mot de passe oublié?</a></span>
+                  </form>
+
                 </div>
 
-                        <div class="form-group p-2">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Prénom *"
-                            value=""
-                            [(ngModel)]="prenom"
-                            #prenomInput="ngModel"
-                            required
-                            ngModel
-                            id="prenom"
-                            name="prenom"
-                            minlength="3"
-                            required=""
-                            aria-required="true"
-                          />
-                          <div
-                            *ngIf="prenomInput.invalid && prenomInput.dirty"
-                            class="alert alert-danger"
-                          >
-                            champs obligatoire et au moins 3 caractéres
-                          </div>
-                        </div>
-
-                        <div class="form-group p-2">
-                          <select
-                            [(ngModel)]="ville"
-                            class="form-control"
-                            id="exampleFormControlSelect1"
-                            #villeInput
-                            name="ville"
-                            required
-                            ngModel>
-                            <option value="" selected="selected">Ville *</option>
-                            <option value="Ariana">Ariana</option>
-                            <option>Ben arous</option>
-                            <option>Bizerte</option>
-                            <option>Béja</option>
-                            <option>Gabès</option>
-                            <option>Gafsa</option>
-                            <option>Jendouba</option>
-                            <option>Kairouan</option>
-                            <option>Kasserine</option>
-                            <option>Kébili</option>
-                            <option>La manouba</option>
-                            <option>Le kef</option>
-                            <option>Mahdia</option>
-                            <option>Monastir</option>
-                            <option>Médenine</option>
-                            <option>Nabeul</option>
-                            <option>Sfax</option>
-                            <option>Sidi bouzid</option>
-                            <option>Siliana</option>
-                            <option>Sousse</option>
-                            <option>Tataouine</option>
-                            <option>Tozeur</option>
-                            <option>Tunis</option>
-                            <option>Zaghouan</option>
-                          </select>
-                          <div
-                            *ngIf="villeInput.invalid && villeInput.dirty"
-                            class="alert alert-danger"
-                          >
-                            Ville obligatoire
-                          </div>
-                        </div>
 
 
-                        <div class="form-group p-2">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Adresse *"
-                            value=""
-                            [(ngModel)]="address"
-                            required
-                            ngModel
-                            id="address"
-                            name="address"
-                            #addressInput="ngModel"
-                          />
-                          <div
-                            *ngIf="addressInput.invalid && addressInput.dirty"
-                            class="alert alert-danger"
-                          >
-                            Il faut saisie votre adresse
-                          </div>
-                        </div>
+                <div
+                  *ngIf="loginemailInput.invalid && loginemailInput.dirty"
+                  class="alert alert-danger"
+                >
+                  L'email est obliogatoire et doit être correct
+                </div>
 
-                        <div class="form-group p-2">
-                          <input
-                            type="password"
-                            class="form-control"
-                            placeholder="Mot de passe *"
-                            value=""
-                            [(ngModel)]="motdepasse"
-                            required
-                            minlength="4"
-                            ngModel
-                            #motdepasseInput="ngModel"
-                            name="motdepasse"
-                          />
-                          <div *ngIf="motdepasseInput.invalid && motdepasseInput.dirty" class="alert alert-danger">
-                            Le password est obligatoire et doit impérativementa voir au moins 4
-                            caractères
-                          </div>
-                        </div>
-        <div class="form-group p-2">
-          <input
-            type="submit"
-            class="btnSubmit"
-            value="Inscription"
-            (click)=" ajoutClient(InscriptionForm.value, InscriptionForm)"
-            [disabled]="InscriptionForm.invalid"/>
+                <div *ngIf="loginmotdepasseInput.invalid && loginmotdepasseInput.dirty" class="alert alert-danger">
+                  Le password est obligatoire et doit impérativement a voir au moins 4
+                  caractères
+                </div>
+
+
+                <div
+                  *ngIf="loginemailexiste==false && loginemailInput.dirty"
+                  class="alert alert-danger"
+                >
+                  L'email n'exist pas ou mot de passe incorrect
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
-      </form>
-    </div>
 
-  </div>
-</div>
+

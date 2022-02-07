@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-12">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12">
+              <h4 class="title pull-left">Tous les Messages</h4>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body table-responsive">
+          <table class="table  position" width="60%" >
+            <thead>
+            <tr>
+              <th>Numéro</th>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th>Telephone</th>
+              <th>Sujet</th>
+              <th>Message</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            <tr  *ngFor="let message of tousMessage._embedded.contacts">
+              <td>{{message.id}}</td>
+              <td>{{message.nom}}</td>
+              <td>{{message.prenom}} </td>
+              <td>{{message.telephone}}</td>
+              <td>{{message.sujet}}</td>
+              <td>{{message.message}}</td>
+              <td>
+                <ul class="action-list">
+                  <li><a (click)="supprimerMessage(message.id)" class="btn btn-danger"><i class="fa fa-trash"></i></a></li>
+                </ul>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

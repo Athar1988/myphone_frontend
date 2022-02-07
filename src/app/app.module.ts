@@ -26,11 +26,14 @@ import { LoginComponent } from './admin/login/login.component';
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { AjouterProduitComponent } from './admin/ajouter-produit/ajouter-produit.component';
 import { TousProduitComponent } from './admin/tous-produit/tous-produit.component';
-import { TousCommandesComponent } from './admin/tous-commandes/tous-commandes.component';
 import { ModifierConatctComponent } from './admin/modifier-conatct/modifier-conatct.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //import {NgxPaginationModule} from 'ngx-pagination';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { InscriptionComponent } from './client/inscription/inscription.component';
+import { ListeClientComponent } from './admin/liste-client/liste-client.component';
+import { ListeMessageComponent } from './admin/liste-message/liste-message.component';
+import { ErrorComponent } from './structure/error/error.component';
 
 @NgModule({
   declarations: [
@@ -57,8 +60,11 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MenuAdminComponent,
     AjouterProduitComponent,
     TousProduitComponent,
-    TousCommandesComponent,
     ModifierConatctComponent,
+    InscriptionComponent,
+    ListeClientComponent,
+    ListeMessageComponent,
+    ErrorComponent,
   ],
   imports: [
     AppRoutingModule,

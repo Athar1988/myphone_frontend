@@ -1,21 +1,83 @@
-<div  *ngIf="admin=='true'">
-  <h3>Modifier un produit</h3>
-  <div class="row">
-        <div class="col-sm-5">
-          <img class="d-block w-50" src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt="">
-          <div class="col-md-6">
-            <input type="file" (change)="onFileChanged($event)">
-          </div>
-          <div class="col-md-6">
-            <input type="button" (click)="onUpload(idproduit)" value="Modifier Image">
+<div *ngIf="currentProduct && admin==undefined">
+  <div class="divider py-5 bg-light"></div>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
+  <div class="demo">
+    <div class="container">
+      <div class="row">
+        <div class=" col-lg-12 col-md-12 col-md-8 col-sm-12 col-sm-10 col-xs-12">
+          <div class="email-signature">
+            <div class="signature-img">
+              <img src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt="">
+            </div>
+            <div class="signature-details">
+              <h2 class="title">{{currentProduct.name}}</h2>
+              <span class="post">{{currentProduct.marque}}</span><br>
+              <span class="description">{{currentProduct.description}}</span>
+
+            </div>
+            <ul class="signature-content">
+              <li><span class="fa fa-money"></span> {{currentProduct.currentPrice}} TND</li>
+              <li><span class="fa fa-minus"></span> {{currentProduct.pourcentage}} %</li>
+              <li><span class="fa fa-credit-card-alt"></span>{{currentProduct.currentPrice-(currentProduct.currentPrice*(currentProduct.pourcentage/100))}}TND</li>
+            </ul>
+            <ul class="icon">
+              <a (click)="ajouterItem(currentProduct)" class="btn btn-lg blue"><i class="fa fa-shopping-basket"></i>Ajouter au panier</a>
+            </ul>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- formulaire de modification -->
-        <div class="col-sm-7  login-form-2">
-          <form   #UpdateProduitForm="ngForm">
 
-            <div class="form-floating mb-3">
+
+
+
+
+
+
+
+
+
+
+<div  *ngIf="admin=='true'">
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-2">
+    </div>
+
+
+
+
+    <div class="col-md-offset-2 col-md-8">
+
+
+      <div class="col-sm-5">
+        <img class="d-block w-50" src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt="">
+        <div class="col-md-4">
+          <input type="file" (change)="onFileChanged($event)">
+        </div>
+        <div class="col-md-4">
+          <input type="button" (click)="onUpload(idproduit)" value="Modifier Image">
+        </div>
+      </div>
+
+
+
+
+
+
+      <form class="form-horizontal"  #UpdateProduitForm="ngForm">
+        <div class="header">Modifier un produit</div>
+
+        <div class="form-content">
+
+
+          <div class="form-group">
+
+            <label class="form-label">Nom</label>
+            <div class="col-sm-12">
               <input
                 type="text"
                 id="name"
@@ -27,44 +89,49 @@
                 ngModel
                 name="name"
                 aria-required="true"
-              />
-              <label for="name">Nom de produit</label>
-              <div
-                *ngIf="nameInput.invalid && nameInput.dirty"
-                class="alert alert-danger"
               >
-                Le nom est obliogatoire et doit être correct
-              </div>
+              <label class="control-label" for="name"><i class="fa fa-user"></i></label>
+            </div>
+            <div
+              *ngIf="nameInput.invalid && nameInput.dirty"
+              class="alert alert-danger"
+            >
+              Le nom est obliogatoire et doit être correct
             </div>
 
 
 
-            <div class="form-floating mb-3">
-    <textarea
-      placeholder="Description *"
-      class="form-control"
-      rows="2"
-      value=""
-      [(ngModel)]="currentProduct.description"
-      #descriptionInput="ngModel"
-      required
-      ngModel
-      id="description"
-      name="description"
-      type="text"
-      required=""
-      aria-required="true"
-    ></textarea>
-              <label for="description">Description de produit</label>
-              <div
-                *ngIf="descriptionInput.invalid && descriptionInput.dirty"
-                class="alert alert-danger"
-              >
-                Le description est obliogatoire et doit être correct
-              </div>
+            <label class="form-label">Description</label>
+            <div class="col-sm-12">
+               <textarea
+                 placeholder="Description *"
+                 class="form-control"
+                 rows="2"
+                 value=""
+                 [(ngModel)]="currentProduct.description"
+                 #descriptionInput="ngModel"
+                 required
+                 ngModel
+                 id="description"
+                 name="description"
+                 type="text"
+                 required=""
+                 aria-required="true"
+               ></textarea>
+              <label class="control-label" for="description"><i class="fa fa-envelope-o"></i></label>
+            </div>
+            <div
+              *ngIf="descriptionInput.invalid && descriptionInput.dirty"
+              class="alert alert-danger"
+            >
+              Le description est obliogatoire et doit être correct
             </div>
 
-            <div class="form-floating mb-3">
+
+
+
+            <label class="form-label">Marque</label>
+            <div class="col-sm-12">
               <select
                 [(ngModel)]="currentProduct.marque"
                 class="form-control"
@@ -72,7 +139,8 @@
                 name="marque"
                 required
                 id="marque"
-                ngModel>
+                ngModel
+              >
                 <option value="" selected="selected">Toutes les marques</option>
                 <option value="Acer" >Acer</option>
                 <option value="Alcatel">Alcatel</option>
@@ -141,102 +209,17 @@
                 <option value="Yess">Yezz</option> <!-- ~ -->
                 <option value="Zte">Zte</option>
               </select>
-              <label for="marque">Toutes les marques</label>
-              <div
-                *ngIf="marqueInput.invalid && marqueInput.dirty"
-                class="alert alert-danger"
-              >
-                La marque obligatoire
-              </div>
+            </div>
+            <div
+              *ngIf="marqueInput.invalid && marqueInput.dirty"
+              class="alert alert-danger"
+            >
+              La marque obligatoire
             </div>
 
 
-
-            <div class="form-floating mb-3">
-              <input
-                type="number"
-                class="form-control"
-                value=""
-                [(ngModel)]="currentProduct.pourcentage"
-                #pourcentageInput="ngModel"
-                required
-                ngModel
-                name="pourcentage"
-                required=""
-                aria-required="true"
-                id="pourcentage"
-                min="0" max="100"
-              />
-              <label for="pourcentage">Pourcentage de promotion</label>
-              <div
-                *ngIf="pourcentageInput.invalid && pourcentageInput.dirty"
-                class="alert alert-danger"
-              >
-                Le pourcentage est obligatoire
-              </div>
-            </div>
-
-
-
-            <div class="form-floating mb-3">
-              <input
-                type="number"
-                class="form-control"
-                [(ngModel)]="currentProduct.currentPrice"
-                #currentPriceInput="ngModel"
-                required
-                ngModel
-                name="currentPrice"
-                aria-required="true"
-                id="currentPrice"
-                min="0"
-              />
-              <label for="currentPrice">Prix initial de produit</label>
-              <div
-                *ngIf="currentPriceInput.invalid && currentPriceInput.dirty"
-                class="alert alert-danger"
-              >
-                Le prix est obligatoire
-              </div>
-            </div>
-
-
-
-            <div class="form-floating mb-3">
-              <div class="form-check form-switch">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="promotion"
-                  name="promotion"
-                  value="currentProduct.promotion"
-                  #promotion
-                  (change)="onPromo(promotion.checked)"
-                  checked
-                  >
-                <label class="form-check-label" for="promotion">En promotion</label>
-              </div>
-            </div>
-
-
-
-            <div class="form-floating mb-3">
-              <div class="form-check form-switch">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="available"
-                  name="available"
-                  value="currentProduct.available"
-                  #available
-                  (change)="onDispo(available.checked)"
-                  checked>
-                <label class="form-check-label" for="available">Disponible</label>
-              </div>
-            </div>
-
-
-            <div class="form-floating mb-3">
+            <label class="form-label">Quantité disponible</label>
+            <div class="col-sm-12">
               <input
                 type="number"
                 class="form-control"
@@ -248,77 +231,118 @@
                 aria-required="true"
                 id="quantity"
                 min="0"
-              />
-              <label for="quantity">Quantity disponible de produit</label>
-              <div
-                *ngIf="quantityInput.invalid && quantityInput.dirty"
-                class="alert alert-danger"
               >
-                La quantite est obligatoire
+            </div>
+            <div
+              *ngIf="quantityInput.invalid && quantityInput.dirty"
+              class="alert alert-danger"
+            >
+              La quantite est obligatoire
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label class="form-label">Prix unitaire</label>
+            <div class="col-sm-12">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="currentProduct.currentPrice"
+                #currentPriceInput="ngModel"
+                required
+                ngModel
+                name="currentPrice"
+                aria-required="true"
+                id="currentPrice"
+                min="0"
+              >
+            </div>
+            <div
+              *ngIf="currentPriceInput.invalid && currentPriceInput.dirty"
+              class="alert alert-danger"
+            >
+              Le prix est obligatoire
+            </div>
+
+
+
+            <label class="form-label">Pourcentage</label>
+            <div class="col-sm-12">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="currentProduct.pourcentage"
+                #pourcentageInput="ngModel"
+                required
+                ngModel
+                name="pourcentage"
+                aria-required="true"
+                id="pourcentage"
+                min="0"
+              >
+            </div>
+            <div
+              *ngIf="pourcentageInput.invalid && pourcentageInput.dirty"
+              class="alert alert-danger"
+            >
+              Le pourcentageInput est obligatoire
+            </div>
+          </div>
+
+
+            <div class="form-group">
+              <label class="form-label">Promotion</label>
+              <div class="col-sm-12 form-check form-switch">
+                <input
+                  value="currentProduct.promotion"
+                  class="form-check-input"
+                  type="checkbox"
+                  id="promotion"
+                  name="promotion"
+                  #promotion
+                  (change)="onPromo(promotion.checked)"
+                  checked
+                >
+              </div>
+
+
+
+
+              <label class="form-label">Disponibilité</label>
+              <div class="col-sm-12 form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="available"
+                  name="available"
+                  #available
+                  (change)="onDispo(available.checked)"
+                  checked
+                >
               </div>
             </div>
 
-            <div class="form-floating mb-3">
-              <input
-                type="submit"
-                class="btnSubmit"
-                value="Modification"
-                (click)=" ModifierProduit(UpdateProduitForm.value, currentProduct)"
-                [disabled]="UpdateProduitForm.invalid"/>
-            </div>
-          </form>
 
-
-        </div>
-
-  </div>
-</div>
-
-
-
-
-
-
-
-
-<div *ngIf="currentProduct && admin==undefined">
-  <div class="divider py-5 bg-light"></div>
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
-  <div class="demo">
-    <div class="container">
-      <div class="row">
-        <div class=" col-lg-12 col-md-12 col-md-8 col-sm-12 col-sm-10 col-xs-12">
-          <div class="email-signature">
-            <div class="signature-img">
-              <img src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt="">
-            </div>
-            <div class="signature-details">
-              <h2 class="title">{{currentProduct.name}}</h2>
-              <span class="post">{{currentProduct.marque}}</span><br>
-              <span class="description">{{currentProduct.description}}</span>
-
-            </div>
-            <ul class="signature-content">
-              <li><span class="fa fa-money"></span> {{currentProduct.currentPrice}} TND</li>
-              <li><span class="fa fa-minus"></span> {{currentProduct.pourcentage}} %</li>
-              <li><span class="fa fa-credit-card-alt"></span>{{currentProduct.currentPrice-(currentProduct.currentPrice*(currentProduct.pourcentage/100))}}TND</li>
-            </ul>
-            <ul class="icon">
-              <a (click)="ajouterItem(p)" class="btn btn-lg blue"><i class="fa fa-shopping-basket"></i>Ajouter au panier</a>
-            </ul>
           </div>
+
+
+
+        <div class="footer clearfix">
+          <button
+            type="submit"
+            class="btn btn-default"
+            (click)=" ModifierProduit(UpdateProduitForm.value, currentProduct)"
+            [disabled]="UpdateProduitForm.invalid"
+          >Modifier Produit</button>
         </div>
-      </div>
+
+      </form>
     </div>
+
   </div>
 </div>
-
-
-
-
-
-
-
-
-
+</div>
 

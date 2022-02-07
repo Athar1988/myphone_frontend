@@ -1,54 +1,25 @@
-<div class="container login-container">
-  <div class="row">
-    <div class="col-md-12 login-form-1">
-      <h3>Mon Profil</h3>
 
-
-            <table class="table">
-              <thead><!---->
-              <tr    >
-                <th scope="col"></th>
-                <th scope="col"></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <th scope="row">Nom</th>
-                <td>{{Client.nom}}</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Prenom</th>
-                <td>{{Client.prenom}}</td>
-              </tr>
-
-
-              <tr>
-                <th scope="row">Email</th>
-                <td>{{Client.email}}</td>
-              </tr>
-
-
-              <tr>
-                <th scope="row">Téléphone</th>
-                <td>{{Client.telephone}}</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Ville</th>
-                <td>{{Client.ville}}</td>
-              </tr>
-
-              <tr>
-                <th scope="row">Adresse</th>
-                <td>{{Client.address}}</td>
-              </tr>
-
-              </tbody>
-            </table>
-
-
-
+<div class="demo">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-offset-1 col-lg-3 col-md-offset-2 col-md-2 col-sm-offset-1 col-sm-2 col-xs-12"></div>
+      <div class="col-lg-offset-1 col-lg-6 col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12">
+        <div class="email-signature">
+          <div class="signature-icon">
+            <i class="fa fa-user"></i>
+          </div>
+          <div class="signature-details">
+            <h2 class="title">{{Client.nom}} </h2>
+            <span class="post">{{Client.prenom}}</span>
+          </div>
+          <ul class="signature-content">
+            <li><span>A</span>{{Client.address}}</li>
+            <li><span>V</span> {{Client.ville}}</li>
+            <li><span>T</span>{{Client.telephone}}</li>
+            <li><span>E</span>{{Client.email}}</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

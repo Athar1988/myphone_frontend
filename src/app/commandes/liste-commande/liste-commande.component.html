@@ -1,125 +1,210 @@
+
 <div  *ngIf="admin=='true'">
-  <h3>Liste des commandes</h3>
-  <a (click)="enCours()">Cours</a>
-  <br>
-  <a (click)="traiter()">Traiter</a>
+  <div class="container">
+  <div class="row"  >
+    <div class="col-md-offset-1 col-md-12" *ngIf="terminer==false && encours==false">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12">
+              <h4 class="title pull-left">Liste des commandes</h4>
+              <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Tous Commande</a>
+              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Commande en Cours</a>
+              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i> Commande Terminer</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body table-responsive">
+          <table class="table  position" width="60%" >
+            <thead>
+            <tr>
+              <th width="17%">Numéro</th>
+              <th width="5%">Date</th>
+              <th width="30%" >Montant Toatl</th>
+              <th width="17%">Statut</th>
+              <th width="17%">Client</th>
+              <th width="17%">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  *ngFor="let commande of listeCommande">
+              <td>{{commande.id}}</td>
+              <td>{{commande.date}}</td>
+              <td>{{commande.totalAmount}} </td>
+              <td>{{commande.statut}}</td>
+              <td>
+                <ul class="action-list">
+                  <li><a (click)="detailClient(commande.id)" class="btn btn-primary"><i class=" fa fa-user-circle"></i></a></li>
+                </ul>
+              </td>
+              <td>
+                <ul class="action-list">
+                  <li><a (click)="detailCommande(commande.id)" class="btn btn-success"><i class="fa fa-check-square"></i></a></li>
+                  <li><a  (click)="supprimerCommande(commande.id)" class="btn btn-danger"><i class="fa fa-trash"></i></a></li>
+                </ul>
+              </td>
+            </tr>
 
-
-
-  <table class="table" *ngIf="terminer==false && encours==false">
-    <thead><!---->
-    <tr    >
-      <th scope="col">#</th>
-      <th scope="col">Date</th>
-      <th scope="col">Montant Toatl</th>
-      <th scope="col">Statut</th>
-      <th scope="col">Client</th>
-      <th scope="col">Traiter</th>
-      <th scope="col">supprimer</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let commande of listeCommande">
-      <th scope="row">{{commande.id}}</th>
-      <td>{{commande.date}}</td>
-      <td>{{commande.totalAmount}}</td>
-      <td>{{commande.statut}}</td>
-      <td  *ngIf="admin=='true'"><i class="fa fa-angle-double-right" (click)="detailClient(commande.id)"></i></td>
-      <td><i class="fa fa-angle-double-right" (click)="detailCommande(commande.id)"></i></td>
-      <td><i class="bi-x-circle-fill" style="color:red" (click)="supprimerCommande(commande.id)"></i></td>
-    </tr>
-    </tbody>
-  </table>
-
-
-
-
-  <table class="table" *ngIf="terminer==false && encours==true">
-    <thead><!---->
-    <tr    >
-      <th scope="col">#</th>
-      <th scope="col">Date</th>
-      <th scope="col">Montant Toatl</th>
-      <th scope="col">Statut</th>
-      <th scope="col">Client</th>
-      <th scope="col">Traiter</th>
-      <th scope="col">supprimer</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let commande of listeCommandeEncours">
-      <th scope="row">{{commande.id}}</th>
-      <td>{{commande.date}}</td>
-      <td>{{commande.totalAmount}}</td>
-      <td>{{commande.statut}}</td>
-      <td  *ngIf="admin=='true'"><i class="fa fa-angle-double-right" (click)="detailClient(commande.id)"></i></td>
-      <td><i class="fa fa-angle-double-right" (click)="detailCommande(commande.id)"></i></td>
-      <td><i class="bi-x-circle-fill" style="color:red" (click)="supprimerCommande(commande.id)"></i></td>
-    </tr>
-    </tbody>
-  </table>
-
-  <table class="table" *ngIf="terminer==true && encours==false">
-    <thead><!---->
-    <tr    >
-      <th scope="col">#</th>
-      <th scope="col">Date</th>
-      <th scope="col">Montant Toatl</th>
-      <th scope="col">Statut</th>
-      <th scope="col">Client</th>
-      <th scope="col">Traiter</th>
-      <th scope="col">supprimer</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let commande of listeCommandeTraiter">
-      <th scope="row">{{commande.id}}</th>
-      <td>{{commande.date}}</td>
-      <td>{{commande.totalAmount}}</td>
-      <td>{{commande.statut}}</td>
-      <td  *ngIf="admin=='true'"><i class="fa fa-angle-double-right" (click)="detailClient(commande.id)"></i></td>
-      <td><i class="fa fa-angle-double-right" (click)="detailCommande(commande.id)"></i></td>
-      <td><i class="bi-x-circle-fill" style="color:red" (click)="supprimerCommande(commande.id)"></i></td>
-    </tr>
-    </tbody>
-  </table>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
 
-</div>
+  <div class="row"  >
+    <div class="col-md-offset-1 col-md-12">
+      <div class="panel" *ngIf="terminer==false && encours==true">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12">
+              <h4 class="title pull-left">Liste des commandes</h4>
+              <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i>Tous Commande</a>
+              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i>Commande en Cours</a>
+              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Commande Terminer</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body table-responsive">
+          <table class="table  position" width="60%" >
+            <thead>
+            <tr>
+              <th width="17%">Numéro</th>
+              <th width="5%">Date</th>
+              <th width="30%" >Montant Toatl</th>
+              <th width="17%">Statut</th>
+              <th width="17%">Client</th>
+              <th width="17%">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  *ngFor="let commande of listeCommandeEncours">
+              <td>{{commande.id}}</td>
+              <td>{{commande.date}}</td>
+              <td>{{commande.totalAmount}} </td>
+              <td>{{commande.statut}}</td>
+              <td>
+                <ul class="action-list">
+                  <li><a (click)="detailClient(commande.id)" class="btn btn-primary"><i class=" fa fa-user-circle"></i></a></li>
+                </ul>
+              </td>
+              <td>
+                <ul class="action-list">
+                  <li><a (click)="detailCommande(commande.id)" class="btn btn-success"><i class="fa fa-check-square"></i></a></li>
+                  <li><a  (click)="supprimerCommande(commande.id)" class="btn btn-danger"><i class="fa fa-trash"></i></a></li>
+                </ul>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
-
-
-
-<div *ngIf="admin==undefined">
-<div class="container login-container">
-  <div class="row">
-    <div class="col-md-12 login-form-1">
-      <h3>Mes Commandes</h3>
-      <table class="table ">
-        <thead><!---->
-        <tr    >
-          <th scope="col">#</th>
-          <th scope="col">Date</th>
-          <th scope="col">Montant Toatl</th>
-          <th scope="col">Statut</th>
-          <th scope="col">Détail</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let commande of commandes._embedded.commandes">
-          <th scope="row">{{commande.id}}</th>
-          <td>{{commande.date}}</td>
-          <td>{{commande.totalAmount}}</td>
-          <td>{{commande.statut}}</td>
-          <td><i class="fa fa-angle-double-right" (click)="detailCommande(commande.id)"></i></td>
-        </tr>
-        </tbody>
-      </table>
+  <div class="row"  >
+    <div class="col-md-offset-1 col-md-12" *ngIf="terminer==true && encours==false">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12">
+              <h4 class="title pull-left">Liste des commandes</h4>
+              <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i>Tous Commande</a>
+              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i>Commande en Cours</a>
+              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Commande Terminer</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body table-responsive">
+          <table class="table  position" width="60%" >
+            <thead>
+            <tr>
+              <th width="17%">Numéro</th>
+              <th width="5%">Date</th>
+              <th width="30%" >Montant Toatl</th>
+              <th width="17%">Statut</th>
+              <th width="17%">Client</th>
+              <th width="17%">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  *ngFor="let commande of listeCommandeTraiter">
+              <td>{{commande.id}}</td>
+              <td>{{commande.date}}</td>
+              <td>{{commande.totalAmount}} </td>
+              <td>{{commande.statut}}</td>
+              <td>
+                <ul class="action-list">
+                  <li><a (click)="detailClient(commande.id)" class="btn btn-primary"><i class=" fa fa-user-circle"></i></a></li>
+                </ul>
+              </td>
+              <td>
+                <ul class="action-list">
+                  <li><a (click)="detailCommande(commande.id)" class="btn btn-success"><i class="fa fa-check-square"></i></a></li>
+                  <li><a  (click)="supprimerCommande(commande.id)" class="btn btn-danger"><i class="fa fa-trash"></i></a></li>
+                </ul>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 </div>
+
+
+
+<div *ngIf="admin==undefined">
+
+  <div class="container">
+    <div class="row" *ngIf="existe!=null ||  existe!=0">
+      <div class="col-md-offset-1 col-md-12">
+        <div class="panel">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-sm-12 col-xs-12">
+                <h4 class="title pull-left">Mes Commandes</h4>
+                <a (click)="ContinuerShopping()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Ajouter produit</a>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body table-responsive">
+            <table class="table  position" width="60%" >
+              <thead>
+              <tr>
+                <th width="17%">Numéro</th>
+                <th width="5%">Date</th>
+                <th width="30%" >Montant Toatl</th>
+                <th width="17%">Statut</th>
+                <th width="17%">Détail</th>
+              </tr>
+              </thead>
+              <tbody>
+
+
+              <tr  *ngFor="let commande of commandes._embedded.commandes">
+                <td>{{commande.id}}</td>
+                <td width="5%">{{commande.date}}</td>
+                <td>{{commande.totalAmount}} </td>
+                <td>{{commande.statut}}</td>
+                <td><i class="fa fa-angle-double-right" (click)="detailCommande(commande.id)"></i></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+</div>
+</div>
+</div>
+

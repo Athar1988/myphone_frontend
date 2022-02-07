@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CategoriesService} from '../../services/categories.service';
 import {Router} from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import {ClientService} from '../../services/client.service';
+import {CommandeService} from '../../services/commande.service';
 
 @Component({
   selector: 'app-contenu',
@@ -9,7 +11,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./contenu.component.css']
 })
 export class ContenuComponent implements OnInit {
-
+  currentRequest;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -37,7 +39,19 @@ export class ContenuComponent implements OnInit {
     nav: true
   }
   produits;
+  nombreProduits;
+  client;
+  nombreclient;
+  commande;
+  nombrecommande;
+  promoProduit;
+  dispoProduit;
+
+
+
   constructor(private catService:CategoriesService,
+              private clientService:ClientService,
+              private commandeService:CommandeService,
               private router:Router) { }
 
   ngOnInit(): void {
@@ -45,10 +59,53 @@ export class ContenuComponent implements OnInit {
       data=>{
         this.produits=data;
         console.log(this.produits);
+        this.nombreProduits=this.produits.page.totalElements;
+      },
+      err=>{console.log("erruer de reseau");}
+    )
+
+
+    this.catService.getTousProduitsFiltre('search/promoProducts').subscribe(
+      data=>{
+        this.promoProduit=data;
+        console.log(this.promoProduit);
+      },
+      err=>{console.log("erruer de reseau");}
+    )
+
+
+
+    this.catService.getTousProduitsFiltre('search/dispoProducts').subscribe(
+      data=>{
+        this.dispoProduit=data;
+        console.log(this.dispoProduit);
+      },
+      err=>{console.log("erruer de reseau");}
+    )
+
+
+
+    this.clientService.recupererTousClient().subscribe(
+      data=>{
+        this.client=data;
+        console.log(this.client);
+        this.nombreclient=this.client.page.totalElements;
+      },
+      err=>{console.log("erruer de reseau");}
+    )
+
+
+
+    this.commandeService.recupereItemCommander().subscribe(
+      data=>{
+        this.commande=data;
+        console.log(this.commande);
+        this.nombrecommande=this.commande.page.totalElements;
       },
       err=>{console.log("erruer de reseau");}
     )
   }
+
 
   onProductDetails(id) {
     this.router.navigateByUrl("/detail/"+id);

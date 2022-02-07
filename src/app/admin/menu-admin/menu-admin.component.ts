@@ -43,7 +43,14 @@ export class MenuAdminComponent implements OnInit {
   }
 
   listeProduit(c) {
-    this.router.navigateByUrl('listeProduit/'+c);
+    this.router.navigateByUrl('listeProduit/admin/'+c);
   }
 
+  listeClient() {
+    this.router.navigateByUrl('listeClient');
+  }
+
+  listeMessage() {
+    this.router.navigateByUrl('listeMessage');
+  }
 }

@@ -38,7 +38,6 @@ export class DetailCommandeComponent implements OnInit {
     this.commandeService.recupereCommande(idCommande).subscribe(
       data=>{
         this.commande=data;
-        console.log(this.commande+" rrrrr");
         this.commandeService.traiterCommande(idCommande, this.commande).subscribe(
           data=>{console.log("commande traiter avec succé")},
           err=>{console.log("probleme de connexion")}

@@ -1,341 +1,270 @@
-<h3>Ajouter un produit</h3>
-<form   #AjouteProduitForm="ngForm">
 
-  <div class="form-floating mb-3">
-    <select
-      [(ngModel)]="categorie"
-      class="form-control"
-      id="exampleFormControlSelect1"
-      #categorieInput
-      name="categorie"
-      required
-      ngModel>
-      <option value="" selected="selected">Categorie</option>
-      <option value="1">Telephone</option>
-      <option value="2">Tablette</option>
-      <option value="3">Produits apple</option>
-      <option value="4">Coque iphone</option>
-      <option value="5">Airpods</option>
-      <option value="6">Haut parleur</option>
-      <option value="7">Smart watch</option>
-      <option value="8">Accessoires</option>
-      <option value="9">Cache</option>
-      <option value="10">Pochette</option>
-      <option value="11">Camera</option>
-      <option value="12">Divers</option>
-    </select>
-    <label for="marque">Toutes les Categorie</label>
-    <div
-      *ngIf="categorieInput.invalid && categorieInput.dirty"
-      class="alert alert-danger"
-    >
-      Categorie obligatoire
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-2"></div>
+    <div class="col-md-offset-2 col-md-8">
+      <form class="form-horizontal"  #AjouteProduitForm="ngForm">
+        <div class="header">Ajouter un produit</div>
+        <div class="form-content">
+          <div class="form-group">
+
+            <label class="form-label">Catégortie</label>
+            <div class="col-sm-12">
+              <select
+                [(ngModel)]="categorie"
+                class="form-control"
+                id="exampleFormControlSelect1"
+                #categorieInput
+                name="categorie"
+                required
+                ngModel
+              >
+                <option value="" selected="selected">Categorie</option>
+                <option value="1">Telephone</option>
+                <option value="2">Tablette</option>
+                <option value="3">Produits apple</option>
+                <option value="4">Coque iphone</option>
+                <option value="5">Airpods</option>
+                <option value="6">Haut parleur</option>
+                <option value="7">Smart watch</option>
+                <option value="8">Accessoires</option>
+                <option value="9">Cache</option>
+                <option value="10">Pochette</option>
+                <option value="11">Camera</option>
+                <option value="12">Divers</option>
+              </select>
+            </div>
+            <div
+              *ngIf="categorieInput.invalid && categorieInput.dirty"
+              class="alert alert-danger"
+            >
+              Categorie obligatoire
+            </div>
+
+
+            <label class="form-label">Nom</label>
+            <div class="col-sm-12">
+              <input
+                type="text"
+                id="nom"
+                class="form-control"
+                [(ngModel)]="nom"
+                type="text"
+                #nomInput="ngModel"
+                required
+                ngModel
+                name="nom"
+                aria-required="true"
+              >
+              <label class="control-label" for="nom"><i class="fa fa-user"></i></label>
+            </div>
+            <div
+              *ngIf="nomInput.invalid && nomInput.dirty"
+              class="alert alert-danger"
+            >
+              Le nom est obliogatoire et doit être correct
+            </div>
+
+
+
+            <label class="form-label">Description</label>
+            <div class="col-sm-12">
+           <textarea
+             class="form-control"
+             rows="5"
+             value=""
+             [(ngModel)]="description"
+             #descriptionInput="ngModel"
+             required
+             ngModel
+             id="description"
+             name="description"
+             type="text"
+             required=""
+             aria-required="true"
+           ></textarea>
+              <label class="control-label" for="description"><i class="fa fa-envelope-o"></i></label>
+            </div>
+            <div
+              *ngIf="descriptionInput.invalid && descriptionInput.dirty"
+              class="alert alert-danger"
+            >
+              Le description est obliogatoire et doit être correct
+            </div>
+
+
+            <label class="form-label">Marque</label>
+            <div class="col-sm-12">
+              <select
+                [(ngModel)]="marque"
+                class="form-control"
+                #marqueInput
+                name="marque"
+                required
+                id="marque"
+                ngModel
+              >
+                <option value="" selected="selected">Toutes les marques</option>
+                <option value="Acer" >Acer</option>
+                <option value="Alcatel">Alcatel</option>
+                <option value="Altice">Altice</option>
+                <option value="Amazon">Amazon</option> <!-- ~ -->
+                <option value="Apple">Apple</option>
+                <option value="Archos">Archos</option>
+                <option value="Asus">Asus</option>
+                <option value="Blackberry">Blackberry</option>
+                <option value="Blackphone">Blackphone</option> <!-- ~ -->
+                <option value="Blackview">Blackview</option> <!-- ~ -->
+                <option value="Carrefour">Carrefour</option> <!-- ~ -->
+                <option value="Crosscall">Crosscall</option>
+                <option value="Cubot">Cubot</option>
+                <option value="Danew">Danew</option>
+                <option value="Doogee">Doogee</option>
+                <option value="Doro">Doro</option>
+                <option value="Echo">Echo</option>
+                <option value="Elephone">Elephone</option>
+                <option value="Essentielb">EssentielB</option> <!-- ~ -->
+                <option value="Fairphone">Fairphone</option>
+                <option value="Gigaset">Gigaset</option>
+                <option value="Google">Google</option>
+                <option value="Haier">Haier</option>
+                <option value="Hisense">Hisense</option>
+                <option value="Honor">Honor</option>
+                <option value="Hp">Hp</option>
+                <option value="Htc">HTC</option>
+                <option value="Huawei">Huawei</option>
+                <option value="Phone">IcePhone</option> <!-- ~ -->
+                <option value="Infinix">Infinix</option> <!-- ~ -->
+                <option value="Kazam">Kazam</option>
+                <option value="Konrow">Konrow</option>
+                <option value="Letv">Lenovo</option>
+                <option value="LG">LG</option>
+                <option value="Logicom">Logicom</option>
+                <option value="Medion">Medion</option> <!-- ~ -->
+                <option value="Meizu">Meizu</option>
+                <option value="Microsoft">Microsoft</option>
+                <option value="Motorola">Motorola</option>
+                <option value="Neffos">Neffos</option>
+                <option value="Nokia">Nokia</option>
+                <option value="Nvidia">Nvidia</option> <!-- ~ -->
+                <option value="Obi">Obi</option>
+                <option value="OnePlus">OnePlus</option>
+                <option value="Oppo">Oppo</option>
+                <option value="Orange">Orange</option>
+                <option value="Ordissimo">Ordissimo</option>
+                <option value="Oukitel">Oukitel</option>
+                <option value="Panasonic">Panasonic</option> <!-- ~ -->
+                <option value="Polaroid">Polaroid</option> <!-- ~ -->
+                <option value="Qilive">Qilive</option>
+                <option value="Realme">Realme</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Selecline">Selectine</option>
+                <option value="Sony">Sony</option>
+                <option value="Sosh">Sosh</option>
+                <option value="SFR">SFR</option>
+                <option value="TCL">TCL</option> <!-- ~ -->
+                <option value="Thomson">Thomson</option> <!-- ~ -->
+                <option value="Ulefone">Ulefone</option> <!-- ~ -->
+                <option value="Vivo">Vivo</option>
+                <option value="Wiko">Wiko</option>
+                <option value="Wileyfox">WileyFox</option>
+                <option value="Xiaomi">Xiaomi</option>
+                <option value="Yess">Yezz</option> <!-- ~ -->
+                <option value="Zte">Zte</option>
+              </select>
+            </div>
+            <div
+              *ngIf="marqueInput.invalid && marqueInput.dirty"
+              class="alert alert-danger"
+            >
+              La marque obligatoire
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label class="form-label">Prix unitaire</label>
+            <div class="col-sm-12">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="currentPrice"
+                #currentPriceInput="ngModel"
+                required
+                ngModel
+                name="currentPrice"
+                aria-required="true"
+                id="currentPrice"
+                min="0"
+              >
+            </div>
+            <div
+              *ngIf="currentPriceInput.invalid && currentPriceInput.dirty"
+              class="alert alert-danger"
+            >
+              Le prix est obligatoire
+            </div>
+
+
+            <label class="form-label">Quantité disponible</label>
+            <div class="col-sm-12">
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="quantity"
+                #quantityInput="ngModel"
+                required
+                ngModel
+                name="quantity"
+                aria-required="true"
+                id="quantity"
+                min="0"
+              >
+            </div>
+            <div
+              *ngIf="quantityInput.invalid && quantityInput.dirty"
+              class="alert alert-danger"
+            >
+              La quantite est obligatoire
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="form-label">Disponibilité</label>
+            <div class="col-sm-12 form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="available"
+                name="available"
+                #available
+                (change)="onDispo(available.checked)"
+                checked
+              >
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="footer clearfix">
+          <button
+            type="submit"
+            class="btn btn-default"
+            (click)=" ajoutProduit(AjouteProduitForm.value, categorieInput.value)"
+            [disabled]="AjouteProduitForm.invalid"
+          >Ajouter Produit</button>
+        </div>
+
+
+
+
+      </form>
     </div>
-  </div>
-
-
-  <div class="form-floating mb-3">
-    <input
-      type="text"
-      id="nom"
-      class="form-control"
-      placeholder="Nom *"
-      [(ngModel)]="nom"
-      type="text"
-      #nomInput="ngModel"
-      required
-      ngModel
-      name="nom"
-      aria-required="true"
-    />
-    <label for="nom">Nom de produit</label>
-    <div
-      *ngIf="nomInput.invalid && nomInput.dirty"
-      class="alert alert-danger"
-    >
-      Le nom est obliogatoire et doit être correct
-    </div>
-  </div>
-
-
-
-  <div class="form-floating mb-3">
-    <textarea
-      placeholder="Description *"
-      class="form-control"
-      rows="5"
-      value=""
-      [(ngModel)]="description"
-      #descriptionInput="ngModel"
-      required
-      ngModel
-      id="description"
-      name="description"
-      type="text"
-      required=""
-      aria-required="true"
-    ></textarea>
-    <label for="description">Description de produit</label>
-    <div
-      *ngIf="descriptionInput.invalid && descriptionInput.dirty"
-      class="alert alert-danger"
-    >
-      Le description est obliogatoire et doit être correct
-    </div>
-  </div>
-
-  <div class="form-floating mb-3">
-    <select
-      [(ngModel)]="marque"
-      class="form-control"
-      #marqueInput
-      name="marque"
-      required
-      id="marque"
-      ngModel>
-      <option value="" selected="selected">Toutes les marques</option>
-      <option value="Acer" >Acer</option>
-      <option value="Alcatel">Alcatel</option>
-      <option value="Altice">Altice</option>
-      <option value="Amazon">Amazon</option> <!-- ~ -->
-      <option value="Apple">Apple</option>
-      <option value="Archos">Archos</option>
-      <option value="Asus">Asus</option>
-      <option value="Blackberry">Blackberry</option>
-      <option value="Blackphone">Blackphone</option> <!-- ~ -->
-      <option value="Blackview">Blackview</option> <!-- ~ -->
-      <option value="Carrefour">Carrefour</option> <!-- ~ -->
-      <option value="Crosscall">Crosscall</option>
-      <option value="Cubot">Cubot</option>
-      <option value="Danew">Danew</option>
-      <option value="Doogee">Doogee</option>
-      <option value="Doro">Doro</option>
-      <option value="Echo">Echo</option>
-      <option value="Elephone">Elephone</option>
-      <option value="Essentielb">EssentielB</option> <!-- ~ -->
-      <option value="Fairphone">Fairphone</option>
-      <option value="Gigaset">Gigaset</option>
-      <option value="Google">Google</option>
-      <option value="Haier">Haier</option>
-      <option value="Hisense">Hisense</option>
-      <option value="Honor">Honor</option>
-      <option value="Hp">Hp</option>
-      <option value="Htc">HTC</option>
-      <option value="Huawei">Huawei</option>
-      <option value="Phone">IcePhone</option> <!-- ~ -->
-      <option value="Infinix">Infinix</option> <!-- ~ -->
-      <option value="Kazam">Kazam</option>
-      <option value="Konrow">Konrow</option>
-      <option value="Letv">Lenovo</option>
-      <option value="LG">LG</option>
-      <option value="Logicom">Logicom</option>
-      <option value="Medion">Medion</option> <!-- ~ -->
-      <option value="Meizu">Meizu</option>
-      <option value="Microsoft">Microsoft</option>
-      <option value="Motorola">Motorola</option>
-      <option value="Neffos">Neffos</option>
-      <option value="Nokia">Nokia</option>
-      <option value="Nvidia">Nvidia</option> <!-- ~ -->
-      <option value="Obi">Obi</option>
-      <option value="OnePlus">OnePlus</option>
-      <option value="Oppo">Oppo</option>
-      <option value="Orange">Orange</option>
-      <option value="Ordissimo">Ordissimo</option>
-      <option value="Oukitel">Oukitel</option>
-      <option value="Panasonic">Panasonic</option> <!-- ~ -->
-      <option value="Polaroid">Polaroid</option> <!-- ~ -->
-      <option value="Qilive">Qilive</option>
-      <option value="Realme">Realme</option>
-      <option value="Samsung">Samsung</option>
-      <option value="Selecline">Selectine</option>
-      <option value="Sony">Sony</option>
-      <option value="Sosh">Sosh</option>
-      <option value="SFR">SFR</option>
-      <option value="TCL">TCL</option> <!-- ~ -->
-      <option value="Thomson">Thomson</option> <!-- ~ -->
-      <option value="Ulefone">Ulefone</option> <!-- ~ -->
-      <option value="Vivo">Vivo</option>
-      <option value="Wiko">Wiko</option>
-      <option value="Wileyfox">WileyFox</option>
-      <option value="Xiaomi">Xiaomi</option>
-      <option value="Yess">Yezz</option> <!-- ~ -->
-      <option value="Zte">Zte</option>
-    </select>
-    <label for="marque">Toutes les marques</label>
-    <div
-      *ngIf="marqueInput.invalid && marqueInput.dirty"
-      class="alert alert-danger"
-    >
-      La marque obligatoire
-    </div>
-  </div>
-
-
-
-  <div class="form-floating mb-3">
-    <input
-      type="number"
-      class="form-control"
-      value=""
-      [(ngModel)]="pourcentage"
-      #pourcentageInput="ngModel"
-      required
-      ngModel
-      name="pourcentage"
-      required=""
-      aria-required="true"
-      id="pourcentage"
-      min="0" max="100"
-    />
-    <label for="pourcentage">Pourcentage de promotion</label>
-    <div
-      *ngIf="pourcentageInput.invalid && pourcentageInput.dirty"
-      class="alert alert-danger"
-    >
-      Le pourcentage est obligatoire
-    </div>
-  </div>
-
-
-
-  <div class="form-floating mb-3">
-    <input
-      type="number"
-      class="form-control"
-      [(ngModel)]="currentPrice"
-      #currentPriceInput="ngModel"
-      required
-      ngModel
-      name="currentPrice"
-      aria-required="true"
-      id="currentPrice"
-      min="0"
-    />
-    <label for="currentPrice">Prix initial de produit</label>
-    <div
-      *ngIf="currentPriceInput.invalid && currentPriceInput.dirty"
-      class="alert alert-danger"
-    >
-      Le prix est obligatoire
-    </div>
-  </div>
-
-
-
-  <div class="form-floating mb-3">
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        id="promotion"
-        name="promotion"
-        #promotion
-        (change)="onPromo(promotion.checked)"
-        checked>
-      <label class="form-check-label" for="promotion">En promotion</label>
-    </div>
-  </div>
-
-
-
-  <div class="form-floating mb-3">
-    <div class="form-check form-switch">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        id="available"
-        name="available"
-        #available
-        (change)="onDispo(available.checked)"
-        checked>
-      <label class="form-check-label" for="available">Disponible</label>
-    </div>
-  </div>
-
-
-  <div class="form-floating mb-3">
-    <input
-      type="number"
-      class="form-control"
-      [(ngModel)]="quantity"
-      #quantityInput="ngModel"
-      required
-      ngModel
-      name="quantity"
-      aria-required="true"
-      id="quantity"
-      min="0"
-    />
-    <label for="quantity">Quantity disponible de produit</label>
-    <div
-      *ngIf="quantityInput.invalid && quantityInput.dirty"
-      class="alert alert-danger"
-    >
-      La quantite est obligatoire
-    </div>
-  </div>
-
-  <div class="form-floating mb-3">
-    <input
-      type="submit"
-      class="btnSubmit"
-      value="Ajouter Produit"
-      (click)=" ajoutProduit(AjouteProduitForm.value, categorieInput.value)"
-      [disabled]="AjouteProduitForm.invalid"/>
-  </div>
-</form>
-
-
-
-<!--
-
-<div class="container row">
-
-  <div class="col-md-12">
-
-    <h1>Upload Image</h1>
-  </div>
-
-</div>
-
-<div class="container row">
-  <div class="col-md-6">
-    <input type="file" (change)="onFileChanged($event)">
-  </div>
-  <div class="col-md-6">
-    <input type="button" (click)="onUpload()" value="upload">
-  </div>
-</div>
-<hr />
-
-<div class="container row">
-
-  <div class="col-md-12">
-
-    <div *ngIf=message>{{message}}</div>
-
-  </div>
-
-</div>
-
-
-<div class="container row">
-  <div class="col-md-6">
-    <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
-           name="name" />
-  </div>
-  <div class="col-md-6">
-    <input type="button" (click)="getImage1()" value="Get Image">
   </div>
 </div>
 
-
-<div class="container row">
-  <div class="col-md-12">
-    <div *ngIf=retrievedImage>
-      <img [src]="retrievedImage" >
-    </div>
-  </div>
-
-</div>
--->

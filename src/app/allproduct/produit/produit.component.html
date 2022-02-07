@@ -1,39 +1,4 @@
-<!--
-<div *ngIf="products">
-  <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-1  row-cols-xs-1 row-cols-md-2 row-cols-xl-3 justify-content-center" >
-    <div class="col col-sm col-md	col-lg	col-xl col-xs mb-5"  *ngFor="let p of products._embedded.products">
-      <div class="card h-100">
-        <h5 class="card-title">{{p.marque}}</h5>
-        <img class="card-img-top sizephone" (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}" />
-        <div class="card-body p-4">
-          <h5 class="card-title">{{p.name}}</h5>
-          <div>
-            <label>Prix : {{p.currentPrice}} TND</label>
-          </div>
-        </div>
 
-        <div>
-          <label>Promo : {{p.pourcentage }} %</label>
-        </div>
-        <div>
-        <span *ngIf="p.promotion">
-                <i class="fa fa-percent"></i>
-              </span>
-          <span *ngIf="p.selected">
-               <i class="fa fa-heart"></i>
-              </span>
-          <span *ngIf="p.available">
-               <i class="fa fa-tag"></i>
-          </span>
-          <span>
-               <i class="fa fa-shopping-basket" (click)="ajouterItem(p)"></i>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
--->
 <div *ngIf="products">
 <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-1  row-cols-xs-1 row-cols-md-2 row-cols-xl-3 justify-content-center" >
   <div class="col col-sm col-md	col-lg	col-xl col-xs mb-5"  *ngFor="let p of products._embedded.products">
@@ -50,8 +15,6 @@
         <a class="add-to-cart" (click)="ajouterItem(p)"><i class="fa fa-shopping-basket"></i> Ajouter au panier</a>
       </div>
     </div>
-
-
   </div>
 </div>
 </div>

@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
   nbItem=0;
   panier=[];
   idclient;
+  nb;
   constructor(public service: CategoriesService,
               public serviceClient: ClientService,
               public router:Router) { }
@@ -25,7 +26,13 @@ export class MenuComponent implements OnInit {
     if(this.serviceClient.connected==true){
       this.token==true;
     }
-    this.nbItem = JSON.parse(localStorage.getItem('item'));
+    this.nb = JSON.parse(localStorage.getItem('item'));
+    if(this.nb>=0){
+      this.nbItem = JSON.parse(localStorage.getItem('item'));
+    }
+    if(this.nb<0){
+      this.nbItem =0;
+    }
   }
 
 
@@ -69,7 +76,7 @@ export class MenuComponent implements OnInit {
   Deconnecter() {
     this.serviceClient.logout();
     location.reload();
-    this.router.navigateByUrl('/compte');
+    this.router.navigateByUrl('');
   }
 
   affichePanier() {

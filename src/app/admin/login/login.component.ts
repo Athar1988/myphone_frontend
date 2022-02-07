@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     for(let admin of this.loginBD._embedded.logins){
       if(credentials.login==admin.login && credentials.motdepasse==admin.motdepasse){
         localStorage.setItem('admin','true');
-        this.router.navigateByUrl("listeProduit/0");
+        this.router.navigateByUrl("listeProduit/admin/0");
       }
       else{
         console.log("probleme de connexion");

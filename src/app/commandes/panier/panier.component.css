@@ -3,14 +3,12 @@
   text-decoration: line-through;
 }
 
-
 .position{
  /* position: sticky;*/
   top: 300px;
   padding: 10px;
   margin: 10px;
 }
-
 
 .position2{
   width: 30%;
@@ -192,54 +190,183 @@
 ****
  */
 
-
 .serviceBox{
-  font-family: 'Noto Sans', sans-serif;
+  background: #fff;
+  font-family: 'Mulish', sans-serif;
   text-align: center;
-  padding: 0 23px 20px;
+  padding: 45px 10px 25px;
+  border-radius: 48% 48% 0 0/40% 40% 0 0;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 7px #35b0ab inset;
+}
+.serviceBox .service-icon{
+  background: linear-gradient(to right,#0090b0,#35b0ab);
+  font-size: 55px;
+  line-height: 55px;
+  margin: 0 0 25px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.serviceBox .title{
+  color: #777;
+  font-size: 19px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+.serviceBox .description{
+  color: #999;
+  font-size: 14px;
+  line-height: 24px;
+  margin: 0 5px 20px;
+}
+.serviceBox .read-more{
+  color: #fff;
+  background: linear-gradient(to right, #0090b0,#35b0ab);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  width: 170px;
+  padding: 7px 0;
+  margin: 0 0 0 -20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0 20px 0 0;
+  display: block;
+  position: relative;
+  transition: all 0.3s ease 0s;
+}
+.serviceBox .read-more:hover{ text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.5); }
+.serviceBox .read-more:before,
+.serviceBox .read-more:after{
+  content: "";
+  background: linear-gradient(to top left,#0090b0 49%,transparent 50%);
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: -10px;
+  left: 0;
+}
+.serviceBox .read-more:after{
+  transform: rotateX(180deg);
+  top: auto;
+  bottom: -10px;
+}
+
+
+
+
+/**** css total somme***/
+
+.pricingTable{
+  background-color: #d3d4d5;
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  padding: 0 0 15px;
+  margin: 0 10px;
+  border-radius: 20px 20px 150px 150px;
+}
+.pricingTable .pricingTable-header{
+  background-color: #D3D4D5;
+  padding: 10px;
+  margin: 0 0 -10px;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  z-index: 2;
+}
+.pricingTable .title{
+  color: #f73636;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+.pricingTable .price-value{
+  color: #fff;
+  background-color: #f73636;
+  padding: 20px 40px;
+  margin: 0 -10px;
   position: relative;
   z-index: 1;
 }
-.serviceBox:before{
-  content: "";
-  background: #fff;
-  width: 100%;
-  height: calc(100% - 90px);
-  border: 15px solid #35b0ab;
+.pricingTable .price-value:before,
+.pricingTable .price-value:after{
+  content: '';
+  background-color: #d60202;
+  height: 15px;
+  border-radius: 10px;
   position: absolute;
-  bottom: 0;
+  top: -5px;
   left: 0;
+  right: 0;
   z-index: -1;
 }
-.serviceBox .service-icon{
-  color: #35b0ab;
-  background: linear-gradient(135deg,#e7e7e7,#fff,#fff);
-  font-size: 60px;
-  line-height: 130px;
-  width: 130px;
-  height: 130px;
-  margin: 0 auto 25px;
-  border-radius: 50%;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+.pricingTable .price-value:after{
+  top: auto;
+  bottom: -5px;
 }
-.serviceBox .title{
-  color: #444;
-  font-size: 20px;
+.pricingTable .amount{
+  font-size: 70px;
   font-weight: 600;
-  text-transform: capitalize;
-  margin: 0 0 7px;
+  line-height: 70px;
+  display: block;
 }
-.serviceBox .description{
-  color: #888;
+.pricingTable .month{
+  font-size: 17px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.pricingTable .pricing-content{
+  background-color: #D3D4D5;
+  padding: 15px;
+  margin: -10px 0 20px 0;
+  list-style: none;
+  position: relative;
+  z-index: 1;
+}
+.pricingTable .pricing-content li{
+  color:  rgba(0,0,0,0.8);
   font-size: 14px;
-  line-height: 24px;
+  letter-spacing: 1px;
+  padding: 15px 10px 5px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
 }
-.serviceBox.yellow:before{ border-color: #FAA725; }
-.serviceBox.yellow .service-icon{ color: #FAA725; }
-.serviceBox.red:before{ border-color: #E6491E; }
-.serviceBox.red .service-icon{ color: #E6491E; }
-.serviceBox.green:before{ border-color: #18BB9C; }
-.serviceBox.green .service-icon{ color: #18BB9C; }
-@media only screen and (max-width: 990px){
-  .serviceBox{ margin: 0 0 30px; }
+.pricingTable .pricingTable-signup{
+  color: #fff;
+  background-color: #f73636;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 75px;
+  height: 100px;
+  width: 100px;
+  border: 7px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.2);
+  display:inline-block;
+  position: relative;
+  transition: all 0.3s ease 0s;
 }
+.pricingTable .pricingTable-signup:hover{
+  color: #D3D4D5;
+  box-shadow: 0 0 5px 10px rgba(0,0,0,0.2);
+}
+.pricingTable .pricingTable-signup:after{
+  content: "\f061";
+  color: #D3D4D5;
+  font-family: "Font Awesome 5 Free";
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0 auto;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+}
+.pricingTable.green .title{ color: #35b0ab; }
+.pricingTable.green .price-value{ background-color: #35b0ab; }
+.pricingTable.green .price-value:before,
+.pricingTable.green .price-value:after{
+  background-color: #2f7a75;
+}
+.pricingTable.green .pricingTable-signup{ background-color: #35b0ab; }

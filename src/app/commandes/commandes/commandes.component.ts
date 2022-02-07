@@ -17,6 +17,7 @@ export class CommandesComponent implements OnInit {
   idclient
   nom;
   numeroCarte;
+  condition;
   date;
   CVC;
 
@@ -40,7 +41,8 @@ export class CommandesComponent implements OnInit {
 
 
 
-  paiment(){
+  paiment(f){
+    console.log(f.value);
     this.commandeService.submitOrder().subscribe(
       (data)=>{console.log("commande ajouté avec succé");},
       (err)=>{console.log("erreur reseau");},
@@ -55,4 +57,7 @@ export class CommandesComponent implements OnInit {
   }
 
 
+  onCondition(checked: boolean) {
+    console.log(checked);
+  }
 }

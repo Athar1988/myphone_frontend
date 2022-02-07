@@ -21,7 +21,6 @@ export class PanierComponent implements OnInit {
   prixsansremise=0;
   existe;
   nbItem;
-  nomImage;
   constructor(public clinetService:ClientService,
               public panierService: PanierService,
               private router: Router,

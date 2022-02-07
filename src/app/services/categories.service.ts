@@ -20,6 +20,11 @@ export class CategoriesService {
     return this.http.get(this.host+"/products");
   }
 
+
+  public getTousProduitsFiltre(url){
+    return this.http.get(this.host+"/products/"+url);
+  }
+
   public getUneCategorie(id){
     return this.http.get(this.host+"/categories/"+id);
   }

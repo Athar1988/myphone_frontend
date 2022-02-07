@@ -1,52 +1,121 @@
-.login-container{
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-.login-form-1{
-  padding: 5%;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-}
-.login-form-1 h3{
-  text-align: center;
-  color: #333;
-}
-.login-form-2{
-  padding: 5%;
-  background: #35b0ab;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-}
-.login-form-2 h3{
-  text-align: center;
-  color: #fff;
-}
-.login-container form{
-  padding: 10%;
-}
-.btnSubmit
-{
-  width: 50%;
-  border-radius: 2rem;
-  padding: 1.5%;
+
+.panel{
+  font-family: 'Raleway', sans-serif;
+  padding: 0;
   border: none;
-  cursor: pointer;
 }
-.login-form-1 .btnSubmit{
-  font-weight: 600;
+.panel .panel-heading{
+  background: #35b0ab;
+  padding: 15px;
+  margin: 0 0 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+.panel .panel-heading .title{
   color: #fff;
-  background-color: #35b0ab;
-}
-.login-form-2 .btnSubmit{
+  font-size: 24px;
   font-weight: 600;
+  line-height: 35px;
+  text-transform: capitalize;
+  margin: 0 10px 0 0;
+}
+.panel .panel-heading .btn{
+  color: #35b0ab;
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease 0s;
+}
+.panel .panel-heading .btn:hover{ box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
+.panel .panel-body{
+  padding: 0 0;
+  margin: 0 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.panel .panel-body .table thead tr th{
+  color: #333;
+  background: linear-gradient(transparent, #f6f6f6);
+  font-size: 17px;
+  font-weight: 700;
+  padding: 12px;
+  border-bottom: none;
+}
+.panel .panel-body .table thead tr th:nth-of-type(2){ width: 50%; }
+.panel .panel-body .table tbody tr td{
+  color: #555;
+  background: linear-gradient(transparent,#f6f6f6);
+  font-size: 15px;
+  padding: 10px;
+  vertical-align: middle;
+  border-color: #ddd;
+}
+.panel .panel-body .table tbody .form-control:focus{
+  border-color: #35b0ab;
+  box-shadow: 0 0 4px #35b0ab;
+}
+.panel .panel-body .table tbody .user_icon{
+  height: 55px;
+  width: 55px;
+}
+.panel .panel-body .table tbody .user_icon img{
+  width: 100%;
+  height: auto;
+}
+.panel .panel-body .table tbody .action-list{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.panel .panel-body .table tbody .action-list li{ display: inline-block; }
+.panel .panel-body .table tbody .action-list li a{
+  color: #fff;
+  font-size: 13px;
+  line-height: 28px;
+  height: 28px;
+  width: 28px;
+  padding: 0;
+  border-radius: 5px;
+  transition: all 0.3s ease 0s;
+}
+.panel .panel-body .table tbody .action-list li a:hover{ box-shadow: 0 0 5px #ddd; }
+.panel .panel-footer{
+  color: #fff;
+  background: #35b0ab;
+  font-size: 16px;
+  line-height: 33px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.pagination{ margin: 0; }
+.pagination li a{
+  color: #fff;
+  background-color: rgba(255,255,255,0.3);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 2px;
+  border: none;
+  border-radius: 3px;
+  transition: all 0.3s ease 0s;
+}
+.pagination li a:hover,
+.pagination li a:focus,
+.pagination li.active a{
   color: #35b0ab;
   background-color: #fff;
 }
-.login-form-2 .ForgetPwd{
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
+@media only screen and (max-width:479px){
+  .panel .panel-heading{ text-align: center; }
+  .panel .panel-heading .title{
+    float: none !important;
+    margin: 0 0 10px;
+  }
+  .panel .panel-heading .btn{ float: none !important; }
 }
-.login-form-1 .ForgetPwd{
-  color: #35b0ab;
-  font-weight: 600;
-  text-decoration: none;
-}
+

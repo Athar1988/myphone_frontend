@@ -1,28 +1,56 @@
+
+
+
+
+
 <div class="container">
-  <table class="table">
-    <thead><!---->
-    <tr    >
-      <th scope="col">Image</th>
-      <th scope="col">Reference</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Quantité</th>
-      <th scope="col">prix payé</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let detailItem of detailCommande._embedded.itemsCommandes">
-      <th scope="row">
+<div class="row">
+  <div class="col-md-offset-1 col-md-12">
+    <div class="panel">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-12 col-xs-12">
+            <h4 class="title pull-left">Commande</h4>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body table-responsive">
+        <table class="table  position" width="60%" >
+          <thead>
+          <tr>
+            <th width="17%">Image</th>
+            <th width="5%">Reference</th>
+            <th width="30%" >Nom</th>
+            <th width="17%">Quantité</th>
+            <th width="17%">Prix payé</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr  *ngFor="let detailItem of detailCommande._embedded.itemsCommandes">
+            <td>
+              <div class="user_icon">
+                <img class="d-block w-50" src="data:image/jpeg;base64,{{detailItem.picByte}}"alt="" width="50" (click)="onProductDetails(detailItem.id)" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+              </div>
+            </td>
+            <td width="5%">Ref_{{detailItem.id}}</td>
+            <td>{{detailItem.name}}</td>
+            <td>{{detailItem.quantiteCommander}}</td>
+            <td>{{detailItem.prixtotalproduit}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <img class="d-block w-50" src="data:image/jpeg;base64,{{detailItem.picByte}}"alt="" width="50" (click)="onProductDetails(detailItem.id)" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-12 col-xs-12">
+            <h4 class="title pull-left">Valider</h4>
+            <a (click)="validerCommande(idCommande)"   class="btn btn-sm btn-primary pull-right"><i class="fa fa-location-arrow"></i>Livrer</a>
+          </div>
+        </div>
+      </div>
 
-      </th>
-      <td>Ref_{{detailItem.id}}</td>
-      <td>{{detailItem.name}}</td>
-      <td>{{detailItem.quantiteCommander}}</td>
-      <td>{{detailItem.prixtotalproduit}}</td>
-    </tr>
-    </tbody>
-  </table>
-  <button type="button" class="btn btn-success" (click)="validerCommande(idCommande)">Valider La commande</button>
+    </div>
+  </div>
 </div>
-
+</div>

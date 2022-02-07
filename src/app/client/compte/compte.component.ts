@@ -11,19 +11,12 @@ import {NgForm} from '@angular/forms';
 })
 export class CompteComponent implements OnInit {
 
-  email;
-  motdepasse;
-  telephone;
-  nom;
-  prenom;
-  ville;
-  address;
-  emailexiste=false;
+
   loginemailexiste;
-  client:any;
   loginmotdepasse;
   loginemail;
   panier=[];
+  client:any;
  //panier = new panier([]);
 
   constructor(private serviceClient: ClientService  ,
@@ -31,12 +24,6 @@ export class CompteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
-
-
-
-
 
   Connexion(credentials: any) {
     // verifier le login
@@ -65,44 +52,7 @@ export class CompteComponent implements OnInit {
     )
   }
 
-
-
-  ajoutClient(credentials: Client, InscriptionForm:NgForm) {
-    this.serviceClient.recupererTousClient().subscribe(
-      data=>{
-        this.client=data;
-
-        for(let i=0 ; i< this.client._embedded.clients.length; i++) {
-          if (this.client._embedded.clients[i].email == credentials.email) {
-            this.emailexiste=true;
-            console.log(this.emailexiste+" eeeee");
-            break;
-          }
-          else{
-            this.emailexiste=false;
-            console.log(this.emailexiste+" eeeee");
-          }
-        }
-      },
-      err=>{console.log("probleme reseau")}
-    )
-    if(this.emailexiste==false){
-      console.log(this.emailexiste+" eeeee");
-      this.serviceClient.sauvgarderClient(credentials).subscribe(
-        data=>{
-          console.log("contact ajouter avec succés");
-          InscriptionForm.resetForm();
-          this.router.navigate(['compte']);
-        },
-        err=>{
-          console.log("Probleme de saisir! essayez une autre fois.");
-        }
-      )
-    }
+  inscription() {
+    this.router.navigate(['inscription']);
   }
-
-
-
-
-
 }

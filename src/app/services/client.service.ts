@@ -51,6 +51,9 @@ export class ClientService {
     return this.connected;
   }
 
+  AdminAuthenticated(): boolean {
+    return !!localStorage.getItem('admin');
+  }
 
   clientActuel(token){
     this.http.get(this.host+"/clients").subscribe(
@@ -90,10 +93,18 @@ export class ClientService {
 
   ajouterContact(contact): Observable<Client>{
     return this.http.post<Client>("http://localhost:8080/contacts", contact);
-
   }
 
+  recupereMessage(){
+    return this.http.get(this.host+"/contacts");
+  }
 
+  supprimerMessage(id: any) {
+    return this.http.delete("http://localhost:8080/contacts/"+id );
+  }
 
+  supprimerClient(id: any) {
+    return this.http.delete("http://localhost:8080/clients/"+id );
+  }
 }
 

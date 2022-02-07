@@ -29,12 +29,12 @@ export class ModifierProfilComponent implements OnInit {
     )
   }
 
-  ModifierClient(credentials: Client) {
+  ModifierClient(credentials:Client) {
     this.NewClient= new Client (this.idClient, this.email,credentials.telephone, credentials.nom, credentials.prenom, credentials.ville, credentials.address,credentials.motdepasse );
     this.serviceClient.ModifierClient(this.NewClient).subscribe(
       data=> {console.log("client modifier avec succé");},
       err=> {console.log("probleme de reseau");}
     )
-    this.router.navigateByUrl('profil');
+    this.router.navigateByUrl('profil/'+this.idClient);
   }
 }

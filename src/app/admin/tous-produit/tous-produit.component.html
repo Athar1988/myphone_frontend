@@ -1,59 +1,81 @@
-<h3>Liste produits</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-12">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-12 col-xs-12">
+              <h4 class="title pull-left">Tous les produits</h4>
+              <select
+                [(ngModel)]="idCat"
+                class="form-control"
+                id="exampleFormControlSelect1"
+                #idCatInput
+                name="idCat"
+                required
+                ngModel
+                (click)="Selectcategorie()"
+              >
+                <option value="0" selected="selected">Tous Les Produits</option>
+                <option value="1">Telephone</option>
+                <option value="2">Tablette</option>
+                <option value="3">Produits apple</option>
+                <option value="4">Coque iphone</option>
+                <option value="5">Airpods</option>
+                <option value="6">Haut parleur</option>
+                <option value="7">Smart watch</option>
+                <option value="8">Accessoires</option>
+                <option value="9">Cache</option>
+                <option value="10">Pochette</option>
+                <option value="11">Camera</option>
+                <option value="12">Divers</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body table-responsive">
+          <table class="table  position" width="60%" >
+            <thead>
+            <tr>
+              <th>Numéro</th>
+              <th>Image</th>
+              <th>Nom</th>
+              <th>Marque</th>
+              <th>Quantité</th>
+              <th>Prix unitaire</th>
+              <th>Promo</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
 
 
-<select
-  [(ngModel)]="idCat"
-  class="form-control"
-  id="exampleFormControlSelect1"
-  #idCatInput
-  name="idCat"
-  required
-  ngModel
- (click)="Selectcategorie()"
->
-  <option value="0" selected="selected">Tous Les Produits</option>
-  <option value="1">Telephone</option>
-  <option value="2">Tablette</option>
-  <option value="3">Produits apple</option>
-  <option value="4">Coque iphone</option>
-  <option value="5">Airpods</option>
-  <option value="6">Haut parleur</option>
-  <option value="7">Smart watch</option>
-  <option value="8">Accessoires</option>
-  <option value="9">Cache</option>
-  <option value="10">Pochette</option>
-  <option value="11">Camera</option>
-  <option value="12">Divers</option>
-</select>
+            <tr  *ngFor="let produit of tousProduits._embedded.products">
+              <td>{{produit.id}}</td>
+              <td>
+                <div class="user_icon">
+                  <img src="data:image/jpeg;base64,{{produit.picByte}}" alt="">
+                </div>
+              </td>
+              <td>{{produit.name}}</td>
+              <td>{{produit.marque}} </td>
+              <td>{{produit.quantity}}</td>
+              <td>{{produit.currentPrice}} TND</td>
+              <td>{{produit.pourcentage}} %</td>
+              <td>
+                <ul class="action-list">
+                  <li><a (click)="modifierproduit(produit)" class="btn btn-success"><i class="fa fa-wrench"></i></a></li>
+                  <li><a (click)="supprimerproduit(produit)" class="btn btn-danger"><i class="fa fa-trash"></i></a></li>
+                </ul>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
 
+      </div>
+    </div>
 
-
-
-<table class="table ">
-  <thead><!---->
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Image</th>
-    <th scope="col">Nom</th>
-    <th scope="col">Marque</th>
-    <th scope="col">Quantité</th>
-    <th scope="col">Prix unitaire</th>
-    <th scope="col">Promo</th>
-    <th scope="col">Modifier</th>
-    <th scope="col">Supprimer</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let produit of tousProduits._embedded.products">
-    <td>{{produit.id}}</td>
-    <th scope="row"><img src="data:image/jpeg;base64,{{produit.picByte}}" alt="" width="50" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"></th>
-    <td>{{produit.name}}</td>
-    <td>{{produit.marque}}</td>
-    <td>{{produit.quantity}}</td>
-    <td>{{produit.currentPrice}} TND</td>
-    <td>{{produit.pourcentage}} %</td>
-    <td><i class="fa fa-wrench" aria-hidden="true" (click)="modifierproduit(produit)"></i></td>
-    <td><i class="fa fa-trash" aria-hidden="true" (click)="supprimerproduit(produit)"></i></td>
-  </tr>
-  </tbody>
-</table>
+  </div>
+</div>

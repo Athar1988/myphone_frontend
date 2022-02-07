@@ -16,6 +16,7 @@ export class RechercheComponent implements OnInit {
 
   ngOnInit(): void {
     this.produitsrechercher();
+    console.log(this.products);
   }
 
 
@@ -24,36 +25,33 @@ export class RechercheComponent implements OnInit {
 
     let mc = this.route.snapshot.params.mc;
     console.log(mc + " mot de passe");
+
     this.service.chercherMarqueProduit(mc).subscribe(
       data => {
-        this.products += data;
-        console.log(this.products);
+        this.products = data;
       }
     );
+
     this.service.chercherNameProduit(mc).subscribe(
       data => {
         this.products += data;
-        console.log(this.products);
       }
     );
 
-    this.service.chercherCategoryProduit(mc).subscribe(
-      data => {
-        this.products += data;
-        console.log(this.products);
-      }
-    );
+        this.service.chercherCategoryProduit(mc).subscribe(
+          data => {
+            this.products += data;
+          }
+        );
 
 
-    this.service.chercherDescriptionProduit(mc).subscribe(
-      data => {
-        // console.log(data);
-        this.products += data;
-        console.log(this.products);
-      }
-    );
+        this.service.chercherDescriptionProduit(mc).subscribe(
+          data => {
+            this.products += data;
+          }
+        );
 
-    console.log(this.products + " tous");
+        console.log(this.products + " tous");
 
       }
 

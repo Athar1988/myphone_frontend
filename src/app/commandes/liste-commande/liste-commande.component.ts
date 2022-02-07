@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {CommandeService} from '../../services/commande.service';
+import loader from '@angular-devkit/build-angular/src/angular-cli-files/plugins/single-test-transform';
 
 @Component({
   selector: 'app-liste-commande',
@@ -64,6 +65,7 @@ export class ListeCommandeComponent implements OnInit {
   this.router.navigateByUrl('/detailCommande/'+id);
   }
 
+
   detailClient(id) {
     this.commandeService.recupererClientCommander(id).subscribe(
       (data)=>{
@@ -78,6 +80,10 @@ export class ListeCommandeComponent implements OnInit {
   }
 
 
+  ContinuerShopping() {
+    this.router.navigateByUrl('/generale');
+  }
+
 
   enCours() {
     console.log(this.listeCommandeEncours);
@@ -91,11 +97,16 @@ export class ListeCommandeComponent implements OnInit {
     this.terminer=true;
   }
 
+  suiviCommandes() {
+    location.reload();
+  }
+
   supprimerCommande(id) {
     console.log(id+" supp");
     this.commandeService.supprimerCommande(id).subscribe(
       data=>{console.log("commande supprimer avec succe")},
       err=>{console.log("probleme de reseau")}
     )
+    location.reload();
   }
 }

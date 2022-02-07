@@ -4,6 +4,8 @@ import {CategoriesService} from '../../services/categories.service';
 import {Product} from '../../model/product.model';
 import {HttpClient} from '@angular/common/http';
 import {AdminService} from '../../services/admin.service';
+import {Item} from '../../model/Item';
+import {PanierService} from '../../services/panier.service';
 
 @Component({
   selector: 'app-detailproduit',
@@ -12,24 +14,24 @@ import {AdminService} from '../../services/admin.service';
 })
 export class DetailproduitComponent implements OnInit {
   currentProduct;
-  stock:string;
   admin;
   idproduit;
   promotion=true;
   available=true;
   selectedFile: File;
   message;
-  imageName: any;
-  retrievedImage: any;
-  base64Data: any;
-  retrieveResonse: any;
+  sommeTotal=0;
+  productItem: any;
+  nbItem;
+
 
 
   constructor(private router:Router,
               private route:ActivatedRoute,
               public catalService:CategoriesService,
               private httpClient: HttpClient,
-              private adminService:AdminService) { }
+              private adminService:AdminService,
+              public  panierservice:PanierService) { }
 
   ngOnInit() {
     //recupere le produits
@@ -42,6 +44,37 @@ export class DetailproduitComponent implements OnInit {
         console.log(err);
       })
   }
+
+
+
+  ajouterItem(produit: Product){
+    if(produit.pourcentage!=0){
+      this.sommeTotal=produit.currentPrice-(produit.currentPrice*(produit.pourcentage/100));
+    }
+    else{
+      this.sommeTotal=produit.currentPrice;
+    }
+    this.productItem= new Item(null, produit.name ,produit.currentPrice,produit.pourcentage,1, this.sommeTotal, produit.nameImage, produit.typeImage,produit.picByte);
+    // if(localStorage && localStorage.getItem('panier')){
+    // this.panier = JSON.parse(localStorage.getItem('panier'));
+    //this.panier.push(this.productItem);
+    // localStorage.setItem('panier', JSON.stringify(this.panier));
+    this.nbItem = JSON.parse(localStorage.getItem('item'));
+    localStorage.setItem('item', this.nbItem+1);
+    location.reload();
+    // }
+    this.panierservice.sauvgarderItem(this.productItem).subscribe(
+      data=>{
+        console.log("produit ajouter avec succés");
+      },
+      err=>{
+        console.log("Probleme de saisir! essayez une autre fois.");
+      }
+    );
+  }
+
+
+
 
 
 //Gets called when the user selects an image

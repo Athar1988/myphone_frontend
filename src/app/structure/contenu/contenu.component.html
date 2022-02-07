@@ -1,30 +1,135 @@
 
 <div class="divider py-5 bg-light"></div>
+<!-- trois marques -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-sm-6">
+      <div class="box">
+        <img src="assets/images/img-3.jpg">
+        <div class="box-content">
+          <h3 class="title">Williamson</h3>
+          <span class="post">Web designer</span>
+          <ul class="icon">
+            <li><a href="#"><i class="fa fa-search"></i></a></li>
+            <li><a href="#"><i class="fa fa-link"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <div class="box">
+        <img src="assets/images/img-1.jpg">
+        <div class="box-content">
+          <h3 class="title">Miranda Roy</h3>
+          <span class="post">Web designer</span>
+          <ul class="icon">
+            <li><a href="#"><i class="fa fa-search"></i></a></li>
+            <li><a href="#"><i class="fa fa-link"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <div class="box">
+        <img src="assets/images/img-4.jpg">
+        <div class="box-content">
+          <h3 class="title">Williamson</h3>
+          <span class="post">Web designer</span>
+          <ul class="icon">
+            <li><a href="#"><i class="fa fa-search"></i></a></li>
+            <li><a href="#"><i class="fa fa-link"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="divider py-5 bg-light"></div>
 <!-- tous les produits -->
+<div class="container">
+<h4 class="panel-title"> Nos produits </h4>
+</div>
 <owl-carousel-o [options]="customOptions">
   <ng-template carouselSlide *ngFor="let p of produits._embedded.products" >
     <img (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}"  width="100%">
   </ng-template>
 </owl-carousel-o>
+
+
+
+
+<div class="divider py-5 bg-light"></div>
+<!--- compteur --->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="main-timeline1">
+        <div class="timeline1">
+          <a href="#" class="timeline-content1">
+            <div class="timeline-year1">{{nombreProduits}}</div>
+            <div class="timeline-icon1"><i class="fa fa-globe"></i></div>
+            <h3 class="title1">Nombre des produits</h3>
+            <p class="description1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer males uada tellus lorem, et condimentum neque commodo Integer males uada tellus lorem, et condimentum neque commodo
+            </p>
+          </a>
+        </div>
+        <div class="timeline1">
+          <a href="#" class="timeline-content1">
+            <div class="timeline-year1">{{nombreclient}}</div>
+            <div class="timeline-icon1"><i class="fa fa-rocket"></i></div>
+            <h3 class="title1">Nombre des clients</h3>
+            <p class="description1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer males uada tellus lorem, et condimentum neque commodo Integer males uada tellus lorem, et condimentum neque commodo
+            </p>
+          </a>
+        </div>
+        <div class="timeline1">
+          <a href="#" class="timeline-content1">
+            <div class="timeline-year1">{{nombrecommande}}</div>
+            <div class="timeline-icon1"><i class="fa fa-rocket"></i></div>
+            <h3 class="title1">Nombre des commandes</h3>
+            <p class="description1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer males uada tellus lorem, et condimentum neque commodo Integer males uada tellus lorem, et condimentum neque commodo
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
 <div class="divider py-5 bg-light"></div>
 <!-- les produits en promo -->
+<div class="container">
+  <h4 class="panel-title"> Nos promotion </h4>
+</div>
 <owl-carousel-o [options]="customOptions">
-  <ng-template carouselSlide *ngFor="let p of produits._embedded.products" >
+  <ng-template carouselSlide *ngFor="let p of promoProduit._embedded.products" >
     <img (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}"  width="100%">
   </ng-template>
 </owl-carousel-o>
 
 
+
+<!--
 <div class="divider py-5 bg-light"></div>
-<!-- les produits -50% -->
+<!-- les produits disponible
 <owl-carousel-o [options]="customOptions">
-  <ng-template carouselSlide *ngFor="let p of produits._embedded.products" >
+  <ng-template carouselSlide *ngFor="let p of dispoProduit._embedded.products" >
     <img (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}"  width="100%">
   </ng-template>
 </owl-carousel-o>
+-->
+
+
 
 
 

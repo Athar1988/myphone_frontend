@@ -1,0 +1,247 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-2"></div>
+      <div class="col-md-offset-2 col-md-8">
+        <form class="form-horizontal"  #InscriptionForm="ngForm">
+          <div class="header">Inscription</div>
+          <div class="form-content">
+            <div class="form-group">
+
+              <label class="form-label">Email</label>
+              <div class="col-sm-12">
+                <input
+                  class="form-control"
+                  value=""
+                  [(ngModel)]="email"
+                  type="email"
+                  #emailInput="ngModel"
+                  required
+                  email
+                  ngModel
+                  name="email"
+                  placeholder="name@example.com *"
+                  id="exampleInputemail"
+                >
+                <label class="control-label" for="exampleInputemail"><i class="fa fa-user"></i></label>
+              </div>
+
+              <div
+                *ngIf="emailInput.invalid && emailInput.dirty"
+                class="alert alert-danger"
+              >
+                L' email est obliogatoire et doit être correct
+              </div>
+
+
+              <label class="form-label">Téléphone</label>
+              <div class="col-sm-12">
+                <input
+                  id="exampleInputtelephone"
+                  class="form-control"
+                  placeholder="Téléphone *"
+                  value=""
+                  [(ngModel)]="telephone"
+                  #telephoneInput="ngModel"
+                  required
+                  ngModel
+                  pattern="[0-9]{8}"
+                  id="telephone"
+                  name="telephone"
+                  length="12"
+                  type="text"
+                  required=""
+                  aria-required="true">
+                <label class="control-label" for="exampleInputtelephone"><i class="fa fa-envelope-o"></i></label>
+              </div>
+              <div
+                *ngIf="telephoneInput.invalid && telephoneInput.dirty"
+                class="alert alert-danger"
+              >
+                Le téléphone est obliogatoire et doit être correct
+              </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+              <label class="form-label">Nom</label>
+              <div class="col-sm-12">
+                <input
+                  class="form-control name"
+                  id="exampleInputnom"
+                  type="text"
+                  placeholder="Nom *"
+                  value=""
+                  [(ngModel)]="nom"
+                  type="text"
+                  #nomInput="ngModel"
+                  required
+                  ngModel
+                  name="nom"
+                  minlength="3"
+                  required=""
+                  aria-required="true"
+
+                >
+              </div>
+              <div
+                *ngIf="nomInput.invalid && nomInput.dirty"
+                class="alert alert-danger"
+              >
+                champs obligatoire et au moins 3 caractéres
+              </div>
+
+
+              <label class="form-label">Prénom</label>
+              <div class="col-sm-12">
+                <input
+                  class="form-control name"
+                  id="exampleInputprenom"
+                  type="text"
+                  placeholder="Prénom *"
+                  value=""
+                  [(ngModel)]="prenom"
+                  #prenomInput="ngModel"
+                  required
+                  ngModel
+                  id="prenom"
+                  name="prenom"
+                  minlength="3"
+                  required=""
+                  aria-required="true"
+                >
+              </div>
+              <div
+                *ngIf="prenomInput.invalid && prenomInput.dirty"
+                class="alert alert-danger"
+              >
+                champs obligatoire et au moins 3 caractéres
+              </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+              <label class="form-label">Ville</label>
+              <div class="col-sm-12">
+                <select
+                  class="form-control"
+                  [(ngModel)]="ville"
+                  id="exampleFormville"
+                  #villeInput
+                  name="ville"
+                  required
+                  ngModel
+                >
+                  <option value="" selected="selected">Ville *</option>
+                  <option value="Ariana">Ariana</option>
+                  <option>Ben arous</option>
+                  <option>Bizerte</option>
+                  <option>Béja</option>
+                  <option>Gabès</option>
+                  <option>Gafsa</option>
+                  <option>Jendouba</option>
+                  <option>Kairouan</option>
+                  <option>Kasserine</option>
+                  <option>Kébili</option>
+                  <option>La manouba</option>
+                  <option>Le kef</option>
+                  <option>Mahdia</option>
+                  <option>Monastir</option>
+                  <option>Médenine</option>
+                  <option>Nabeul</option>
+                  <option>Sfax</option>
+                  <option>Sidi bouzid</option>
+                  <option>Siliana</option>
+                  <option>Sousse</option>
+                  <option>Tataouine</option>
+                  <option>Tozeur</option>
+                  <option>Tunis</option>
+                  <option>Zaghouan</option>
+                </select>
+              </div>
+
+              <label class="form-label">Adresse</label>
+              <div class="col-sm-12">
+                <input
+                  class="form-control name"
+                  type="text"
+                  placeholder="Adresse *"
+                  value=""
+                  [(ngModel)]="address"
+                  required
+                  ngModel
+                  id="address"
+                  name="address"
+                  #addressInput="ngModel"
+                >
+              </div>
+              <div
+                *ngIf="addressInput.invalid && addressInput.dirty"
+                class="alert alert-danger"
+              >
+                Il faut saisie votre adresse
+              </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+              <label class="form-label">Mot de passe</label>
+              <div class="col-sm-12">
+                <input
+                  class="form-control"
+                  id="exampleInputmotdepasse"
+                  type="password"
+                  placeholder="Mot de passe *"
+                  value=""
+                  [(ngModel)]="motdepasse"
+                  required
+                  minlength="4"
+                  ngModel
+                  #motdepasseInput="ngModel"
+                  name="motdepasse"
+
+                >
+                <label class="control-label" for="exampleInputmotdepasse"><i class="fa fa-lock"></i></label>
+              </div>
+
+            <div *ngIf="motdepasseInput.invalid && motdepasseInput.dirty" class="alert alert-danger">
+              Le password est obligatoire et doit impérativement a voir au moins 4
+              caractères
+            </div>
+            </div>
+
+
+
+         <!--   <div class="form-group">
+              <div class="col-sm-2 col-xs-3 captcha">
+                <label class="captcha">19 + 3 = </label>
+              </div>
+
+              <div class="col-sm-12 col-xs-12 captcha-text">
+                <input class="form-control name" placeholder="solve the captcha" type="text">
+              </div>
+            </div>
+            -->
+
+          </div>
+          <div class="footer clearfix">
+            <button
+              type="submit"
+              class="btn btn-default"
+              (click)=" ajoutClient(InscriptionForm.value, InscriptionForm)"
+              [disabled]="InscriptionForm.invalid"
+            >Inscription</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+

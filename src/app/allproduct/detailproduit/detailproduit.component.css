@@ -1,70 +1,107 @@
 
-.login-container{
-  margin-top: 5%;
-  margin-bottom: 5%;
+
+
+
+/********************admin*********************/
+form{
+  font-family: 'Roboto', sans-serif;
 }
-.login-form-1{
-  padding: 5%;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-}
-.login-form-1 h3{
-  text-align: center;
-  color: #333;
-}
-.login-form-2{
-  padding: 5%;
+.form-horizontal .header{
   background: #35b0ab;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  padding: 30px 25px;
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 3px 3px 0 0;
 }
-.login-form-2 h3{
+.form-horizontal .form-content{
+  padding: 25px;
+  background: #f9fafd;
+}
+.form-horizontal .form-control{
+  padding: 10px 50px 10px 15px;
+  height: 50px;
+  font-size: 18px;
+  color: #000;
+  border: 2px solid #6aacaa;
+  margin-bottom: 15px;
+}
+.form-horizontal .form-control:hover{
+  border-color: #f6fff1;
+}
+.form-horizontal .form-control:focus{
+  border-color: #35b0ab;
+  box-shadow: none;
+}
+.form-horizontal .control-label{
+  width: 42px;
+  height: 40px;
+  font-size: 17px;
+  color: #acacac;
+  border-left: 1px solid #acacac;
+  position: absolute;
+  top: 5px;
+  right: 20px;
   text-align: center;
+}
+.form-horizontal .captcha{
+  padding-right: 0;
+}
+.form-horizontal .captcha label{
+  background: #e0e0e0;
+  display: block;
+  height: 50px;
+  font-size: 16px;
+  color: #acacac;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 3px 0 0 3px;
+}
+.form-horizontal .captcha-text{
+  padding-left: 0;
+}
+.form-horizontal .captcha-text input{
+  border-radius: 0 3px 3px 0;
+}
+.form-horizontal .footer{
+  background: #e8eaf6;
+  border-top: 1px solid #35b0ab;
+  padding: 10px 25px;
+}
+.form-horizontal .footer .btn{
+  background: #35b0ab;
+  font-size: 18px;
   color: #fff;
+  float: right;
+  margin: 10px 0;
+  clear: both;
+  padding: 10px 25px;
+  transition: all 0.5s ease 0s;
 }
-.login-container form{
-  padding: 10%;
+.form-horizontal .name{
+  padding: 10px 15px;
 }
-.btnSubmit
-{
-  width: 50%;
-  border-radius: 2rem;
-  padding: 1.5%;
-  border: none;
-  cursor: pointer;
+@media only screen and (max-width:767px){
+  .form-horizontal .control-label i{
+    line-height: 40px;
+  }
+  .form-horizontal .captcha label{
+    font-size: 13px;
+  }
 }
-.login-form-1 .btnSubmit{
+
+.form-label{
+  font-size: 15px;
   font-weight: 600;
-  color: #fff;
-  background-color: #35b0ab;
-}
-.login-form-2 .btnSubmit{
-  font-weight: 600;
+  text-transform: uppercase;
   color: #35b0ab;
-  background-color: #fff;
-}
-.login-form-2 .ForgetPwd{
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-}
-.login-form-1 .ForgetPwd{
-  color: #35b0ab;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-
-
-.table {
-  margin: auto;
-  width: 50% !important;
 }
 
 
 
 
 
-
-
+/********************client*********************/
 
 
 

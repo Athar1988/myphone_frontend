@@ -47,19 +47,15 @@ export class GeneraleComponent implements OnInit {
               private  router:Router,
               private route:ActivatedRoute
               ){}
-              //public caddyService:CaddyService,
-  //               public authService:AuthenticationService
+
 
   ngOnInit(): void {
     this.getCategories();
     this.getProducts("/products");
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd ) {
-        let url = val.url;
         let p1=this.route.snapshot.params.p1;
         let p2=this.route.snapshot.params.p2;
-        console.log(p1);
-        console.log(p2);
         if(p1==1){
 
           if(p2==1){
@@ -95,16 +91,11 @@ export class GeneraleComponent implements OnInit {
             },err=>{
               console.log(err);
             })
-
-
         }
-
       }
     });
-  /*  this.authService.loadUser();
-    if(this.authService.isAuthenticated())
-      this.caddyService.loadCaddyFromLocalStorage();*/
   }
+
 
   private getCategories() {
     this.catService.getProduitdeCategorie(this.catService.host+"/categories")
@@ -127,19 +118,9 @@ export class GeneraleComponent implements OnInit {
       .subscribe(data=>{
         this.products=data;
         console.log(this.products);
-
       },err=>{
         console.log(err);
       })
   }
 
-  onLogin() {
-    this.router.navigateByUrl('/login');
-  }
-
-  onLogout() {
-  /*  this.caddyService.emptyCaddy();
-    this.authService.logout();*/
-    this.router.navigateByUrl('/login');
-  }
 }

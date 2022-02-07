@@ -1,50 +1,24 @@
+
+<!--
 <div *ngIf="products">
-  <div class="container">
-<div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-1  row-cols-xs-1 row-cols-md-2 row-cols-xl-3 justify-content-center" >
-  <div class="col col-sm col-md	col-lg	col-xl col-xs mb-5" *ngFor="let p of products._embedded.products">
-    <div class="card h-100">
-          <img src="assets/image/unknown.png" (click)="onProductDetails(p)" alt="blogs" class="card-img-top sizephone" >
-        <!--
-       <div *ngIf="this.authService.isAdmin()">
-         <button (click)="onEditPhoto(p)">
-           <span class="glyphicon glyphicon-edit"></span>
-         </button>
-         <p *ngIf="editPhoto && currentProduct==p">
-           <input type="file" (change)="onSelectedFile($event)">
-           <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
-           {{progress}}
-         </p>
-       </div>
-       -->
-          <div class="card-body">
-              <h4 class="card-title">{{p.name}}</h4>
-              <h6 class="card-subtitle">{{p.name}}</h6>
-              <p class="mt-3">{{p.name}}</p>
-              <button type="button" class="btn btn-primary">Panier</button>
-          </div>
-        <div>
-        <span *ngIf="p.promotion">
-                <img src="assets/image/promo.png" class="img-thumbnail img-circle" height="30">
-              </span>
-          <span *ngIf="p.selected">
-                <img src="assets/image/favorite.png" class="img-thumbnail img-circle" height="30">
-              </span>
-          <span *ngIf="p.available">
-                <img src="assets/image/available.png" class="img-thumbnail img-circle"  height="30">
-              </span>
+  <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-sm-1  row-cols-xs-1 row-cols-md-2 row-cols-xl-3 justify-content-center" >
+    <div class="col col-sm col-md	col-lg	col-xl col-xs mb-5"  *ngFor="let p of products._embedded.products">
+      <div class="product-grid card h-100">
+        <div class="product-image">
+          <h5 class="card-title">{{p.marque}}</h5>
+          <a class="image"><img (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}"></a>
+          <span *ngIf="p.promotion==true" class="product-sale-label">sale!</span>
         </div>
-        <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(p)">
-          <label class="control-label">Quantité :</label>
-          <input type="number" name="quantity" [(ngModel)]="p.quantity" ngModel style="width: 40px">
-          <button>
-            <img src="assets/image/caddy.png">
-          </button>
-        </form>
+        <div class="product-content">
+          <h3 class="title">{{p.name}}</h3>
+          <div class="price"><span>{{p.currentPrice}} TND</span> {{p.pourcentage }} %</div>
+          <div >{{p.currentPrice-(p.currentPrice*(p.pourcentage/100))}} TND</div>
+          <a class="add-to-cart" (click)="ajouterItem(p)"><i class="fa fa-shopping-basket"></i> Ajouter au panier</a>
+        </div>
       </div>
+    </div>
   </div>
 </div>
-</div>
-</div>
+-->
 
-
-
+<app-produit  [products]="products"></app-produit>

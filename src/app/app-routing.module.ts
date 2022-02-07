@@ -20,6 +20,11 @@ import {LoginComponent} from './admin/login/login.component';
 import {AjouterProduitComponent} from './admin/ajouter-produit/ajouter-produit.component';
 import {TousProduitComponent} from './admin/tous-produit/tous-produit.component';
 import {ModifierConatctComponent} from './admin/modifier-conatct/modifier-conatct.component';
+import {InscriptionComponent} from './client/inscription/inscription.component';
+import {ListeClientComponent} from './admin/liste-client/liste-client.component';
+import {ListeMessageComponent} from './admin/liste-message/liste-message.component';
+import {AuthGaurdGuard} from './auth-gaurd.guard';
+import {ErrorComponent} from './structure/error/error.component';
 
 
 
@@ -32,22 +37,31 @@ const routes: Routes = [
   {path:'contact', component:ContactComponent},
   {path:'admin', component:LoginComponent},
   {path:'compte', component:CompteComponent},
+  {path:'inscription', component:InscriptionComponent},
   {path:'panier', component:PanierComponent},
   {path:'listeCommandes', component:ListeCommandeComponent},
+  {path:'listeClient', component:ListeClientComponent},
+  {path:'listeMessage', component:ListeMessageComponent},
+
+
   {path:'Modifierprofil', component:ModifierProfilComponent},
   {path:'modifierConatct', component:ModifierConatctComponent},
 
 
-  { path: 'ajouteProduit', component: AjouterProduitComponent },
+  { path: 'ajouteProduit', canActivate: [AuthGaurdGuard], component: AjouterProduitComponent },
 
 
   {path:'listeProduit/:idCat', component:TousProduitComponent},
+  {path:'listeProduit/admin/:idCat', canActivate: [AuthGaurdGuard],component:TousProduitComponent},
   {path:'profil/:idClient', component:ProfilComponent},
   {path:'products/:p1', component:ProduitComponent},
   {path:'detail/:id', component:DetailproduitComponent},
   {path:'chercher/:mc', component:RechercheComponent},
   {path:'commande/:somme', component:CommandesComponent},
   {path:'detailCommande/:idCommande', component:DetailCommandeComponent},
+
+
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({

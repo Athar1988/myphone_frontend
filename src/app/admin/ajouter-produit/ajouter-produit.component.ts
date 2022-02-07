@@ -14,18 +14,12 @@ export class AjouterProduitComponent implements OnInit {
   nom;
   description;
   marque;
-  pourcentage;
+  pourcentage=0;
   currentPrice;
-  promotion=true;
+  promotion=false;
   available=true;
   quantity;
   categorie;
-  selectedFile: File;
-  message;
-  imageName: any;
-  retrievedImage: any;
-  base64Data: any;
-  retrieveResonse: any;
   produit;
 
 

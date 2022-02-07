@@ -1,0 +1,95 @@
+
+form{
+  font-family: 'Roboto', sans-serif;
+}
+.form-horizontal .header{
+  background: #35b0ab;
+  padding: 30px 25px;
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 3px 3px 0 0;
+}
+.form-horizontal .form-content{
+  padding: 25px;
+  background: #f9fafd;
+}
+.form-horizontal .form-control{
+  padding: 10px 50px 10px 15px;
+  height: 50px;
+  font-size: 18px;
+  color: #000;
+  border: 2px solid #6aacaa;
+  margin-bottom: 15px;
+}
+.form-horizontal .form-control:hover{
+  border-color: #f6fff1;
+}
+.form-horizontal .form-control:focus{
+  border-color: #35b0ab;
+  box-shadow: none;
+}
+.form-horizontal .control-label{
+  width: 42px;
+  height: 40px;
+  font-size: 17px;
+  color: #acacac;
+  border-left: 1px solid #acacac;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  text-align: center;
+}
+.form-horizontal .captcha{
+  padding-right: 0;
+}
+.form-horizontal .captcha label{
+  background: #e0e0e0;
+  display: block;
+  height: 50px;
+  font-size: 16px;
+  color: #acacac;
+  line-height: 45px;
+  text-align: center;
+  border-radius: 3px 0 0 3px;
+}
+.form-horizontal .captcha-text{
+  padding-left: 0;
+}
+.form-horizontal .captcha-text input{
+  border-radius: 0 3px 3px 0;
+}
+.form-horizontal .footer{
+  background: #e8eaf6;
+  border-top: 1px solid #35b0ab;
+  padding: 10px 25px;
+}
+.form-horizontal .footer .btn{
+  background: #35b0ab;
+  font-size: 18px;
+  color: #fff;
+  float: right;
+  margin: 10px 0;
+  clear: both;
+  padding: 10px 25px;
+  transition: all 0.5s ease 0s;
+}
+.form-horizontal .name{
+  padding: 10px 15px;
+}
+@media only screen and (max-width:767px){
+  .form-horizontal .control-label i{
+    line-height: 40px;
+  }
+  .form-horizontal .captcha label{
+    font-size: 13px;
+  }
+}
+
+.form-label{
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #35b0ab;
+}
+

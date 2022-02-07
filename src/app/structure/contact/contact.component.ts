@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientService} from '../../services/client.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -15,7 +16,8 @@ export class ContactComponent implements OnInit {
   sujet;
   message;
 
-  constructor(private clientService:ClientService) { }
+  constructor(private clientService:ClientService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,5 +27,6 @@ export class ContactComponent implements OnInit {
       data=>{console.log("contact envoyer avec succee")},
       err=>{console.log("probleme de reseau")},
     )
+    this.router.navigateByUrl('');
   }
 }

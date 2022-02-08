@@ -220,6 +220,73 @@ form{
 
 
 /**** css total commander***/
+.serviceBox{
+  background: #fff;
+  font-family: 'Mulish', sans-serif;
+  text-align: center;
+  padding: 45px 10px 25px;
+  border-radius: 48% 48% 0 0/40% 40% 0 0;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 7px #35b0ab inset;
+}
+.serviceBox .service-icon{
+  background: linear-gradient(to right,#0090b0,#35b0ab);
+  font-size: 55px;
+  line-height: 55px;
+  margin: 0 0 25px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.serviceBox .title{
+  color: #777;
+  font-size: 19px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+.serviceBox .description{
+  color: #999;
+  font-size: 14px;
+  line-height: 24px;
+  margin: 0 5px 20px;
+}
+.serviceBox .read-more{
+  color: #fff;
+  background: linear-gradient(to right, #0090b0,#35b0ab);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  width: 170px;
+  padding: 7px 0;
+  margin: 0 0 0 -20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0 20px 0 0;
+  display: block;
+  position: relative;
+  transition: all 0.3s ease 0s;
+}
+.serviceBox .read-more:hover{ text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.5); }
+.serviceBox .read-more:before,
+.serviceBox .read-more:after{
+  content: "";
+  background: linear-gradient(to top left,#0090b0 49%,transparent 50%);
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: -10px;
+  left: 0;
+}
+.serviceBox .read-more:after{
+  transform: rotateX(180deg);
+  top: auto;
+  bottom: -10px;
+}
+
+
+
+
+/**** css box pas commande***/
 
 .pricingTable{
   background-color: #d3d4d5;

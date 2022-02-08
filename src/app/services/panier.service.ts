@@ -6,7 +6,6 @@ import {Client} from '../model/client.model';
 import {HttpClient} from '@angular/common/http';
 import {Item} from '../model/Item';
 import {Commande} from '../model/Commande';
-//import {constFactory} from '../../../node_modules2/webdriver-js-extender/built/spec/mock-server/commands/helpers';
 
 @Injectable({
   providedIn: 'root'
@@ -33,20 +32,20 @@ export class PanierService {
       return this.http.post<Item>("http://localhost:8080/productItems/"+this.idClient,item );
       }
 
-  supprimerItem(id): Observable<Item>{
-  return this.http.delete<Item>("http://localhost:8080/productItems/"+id );
-  }
+      supprimerItem(id): Observable<Item>{
+      return this.http.delete<Item>("http://localhost:8080/productItems/"+id );
+      }
 
 
-  sauvgarderItem(produitItem): Observable<Item>{
-    this.idClient= localStorage.getItem('id');
-    return this.http.post<Item>("http://localhost:8080/client/"+this.idClient+"/itemproduct", produitItem);
-  }
+     sauvgarderItem(produitItem): Observable<Item>{
+     this.idClient= localStorage.getItem('id');
+     return this.http.post<Item>("http://localhost:8080/client/"+this.idClient+"/itemproduct", produitItem);
+     }
 
 
 
   //Gets called when the user clicks on retieve image button to get the image from back end
-  returnerImage(imageName) {
+  /*returnerImage(imageName) {
     //Make a call to Sprinf Boot to get the Image Bytes.
     this.http.get('http://localhost:8080/image/get/' + imageName)
       .subscribe(
@@ -60,9 +59,9 @@ export class PanierService {
       );
   }
 
-
+*/
   //Gets called when the user clicks on retieve image button to get the image from back end
-  recupereImage(id) {
+ /* recupereImage(id) {
     //Make a call to Sprinf Boot to get the Image Bytes.
     this.http.get('http://localhost:8080/products/'+id+'/photo')
       .subscribe(
@@ -73,9 +72,9 @@ export class PanierService {
         return codeImage;
           /* this.base64Data = this.retrieveResonse.picByte;
            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-           console.log(this.retrievedImage);*/
+           console.log(this.retrievedImage);
         },
       );
-  }
+  }*/
 
 }

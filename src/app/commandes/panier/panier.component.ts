@@ -39,7 +39,9 @@ export class PanierComponent implements OnInit {
   CreationCommande(){
     this.commandeService.commande.client=this.clinetService.clientactuel;
     localStorage.setItem('commande',  JSON.stringify(this.commandeService.commande) );
-    this.router.navigateByUrl('/commande/'+this.total);
+    //this.router.navigateByUrl('/commande/'+this.total);
+    this.router.navigateByUrl('/commande');
+
   }
 
   ContinuerShopping() {
@@ -52,7 +54,6 @@ export class PanierComponent implements OnInit {
     this.panierService.recupereTousItem().subscribe(
       (data)=>{
         this.Items=data;
-
         for (let item of this.Items._embedded.productItems) {
           this.productItem=item;
           this.commandeService.commande.products.push(this.productItem);
@@ -80,6 +81,9 @@ export class PanierComponent implements OnInit {
       this.panier = JSON.parse(localStorage.getItem('panier'));
       this.nbItem = JSON.parse(localStorage.getItem('item'));
       this.nbItem  = Number(this.nbItem)-1 ;
+      if(this.nbItem<0){
+        this.nbItem=0;
+      }
       localStorage.setItem('item', this.nbItem );
       console.log("item supprimer avec succee");
       location.reload();

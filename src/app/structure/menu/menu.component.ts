@@ -3,6 +3,7 @@ import {CategoriesService} from '../../services/categories.service';
 import {Router} from '@angular/router';
 import {ClientService} from '../../services/client.service';
 import {PanierService} from '../../services/panier.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-menu',
@@ -17,6 +18,7 @@ export class MenuComponent implements OnInit {
   panier=[];
   idclient;
   nb;
+  motrechercher;
   constructor(public service: CategoriesService,
               public serviceClient: ClientService,
               public router:Router) { }
@@ -37,9 +39,12 @@ export class MenuComponent implements OnInit {
 
 
 
-  chercherUnProduit(credentials) {
-    console.log("/chercher/"+credentials.motarechercher);
-    this.router.navigateByUrl("/chercher/"+credentials.motarechercher);
+  chercherUnProduit(motForm:NgForm) {
+    this.motrechercher=motForm.value;
+    motForm.reset();
+    console.log("/chercher/"+this.motrechercher.motarechercher);
+    this.router.navigateByUrl("/chercher/"+this.motrechercher.motarechercher);
+
   }
 
   accueil(){

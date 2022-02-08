@@ -20,9 +20,13 @@ export class DetailCommandeComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin=localStorage.getItem('admin');
+    console.log(this.admin);
     this.idCommande=this.route.snapshot.params.idCommande;
-    console.log(this.idCommande);
-    this.commandeService.recuperedetailCommande(this.idCommande).subscribe(
+
+    let iddecoder=atob(this.idCommande)
+
+    console.log(iddecoder);
+    this.commandeService.recuperedetailCommande(iddecoder).subscribe(
       (data)=>{this.detailCommande=data; console.log(this.detailCommande)},
       (error)=>{console.log("probleme de reseau")},
     )
@@ -42,7 +46,7 @@ export class DetailCommandeComponent implements OnInit {
           data=>{console.log("commande traiter avec succé")},
           err=>{console.log("probleme de connexion")}
         )
-this.router.navigateByUrl('listeCommandes');
+       this.router.navigateByUrl('listeCommandes/admin');
         },
       err=>{console.log("erruer de reseau")},
     )

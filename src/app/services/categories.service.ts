@@ -35,9 +35,10 @@ export class CategoriesService {
   chercherNameProduit(motdepasse) :Observable<Product>{
     return this.http.get<Product>(this.host+"/products/search/productsName?mc="+motdepasse);
   }
-  chercherCategoryProduit(motdepasse):Observable<Product> {
+
+ /* chercherCategoryProduit(motdepasse):Observable<Product> {
     return this.http.get<Product>(this.host+"/products/search/productsCategory?mc="+motdepasse);
-  }
+  }*/
   chercherDescriptionProduit(motdepasse):Observable<Product> {
     return this.http.get<Product>(this.host+"/products/search/productsDescription?mc="+motdepasse);
   }

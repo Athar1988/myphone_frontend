@@ -1,0 +1,47 @@
+.serviceBox{
+  color: #fff;
+  background: linear-gradient(to right,#39AB99,#4DB179);
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 60px 40px;
+  border-radius: 120px 60px/60px 120px;
+  position: relative;
+  z-index: 1;
+}
+.serviceBox:before{
+  content: '';
+  background-color: rgba(255,255,255,0.1);
+  border-radius: inherit;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  bottom: 20px;
+  z-index: -1;
+}
+.serviceBox .service-icon{
+  font-size: 40px;
+  line-height: 40px;
+  margin: 0 0 10px;
+}
+.serviceBox .title{
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 25px;
+  text-transform: uppercase;
+  margin: 0 0 5px;
+}
+.serviceBox .description{
+  color: rgba(255,255,255,0.9);
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+.serviceBox.orange{ background: linear-gradient(to right,#F17D45,#F39C31); }
+.serviceBox.green{ background: linear-gradient(to right,#81a82d,#a0c918); }
+.serviceBox.blue{ background: linear-gradient(to right,#1278A3,#25A7C4); }
+@media only screen and (max-width: 990px){
+  .serviceBox{ margin: 0 0 30px; }
+}

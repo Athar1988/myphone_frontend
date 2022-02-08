@@ -54,7 +54,6 @@ export class CommandeService {
   }
 
   recupererClientCommander(id){
-    console.log("http://localhost:8080/commandes/"+id+"/client");
     return this.http.get("http://localhost:8080/commandes/"+id+"/client");
   }
 
@@ -63,8 +62,6 @@ export class CommandeService {
   }
 
   traiterCommande(id, commande): Observable<Commande>{
-    console.log(id+" iddd");
-    console.log(commande+" commmmande");
     return this.http.post<Commande>("http://localhost:8080/traitercommandes/"+id, commande);
   }
 

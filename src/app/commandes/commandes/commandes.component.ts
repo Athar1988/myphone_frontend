@@ -17,7 +17,6 @@ export class CommandesComponent implements OnInit {
   idclient
   nom;
   numeroCarte;
-  condition;
   date;
   CVC;
 
@@ -30,16 +29,19 @@ export class CommandesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.total=this.route.snapshot.params.somme;
+    //this.total=this.route.snapshot.params.somme;
     //récupérer la commande
     this.commande=JSON.parse(localStorage.getItem('commande'));
+    console.log(this.commande+" commande");
     this.currentDate = new Date();
     this.reference="ref"+this.commande.client.nom.substr(0,2)+this.commande.client.id;
     //this.statut="Confirmer";
   }
 
 
-
+  ContinuerShopping() {
+    this.router.navigateByUrl('/generale');
+  }
 
   paiment(f){
     console.log(f.value);

@@ -3,6 +3,7 @@ import {AdminService} from '../../services/admin.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../model/product.model';
 import {CategoriesService} from '../../services/categories.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-tous-produit',
@@ -16,7 +17,10 @@ export class TousProduitComponent implements OnInit {
   categories;
   categorie;
   idCat=0;
+  selectedFile: File;
+
   constructor(private adminService:AdminService,
+              private httpClient: HttpClient,
               private router: Router,
               private route:ActivatedRoute,
               private catService:CategoriesService) { }
@@ -75,9 +79,39 @@ export class TousProduitComponent implements OnInit {
         },
       err=>{console.log("probleme de connexion");}
     )
+    location.reload();
   }
 
   modifierproduit(produit:Product) {
     this.router.navigateByUrl('detail/'+produit.id);
+  }
+
+
+
+
+
+
+  //Gets called when the user selects an image
+  public onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  //Gets called when the user clicks on submit to upload the image
+  onUpload(idProduit) {
+    console.log(this.selectedFile);
+    //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+    //Make a call to the Spring Boot Application to save the image
+    this.httpClient.post('http://localhost:8080/image/upload/'+idProduit, uploadImageData, { observe: 'response' })
+      .subscribe((response) => {
+          if (response.status === 200) {
+            //this.message = 'Image uploaded successfully';
+          } else {
+           // this.message = 'Image not uploaded successfully';
+          }
+        }
+      );
+    location.reload();
   }
 }

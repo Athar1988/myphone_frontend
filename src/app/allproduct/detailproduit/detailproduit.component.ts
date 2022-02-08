@@ -76,14 +76,14 @@ export class DetailproduitComponent implements OnInit {
 
 
 
-
+/*
 //Gets called when the user selects an image
   public onFileChanged(event) {
     this.selectedFile = event.target.files[0];
   }
-
+*/
   //Gets called when the user clicks on submit to upload the image
-  onUpload(idProduit) {
+ /* onUpload(idProduit) {
     console.log(this.selectedFile);
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
     const uploadImageData = new FormData();
@@ -98,7 +98,8 @@ export class DetailproduitComponent implements OnInit {
           }
         }
       );
-  }
+    //location.reload();
+  }*/
 
 
   //Gets called when the user clicks on retieve image button to get the image from back end
@@ -148,12 +149,13 @@ export class DetailproduitComponent implements OnInit {
 
 
   ModifierProduit(p: Product, currentProduct) {
+    console.log(currentProduct.picByte );
     this.currentProduct=new Product(currentProduct.id,p.name,p.description,p.marque,p.currentPrice, p.pourcentage,this.promotion, this.available ,p.quantity,currentProduct.nameImage,currentProduct.typeImage, currentProduct.picByte );
     this.adminService.updateProduit(this.currentProduct).subscribe(
       data=>{console.log("produits modifier avec succé")},
       err=>{console.log("probleme de modification")},
     )
-    location.reload();
+    this.router.navigateByUrl('listeProduit/admin/0');
   }
 
 

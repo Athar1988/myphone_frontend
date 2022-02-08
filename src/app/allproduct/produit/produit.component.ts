@@ -19,6 +19,7 @@ export class ProduitComponent implements OnInit {
   nbItem;
   panier=[];
   sommeTotal=0;
+  idclient;
   constructor(
     private route:ActivatedRoute,
     private router:Router,
@@ -27,7 +28,9 @@ export class ProduitComponent implements OnInit {
     ) { }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.idclient=localStorage.getItem('id');
+  }
 
 
 
@@ -39,7 +42,7 @@ export class ProduitComponent implements OnInit {
     else{
       this.sommeTotal=produit.currentPrice;
     }
-    this.productItem= new Item(null, produit.name ,produit.currentPrice,produit.pourcentage,1, this.sommeTotal, produit.nameImage, produit.typeImage,produit.picByte);
+    this.productItem= new Item(produit.id, produit.name ,produit.currentPrice,produit.pourcentage,1, this.sommeTotal, produit.nameImage, produit.typeImage,produit.picByte);
    // if(localStorage && localStorage.getItem('panier')){
    // this.panier = JSON.parse(localStorage.getItem('panier'));
     //this.panier.push(this.productItem);

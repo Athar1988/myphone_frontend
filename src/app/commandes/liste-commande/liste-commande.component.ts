@@ -62,7 +62,8 @@ export class ListeCommandeComponent implements OnInit {
 
 
   detailCommande(id) {
-  this.router.navigateByUrl('/detailCommande/'+id);
+    let idcoder=btoa( id);
+  this.router.navigateByUrl('/detailCommande/'+idcoder);
   }
 
 

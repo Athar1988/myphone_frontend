@@ -81,7 +81,7 @@ export class ClientService {
     localStorage.removeItem('id');
     localStorage.removeItem('mail');
     localStorage.removeItem('panier');
-    localStorage.removeItem('item');
+   // localStorage.removeItem('item');
     localStorage.removeItem('commande');
   }
 

@@ -184,7 +184,7 @@
                 <th width="5%">Date</th>
                 <th width="30%" >Montant Toatl</th>
                 <th width="17%">Statut</th>
-                <th width="17%">Détail</th>
+                <th width="17%">Info</th>
               </tr>
               </thead>
               <tbody>
@@ -195,7 +195,7 @@
                 <td width="5%">{{commande.date}}</td>
                 <td>{{commande.totalAmount}} </td>
                 <td>{{commande.statut}}</td>
-                <td><i class="fa fa-angle-double-right" (click)="detailCommande(commande.id)"></i></td>
+                <td><i class="fa fa-info-circle" (click)="detailCommande(commande.id)"></i></td>
               </tr>
               </tbody>
             </table>

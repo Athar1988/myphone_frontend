@@ -6,10 +6,12 @@
       <div class="row">
         <div class=" col-lg-12 col-md-12 col-md-8 col-sm-12 col-sm-10 col-xs-12">
           <div class="email-signature">
+            <span *ngIf="currentProduct.promotion==true" class="product-sale-label">PROMO!</span>
             <div class="signature-img">
               <img src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt="">
             </div>
             <div class="signature-details">
+
               <h2 class="title">{{currentProduct.name}}</h2>
               <span class="post">{{currentProduct.marque}}</span><br>
               <span class="description">{{currentProduct.description}}</span>
@@ -21,7 +23,7 @@
               <li><span class="fa fa-credit-card-alt"></span>{{currentProduct.currentPrice-(currentProduct.currentPrice*(currentProduct.pourcentage/100))}}TND</li>
             </ul>
             <ul class="icon">
-              <a (click)="ajouterItem(currentProduct)" class="btn btn-lg blue"><i class="fa fa-shopping-basket"></i>Ajouter au panier</a>
+              <a *ngIf="idclient!=null" (click)="ajouterItem(currentProduct)" class="btn btn-lg blue"><i class="fa fa-shopping-basket"></i>Ajouter au panier</a>
             </ul>
           </div>
         </div>
@@ -52,7 +54,7 @@
 
     <div class="col-md-offset-2 col-md-8">
 
-
+<!--
       <div class="col-sm-5">
         <img class="d-block w-50" src="data:image/jpeg;base64,{{currentProduct.picByte}}" alt="">
         <div class="col-md-4">
@@ -62,7 +64,7 @@
           <input type="button" (click)="onUpload(idproduit)" value="Modifier Image">
         </div>
       </div>
-
+-->
 
 
 

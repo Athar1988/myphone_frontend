@@ -240,6 +240,13 @@
               [disabled]="InscriptionForm.invalid"
             >Inscription</button>
           </div>
+
+          <div *ngIf="emailexiste==true" class="alert alert-danger">
+            Ce compte existe déjà !!
+          </div>
+
+
+
         </form>
       </div>
     </div>

@@ -39,25 +39,27 @@ const routes: Routes = [
   {path:'compte', component:CompteComponent},
   {path:'inscription', component:InscriptionComponent},
   {path:'panier', component:PanierComponent},
+
+  {path:'listeCommandes/admin', canActivate: [AuthGaurdGuard], component:ListeCommandeComponent},
   {path:'listeCommandes', component:ListeCommandeComponent},
-  {path:'listeClient', component:ListeClientComponent},
-  {path:'listeMessage', component:ListeMessageComponent},
+
+  {path:'listeClient',  canActivate: [AuthGaurdGuard],component:ListeClientComponent},
+  {path:'listeMessage', canActivate: [AuthGaurdGuard], component:ListeMessageComponent},
 
 
   {path:'Modifierprofil', component:ModifierProfilComponent},
-  {path:'modifierConatct', component:ModifierConatctComponent},
+  {path:'modifierConatct', canActivate: [AuthGaurdGuard], component:ModifierConatctComponent},
 
 
   { path: 'ajouteProduit', canActivate: [AuthGaurdGuard], component: AjouterProduitComponent },
 
 
-  {path:'listeProduit/:idCat', component:TousProduitComponent},
-  {path:'listeProduit/admin/:idCat', canActivate: [AuthGaurdGuard],component:TousProduitComponent},
+  {path:'listeProduit/admin/:idCat', canActivate: [AuthGaurdGuard], component:TousProduitComponent},
   {path:'profil/:idClient', component:ProfilComponent},
   {path:'products/:p1', component:ProduitComponent},
   {path:'detail/:id', component:DetailproduitComponent},
   {path:'chercher/:mc', component:RechercheComponent},
-  {path:'commande/:somme', component:CommandesComponent},
+  {path:'commande', component:CommandesComponent},
   {path:'detailCommande/:idCommande', component:DetailCommandeComponent},
 
 

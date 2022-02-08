@@ -40,6 +40,7 @@
             <tr>
               <th>Numéro</th>
               <th>Image</th>
+              <th>Modifier Image</th>
               <th>Nom</th>
               <th>Marque</th>
               <th>Quantité</th>
@@ -57,6 +58,10 @@
                 <div class="user_icon">
                   <img src="data:image/jpeg;base64,{{produit.picByte}}" alt="">
                 </div>
+              </td>
+              <td>
+                <input type="file" (change)="onFileChanged($event)">
+                <input type="button" (click)="onUpload(produit.id)" value="Modifier Image">
               </td>
               <td>{{produit.name}}</td>
               <td>{{produit.marque}} </td>

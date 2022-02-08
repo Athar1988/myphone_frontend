@@ -17,7 +17,7 @@ export class InscriptionComponent implements OnInit {
   prenom;
   ville;
   address;
-  emailexiste=false;
+  emailexiste;
   client:any;
   constructor(private serviceClient: ClientService  ,
               private router:Router) { }
@@ -32,6 +32,7 @@ export class InscriptionComponent implements OnInit {
         this.client=data;
 
         for(let i=0 ; i< this.client._embedded.clients.length; i++) {
+          console.log(this.client._embedded.clients[i].email+" tous les mails");
           if (this.client._embedded.clients[i].email == credentials.email) {
             this.emailexiste=true;
             console.log(this.emailexiste+" eeeee");
@@ -41,10 +42,13 @@ export class InscriptionComponent implements OnInit {
             this.emailexiste=false;
             console.log(this.emailexiste+" eeeee");
           }
+
+
         }
       },
       err=>{console.log("probleme reseau")}
     )
+
     if(this.emailexiste==false){
       console.log(this.emailexiste+" eeeee");
       this.serviceClient.sauvgarderClient(credentials).subscribe(

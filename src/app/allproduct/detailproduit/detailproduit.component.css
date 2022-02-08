@@ -1,6 +1,17 @@
 
 
-
+.product-sale-label{
+  color: #fff;
+  background-color: #e74c39;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: capitalize;
+  padding: 6px 12px;
+  border-radius: 0 0 0 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 /********************admin*********************/
 form{

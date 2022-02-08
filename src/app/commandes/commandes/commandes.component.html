@@ -1,12 +1,30 @@
+<div *ngIf="commande==null">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4 col-sm-6">
+      </div>
+      <div class="col-12 col-md-4 col-sm-6">
+        <div class="serviceBox">
+          <div class="service-icon">
+            <span><i class="fa fa-cart-arrow-down"></i></span>
+          </div>
+          <h3 class="title">Pas de commande</h3>
+          <p class="description">Il n’y a plus d’articles dans votre panier Commencez vos achats !</p>
+          <a (click)="ContinuerShopping()" class="read-more">Shopping</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+<div *ngIf="commande!=null">
 <div class="container">
   <div class="row">
     <div class="col-md-offset-2 col-md-2"></div>
     <div class="col-md-offset-2 col-md-8">
       <form class="form-horizontal"  #PaiementForm="ngForm">
         <div class="header">Données bancaires</div>
-
-
         <div class="form-content">
           <div class="form-group">
             <label class="form-label">Nom et prénom</label>
@@ -150,10 +168,6 @@
               </div>
             </div>
           </div>
-
-
-
-
         </div>
         <div class="footer clearfix">
           <button
@@ -167,32 +181,5 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- recap commande --->
-<!--
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 col-sm-3 col-xl-8"></div>
-    <div class="col-md-8 col-sm-9 col-xl-4">
-      <div class="pricingTable green">
-        <div class="pricingTable-header">
-          <h3 class="title">Recap Panier</h3>
-        </div>
-        <div class="price-value">
-          <span class="amount">{{total+7000  }} </span>
-          <span class="month">TND</span>
-        </div>
-        <ul class="pricing-content">
-          <li>Total sans remise : {{prixsansremise | number}} TND</li>
-          <li>Total avec remise: {{total}} TND</li>
-          <li>Frais de livraison: 7000 TND</li>
-          <li>Total à payer:{{total+7000  }} TND</li>
-        </ul>
-        <a class="pricingTable-signup"><i class="fa fa-forward" aria-hidden="true"></i>Payer</a>
-      </div>
-    </div>
-  </div>
 </div>
--->
+

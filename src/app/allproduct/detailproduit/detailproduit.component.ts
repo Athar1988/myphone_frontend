@@ -18,7 +18,7 @@ export class DetailproduitComponent implements OnInit {
   idproduit;
   promotion=true;
   available=true;
-  selectedFile: File;
+  idclient;
   message;
   sommeTotal=0;
   productItem: any;
@@ -34,6 +34,7 @@ export class DetailproduitComponent implements OnInit {
               public  panierservice:PanierService) { }
 
   ngOnInit() {
+    this.idclient=localStorage.getItem('id');
     //recupere le produits
     this.admin=localStorage.getItem('admin');
     this.idproduit=this.route.snapshot.params.id;
@@ -47,6 +48,7 @@ export class DetailproduitComponent implements OnInit {
 
 
 
+
   ajouterItem(produit: Product){
     if(produit.pourcentage!=0){
       this.sommeTotal=produit.currentPrice-(produit.currentPrice*(produit.pourcentage/100));
@@ -54,7 +56,7 @@ export class DetailproduitComponent implements OnInit {
     else{
       this.sommeTotal=produit.currentPrice;
     }
-    this.productItem= new Item(null, produit.name ,produit.currentPrice,produit.pourcentage,1, this.sommeTotal, produit.nameImage, produit.typeImage,produit.picByte);
+    this.productItem= new Item(produit.id, produit.name ,produit.currentPrice,produit.pourcentage,1, this.sommeTotal, produit.nameImage, produit.typeImage,produit.picByte);
     // if(localStorage && localStorage.getItem('panier')){
     // this.panier = JSON.parse(localStorage.getItem('panier'));
     //this.panier.push(this.productItem);
@@ -72,7 +74,6 @@ export class DetailproduitComponent implements OnInit {
       }
     );
   }
-
 
 
 
@@ -157,6 +158,8 @@ export class DetailproduitComponent implements OnInit {
     )
     this.router.navigateByUrl('listeProduit/admin/0');
   }
+
+
 
 
 }

@@ -51,6 +51,10 @@ export class MenuComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
+  tousProduits(){
+    this.router.navigateByUrl("/generale");
+  }
+
 
   onProductsPromo() {
     this.router.navigateByUrl("/products/1/1");
@@ -80,7 +84,7 @@ export class MenuComponent implements OnInit {
 
   Deconnecter() {
     this.serviceClient.logout();
-    location.reload();
+   // location.reload();
     this.router.navigateByUrl('');
   }
 

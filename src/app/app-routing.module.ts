@@ -31,6 +31,15 @@ import {ErrorComponent} from './structure/error/error.component';
 const routes: Routes = [
   {path:'products/:p1/:p2',component:GeneraleComponent},
 
+
+  {path:'listeProduit/admin/:idCat', canActivate: [AuthGaurdGuard], component:TousProduitComponent},
+  {path:'profil/:idClient', component:ProfilComponent},
+  {path:'products/:p1', component:ProduitComponent},
+  {path:'detail/:id', component:DetailproduitComponent},
+  {path:'chercher/:mc', component:RechercheComponent},
+  {path:'detailCommande/:idCommande', component:DetailCommandeComponent},
+
+
   {path:'', component:AccueilComponent},
   {path:'generale', component:GeneraleComponent},
   {path:'nosMagasin', component:NosmagasinComponent},
@@ -49,18 +58,12 @@ const routes: Routes = [
 
   {path:'Modifierprofil', component:ModifierProfilComponent},
   {path:'modifierConatct', canActivate: [AuthGaurdGuard], component:ModifierConatctComponent},
-
+  {path:'commande', component:CommandesComponent},
 
   { path: 'ajouteProduit', canActivate: [AuthGaurdGuard], component: AjouterProduitComponent },
 
 
-  {path:'listeProduit/admin/:idCat', canActivate: [AuthGaurdGuard], component:TousProduitComponent},
-  {path:'profil/:idClient', component:ProfilComponent},
-  {path:'products/:p1', component:ProduitComponent},
-  {path:'detail/:id', component:DetailproduitComponent},
-  {path:'chercher/:mc', component:RechercheComponent},
-  {path:'commande', component:CommandesComponent},
-  {path:'detailCommande/:idCommande', component:DetailCommandeComponent},
+
 
 
   { path: '**', component: ErrorComponent },

@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../model/product.model';
 import {CategoriesService} from '../../services/categories.service';
 import {HttpClient} from '@angular/common/http';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-tous-produit',
@@ -15,7 +16,8 @@ export class TousProduitComponent implements OnInit {
   p: number = 1;
   currentRequest;
   categories;
-  categorie;
+  motrechercher;
+  motarechercher='';
   idCat=0;
   selectedFile: File;
 
@@ -88,7 +90,13 @@ export class TousProduitComponent implements OnInit {
 
 
 
+  chercherUnProduit(motForm:NgForm) {
+    this.motrechercher=motForm.value;
+    motForm.reset();
+    console.log("/chercher/"+this.motrechercher.motarechercher);
+    this.router.navigateByUrl("/chercher/"+this.motrechercher.motarechercher);
 
+  }
 
 
   //Gets called when the user selects an image

@@ -30,7 +30,12 @@ export class InscriptionComponent implements OnInit {
     this.serviceClient.recupererTousClient().subscribe(
       data=>{
         this.client=data;
+        if(this.client._embedded.clients.length==0){
+          this.emailexiste=false;
+ }
 
+
+ else{
         for(let i=0 ; i< this.client._embedded.clients.length; i++) {
           console.log(this.client._embedded.clients[i].email+" tous les mails");
           if (this.client._embedded.clients[i].email == credentials.email) {
@@ -42,15 +47,14 @@ export class InscriptionComponent implements OnInit {
             this.emailexiste=false;
             console.log(this.emailexiste+" eeeee");
           }
-
-
         }
+
+ }
       },
       err=>{console.log("probleme reseau")}
     )
 
-    if(this.emailexiste==false){
-      console.log(this.emailexiste+" eeeee");
+   if(this.emailexiste==false){
       this.serviceClient.sauvgarderClient(credentials).subscribe(
         data=>{
           console.log("contact ajouter avec succés");

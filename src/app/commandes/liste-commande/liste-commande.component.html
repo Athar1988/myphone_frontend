@@ -8,9 +8,9 @@
           <div class="row">
             <div class="col-sm-12 col-xs-12">
               <h4 class="title pull-left">Liste des commandes</h4>
-              <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Tous Commande</a>
-              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Commande en Cours</a>
-              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i> Commande Terminer</a>
+              <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Toutes les Commandes</a>
+              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les commande en Cours</a>
+              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les Commandse Terminées</a>
             </div>
           </div>
         </div>
@@ -18,19 +18,19 @@
           <table class="table  position" width="60%" >
             <thead>
             <tr>
-              <th width="17%">Numéro</th>
-              <th width="5%">Date</th>
-              <th width="30%" >Montant Toatl</th>
-              <th width="17%">Statut</th>
-              <th width="17%">Client</th>
-              <th width="17%">Actions</th>
+              <th>Numéro</th>
+              <th>Date</th>
+              <th>Montant Toatl</th>
+              <th>Statut</th>
+              <th>Client</th>
+              <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr  *ngFor="let commande of listeCommande">
               <td>{{commande.id}}</td>
-              <td>{{commande.date}}</td>
-              <td>{{commande.totalAmount}} </td>
+              <td>{{commande.date| date : 'shortDate' }}</td>
+              <td>{{commande.totalAmount}} TND </td>
               <td>{{commande.statut}}</td>
               <td>
                 <ul class="action-list">
@@ -62,9 +62,9 @@
           <div class="row">
             <div class="col-sm-12 col-xs-12">
               <h4 class="title pull-left">Liste des commandes</h4>
-              <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i>Tous Commande</a>
-              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i>Commande en Cours</a>
-              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Commande Terminer</a>
+              <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Toutes les Commandes</a>
+              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les commande en Cours</a>
+              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les Commandse Terminées</a>
             </div>
           </div>
         </div>
@@ -72,19 +72,19 @@
           <table class="table  position" width="60%" >
             <thead>
             <tr>
-              <th width="17%">Numéro</th>
-              <th width="5%">Date</th>
-              <th width="30%" >Montant Toatl</th>
-              <th width="17%">Statut</th>
-              <th width="17%">Client</th>
-              <th width="17%">Actions</th>
+              <th>Numéro</th>
+              <th>Date</th>
+              <th>Montant Toatl</th>
+              <th>Statut</th>
+              <th>Client</th>
+              <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr  *ngFor="let commande of listeCommandeEncours">
               <td>{{commande.id}}</td>
-              <td>{{commande.date}}</td>
-              <td>{{commande.totalAmount}} </td>
+              <td>{{commande.date | date : 'shortDate' }}</td>
+              <td>{{commande.totalAmount}} TND</td>
               <td>{{commande.statut}}</td>
               <td>
                 <ul class="action-list">
@@ -115,9 +115,9 @@
           <div class="row">
             <div class="col-sm-12 col-xs-12">
               <h4 class="title pull-left">Liste des commandes</h4>
-              <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i>Tous Commande</a>
-              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i>Commande en Cours</a>
-              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> Commande Terminer</a>
+              <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Toutes les Commandes</a>
+              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les commande en Cours</a>
+              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les Commandse Terminées</a>
             </div>
           </div>
         </div>
@@ -125,19 +125,19 @@
           <table class="table  position" width="60%" >
             <thead>
             <tr>
-              <th width="17%">Numéro</th>
-              <th width="5%">Date</th>
-              <th width="30%" >Montant Toatl</th>
-              <th width="17%">Statut</th>
-              <th width="17%">Client</th>
-              <th width="17%">Actions</th>
+              <th>Numéro</th>
+              <th>Date</th>
+              <th>Montant Toatl</th>
+              <th>Statut</th>
+              <th>Client</th>
+              <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr  *ngFor="let commande of listeCommandeTraiter">
               <td>{{commande.id}}</td>
-              <td>{{commande.date}}</td>
-              <td>{{commande.totalAmount}} </td>
+              <td>{{commande.date | date : 'shortDate' }}</td>
+              <td>{{commande.totalAmount}} TND</td>
               <td>{{commande.statut}}</td>
               <td>
                 <ul class="action-list">
@@ -180,11 +180,11 @@
             <table class="table  position" width="60%" >
               <thead>
               <tr>
-                <th width="17%">Numéro</th>
-                <th width="5%">Date</th>
-                <th width="30%" >Montant Toatl</th>
-                <th width="17%">Statut</th>
-                <th width="17%">Info</th>
+                <th>Numéro</th>
+                <th>Date</th>
+                <th>Montant Toatl</th>
+                <th>Statut</th>
+                <th>Info</th>
               </tr>
               </thead>
               <tbody>
@@ -192,8 +192,8 @@
 
               <tr  *ngFor="let commande of commandes._embedded.commandes">
                 <td>{{commande.id}}</td>
-                <td width="5%">{{commande.date}}</td>
-                <td>{{commande.totalAmount}} </td>
+                <td width="5%">{{commande.date| date : 'short' }}</td>
+                <td>{{commande.totalAmount}} TND</td>
                 <td>{{commande.statut}}</td>
                 <td><i class="fa fa-info-circle" (click)="detailCommande(commande.id)"></i></td>
               </tr>

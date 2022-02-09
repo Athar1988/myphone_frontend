@@ -11,6 +11,7 @@ import {CommandeService} from '../../services/commande.service';
   styleUrls: ['./contenu.component.css']
 })
 export class ContenuComponent implements OnInit {
+  categories;
   currentRequest;
   customOptions: OwlOptions = {
     loop: true,
@@ -55,6 +56,7 @@ export class ContenuComponent implements OnInit {
               private router:Router) { }
 
   ngOnInit(): void {
+    this.getCategories();
     this.catService.getTousProduits().subscribe(
       data=>{
         this.produits=data;
@@ -109,6 +111,21 @@ export class ContenuComponent implements OnInit {
 
   onProductDetails(id) {
     this.router.navigateByUrl("/detail/"+id);
+  }
+
+  getProductsByCat(id) {
+      this.router.navigateByUrl("/products/2/"+id);
+  }
+
+
+  private getCategories() {
+    this.catService.getProduitdeCategorie(this.catService.host+"/categories")
+      .subscribe(data=>{
+        this.categories=data;
+        console.log(this.categories[0]._embedded.categories.id);
+      },err=>{
+        console.log(err);
+      })
   }
 
 }

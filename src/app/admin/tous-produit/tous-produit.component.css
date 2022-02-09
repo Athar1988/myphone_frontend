@@ -50,7 +50,7 @@
   padding: 12px;
   border-bottom: none;
 }
-.panel .panel-body .table thead tr th:nth-of-type(2){ width: 50%; }
+.panel .panel-body .table thead tr th:nth-of-type(2){ }
 .panel .panel-body .table tbody tr td{
   color: #555;
   background: linear-gradient(transparent,#f6f6f6);

@@ -7,6 +7,18 @@
   margin-bottom: 5%;
 }
 
+
+li {
+  cursor: pointer;
+}
+
+a {
+  cursor: pointer;
+}
+
+img{
+  cursor: pointer;
+}
 /*
 .form-bg{
   background: linear-gradient(to right, #a3cafd, #f6fff1);

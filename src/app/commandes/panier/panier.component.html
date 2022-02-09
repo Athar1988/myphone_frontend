@@ -76,7 +76,7 @@
           <div class="row">
             <div class="col-sm-12 col-xs-12">
               <h4 class="title pull-left">Commander</h4>
-              <a (click)="CreationCommande()"   class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> {{total+7000  }} TND</a>
+              <a (click)="CreationCommande()"   class="btn btn-sm btn-primary pull-right"><i class="fa fa-plus"></i> {{total+7 }} TND</a>
             </div>
           </div>
         </div>
@@ -100,14 +100,14 @@
                 <h3 class="title">Recap Panier</h3>
             </div>
             <div class="price-value">
-              <span class="amount">{{total+7000  }} </span>
+              <span class="amount">{{total+7  }} </span>
               <span class="month">TND</span>
             </div>
             <ul class="pricing-content">
               <li>Total sans remise : {{prixsansremise | number}} TND</li>
               <li>Total avec remise: {{total}} TND</li>
-              <li>Frais de livraison: 7000 TND</li>
-              <li>Total à payer:{{total+7000  }} TND</li>
+              <li>Frais de livraison: 7 TND</li>
+              <li>Total à payer:{{total+7  }} TND</li>
             </ul>
             <a (click)="CreationCommande()" class="pricingTable-signup"><i class="fa fa-forward" aria-hidden="true"></i>Payer</a>
           </div>

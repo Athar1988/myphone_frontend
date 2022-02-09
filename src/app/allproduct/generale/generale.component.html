@@ -19,7 +19,6 @@
       </div>
     </div>
     <div class="col py-3" >
-      <div><h3>{{title}}</h3></div>
       <app-produit  [products]="products"></app-produit>
     </div>
 
@@ -28,9 +27,10 @@
 </div>
 
 
-<!-- tous les produits -->
+<!-- tous les produits
 <owl-carousel-o [options]="customOptions">
   <ng-template carouselSlide *ngFor="let p of products._embedded.products" >
     <img (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}"  width="100%">
   </ng-template>
 </owl-carousel-o>
+-->

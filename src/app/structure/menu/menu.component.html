@@ -1,20 +1,18 @@
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(53,176,171,0.85);">
+<nav class="navbar navbar-expand-lg navbar-light  position " style="background-color: rgba(53,176,171,0.85);">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand"><i class="fa fa-ravelry" aria-hidden="true"  style='font-size:30px;color:rgba(0,0,0,0.93)'></i>BEST PHONE</a>
+    <a class="navbar-brand" (click)="accueil()"><i class="fa fa-ravelry" aria-hidden="true"  style='font-size:30px;color:rgba(0,0,0,0.93)'></i>BEST PHONE</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent1">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item"><a class="nav-link active" aria-current="page" (click)="accueil()">Accueil</a></li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Magasiner </a>
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><strong>Catégories</strong>   </a>
           <ul class="dropdown-menu fade-up" style="background-color: rgba(53,176,171,0.85);">
-            <li><a class="dropdown-item" routerLink="/generale"> Par catégorie</a></li>
-            <li><a class="dropdown-item" (click)="topoffre()">Top offres </a></li>
+            <li><a class="dropdown-item" (click)="tousProduits()"> Tous les produits</a></li>
             <li><a class="dropdown-item"(click)="onProductsDispo()">Produits disponibles </a></li>
             <li><a class="dropdown-item" (click)="onProductsPromo()">Produits en promotions </a></li>
-            <li><a class="dropdown-item" (click)="dernierajoute()">Dernier ajoute </a></li>
           </ul>
         </li>
 
@@ -57,9 +55,9 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #93d3ab;" *ngIf="this.serviceClient.isAuthenticated()">
+<nav class="navbar navbar-expand-lg navbar-light position2" style="background-color: rgba(11,176,154,0.85);" *ngIf="this.serviceClient.isAuthenticated()">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand"   routerLink="">Bienvenue chez  BEST PHONE  {{this.serviceClient.clientactuel.prenom}} {{this.serviceClient.clientactuel.nom}} </a>
+    <a class="navbar-brand  position2"   routerLink="" *ngIf="token==true">Bienvenue chez  BEST PHONE  {{this.serviceClient.clientactuel.prenom}} {{this.serviceClient.clientactuel.nom}} </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent2">
@@ -72,3 +70,8 @@
     </div>
   </div>
 </nav>
+
+
+
+
+

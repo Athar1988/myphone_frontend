@@ -10,8 +10,9 @@
       </div>
       <div class="product-content">
         <h3 class="title">{{p.name}}</h3>
-        <div class="price"><span>{{p.currentPrice}} TND</span> {{p.pourcentage }} %</div>
-        <div >{{p.currentPrice-(p.currentPrice*(p.pourcentage/100))}} TND</div>
+        <div class="price" *ngIf="p.promotion==false"><span>{{p.currentPrice}} TND</span></div>
+        <div class="pricepromo" *ngIf="p.promotion==true"><span>{{p.currentPrice}} TND</span> {{p.pourcentage }} %</div>
+        <div *ngIf="p.promotion==true" >{{p.currentPrice-(p.currentPrice*(p.pourcentage/100))}} TND</div>
         <a *ngIf="idclient!=null" class="add-to-cart" (click)="ajouterItem(p)"><i class="fa fa-shopping-basket"></i> Ajouter au panier</a>
       </div>
     </div>

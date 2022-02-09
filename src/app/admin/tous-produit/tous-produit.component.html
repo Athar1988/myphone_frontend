@@ -7,6 +7,22 @@
           <div class="row">
             <div class="col-sm-12 col-xs-12">
               <h4 class="title pull-left">Tous les produits</h4>
+              <form class="navbar-form navbar-right" #rechercheForm="ngForm" >
+                <div class="input-group">
+                  <input
+                    type="text"
+                    placeholder="search..."
+                    class="form-control"
+                    [(ngModel)]="motarechercher"
+                    #motarechercherInput="ngModel"
+                    id="motarechercher"
+                    name="motarechercher">
+                  <span class="input-group-btn">
+            <button class="btn btn-default" (click)="chercherUnProduit(rechercheForm)">Go</button>
+          </span>
+                </div>
+              </form>
+
               <select
                 [(ngModel)]="idCat"
                 class="form-control"

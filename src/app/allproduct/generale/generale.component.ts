@@ -51,13 +51,12 @@ export class GeneraleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
-    this.getProducts("/products");
+    this.getProducts('/products');
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd ) {
         let p1=this.route.snapshot.params.p1;
         let p2=this.route.snapshot.params.p2;
         if(p1==1){
-
           if(p2==1){
             this.title="Produit en Promotion";
             this.currentRequest='/products/search/promoProducts';
@@ -68,23 +67,15 @@ export class GeneraleComponent implements OnInit {
             this.currentRequest='/products/search/dispoProducts';
             this.getProducts(this.currentRequest);
           }
-          else if (p2==3){
-            this.title="top offre";
-            this.currentRequest='/products/search/topOffre';
-            this.getProducts(this.currentRequest);
-          }
-          else if (p2==4){
-            this.title="dernier ajoute";
-            this.currentRequest='/products/search/dernierAjoute';
-            this.getProducts(this.currentRequest);
-          }
-
         }
+
         else if (p1==2){
           let idCat=this.route.snapshot.params.p2;
           this.currentRequest='/categories/'+idCat+'/products';
+          this.products=[];
           this.catService.getProduitdeCategorie("http://localhost:8080"+this.currentRequest)
             .subscribe(data=>{
+              console.log("http://localhost:8080"+this.currentRequest);
               this.products=data;
               console.log(this.products);
 
@@ -110,6 +101,7 @@ export class GeneraleComponent implements OnInit {
   getProductsByCat(c) {
     this.currentCategorie=c;
     this.router.navigateByUrl('/products/2/'+c.id);
+   // this.catService.getProductsByCat(c);
   }
 
 

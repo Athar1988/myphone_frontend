@@ -12,6 +12,7 @@ export class DetailCommandeComponent implements OnInit {
   admin;
   idCommande;
   detailCommande;
+  iddecoder;
   client;
   commande: any;
   constructor(private route: ActivatedRoute,
@@ -20,18 +21,14 @@ export class DetailCommandeComponent implements OnInit {
 
   ngOnInit(): void {
     this.admin=localStorage.getItem('admin');
-    console.log(this.admin);
     this.idCommande=this.route.snapshot.params.idCommande;
-
-    let iddecoder=atob(this.idCommande)
-
-    console.log(iddecoder);
-    this.commandeService.recuperedetailCommande(iddecoder).subscribe(
+    this.iddecoder=atob(this.idCommande)
+    this.commandeService.recuperedetailCommande(this.iddecoder).subscribe(
       (data)=>{this.detailCommande=data; console.log(this.detailCommande)},
       (error)=>{console.log("probleme de reseau")},
     )
-
   }
+
 
   onProductDetails(id) {
     this.router.navigateByUrl("/detail/"+id);
@@ -50,10 +47,8 @@ export class DetailCommandeComponent implements OnInit {
         },
       err=>{console.log("erruer de reseau")},
     )
-
-
-
-
-
   }
+
+
+
 }

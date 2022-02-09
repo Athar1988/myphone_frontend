@@ -22,12 +22,21 @@ export class RechercheComponent implements OnInit  {
     let mc = this.route.snapshot.params.mc;
     this.chercherMarqueProduit(mc);
     this.chercherNameProduit(mc);
-   // this.chercherCategoryProduit(mc);
     this.chercherDescriptionProduit(mc);
+
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd ) {
+        let mc = this.route.snapshot.params.mc;
+        console.log(mc);
+        this.chercherMarqueProduit(mc);
+        this.chercherNameProduit(mc);
+        // this.chercherCategoryProduit(mc);
+        this.chercherDescriptionProduit(mc);
+  console.log(this.productsMarque+ "eee")
+
+      }
+    });
   }
-
-
-
 
   chercherMarqueProduit(mc) {
     console.log(mc + " mot de passe");

@@ -10,7 +10,7 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-sm-12 col-xs-12">
-            <h4 class="title pull-left">Commande</h4>
+            <h4 class="title pull-left">Commande {{iddecoder}}</h4>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
             <td width="5%">Ref_{{detailItem.id}}</td>
             <td>{{detailItem.name}}</td>
             <td>{{detailItem.quantiteCommander}}</td>
-            <td>{{detailItem.prixtotalproduit}}</td>
+            <td>{{detailItem.prixtotalproduit}} TND</td>
           </tr>
           </tbody>
         </table>
@@ -45,7 +45,7 @@
         <div class="row">
           <div class="col-sm-12 col-xs-12">
             <h4 class="title pull-left">Valider</h4>
-            <a (click)="validerCommande(idCommande)"   class="btn btn-sm btn-primary pull-right"><i class="fa fa-location-arrow"></i>Livrer</a>
+            <a (click)="validerCommande(iddecoder)"   class="btn btn-sm btn-primary pull-right"><i class="fa fa-location-arrow"></i>Livrer</a>
           </div>
         </div>
       </div>

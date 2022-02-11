@@ -12,6 +12,7 @@ export class Product{
     public nameImage='',
     public  typeImage='',
     public  picByte='',
+
   ){}
 
 }

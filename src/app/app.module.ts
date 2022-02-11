@@ -34,6 +34,7 @@ import { InscriptionComponent } from './client/inscription/inscription.component
 import { ListeClientComponent } from './admin/liste-client/liste-client.component';
 import { ListeMessageComponent } from './admin/liste-message/liste-message.component';
 import { ErrorComponent } from './structure/error/error.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,9 @@ import { ErrorComponent } from './structure/error/error.component';
     BrowserModule,
     //NgxPaginationModule
     CarouselModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
+
 
   ],
 

@@ -25,7 +25,7 @@
             <tbody>
 
 
-            <tr  *ngFor="let message of tousMessage._embedded.contacts">
+            <tr  *ngFor="let message of tousMessage._embedded.contacts  | paginate: { itemsPerPage: 20, currentPage: p }">
               <td>{{message.id}}</td>
               <td>{{message.nom}}</td>
               <td>{{message.prenom}} </td>
@@ -42,6 +42,15 @@
           </table>
         </div>
 
+        <pagination-controls class="my-pagination" (pageChange)="p = $event"
+                             directionLinks="true"
+                             autoHide="true"
+                             responsive="true"
+                             previousLabel="Previous"
+                             nextLabel="Next"
+                             screenReaderPaginationLabel="Pagination"
+                             screenReaderPageLabel="page"
+        ></pagination-controls>
       </div>
     </div>
 

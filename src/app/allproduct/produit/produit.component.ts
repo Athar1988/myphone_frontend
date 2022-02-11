@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CategoriesService} from '../../services/categories.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Product} from '../../model/product.model';
@@ -6,6 +6,7 @@ import {ClientService} from '../../services/client.service';
 import {PanierService} from '../../services/panier.service';
 import {Item} from '../../model/Item';
 import {MenuComponent} from '../../structure/menu/menu.component';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-produit',
@@ -14,12 +15,17 @@ import {MenuComponent} from '../../structure/menu/menu.component';
 })
 export class ProduitComponent implements OnInit {
   @Input() products:any;
+  p: number = 0;
   title:string;
   productItem: any;
   nbItem;
   panier=[];
   sommeTotal=0;
   idclient;
+  host;
+  idClient;
+  config: any;
+
   constructor(
     private route:ActivatedRoute,
     private router:Router,
@@ -34,7 +40,6 @@ export class ProduitComponent implements OnInit {
 
 
 
-
   ajouterItem(produit: Product){
     if(produit.pourcentage!=0){
       this.sommeTotal=produit.currentPrice-(produit.currentPrice*(produit.pourcentage/100));
@@ -43,14 +48,16 @@ export class ProduitComponent implements OnInit {
       this.sommeTotal=produit.currentPrice;
     }
     this.productItem= new Item(produit.id, produit.name ,produit.currentPrice,produit.pourcentage,1, this.sommeTotal, produit.nameImage, produit.typeImage,produit.picByte);
-   // if(localStorage && localStorage.getItem('panier')){
-   // this.panier = JSON.parse(localStorage.getItem('panier'));
-    //this.panier.push(this.productItem);
-   // localStorage.setItem('panier', JSON.stringify(this.panier));
     this.nbItem = JSON.parse(localStorage.getItem('item'));
     localStorage.setItem('item', this.nbItem+1);
-    location.reload();
-   // }
+    /*********/
+    /*********/
+    this.idClient= localStorage.getItem('id');
+    console.log(this.host+"client/"+this.idClient+"/itemproduct");
+    console.log(this.productItem);
+    /******/
+    /*********/
+
     this.panierservice.sauvgarderItem(this.productItem).subscribe(
       data=>{
         console.log("produit ajouter avec succés");
@@ -59,6 +66,7 @@ export class ProduitComponent implements OnInit {
         console.log("Probleme de saisir! essayez une autre fois.");
       }
     );
+    location.reload();
   }
 
   onProductDetails(id) {

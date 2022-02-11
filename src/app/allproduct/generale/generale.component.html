@@ -7,7 +7,6 @@
         <a routerLink="/generale" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
           <span class="fs-5 d-none d-sm-inline">Magasiner par catégorie</span>
         </a>
-
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li class="nav-item " [ngClass]="currentCategorie==c?'active':''"   *ngFor="let c of categories._embedded.categories">
             <a (click)="getProductsByCat(c)" class="nav-link text-dark font-italic align-middle px-0">
@@ -15,22 +14,12 @@
             </a>
           </li>
         </ul>
-
       </div>
     </div>
     <div class="col py-3" >
       <app-produit  [products]="products"></app-produit>
     </div>
-
   </div>
 </div>
 </div>
 
-
-<!-- tous les produits
-<owl-carousel-o [options]="customOptions">
-  <ng-template carouselSlide *ngFor="let p of products._embedded.products" >
-    <img (click)="onProductDetails(p.id)" src="data:image/jpeg;base64,{{p.picByte}}"  width="100%">
-  </ng-template>
-</owl-carousel-o>
--->

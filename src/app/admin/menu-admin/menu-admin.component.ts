@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {CategoriesService} from '../../services/categories.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-menu-admin',
@@ -9,15 +10,15 @@ import {CategoriesService} from '../../services/categories.service';
 })
 export class MenuAdminComponent implements OnInit {
   categories;
+  host=environment.backendServer;
   constructor(private  router: Router,
               private catService:CategoriesService) { }
 
   ngOnInit(): void {
     //recupere tous les catégories
-    this.catService.getProduitdeCategorie(this.catService.host+"/categories")
+    this.catService.getProduitdeCategorie(this.host+"categories")
       .subscribe(data=>{
         this.categories=data;
-        console.log(this.categories);
       },err=>{
         console.log(err);
       })
@@ -36,10 +37,6 @@ export class MenuAdminComponent implements OnInit {
 
   suiviCommandes() {
     this.router.navigateByUrl('listeCommandes');
-  }
-
-  updatecontact() {
-    this.router.navigateByUrl('modifierConatct')
   }
 
   listeProduit(c) {

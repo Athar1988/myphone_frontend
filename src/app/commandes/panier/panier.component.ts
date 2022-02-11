@@ -3,7 +3,6 @@ import {ClientService} from '../../services/client.service';
 import {Item} from '../../model/Item';
 import {Router} from '@angular/router';
 import {PanierService} from '../../services/panier.service';
-import {Commande} from '../../model/Commande';
 import { DatePipe } from '@angular/common';
 import {CommandeService} from '../../services/commande.service';
 
@@ -31,7 +30,6 @@ export class PanierComponent implements OnInit {
   ngOnInit(): void {
     this.recupereProductItem();
     this.existe=localStorage.getItem('item');
-    console.log(this.existe+" rrrrr");
   }
 
 
@@ -39,7 +37,6 @@ export class PanierComponent implements OnInit {
   CreationCommande(){
     this.commandeService.commande.client=this.clinetService.clientactuel;
     localStorage.setItem('commande',  JSON.stringify(this.commandeService.commande) );
-    //this.router.navigateByUrl('/commande/'+this.total);
     this.router.navigateByUrl('/commande');
 
   }
@@ -57,8 +54,8 @@ export class PanierComponent implements OnInit {
         for (let item of this.Items._embedded.productItems) {
           this.productItem=item;
           this.commandeService.commande.products.push(this.productItem);
-        this.prixsansremise+=item.prixUn;
-        this.total+=item.prixtotalproduit;
+          this.prixsansremise+=item.prixUn;
+          this.total+=item.prixtotalproduit;
         }
       },
       (err)=>{console.log("probleme reseau");}
@@ -85,7 +82,6 @@ export class PanierComponent implements OnInit {
         this.nbItem=0;
       }
       localStorage.setItem('item', this.nbItem );
-      console.log("item supprimer avec succee");
       location.reload();
       },
     (err)=>{ console.log("probleme de reseau");}

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {CommandeService} from '../../services/commande.service';
-import loader from '@angular-devkit/build-angular/src/angular-cli-files/plugins/single-test-transform';
 
 @Component({
   selector: 'app-liste-commande',
@@ -9,15 +8,13 @@ import loader from '@angular-devkit/build-angular/src/angular-cli-files/plugins/
   styleUrls: ['./liste-commande.component.css']
 })
 export class ListeCommandeComponent implements OnInit {
+  p: number = 1;
   admin;
   commandes:any;
-  ItemCommandes;
-  listeItem:any;
   terminer=false;
   encours=false;
   listeCommande=[];
   listeCommandeEncours=[];
-  listeCommandeAnnuler=[];
   listeCommandeTraiter=[];
   client;
   constructor(private router: Router,
@@ -27,21 +24,14 @@ export class ListeCommandeComponent implements OnInit {
     this.admin=localStorage.getItem('admin');
     if(this.admin==undefined){
       this.commandeService.recupereListeCommande().subscribe(
-        data=>{this.commandes=data;
-          console.log(this.commandes);},
+        data=>{this.commandes=data;},
         err=>{console.log(err);})
     }
-
-
     if(this.admin=='true') {
       this.commandeService.recupereItemCommander().subscribe(
         data => {
-          console.log(data);
          this.commandes = data;
          for(let encours of this.commandes._embedded.commandes ){
-           /*if(encours.statut=="En cours"){
-             this.listeCommande.push(encours);
-           }*/
            this.listeCommande.push(encours);
            switch (encours.statut) {
              case "En cours":
@@ -63,7 +53,7 @@ export class ListeCommandeComponent implements OnInit {
 
   detailCommande(id) {
     let idcoder=btoa( id);
-  this.router.navigateByUrl('/detailCommande/'+idcoder);
+    this.router.navigateByUrl('/detailCommande/'+idcoder);
   }
 
 
@@ -87,13 +77,11 @@ export class ListeCommandeComponent implements OnInit {
 
 
   enCours() {
-    console.log(this.listeCommandeEncours);
     this.encours=true;
     this.terminer=false;
   }
 
   traiter() {
-    console.log(this.listeCommandeTraiter);;
     this.encours=false;
     this.terminer=true;
   }
@@ -103,7 +91,6 @@ export class ListeCommandeComponent implements OnInit {
   }
 
   supprimerCommande(id) {
-    console.log(id+" supp");
     this.commandeService.supprimerCommande(id).subscribe(
       data=>{console.log("commande supprimer avec succe")},
       err=>{console.log("probleme de reseau")}

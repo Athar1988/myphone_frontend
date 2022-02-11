@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
               private adminService:AdminService) { }
 
   ngOnInit(): void {
+    console.log("admin: best/ mot de passe: best");
     this.adminService.recupereAdmin().subscribe(
       data=>{
         this.loginBD=data;
@@ -29,8 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   ConnexionLogin(credentials: any) {
-    console.log(credentials.login+" "+ this.loginBD.login);
-    console.log(credentials.motdepasse+" "+this.loginBD.motdepasse);
     for(let admin of this.loginBD._embedded.logins){
       if(credentials.login==admin.login && credentials.motdepasse==admin.motdepasse){
         localStorage.setItem('admin','true');
@@ -42,7 +41,5 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl("admin");
       }
     }
-
-
   }
 }

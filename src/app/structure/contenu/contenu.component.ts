@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import {ClientService} from '../../services/client.service';
 import {CommandeService} from '../../services/commande.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-contenu',
@@ -12,7 +13,6 @@ import {CommandeService} from '../../services/commande.service';
 })
 export class ContenuComponent implements OnInit {
   categories;
-  currentRequest;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -60,7 +60,6 @@ export class ContenuComponent implements OnInit {
     this.catService.getTousProduits().subscribe(
       data=>{
         this.produits=data;
-        console.log(this.produits);
         this.nombreProduits=this.produits.page.totalElements;
       },
       err=>{console.log("erruer de reseau");}
@@ -70,7 +69,6 @@ export class ContenuComponent implements OnInit {
     this.catService.getTousProduitsFiltre('search/promoProducts').subscribe(
       data=>{
         this.promoProduit=data;
-        console.log(this.promoProduit);
       },
       err=>{console.log("erruer de reseau");}
     )
@@ -80,7 +78,6 @@ export class ContenuComponent implements OnInit {
     this.catService.getTousProduitsFiltre('search/dispoProducts').subscribe(
       data=>{
         this.dispoProduit=data;
-        console.log(this.dispoProduit);
       },
       err=>{console.log("erruer de reseau");}
     )
@@ -90,7 +87,6 @@ export class ContenuComponent implements OnInit {
     this.clientService.recupererTousClient().subscribe(
       data=>{
         this.client=data;
-        console.log(this.client);
         this.nombreclient=this.client.page.totalElements;
       },
       err=>{console.log("erruer de reseau");}
@@ -101,7 +97,6 @@ export class ContenuComponent implements OnInit {
     this.commandeService.recupereItemCommander().subscribe(
       data=>{
         this.commande=data;
-        console.log(this.commande);
         this.nombrecommande=this.commande.page.totalElements;
       },
       err=>{console.log("erruer de reseau");}
@@ -110,21 +105,20 @@ export class ContenuComponent implements OnInit {
 
 
   onProductDetails(id) {
-    this.router.navigateByUrl("/detail/"+id);
+    this.router.navigateByUrl("detail/"+id);
   }
 
   getProductsByCat(id) {
-      this.router.navigateByUrl("/products/2/"+id);
+      this.router.navigateByUrl("products/2/"+id);
   }
 
 
   private getCategories() {
-    this.catService.getProduitdeCategorie(this.catService.host+"/categories")
+    this.catService.getProduitdeCategorie(environment.backendServer+"categories")
       .subscribe(data=>{
         this.categories=data;
-        console.log(this.categories[0]._embedded.categories.id);
       },err=>{
-        console.log(err);
+        console.log("erreur de reseau");
       })
   }
 

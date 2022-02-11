@@ -154,7 +154,6 @@
                 name="condition"
                 #condition
                 requiredTrue
-                (change)="onCondition(condition.checked)"
               ><label>J’ai lu et j’accepte <a>les conditions générales</a></label>
               <p class="text-justify">Vos données personnelles seront utilisées pour le traitement de votre commande,
                 vous accompagner au cours de votre visite du site web,
@@ -172,7 +171,7 @@
           <button
             type="submit"
             class="btn btn-default"
-            (click)=paiment(PaiementForm)
+            (click)=paiment()
             [disabled]="PaiementForm.invalid"
           >Payer</button>
         </div>

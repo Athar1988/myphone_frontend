@@ -13,7 +13,6 @@ export class CommandesComponent implements OnInit {
   currentDate;
   reference;
   statut;
-  total;
   idclient
   nom;
   numeroCarte;
@@ -29,13 +28,9 @@ export class CommandesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //this.total=this.route.snapshot.params.somme;
-    //récupérer la commande
     this.commande=JSON.parse(localStorage.getItem('commande'));
-    console.log(this.commande+" commande");
     this.currentDate = new Date();
     this.reference="ref"+this.commande.client.nom.substr(0,2)+this.commande.client.id;
-    //this.statut="Confirmer";
   }
 
 
@@ -43,8 +38,7 @@ export class CommandesComponent implements OnInit {
     this.router.navigateByUrl('/generale');
   }
 
-  paiment(f){
-    console.log(f.value);
+  paiment(){
     this.commandeService.submitOrder().subscribe(
       (data)=>{console.log("commande ajouté avec succé");},
       (err)=>{console.log("erreur reseau");},
@@ -58,8 +52,4 @@ export class CommandesComponent implements OnInit {
 
   }
 
-
-  onCondition(checked: boolean) {
-    console.log(checked);
-  }
 }

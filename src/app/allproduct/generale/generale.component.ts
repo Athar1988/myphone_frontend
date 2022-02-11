@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CategoriesService} from '../../services/categories.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-generale',
@@ -14,7 +15,6 @@ export class GeneraleComponent implements OnInit {
   currentCategorie;
   title;
   currentRequest;
-
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -41,17 +41,17 @@ export class GeneraleComponent implements OnInit {
     },
     nav: true
   }
-
+  host=environment.backendServer;
 
   constructor(public catService:CategoriesService,
               private  router:Router,
               private route:ActivatedRoute
-              ){}
+  ){}
 
 
   ngOnInit(): void {
     this.getCategories();
-    this.getProducts('/products');
+    this.getProducts('products');
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd ) {
         let p1=this.route.snapshot.params.p1;
@@ -59,26 +59,23 @@ export class GeneraleComponent implements OnInit {
         if(p1==1){
           if(p2==1){
             this.title="Produit en Promotion";
-            this.currentRequest='/products/search/promoProducts';
+            this.currentRequest='products/search/promoProducts';
             this.getProducts(this.currentRequest);
           }
           else if (p2==2){
             this.title="Produits Disponibles";
-            this.currentRequest='/products/search/dispoProducts';
+            this.currentRequest='products/search/dispoProducts';
             this.getProducts(this.currentRequest);
           }
         }
 
         else if (p1==2){
           let idCat=this.route.snapshot.params.p2;
-          this.currentRequest='/categories/'+idCat+'/products';
+          this.currentRequest='categories/'+idCat+'/products';
           this.products=[];
-          this.catService.getProduitdeCategorie("http://localhost:8080"+this.currentRequest)
+          this.catService.getProduitdeCategorie(this.host+this.currentRequest)
             .subscribe(data=>{
-              console.log("http://localhost:8080"+this.currentRequest);
               this.products=data;
-              console.log(this.products);
-
             },err=>{
               console.log(err);
             })
@@ -89,10 +86,9 @@ export class GeneraleComponent implements OnInit {
 
 
   private getCategories() {
-    this.catService.getProduitdeCategorie(this.catService.host+"/categories")
+    this.catService.getProduitdeCategorie(this.host+"categories")
       .subscribe(data=>{
         this.categories=data;
-        console.log(this.categories);
       },err=>{
         console.log(err);
       })
@@ -100,16 +96,14 @@ export class GeneraleComponent implements OnInit {
 
   getProductsByCat(c) {
     this.currentCategorie=c;
-    this.router.navigateByUrl('/products/2/'+c.id);
-   // this.catService.getProductsByCat(c);
+    this.router.navigateByUrl('products/2/'+c.id);
   }
 
 
   private getProducts(requete) {
-    this.catService.getProduitdeCategorie("http://localhost:8080"+requete)
+    this.catService.getProduitdeCategorie(this.host+requete)
       .subscribe(data=>{
         this.products=data;
-        console.log(this.products);
       },err=>{
         console.log(err);
       })

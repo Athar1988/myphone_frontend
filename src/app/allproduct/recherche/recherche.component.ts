@@ -1,7 +1,6 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {CategoriesService} from '../../services/categories.service';
-import {Product} from '../../model/product.model';
 
 @Component({
   selector: 'app-recherche',
@@ -11,7 +10,6 @@ import {Product} from '../../model/product.model';
 export class RechercheComponent implements OnInit  {
   productsMarque;
   productsName;
-  productsCategory;
   productsDescription;
   products;
   constructor(private router:Router,
@@ -23,17 +21,12 @@ export class RechercheComponent implements OnInit  {
     this.chercherMarqueProduit(mc);
     this.chercherNameProduit(mc);
     this.chercherDescriptionProduit(mc);
-
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd ) {
         let mc = this.route.snapshot.params.mc;
-        console.log(mc);
         this.chercherMarqueProduit(mc);
         this.chercherNameProduit(mc);
-        // this.chercherCategoryProduit(mc);
         this.chercherDescriptionProduit(mc);
-  console.log(this.productsMarque+ "eee")
-
       }
     });
   }
@@ -57,15 +50,6 @@ export class RechercheComponent implements OnInit  {
     );
   }
 
-
- /* chercherCategoryProduit(mc) {
-    this.service.chercherCategoryProduit(mc).subscribe(
-      data => {
-        this.productsCategory= data;
-      }
-    );
-  }*/
-
   chercherDescriptionProduit(mc){
         this.service.chercherDescriptionProduit(mc).subscribe(
           data => {
@@ -74,11 +58,4 @@ export class RechercheComponent implements OnInit  {
         );
       }
 
-
-
-
-
-onProductDetails(id) {
-    this.router.navigateByUrl("/detail/"+id);
-  }
 }

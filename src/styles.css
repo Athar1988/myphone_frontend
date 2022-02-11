@@ -19,6 +19,12 @@ a {
 img{
   cursor: pointer;
 }
+
+
+pagination-controls .my-pagination /deep/ .ngx-pagination .current {
+  background: #35b0ab;
+}
+
 /*
 .form-bg{
   background: linear-gradient(to right, #a3cafd, #f6fff1);

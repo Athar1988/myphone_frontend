@@ -28,7 +28,7 @@
             <tbody>
 
 
-            <tr  *ngFor="let client of tousClient._embedded.clients">
+            <tr  *ngFor="let client of tousClient._embedded.clients | paginate: { itemsPerPage: 20, currentPage: p }">
               <td>{{client.id}}</td>
               <td>{{client.nom}}</td>
               <td>{{client.prenom}} </td>
@@ -46,6 +46,15 @@
           </table>
         </div>
 
+        <pagination-controls class="my-pagination" (pageChange)="p = $event"
+                             directionLinks="true"
+                             autoHide="true"
+                             responsive="true"
+                             previousLabel="Previous"
+                             nextLabel="Next"
+                             screenReaderPaginationLabel="Pagination"
+                             screenReaderPageLabel="page"
+        ></pagination-controls>
       </div>
     </div>
 

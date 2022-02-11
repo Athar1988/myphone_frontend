@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Client} from '../../model/client.model';
 import {ClientService} from '../../services/client.service';
 
 @Component({
@@ -27,10 +26,8 @@ export class ProfilComponent implements OnInit {
     this.serviceClient.recupererClient( this.Client).subscribe(
       data=> {
         this.Client=data;
-        console.log(this.Client.nom+ " le nom de client connecter profil");
       },
       err=>{ console.log("probleme de recupere un client");}
-
     )
   }
 

@@ -113,10 +113,6 @@ form{
 
 
 /********************client*********************/
-
-
-
-
 .btn{
   position: relative;
   color:#fff;
@@ -157,101 +153,112 @@ form{
   background: linear-gradient(to right,#7474bf,#35b0ab);
 }
 
+
+
+.demo{ background-color: #e7e7e7; }
 .email-signature{
-  background: linear-gradient(45deg, #ededed,#fff,#fff,#ededed,#fff,#fff,#ededed,#fff,#fff,#ededed);
-  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  background: #35b0ab;
+  font-family: 'Roboto Slab', sans-serif;
   text-align: center;
-  padding: 15px 20px 20px;
-  border-radius: 100px 70px 0;
-  box-shadow: 0 0 40px -25px #333;
+  margin: 0 0 20px;
+  box-shadow: 0 0 25px -10px rgba(0,0,0,0.5);
   position: relative;
   z-index: 1;
 }
-.email-signature:before{
+.email-signature:before,
+.email-signature:after{
   content: '';
-  background: linear-gradient(#2fefb2,#0B989B);
-  height: 150px;
-  width: 155px;
-  transform: translateX(-50%);
+  background: linear-gradient(to left,#35b0ab 0, #35b0ab 23%,#fff 23%,#fff 26.3%,#4D4D4D 26.3%,#4D4D4D 50%,#fff 50%, #fff 53.3%,#35b0ab 53.3%,#35b0ab 77%,#fff 77%,#fff 80.3%,#4D4D4D 80.3%);
+  height: 30px;
+  width: 100%;
   position: absolute;
-  left: 50%;
+  left: 0;
   top: 0;
-  z-index: -1;
-  -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
-  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
 }
-.email-signature .signature-img{
-  width: 140px;
-  height: 140px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
+.email-signature:after{
+  transform: rotateY(180deg);
+  top: auto;
+  bottom: 0;
+}
+.email-signature .signature-content{
+  color: #333;
+  background-color: #fff;
+  padding: 50px 25px;
+  border-radius: 0 180px;
+}
+.email-signature .signature-icon{
+  width: 120px;
+  height: 120px;
+  border: 5px solid #35b0ab;
+  outline: 3px solid #fff;
+  outline-offset: -8px;
+  box-shadow: 0 0 15px -5px rgba(0,0,0,0.5);
+  margin: 0 auto 15px;
   overflow: hidden;
 }
-.email-signature .signature-img img{
+.email-signature .signature-icon img{
   width: 100%;
   height: auto;
 }
-.email-signature .signature-details{
-  color: #333;
-  margin-bottom: 15px;
-}
+.email-signature .signature-details{ margin: 0 0 15px; }
 .email-signature .title{
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 600;
   text-transform: capitalize;
-  margin: 0;
+  margin: 0 0 2px;
 }
-
 .email-signature .post{
-  color: #2fefb2;
-  font-size: 16px;
-  font-style: italic;
+  font-size: 14px;
+  font-weight: 500;
   text-transform: capitalize;
-  letter-spacing: 1px;
 }
-
-.email-signature .description{
-  color: #0f172a;
-  font-size: 16px;
-  /*font-style: italic;
-  text-transform: capitalize;
-  letter-spacing: 1px;*/
-}
-.email-signature .signature-content{
-  padding: 0;
-  margin: 0 auto 10px;
+.email-signature .content{
+  text-align: left;
+  padding: 0 0 0 20px;
+  margin: 0 0 20px;
   list-style: none;
   display: inline-block;
 }
-.email-signature .signature-content li{
-  color: #555;
-  font-size: 15px;
-  text-align: left;
-  padding: 0 0 0 20px;
-  margin: 0 7px 5px 0;
-  vertical-align: top;
-  display: inline-block;
+.email-signature .content li{
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 2px;
 }
-.email-signature .signature-content li span{
-  color: #2fefb2;
-  margin-right: 5px;
+.email-signature .content li:last-child{ margin-bottom: 0; }
+.email-signature .content li i{
+  color: #fff;
+  background-color: #35b0ab;
+  font-size: 12px;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
+  margin: 0 4px 0 0;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 .email-signature .icon{
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.email-signature .icon li{ display: inline-block; }
+.email-signature .icon li{
+  display: inline-block;
+  margin: 0 2px;
+}
 .email-signature .icon li a{
-  color: #fff;
-  background: linear-gradient(#2fefb2,#0B989B);
-  line-height: 30px;
-  height: 30px;
-  width: 30px;
+  color: #333;
+  text-align: center;
+  line-height: 23px;
+  height: 25px;
+  width: 25px;
+  border: 1px solid #333;
   display: block;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
-.email-signature .icon li a:hover{ box-shadow: 0 0 5px #2fefb2, 0 0 0 2px #fff inset; }
-@media screen and (max-width:576px){
-  .email-signature{ border-radius: 20px 10px 0;}
+.email-signature .icon li a:hover{
+  color: #fff;
+  background-color: #35b0ab;
+  border-radius: 50%;
 }
+

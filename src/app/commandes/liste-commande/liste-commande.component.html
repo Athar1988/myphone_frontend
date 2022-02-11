@@ -27,7 +27,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr  *ngFor="let commande of listeCommande">
+            <tr  *ngFor="let commande of listeCommande  | paginate: { itemsPerPage: 20, currentPage: p }">
               <td>{{commande.id}}</td>
               <td>{{commande.date| date : 'shortDate' }}</td>
               <td>{{commande.totalAmount}} TND </td>
@@ -81,7 +81,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr  *ngFor="let commande of listeCommandeEncours">
+            <tr  *ngFor="let commande of listeCommandeEncours  | paginate: { itemsPerPage: 20, currentPage: p }">
               <td>{{commande.id}}</td>
               <td>{{commande.date | date : 'shortDate' }}</td>
               <td>{{commande.totalAmount}} TND</td>
@@ -134,7 +134,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr  *ngFor="let commande of listeCommandeTraiter">
+            <tr  *ngFor="let commande of listeCommandeTraiter  | paginate: { itemsPerPage: 20, currentPage: p }">
               <td>{{commande.id}}</td>
               <td>{{commande.date | date : 'shortDate' }}</td>
               <td>{{commande.totalAmount}} TND</td>
@@ -158,6 +158,15 @@
     </div>
   </div>
 </div>
+  <pagination-controls class="my-pagination" (pageChange)="p = $event"
+                       directionLinks="true"
+                       autoHide="true"
+                       responsive="true"
+                       previousLabel="Previous"
+                       nextLabel="Next"
+                       screenReaderPaginationLabel="Pagination"
+                       screenReaderPageLabel="page"
+  ></pagination-controls>
 </div>
 
 
@@ -190,7 +199,7 @@
               <tbody>
 
 
-              <tr  *ngFor="let commande of commandes._embedded.commandes">
+              <tr  *ngFor="let commande of commandes._embedded.commandes  | paginate: { itemsPerPage: 20, currentPage: p }">
                 <td>{{commande.id}}</td>
                 <td width="5%">{{commande.date| date : 'short' }}</td>
                 <td>{{commande.totalAmount}} TND</td>
@@ -200,7 +209,15 @@
               </tbody>
             </table>
           </div>
-
+          <pagination-controls class="my-pagination" (pageChange)="p = $event"
+                               directionLinks="true"
+                               autoHide="true"
+                               responsive="true"
+                               previousLabel="Previous"
+                               nextLabel="Next"
+                               screenReaderPaginationLabel="Pagination"
+                               screenReaderPageLabel="page"
+          ></pagination-controls>
         </div>
       </div>
 

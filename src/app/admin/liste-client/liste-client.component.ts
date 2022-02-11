@@ -8,6 +8,7 @@ import {ClientService} from '../../services/client.service';
 })
 export class ListeClientComponent implements OnInit {
   tousClient;
+  p: number = 1;
   constructor(private clientService:ClientService) { }
 
   ngOnInit(): void {

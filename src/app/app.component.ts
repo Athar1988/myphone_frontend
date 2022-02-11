@@ -14,6 +14,5 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.admin=localStorage.getItem('admin');
-    console.log(this.admin+" eee");
   }
 }

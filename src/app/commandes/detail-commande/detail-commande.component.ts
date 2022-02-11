@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CommandeService} from '../../services/commande.service';
-import {Commande} from '../../model/Commande';
 
 @Component({
   selector: 'app-detail-commande',
@@ -24,14 +23,13 @@ export class DetailCommandeComponent implements OnInit {
     this.idCommande=this.route.snapshot.params.idCommande;
     this.iddecoder=atob(this.idCommande)
     this.commandeService.recuperedetailCommande(this.iddecoder).subscribe(
-      (data)=>{this.detailCommande=data; console.log(this.detailCommande)},
+      (data)=>{this.detailCommande=data;},
       (error)=>{console.log("probleme de reseau")},
     )
   }
 
-
   onProductDetails(id) {
-    this.router.navigateByUrl("/detail/"+id);
+    this.router.navigateByUrl("detail/"+id);
   }
 
 
@@ -48,7 +46,5 @@ export class DetailCommandeComponent implements OnInit {
       err=>{console.log("erruer de reseau")},
     )
   }
-
-
 
 }

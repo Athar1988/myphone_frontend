@@ -5,6 +5,7 @@ import {Product} from '../../model/product.model';
 import {CategoriesService} from '../../services/categories.service';
 import {HttpClient} from '@angular/common/http';
 import {NgForm} from '@angular/forms';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-tous-produit',
@@ -12,8 +13,9 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./tous-produit.component.css']
 })
 export class TousProduitComponent implements OnInit {
+  host=environment.backendServer;
   tousProduits:any;
-  p: number = 1;
+  p: number = 0;
   currentRequest;
   categories;
   motrechercher;
@@ -45,18 +47,10 @@ export class TousProduitComponent implements OnInit {
 
 
   recupereTousProduitsSelonCategorie(idCat){
-     /* this.catService.getUneCategorie(idCat).subscribe(
-        data=>{this.categorie=data;},
-        err=>{console.log("probleme de reseau")}
-      )
-*/
-    this.currentRequest='/categories/'+idCat+'/products';
-    console.log('/categories/'+idCat+'/products');
-    this.catService.getProduitdeCategorie("http://localhost:8080"+this.currentRequest)
+    this.currentRequest='categories/'+idCat+'/products';
+    this.catService.getProduitdeCategorie(this.host+this.currentRequest)
       .subscribe(data=>{
         this.tousProduits=data;
-        console.log(this.tousProduits);
-
       },err=>{
         console.log(err);
       })
@@ -77,7 +71,6 @@ export class TousProduitComponent implements OnInit {
     this.adminService.supprimerProduit(produit).subscribe(
       data=>{
         console.log("produit supprimer avec succé");
-        // message de succe
         },
       err=>{console.log("probleme de connexion");}
     )
@@ -93,9 +86,7 @@ export class TousProduitComponent implements OnInit {
   chercherUnProduit(motForm:NgForm) {
     this.motrechercher=motForm.value;
     motForm.reset();
-    console.log("/chercher/"+this.motrechercher.motarechercher);
     this.router.navigateByUrl("/chercher/"+this.motrechercher.motarechercher);
-
   }
 
 
@@ -111,7 +102,7 @@ export class TousProduitComponent implements OnInit {
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
     //Make a call to the Spring Boot Application to save the image
-    this.httpClient.post('http://localhost:8080/image/upload/'+idProduit, uploadImageData, { observe: 'response' })
+    this.httpClient.post(this.host+'image/upload/'+idProduit, uploadImageData, { observe: 'response' })
       .subscribe((response) => {
           if (response.status === 200) {
             //this.message = 'Image uploaded successfully';

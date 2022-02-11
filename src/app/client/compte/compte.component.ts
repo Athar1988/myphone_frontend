@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Client} from '../../model/client.model';
 import {Router} from '@angular/router';
 import {ClientService} from '../../services/client.service';
-import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-compte',
@@ -17,7 +15,6 @@ export class CompteComponent implements OnInit {
   loginemail;
   panier=[];
   client:any;
- //panier = new panier([]);
 
   constructor(private serviceClient: ClientService  ,
               private router:Router) { }
@@ -33,10 +30,8 @@ export class CompteComponent implements OnInit {
         for(let i=0 ; i< this.client._embedded.clients.length; i++) {
           if (this.client._embedded.clients[i].email == credentials.loginemail && this.client._embedded.clients[i].motdepasse == credentials.loginmotdepasse) {
             this.loginemailexiste=true;
-            console.log(this.loginemailexiste);
             localStorage.setItem('mail', credentials.loginemail);
             localStorage.setItem('id', this.client._embedded.clients[i].id);
-            //this.panier.push(null);
             localStorage.setItem('panier', JSON.stringify(this.panier));
             this.panier = JSON.parse(localStorage.getItem('panier'));
             localStorage.setItem('item', JSON.stringify(this.panier.length));
@@ -44,10 +39,9 @@ export class CompteComponent implements OnInit {
           }
           else{
             this.loginemailexiste=false;
-            console.log("mail n'existe pas");
           }
         }
-        console.log(this.client)},
+        },
       err=>{console.log("probleme reseau")}
     )
   }

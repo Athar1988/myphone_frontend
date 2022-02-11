@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {ClientService} from '../../services/client.service';
 import {PanierService} from '../../services/panier.service';
 import {NgForm} from '@angular/forms';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-menu',
@@ -25,6 +26,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.serviceClient.clientConnecter();
+    this.idclient=localStorage.getItem('id')
     if(this.serviceClient.connected==true){
       this.token==true;
     }
@@ -36,76 +38,47 @@ export class MenuComponent implements OnInit {
       this.nbItem =0;
     }
   }
-
-
-
   chercherUnProduit(motForm:NgForm) {
     this.motrechercher=motForm.value;
     motForm.reset();
-    console.log("/chercher/"+this.motrechercher.motarechercher);
-    this.router.navigateByUrl("/chercher/"+this.motrechercher.motarechercher);
-
+    this.router.navigateByUrl("chercher/"+this.motrechercher.motarechercher);
   }
-
   accueil(){
     this.router.navigateByUrl('');
   }
-
   tousProduits(){
-    this.router.navigateByUrl("/generale");
+    this.router.navigateByUrl("generale");
   }
-
-
   onProductsPromo() {
-    this.router.navigateByUrl("/products/1/1");
+    this.router.navigateByUrl("products/1/1");
   }
   onProductsDispo() {
-    this.router.navigateByUrl("/products/1/2");
+    this.router.navigateByUrl("products/1/2");
   }
-  topoffre(){
-    this.router.navigateByUrl("/products/1/3");
-  }
-  dernierajoute(){
-    this.router.navigateByUrl("/products/1/4");
-  }
-
-
   nosmagasins(){
-    this.router.navigateByUrl("/nosMagasin");
+    this.router.navigateByUrl("nosMagasin");
   }
-
   contact(){
-    this.router.navigateByUrl("/contact");
+    this.router.navigateByUrl("contact");
   }
-
   Uncompte(){
-    this.router.navigateByUrl("/compte");
+    this.router.navigateByUrl("compte");
   }
-
   Deconnecter() {
     this.serviceClient.logout();
-   // location.reload();
     this.router.navigateByUrl('');
   }
-
   affichePanier() {
-    this.router.navigateByUrl('/panier');
+    this.router.navigateByUrl('panier');
   }
-
   monProfil() {
     this.idclient=localStorage.getItem('id');
-    this.router.navigateByUrl('/profil/'+this.idclient);
+    this.router.navigateByUrl('profil/'+this.idclient);
   }
-
   mesCommandes() {
-    this.router.navigateByUrl('/listeCommandes');
+    this.router.navigateByUrl('listeCommandes');
   }
-
-  MesFavoris() {
-
-  }
-
   modifierProfil() {
-    this.router.navigateByUrl('/Modifierprofil');
+    this.router.navigateByUrl('Modifierprofil');
   }
 }

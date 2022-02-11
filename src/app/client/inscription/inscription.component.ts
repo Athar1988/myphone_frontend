@@ -25,31 +25,24 @@ export class InscriptionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   ajoutClient(credentials: Client, InscriptionForm:NgForm) {
     this.serviceClient.recupererTousClient().subscribe(
       data=>{
         this.client=data;
         if(this.client._embedded.clients.length==0){
           this.emailexiste=false;
- }
-
-
- else{
+      }
+      else{
         for(let i=0 ; i< this.client._embedded.clients.length; i++) {
-          console.log(this.client._embedded.clients[i].email+" tous les mails");
           if (this.client._embedded.clients[i].email == credentials.email) {
             this.emailexiste=true;
-            console.log(this.emailexiste+" eeeee");
             break;
           }
           else{
             this.emailexiste=false;
-            console.log(this.emailexiste+" eeeee");
           }
         }
-
- }
+      }
       },
       err=>{console.log("probleme reseau")}
     )
@@ -57,7 +50,6 @@ export class InscriptionComponent implements OnInit {
    if(this.emailexiste==false){
       this.serviceClient.sauvgarderClient(credentials).subscribe(
         data=>{
-          console.log("contact ajouter avec succés");
           InscriptionForm.resetForm();
           this.router.navigate(['compte']);
         },

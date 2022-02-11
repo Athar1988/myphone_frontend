@@ -1,43 +1,38 @@
 import { Injectable } from '@angular/core';
 import {Client} from '../model/client.model';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Router} from '@angular/router';
 import {Item} from '../model/Item';
-import {PanierService} from './panier.service';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
-  public host:string="http://localhost:8080";
+  public host=environment.backendServer;
   tousClient:any;
   clientactuel: any;
-  public authenticated :boolean;
   connected;
-  nombreItem;
   idclient;
   constructor(private http:HttpClient) { }
 
 
 
   sauvgarderClient(client: Client): Observable<Client>{
-    return this.http.post<Client>("http://localhost:8080/clients/AjouteClient", client);
+    return this.http.post<Client>(this.host+"clients/AjouteClient", client);
   }
 
   ModifierClient(client: Client): Observable<Client>{
-    return this.http.post<Client>("http://localhost:8080/clients/misejour/"+client.id, client);
+    return this.http.post<Client>(this.host+"clients/misejour/"+client.id, client);
   }
 
   recupererTousClient(){
-    return this.http.get(this.host+"/clients");
+    return this.http.get(this.host+"clients");
   }
 
   recupererClient(id){
-    return this.http.get(this.host+"/clients/"+id);
+    return this.http.get(this.host+"clients/"+id);
   }
-
-
 
   clientConnecter(){
     if(localStorage.getItem("id")){
@@ -45,7 +40,6 @@ export class ClientService {
       this.connected=true;
     }
   }
-
 
   isAuthenticated(){
     return this.connected;
@@ -56,7 +50,7 @@ export class ClientService {
   }
 
   clientActuel(token){
-    this.http.get(this.host+"/clients").subscribe(
+    this.http.get(this.host+"clients").subscribe(
       (data)=>{
         this.tousClient=data;
         for(let i=0 ; i< this.tousClient._embedded.clients.length; i++){
@@ -69,7 +63,6 @@ export class ClientService {
     return this.clientactuel;
   }
 
-
   logout(){
     this.connected=false;
     this.clientactuel=undefined;
@@ -81,30 +74,29 @@ export class ClientService {
     localStorage.removeItem('id');
     localStorage.removeItem('mail');
     localStorage.removeItem('panier');
-   // localStorage.removeItem('item');
     localStorage.removeItem('commande');
   }
 
   supprimerTousItem(id): Observable<Item>{
     localStorage.removeItem('item');
-    return this.http.delete<Item>("http://localhost:8080/supprimerTousItems/"+id );
+    return this.http.delete<Item>(this.host+"supprimerTousItems/"+id );
   }
 
-
   ajouterContact(contact): Observable<Client>{
-    return this.http.post<Client>("http://localhost:8080/contacts", contact);
+    return this.http.post<Client>(this.host+"contacts", contact);
   }
 
   recupereMessage(){
-    return this.http.get(this.host+"/contacts");
+    return this.http.get(this.host+"contacts");
   }
 
   supprimerMessage(id: any) {
-    return this.http.delete("http://localhost:8080/contacts/"+id );
+    return this.http.delete(this.host+"contacts/"+id );
   }
 
   supprimerClient(id: any) {
-    return this.http.delete("http://localhost:8080/clients/"+id );
+    return this.http.delete(this.host+"clients/"+id );
   }
+
 }
 

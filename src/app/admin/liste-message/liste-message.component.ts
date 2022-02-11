@@ -9,6 +9,7 @@ import {ClientService} from '../../services/client.service';
 })
 export class ListeMessageComponent implements OnInit {
   tousMessage;
+  p: number = 1;
   constructor(private clientService: ClientService) { }
 
   ngOnInit(): void {

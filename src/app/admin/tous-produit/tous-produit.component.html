@@ -66,9 +66,8 @@
             </tr>
             </thead>
             <tbody>
-
-
-            <tr  *ngFor="let produit of tousProduits._embedded.products">
+            <tr  *ngFor="let produit of tousProduits._embedded.products
+                  | paginate: { itemsPerPage: 20, currentPage: p }">
               <td>{{produit.id}}</td>
               <td>
                 <div class="user_icon">
@@ -94,9 +93,18 @@
             </tbody>
           </table>
         </div>
+        <pagination-controls class="my-pagination" (pageChange)="p = $event"
+                             directionLinks="true"
+                             autoHide="true"
+                             responsive="true"
+                             screenReaderPaginationLabel="Pagination"
+                             screenReaderPageLabel="page"
+        ></pagination-controls>
+
 
       </div>
     </div>
 
   </div>
 </div>
+

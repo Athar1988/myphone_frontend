@@ -1,5 +1,5 @@
 
-/********** css form***********/
+/********** css form
 
 form{
   font-family: 'Roboto', sans-serif;
@@ -89,7 +89,7 @@ form{
 }
 
 
-
+***********/
 
 /********** css card***********/
 
@@ -393,7 +393,7 @@ form{
   bottom: -10px;
   left: 0;
   right: 0;
-}*/
+}
 .pricingTable.green .title{ color: #35b0ab; }
 .pricingTable.green .price-value{ background-color: #35b0ab; }
 .pricingTable.green .price-value:before,
@@ -401,3 +401,4 @@ form{
   background-color: #2f7a75;
 }
 .pricingTable.green .pricingTable-signup{ background-color: #35b0ab; }
+*/

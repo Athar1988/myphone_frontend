@@ -362,6 +362,7 @@ form{
   padding: 15px 10px 5px 10px;
   border-bottom: 1px solid rgba(0,0,0,0.3);
 }
+/*
 .pricingTable .pricingTable-signup{
   color: #fff;
   background-color: #f73636;
@@ -392,7 +393,7 @@ form{
   bottom: -10px;
   left: 0;
   right: 0;
-}
+}*/
 .pricingTable.green .title{ color: #35b0ab; }
 .pricingTable.green .price-value{ background-color: #35b0ab; }
 .pricingTable.green .price-value:before,

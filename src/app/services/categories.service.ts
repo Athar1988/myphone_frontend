@@ -8,7 +8,7 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class CategoriesService {
-  public host=environment.backendServer;
+  public  host="https://bestphonebk.herokuapp.com/";
 
   constructor(private http:HttpClient) { }
 

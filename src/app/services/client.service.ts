@@ -3,13 +3,12 @@ import {Client} from '../model/client.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Item} from '../model/Item';
-import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
-  public host=environment.backendServer;
+  public  host="https://bestphonebk.herokuapp.com/";
   tousClient:any;
   clientactuel: any;
   connected;

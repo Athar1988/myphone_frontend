@@ -3,7 +3,6 @@ import {Commande} from '../model/Commande';
 import {PanierService} from './panier.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -11,7 +10,7 @@ import {environment} from '../../environments/environment';
 })
 export class CommandeService {
   idclient;
-  host=environment.backendServer;
+  host="https://bestphonebk.herokuapp.com/";
   public commande: Commande = new Commande();
   constructor(private panierService: PanierService,
               private http: HttpClient) {}

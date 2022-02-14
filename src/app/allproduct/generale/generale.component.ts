@@ -41,7 +41,7 @@ export class GeneraleComponent implements OnInit {
     },
     nav: true
   }
-  host=environment.backendServer;
+  host="https://bestphonebk.herokuapp.com/";
 
   constructor(public catService:CategoriesService,
               private  router:Router,

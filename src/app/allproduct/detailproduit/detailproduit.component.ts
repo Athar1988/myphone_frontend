@@ -25,7 +25,7 @@ export class DetailproduitComponent implements OnInit {
   sommeTotal=0;
   productItem: any;
   nbItem;
-  host=environment.backendServer;
+  host="https://bestphonebk.herokuapp.com/";
 
 
   constructor(private router:Router,

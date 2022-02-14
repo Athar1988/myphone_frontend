@@ -14,8 +14,7 @@
   "https_only": true,
   "root": "dist/e-commerce-telephone-frontend/",
   "routes": {
-   // "/**": "index.html"
-    "/*.html": "index.html"
+    "/**": "index.html"
   }
 }
 

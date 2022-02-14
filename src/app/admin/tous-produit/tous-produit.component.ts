@@ -13,7 +13,7 @@ import {environment} from '../../../environments/environment';
   styleUrls: ['./tous-produit.component.css']
 })
 export class TousProduitComponent implements OnInit {
-  host=environment.backendServer;
+  host="https://bestphonebk.herokuapp.com/";
   tousProduits:any;
   p: number = 0;
   currentRequest;

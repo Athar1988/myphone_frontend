@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {CategoriesService} from '../../services/categories.service';
-import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-menu-admin',
@@ -10,7 +9,7 @@ import {environment} from '../../../environments/environment';
 })
 export class MenuAdminComponent implements OnInit {
   categories;
-  host=environment.backendServer;
+  host="https://bestphonebk.herokuapp.com/";
   constructor(private  router: Router,
               private catService:CategoriesService) { }
 

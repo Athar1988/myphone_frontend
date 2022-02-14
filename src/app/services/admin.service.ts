@@ -9,7 +9,7 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class AdminService {
-  host=environment.backendServer;
+  host="https://bestphonebk.herokuapp.com/";
   constructor(private http:HttpClient) { }
 
 

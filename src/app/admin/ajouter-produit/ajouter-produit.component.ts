@@ -3,7 +3,6 @@ import {Product} from '../../model/product.model';
 import {AdminService} from '../../services/admin.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {CategoriesService} from '../../services/categories.service';
 
 @Component({
   selector: 'app-ajouter-produit',

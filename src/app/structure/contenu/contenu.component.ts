@@ -48,7 +48,7 @@ export class ContenuComponent implements OnInit {
   promoProduit;
   dispoProduit;
 
-
+  host="https://bestphonebk.herokuapp.com/";
 
   constructor(private catService:CategoriesService,
               private clientService:ClientService,
@@ -114,7 +114,7 @@ export class ContenuComponent implements OnInit {
 
 
   private getCategories() {
-    this.catService.getProduitdeCategorie(environment.backendServer+"categories")
+    this.catService.getProduitdeCategorie(this.host+"categories")
       .subscribe(data=>{
         this.categories=data;
       },err=>{

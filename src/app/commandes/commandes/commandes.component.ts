@@ -13,7 +13,7 @@ export class CommandesComponent implements OnInit {
   currentDate;
   reference;
   statut;
-  idclient
+  idclient;
   nom;
   numeroCarte;
   date;

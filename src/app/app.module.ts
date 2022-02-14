@@ -28,7 +28,6 @@ import { AjouterProduitComponent } from './admin/ajouter-produit/ajouter-produit
 import { TousProduitComponent } from './admin/tous-produit/tous-produit.component';
 import { ModifierConatctComponent } from './admin/modifier-conatct/modifier-conatct.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-//import {NgxPaginationModule} from 'ngx-pagination';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { InscriptionComponent } from './client/inscription/inscription.component';
 import { ListeClientComponent } from './admin/liste-client/liste-client.component';
@@ -73,7 +72,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
-    //NgxPaginationModule
     CarouselModule,
     BrowserAnimationsModule,
     NgxPaginationModule

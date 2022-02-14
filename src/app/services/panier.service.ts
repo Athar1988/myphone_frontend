@@ -8,7 +8,7 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class PanierService {
-  host=environment.backendServer;
+  host="https://bestphonebk.herokuapp.com/";
   idClient;
   panier;
 

@@ -7,13 +7,15 @@
       "X-Content-Type-Options": "nosniff",
       "X-Frame-Options": "DENY",
       "X-XSS-Protection": "1; mode=block",
-      "Feature-Policy": "accelerometer 'none'; camera 'none'; microphone 'none'"
+      "Feature-Policy": "accelerometer 'none'; camera 'none'; microphone 'none'",
+      "Access-Control-Allow-Origin": "*"
     }
   },
   "https_only": true,
   "root": "dist/e-commerce-telephone-frontend/",
   "routes": {
-    "/**": "index.html"
+   // "/**": "index.html"
+    "/*.html": "index.html"
   }
 }
 

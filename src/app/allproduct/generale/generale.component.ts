@@ -42,7 +42,6 @@ export class GeneraleComponent implements OnInit {
     nav: true
   }
   host="https://bestphonebk.herokuapp.com/";
-
   constructor(public catService:CategoriesService,
               private  router:Router,
               private route:ActivatedRoute
@@ -89,6 +88,8 @@ export class GeneraleComponent implements OnInit {
     this.catService.getProduitdeCategorie(this.host+"categories")
       .subscribe(data=>{
         this.categories=data;
+        console.log(this.host+"categories aaa");
+        console.log(this.categories._embedded.categories[0].icon);
       },err=>{
         console.log(err);
       })

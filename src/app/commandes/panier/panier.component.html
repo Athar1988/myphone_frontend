@@ -53,13 +53,13 @@
               </td>
               <td width="5%">{{item.name}}</td>
               <td>
-                <p class="line">{{item.prixUn}}</p>
-                <small class="d-block">{{item.pourcentage}} %</small>
-                {{item.prixUn-(item.prixUn*item.pourcentage)/100 | number}} TND
+                <p>{{item.prixUn}}</p>
+                <p *ngIf="item.pourcentage !=0">  <small class="line">{{item.prixUn}}</small> <small class="d-block">{{item.pourcentage}} %</small></p>
+                <p *ngIf="item.pourcentage !=0">{{item.prixUn-((item.prixUn*item.pourcentage)/100)}} TND</p>
               </td>
 
-              <td><input (click)=modifierQuantit(item.id,item,inputQuntite.value) type="number" #inputQuntite class="form-control text-center" value="1" min="0"></td>
-              <td>{{item.prixtotalproduit}}</td>
+              <td><input (click)=modifierQuantit(item.id,item,inputQuntite.value) type="number" #inputQuntite class="form-control text-center" value="{{item.quantiteCommander}}" min="1"></td>
+              <td>{{item.prixtotalproduit}} TND</td>
               <td>
               <ul class="action-list">
                 <li><a (click)="supprimerItem(item.id)" class="btn btn-danger"><i class="fa fa-trash"></i></a></li>
@@ -101,7 +101,7 @@
               <span class="month">TND</span>
             </div>
             <ul class="pricing-content">
-              <li>Total sans remise : {{prixsansremise | number}} TND</li>
+              <li>Total sans remise : {{prixsansremise}} TND</li>
               <li>Total avec remise: {{total}} TND</li>
               <li>Frais de livraison: 7 TND</li>
               <li>Total à payer:<p *ngIf="total!=0">{{total+7  }}</p> TND</li>

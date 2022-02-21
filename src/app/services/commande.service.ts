@@ -18,12 +18,12 @@ export class CommandeService {
 
   submitOrder(): Observable<Commande> {
     this.commande=JSON.parse(localStorage.getItem('commande'));
-    localStorage.removeItem('panier');
-    localStorage.removeItem('item');
-    localStorage.removeItem('commande');
-    this.idclient=localStorage.getItem('id');
-    this.http.post<Commande>(this.host+"commandes",this.commande);
-    return this.http.post<Commande>(this.host+"ajoutercommandes",this.commande);
+
+    //this.idclient=localStorage.getItem('id');
+     //this.http.post<Commande>(this.host+"commandes",this.commande);
+     console.log(this.commande);
+   return this.http.post<Commande>(this.host+"ajoutercommandes",this.commande);
+
   }
 
   recupereListeCommande(){

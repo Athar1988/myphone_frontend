@@ -28,7 +28,7 @@
             <tbody>
 
 
-            <tr  *ngFor="let client of tousClient._embedded.clients | paginate: { itemsPerPage: 20, currentPage: p }">
+            <tr  *ngFor="let client of tousClient._embedded.clients | paginate: { itemsPerPage: 4, currentPage: p }">
               <td>{{client.id}}</td>
               <td>{{client.nom}}</td>
               <td>{{client.prenom}} </td>

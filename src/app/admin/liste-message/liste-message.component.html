@@ -25,7 +25,7 @@
             <tbody>
 
 
-            <tr  *ngFor="let message of tousMessage._embedded.contacts  | paginate: { itemsPerPage: 20, currentPage: p }">
+            <tr  *ngFor="let message of tousMessage._embedded.contacts  | paginate: { itemsPerPage: 4, currentPage: p }">
               <td>{{message.id}}</td>
               <td>{{message.nom}}</td>
               <td>{{message.prenom}} </td>

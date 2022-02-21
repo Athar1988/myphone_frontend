@@ -43,9 +43,11 @@ export class ProduitComponent implements OnInit {
   ajouterItem(produit: Product){
     if(produit.pourcentage!=0){
       this.sommeTotal=produit.currentPrice-(produit.currentPrice*(produit.pourcentage/100));
+      console.log(this.sommeTotal+" somme promo");
     }
     else{
       this.sommeTotal=produit.currentPrice;
+      console.log(this.sommeTotal+" somme sans promo");
     }
     this.productItem= new Item(produit.id, produit.name ,produit.currentPrice,produit.pourcentage,1, this.sommeTotal, produit.nameImage, produit.typeImage,produit.picByte);
     this.nbItem = JSON.parse(localStorage.getItem('item'));

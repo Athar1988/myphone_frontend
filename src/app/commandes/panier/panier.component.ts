@@ -20,6 +20,7 @@ export class PanierComponent implements OnInit {
   prixsansremise=0;
   existe;
   nbItem;
+  prixArticle;
   constructor(public clinetService:ClientService,
               public panierService: PanierService,
               private router: Router,
@@ -67,7 +68,10 @@ export class PanierComponent implements OnInit {
   modifierQuantit(id, item: Item, Q){
     item.quantiteCommander=Q;
     this.panierService.updateQuantite(id,item).subscribe(
-      (data)=>{ console.log("item modifier avec succee avec succee");},
+      (data)=>{
+        console.log("item modifier avec succee avec succee");
+        location.reload();
+        },
       (err)=>{ console.log("probleme de reseau");}
     );
   }

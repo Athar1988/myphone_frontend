@@ -11,6 +11,7 @@ import {environment} from '../../../environments/environment';
 })
 export class GeneraleComponent implements OnInit {
   categories;
+  p1;p2;
   products;
   currentCategorie;
   title;
@@ -51,7 +52,7 @@ export class GeneraleComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
     this.getProducts('products');
-    this.router.events.subscribe((val) => {
+ this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd ) {
         let p1=this.route.snapshot.params.p1;
         let p2=this.route.snapshot.params.p2;
@@ -88,8 +89,6 @@ export class GeneraleComponent implements OnInit {
     this.catService.getProduitdeCategorie(this.host+"categories")
       .subscribe(data=>{
         this.categories=data;
-        console.log(this.host+"categories aaa");
-        console.log(this.categories._embedded.categories[0].icon);
       },err=>{
         console.log(err);
       })

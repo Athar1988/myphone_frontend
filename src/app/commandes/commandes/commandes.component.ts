@@ -43,7 +43,13 @@ export class CommandesComponent implements OnInit {
       (data)=>{console.log("commande ajouté avec succé");},
       (err)=>{console.log("erreur reseau");},
     )
+
+    localStorage.removeItem('panier');
+    localStorage.removeItem('item');
+    localStorage.removeItem('commande');
+
     this.router.navigateByUrl('listeCommandes');
+
     this.idclient=localStorage.getItem('id');
     this.clientService.supprimerTousItem(this.idclient).subscribe(
       (data)=>{console.log("items supprimés")},

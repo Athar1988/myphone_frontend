@@ -21,7 +21,7 @@ export class CommandeService {
 
     //this.idclient=localStorage.getItem('id');
      //this.http.post<Commande>(this.host+"commandes",this.commande);
-     console.log(this.commande);
+     //console.log(this.commande);
    return this.http.post<Commande>(this.host+"ajoutercommandes",this.commande);
 
   }

@@ -7,7 +7,7 @@
                 <div class="form-container">
                   <div class="form-icon">
                     <i class="fa fa-user-circle"></i>
-                    <span class="signup"><a (click)="inscription()">Creation d'un nouveau compte</a></span>
+                    <span class="signup"><a (click)="inscription()">Création d'un nouveau compte</a></span>
                   </div>
                   <form class="form-horizontal"  #LoginForm="ngForm">
                     <h3 class="title">Connexion</h3>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div *ngIf="loginmotdepasseInput.invalid && loginmotdepasseInput.dirty" class="alert alert-danger">
-                  Le password est obligatoire et doit impérativement a voir au moins 4
+                  Le password est obligatoire et doit impérativement avoir au moins 4
                   caractères
                 </div>
 
@@ -73,7 +73,7 @@
                   *ngIf="loginemailexiste==false && loginemailInput.dirty"
                   class="alert alert-danger"
                 >
-                  L'email n'exist pas ou mot de passe incorrect
+                  L'email n'exist pas ou mot de passe est incorrect
                 </div>
 
               </div>

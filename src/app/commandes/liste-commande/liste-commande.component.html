@@ -9,8 +9,8 @@
             <div class="col-sm-12 col-xs-12">
               <h4 class="title pull-left">Liste des commandes</h4>
               <a (click)="suiviCommandes()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Toutes les Commandes</a>
-              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les commande en Cours</a>
-              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les Commandse Terminées</a>
+              <a (click)="enCours()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les commandes en Cours</a>
+              <a (click)="traiter()"  class="btn btn-sm btn-primary pull-right"><i class="fa fa-shopping-bag"></i>Les Commandes Terminées</a>
             </div>
           </div>
         </div>
@@ -20,8 +20,8 @@
             <tr>
               <th>Numéro</th>
               <th>Date</th>
-              <th>Montant Toatl</th>
-              <th>Statut</th>
+              <th>Montant Total</th>
+              <th>Status</th>
               <th>Client</th>
               <th>Actions</th>
             </tr>
@@ -34,7 +34,7 @@
               <td>{{commande.statut}}</td>
               <td>
                 <ul class="action-list">
-                  <li><a (click)="detailClient(commande.id)" class="btn btn-primary"><i class=" fa fa-user-circle"></i></a></li>
+                  <li><a (click)="detailClient(commande.id)" class="btn btn-primary"><i class="fa fa-user-circle"></i></a></li>
                 </ul>
               </td>
               <td>

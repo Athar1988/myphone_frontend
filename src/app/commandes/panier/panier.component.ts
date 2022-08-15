@@ -31,7 +31,6 @@ export class PanierComponent implements OnInit {
   ngOnInit(): void {
     this.recupereProductItem();
     this.existe=localStorage.getItem('item');
-    console.log( this.existe+ "ee");
   }
 
 
@@ -70,7 +69,7 @@ export class PanierComponent implements OnInit {
     item.quantiteCommander=Q;
     this.panierService.updateQuantite(id,item).subscribe(
       (data)=>{
-        console.log("item modifier avec succee");
+        console.log("item modifier avec succé");
         location.reload();
         },
       (err)=>{ console.log("probleme de reseau");}

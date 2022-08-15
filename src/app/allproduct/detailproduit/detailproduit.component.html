@@ -89,7 +89,7 @@
         <div class="header">Modifier un produit</div>
         <div class="form-content">
           <div class="form-group">
-            <label class="form-label">Catégortie</label>
+            <label class="form-label">Catégorie</label>
             <div class="col-sm-12">
               <select
                 [(ngModel)]="categorie"
@@ -100,7 +100,7 @@
                 required
                 ngModel
               >
-                <option value="" selected="selected">Categorie</option>
+                <option value="" selected="selected">Catégorie</option>
                 <option value="1">Telephone</option>
                 <option value="2">Tablette</option>
                 <option value="3">Produits apple</option>
@@ -119,7 +119,7 @@
               *ngIf="categorieInput.invalid && categorieInput.dirty"
               class="alert alert-danger"
             >
-              Categorie obligatoire
+              Catégorie obligatoire
             </div>
 
 
@@ -171,7 +171,7 @@
               *ngIf="descriptionInput.invalid && descriptionInput.dirty"
               class="alert alert-danger"
             >
-              Le description est obliogatoire et doit être correct
+              La description est obliogatoire et doit être correct
             </div>
 
 
@@ -261,7 +261,7 @@
               *ngIf="marqueInput.invalid && marqueInput.dirty"
               class="alert alert-danger"
             >
-              La marque obligatoire
+              La marque est obligatoire
             </div>
 
 
@@ -335,7 +335,7 @@
               *ngIf="pourcentageInput.invalid && pourcentageInput.dirty"
               class="alert alert-danger"
             >
-              Le pourcentageInput est obligatoire
+              Le pourcentage est obligatoire
             </div>
           </div>
 

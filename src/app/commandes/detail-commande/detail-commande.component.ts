@@ -38,7 +38,7 @@ export class DetailCommandeComponent implements OnInit {
       data=>{
         this.commande=data;
         this.commandeService.traiterCommande(idCommande, this.commande).subscribe(
-          data=>{console.log("commande traiter avec succé")},
+          data=>{console.log("commande traiter avec succée")},
           err=>{console.log("probleme de connexion")}
         )
        this.router.navigateByUrl('listeCommandes/admin');

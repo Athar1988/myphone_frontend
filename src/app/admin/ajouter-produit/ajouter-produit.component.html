@@ -8,7 +8,7 @@
         <div class="form-content">
           <div class="form-group">
 
-            <label class="form-label">Catégortie</label>
+            <label class="form-label">Catégorie</label>
             <div class="col-sm-12">
               <select
                 [(ngModel)]="categorie"
@@ -19,7 +19,7 @@
                 required
                 ngModel
               >
-                <option value="" selected="selected">Categorie</option>
+                <option value="" selected="selected">Catégorie</option>
                 <option value="1">Telephone</option>
                 <option value="2">Tablette</option>
                 <option value="3">Produits apple</option>
@@ -38,7 +38,7 @@
               *ngIf="categorieInput.invalid && categorieInput.dirty"
               class="alert alert-danger"
             >
-              Categorie obligatoire
+              Catégorie obligatoire
             </div>
 
 
@@ -62,7 +62,7 @@
               *ngIf="nomInput.invalid && nomInput.dirty"
               class="alert alert-danger"
             >
-              Le nom est obliogatoire et doit être correct
+              Le nom est obligatoire et doit être correct
             </div>
 
             <label class="form-label">Description</label>
@@ -87,7 +87,7 @@
               *ngIf="descriptionInput.invalid && descriptionInput.dirty"
               class="alert alert-danger"
             >
-              Le description est obliogatoire et doit être correct
+              La description est obligatoire et doit être correcte
             </div>
 
 
@@ -175,7 +175,7 @@
               *ngIf="marqueInput.invalid && marqueInput.dirty"
               class="alert alert-danger"
             >
-              La marque obligatoire
+              La marque est obligatoire
             </div>
           </div>
 
@@ -225,7 +225,7 @@
               *ngIf="quantityInput.invalid && quantityInput.dirty"
               class="alert alert-danger"
             >
-              La quantite est obligatoire
+              La quantité est obligatoire
             </div>
           </div>
 

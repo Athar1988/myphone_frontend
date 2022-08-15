@@ -1,5 +1,5 @@
 <div class="divider py-5 bg-light"></div>
-<div  *ngIf="existe=='0' || existe==null" >
+<div  *ngIf=" existe==null" >
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-4 col-sm-6">
@@ -20,7 +20,7 @@
 
 
 
-<div class="container"  *ngIf="existe!='0'">
+<div class="container"  *ngIf="existe!=null">
   <div class="row">
     <div class="col-md-offset-1 col-md-12">
       <div class="panel">
